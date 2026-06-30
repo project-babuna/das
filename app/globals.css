@@ -992,20 +992,20 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  column-gap: 10px;
+  column-gap: 16px;
   row-gap: 6px;
   margin: 0;
-  color: #6d7474;
-  font-size: 0.875rem;
-  font-weight: 600;
+  color: #364240;
+  font-size: 1rem;
+  font-weight: 700;
   line-height: 1.25;
 }
 
-.footer-brand-line span {
+.footer-brand-copy {
   display: inline-flex;
   align-items: center;
-  min-height: 30px;
-  padding-top: 1px;
+  min-height: 34px;
+  transform: translateY(5px);
 }
 
 .footer-grid nav {

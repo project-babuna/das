@@ -233,7 +233,7 @@ export default function CoursePage() {
         <div className="container footer-grid">
           <p className="footer-brand-line">
             <BrandLogo tone="dark" compact />
-            <span>is EntreMento&apos;s flagship program</span>
+            <span className="footer-brand-copy">is EntreMento&apos;s flagship program</span>
           </p>
           <nav aria-label="Footer navigation">
             <a href="/#clarity">Clarity Session</a>
