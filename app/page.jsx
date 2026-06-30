@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import BrandLogo from "./components/BrandLogo";
 
 const ribbonItems = [
   {
@@ -64,12 +65,7 @@ export default function Home() {
     <>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="DreamAndScale home" onClick={closeNav}>
-          <span className="wordmark small" aria-hidden="true">
-            <span className="wordmark-dream">Dream</span>
-            <span className="wordmark-and">And</span>
-            <span className="wordmark-scale">Scale</span>
-          </span>
-          <span className="brand-byline">By Entremento</span>
+          <BrandLogo tone="light" />
         </a>
 
         <button
@@ -361,13 +357,9 @@ export default function Home() {
       <footer className="footer-strip" id="contact">
         <div className="footer-grid-cap" aria-hidden="true"></div>
         <div className="container footer-grid">
-          <p>
-            <span className="footer-wordmark" aria-label="DreamAndScale">
-              <span>Dream</span>
-              <span>And</span>
-              <span>Scale</span>
-            </span>
-            is EntreMento&apos;s flagship program
+          <p className="footer-brand-line">
+            <BrandLogo tone="dark" compact />
+            <span>is EntreMento&apos;s flagship program</span>
           </p>
           <nav aria-label="Footer navigation">
             <a href="#clarity">Clarity Session</a>

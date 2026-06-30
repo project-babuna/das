@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import BrandLogo from "../components/BrandLogo";
 
 const modules = [
   {
@@ -74,12 +75,7 @@ export default function CoursePage() {
     <>
       <header className="site-header course-header">
         <a className="brand" href="/" aria-label="DreamAndScale home" onClick={closeNav}>
-          <span className="wordmark small" aria-hidden="true">
-            <span className="wordmark-dream">Dream</span>
-            <span className="wordmark-and">And</span>
-            <span className="wordmark-scale">Scale</span>
-          </span>
-          <span className="brand-byline">By Entremento</span>
+          <BrandLogo tone="light" />
         </a>
 
         <button
@@ -235,13 +231,9 @@ export default function CoursePage() {
       <footer className="footer-strip" id="contact">
         <div className="footer-grid-cap" aria-hidden="true"></div>
         <div className="container footer-grid">
-          <p>
-            <span className="footer-wordmark" aria-label="DreamAndScale">
-              <span>Dream</span>
-              <span>And</span>
-              <span>Scale</span>
-            </span>
-            is EntreMento&apos;s flagship program
+          <p className="footer-brand-line">
+            <BrandLogo tone="dark" compact />
+            <span>is EntreMento&apos;s flagship program</span>
           </p>
           <nav aria-label="Footer navigation">
             <a href="/#clarity">Clarity Session</a>
