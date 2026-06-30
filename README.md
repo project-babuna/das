@@ -25,6 +25,11 @@ npm run build
 npm run start
 ```
 
+## Routes
+
+- `/` - DreamAndScale homepage
+- `/course` - Detailed full-program course page
+
 ## Vercel Deployment
 
 Use this folder as the Vercel project root:

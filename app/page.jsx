@@ -88,7 +88,7 @@ export default function Home() {
           <a href="#clarity" onClick={closeNav}>
             Clarity Session
           </a>
-          <a href="#program" onClick={closeNav}>
+          <a href="/course" onClick={closeNav}>
             Full Program
           </a>
           <a href="#pillars" onClick={closeNav}>
@@ -126,7 +126,7 @@ export default function Home() {
               <a className="btn btn-primary" href="#clarity">
                 Book the ₹199 Clarity Session
               </a>
-              <a className="btn btn-secondary" href="#program">
+              <a className="btn btn-secondary" href="/course">
                 Explore the Full Program
               </a>
             </div>
@@ -171,7 +171,7 @@ export default function Home() {
         <section className="section start-section" id="clarity">
           <div className="container">
             <div className="section-heading">
-              <p className="eyebrow dark">Two ways in</p>
+              <p className="eyebrow dark">Three ways in</p>
               <h2>Start Where You Are</h2>
             </div>
 
@@ -192,17 +192,33 @@ export default function Home() {
                 </a>
               </article>
 
-              <article className="entry-card accent" id="program">
+              <article className="entry-card" id="program">
                 <div className="card-topline">
                   <span>Card 2</span>
                   <strong>The Full Program</strong>
                 </div>
-                <h3>Self-paced lessons + live mentor access.</h3>
+                <h3>Self-paced lessons. ₹9,999.</h3>
+                <p>
+                  The complete DreamAndScale curriculum from idea to exit, designed for people who
+                  want to study deeply at their own pace and build founder-level clarity without live
+                  mentor access.
+                </p>
+                <a className="text-link" href="/course">
+                  Explore the Program
+                </a>
+              </article>
+
+              <article className="entry-card accent">
+                <div className="card-topline">
+                  <span>Card 3</span>
+                  <strong>Full Program + Mentor Access</strong>
+                </div>
+                <h3>Self-paced lessons + live mentor access. ₹49,990.</h3>
                 <p>
                   The complete journey from idea to exit, applied to your own situation as you go.
-                  For people ready to build real founder-level clarity, not just sample it.
+                  For people ready to build real founder-level clarity with live guidance and review.
                 </p>
-                <a className="text-link" href="#pillars">
+                <a className="text-link" href="/course">
                   Explore the Program
                 </a>
               </article>
@@ -355,7 +371,7 @@ export default function Home() {
           </p>
           <nav aria-label="Footer navigation">
             <a href="#clarity">Clarity Session</a>
-            <a href="#program">Full Program</a>
+            <a href="/course">Full Program</a>
             <a href="#entremento">About</a>
             <a href="mailto:hello@entremento.com">Contact</a>
           </nav>
