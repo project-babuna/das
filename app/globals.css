@@ -600,7 +600,7 @@ h3 {
 .section-heading {
   max-width: 880px;
   margin: 36px;
-  color: var(--white);
+  color: var(--ink);
 }
 
 .section-heading.narrow {
