@@ -6,33 +6,33 @@ import BrandLogo from "../components/BrandLogo";
 const modules = [
   {
     number: "01",
-    title: "Founder Lens",
+    title: "Opportunity Thinking",
     scope: "Idea",
-    body: "Learn how founders recognize opportunities, separate excitement from evidence, and judge whether an idea deserves more time, money, and attention.",
+    body: "Learn how strong business builders recognize opportunities, separate excitement from evidence, and judge whether an idea deserves more time, money, and attention.",
   },
   {
     number: "02",
-    title: "Market & Customer Reality",
+    title: "Market & Customer",
     scope: "Market + Customer",
     body: "Map who has the problem, how often it hurts, how people solve it today, and whether the buying behavior is strong enough before you build.",
   },
   {
     number: "03",
-    title: "Product & Business Model",
+    title: "Business Design",
     scope: "Product",
     body: "Turn a validated problem into a sellable offer, then understand pricing, revenue logic, positioning, and the model that makes it a business.",
   },
   {
     number: "04",
-    title: "Company Systems & Finance",
+    title: "Business Foundation",
     scope: "Structure + Finance",
     body: "Understand legal structure, ownership, roles, equity, unit economics, runway, and the operating system that supports real execution.",
   },
   {
     number: "05",
-    title: "Growth & Exit",
+    title: "Growth & Ownership",
     scope: "Growth + Exit",
-    body: "Study how businesses scale, where growth breaks, how value compounds, and how founders think about optionality, valuation, and exits.",
+    body: "Study how businesses scale, where growth breaks, how value compounds, and how owners think about optionality, valuation, and exits.",
   },
 ];
 
@@ -41,18 +41,18 @@ const plans = [
     name: "Clarity Session",
     price: "₹199",
     label: "3 hours. Live.",
-    body: "A focused introduction to opportunity evaluation, risk reading, and founder-level thinking before you decide how deep you want to go.",
+    body: "A focused introduction to opportunity evaluation, risk reading, and business-level thinking before you decide how deep you want to go.",
   },
   {
     name: "Full Program",
     price: "₹9,999",
-    label: "Self-paced lessons.",
+    label: "Learn independently.",
     body: "The full DreamAndScale curriculum for people who want the complete idea-to-exit system and prefer to learn independently.",
   },
   {
     name: "Full Program + Mentor Access",
     price: "₹49,990",
-    label: "Self-paced lessons + live mentor access.",
+    label: "Learn with mentorship.",
     body: "The complete curriculum with live mentor access so you can apply the system to your situation, questions, and decisions as you go.",
     featured: true,
   },
@@ -115,9 +115,9 @@ export default function CoursePage() {
           <div className="container course-hero-grid">
             <div>
               <p className="eyebrow">DreamAndScale full program</p>
-              <h1>Founder-Level Business Clarity, From Idea To Exit</h1>
+              <h1>Business Clarity, From Idea To Exit</h1>
               <p>
-                The full DreamAndScale program teaches the connected system behind how businesses
+                The full DreamAndScale program explains the connected system behind how businesses
                 are evaluated, built, structured, financed, grown, and eventually made valuable.
               </p>
               <div className="hero-actions">
@@ -134,7 +134,7 @@ export default function CoursePage() {
               <span>Complete Arc</span>
               <strong>Idea → Market → Customer → Product → Structure → Finance → Growth → Exit</strong>
               <p>
-                Built for professionals, freelancers, builders, and students who want founder-level
+                Built for professionals, freelancers, builders, and students who want clearer
                 judgment before making serious career, time, or capital decisions.
               </p>
             </div>
@@ -163,8 +163,8 @@ export default function CoursePage() {
               <p className="eyebrow dark">Curriculum</p>
               <h2>The 5 connected pillars</h2>
               <p>
-                Each pillar builds on the last, so you leave with one connected founder-thinking
-                system instead of scattered business concepts.
+                Each pillar builds on the last, so you leave with one connected business system
+                instead of scattered concepts.
               </p>
             </div>
 
@@ -197,7 +197,7 @@ export default function CoursePage() {
                   <strong>{plan.price}</strong>
                   <h3>{plan.label}</h3>
                   <p>{plan.body}</p>
-                  <a className="text-link" href="mailto:hello@entremento.com">
+                  <a className="text-link" href="mailto:hello@dreamandscale.com">
                     Start Here
                   </a>
                 </article>
@@ -232,14 +232,14 @@ export default function CoursePage() {
         <div className="footer-grid-cap" aria-hidden="true"></div>
         <div className="container footer-grid">
           <p className="footer-brand-line">
-            <BrandLogo tone="dark" compact />
-            <span className="footer-brand-copy">is EntreMento&apos;s flagship program</span>
+            <BrandLogo tone="light" compact />
+            <span className="footer-brand-copy">Build Business Clarity Before You Build A Business.</span>
           </p>
           <nav aria-label="Footer navigation">
             <a href="/#clarity">Clarity Session</a>
             <a href="/course">Full Program</a>
-            <a href="/#entremento">About</a>
-            <a href="mailto:hello@entremento.com">Contact</a>
+            <a href="/#for-you">About</a>
+            <a href="mailto:hello@dreamandscale.com">Contact</a>
           </nav>
         </div>
       </footer>

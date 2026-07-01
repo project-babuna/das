@@ -52,12 +52,17 @@ const faqItems = [
   {
     question: "Do I need a business idea before joining?",
     answer:
-      "No. DreamAndScale is built to help you think clearly before you commit to an idea. If you already have one, you will evaluate it. If you do not, you will learn how founders spot and judge opportunities.",
+      "No. DreamAndScale is built to help you think clearly before you commit to an idea. If you already have one, you will evaluate it. If you do not, you will learn how opportunities are spotted and judged.",
+  },
+  {
+    question: "How is DreamAndScale different from other entrepreneurship courses?",
+    answer:
+      "Most entrepreneurship courses focus on starting, pitching, or scaling a business. DreamAndScale focuses on business clarity first: how idea, market, customer, product, structure, finance, growth, and ownership connect before you take a major risk.",
   },
   {
     question: "What is the ₹199 Clarity Session for?",
     answer:
-      "It is a focused 3-hour live introduction to founder-level thinking. You get a practical taste of opportunity evaluation, risk reading, and how to size up your current situation honestly before choosing a deeper path.",
+      "It is a focused 3-hour live introduction to business-level thinking. You get a practical taste of opportunity evaluation, risk reading, and how to size up your current situation honestly before choosing a deeper path.",
   },
   {
     question: "What is the difference between the two full program options?",
@@ -72,12 +77,12 @@ const faqItems = [
   {
     question: "Is DreamAndScale theory-heavy?",
     answer:
-      "The program teaches frameworks, but the goal is judgment. You connect idea, market, customer, product, structure, finance, growth, and exit into one working business lens.",
+      "The program explains useful frameworks, but the goal is judgment. You connect idea, market, customer, product, structure, finance, growth, and exit into one working business lens.",
   },
   {
     question: "What will I have by the end?",
     answer:
-      "You leave with founder-level clarity about how a business works end to end, plus a working plan if your idea is worth pursuing and the ability to evaluate future opportunities with more confidence.",
+      "You leave with business clarity about how a business works end to end, plus a working plan if your idea is worth pursuing and the ability to evaluate future opportunities with more confidence.",
   },
 ];
 
@@ -144,15 +149,15 @@ export default function Home() {
           <div className="hero-shade" aria-hidden="true"></div>
 
           <div className="container hero-content">
-            <p className="eyebrow">EntreMento flagship program</p>
+            <p className="eyebrow">Business clarity program</p>
             <h1 id="hero-title">
               Understand How Businesses Actually Work — Before You Bet Everything On One
             </h1>
             <p className="hero-lede">
-              Most people dream of starting a business, but very few understand how businesses
-              actually work. DreamAndScale gives you complete business clarity—from opportunity and
-              customers to company structure, finance, partnerships, growth, and ownership—so you can
-              make better business decisions before risking your time, money, or career.
+              Most people want to build a business, but very few understand how businesses
+              actually work. DreamAndScale helps you understand how opportunities, customers,
+              products, company structure, finance, partnerships, growth, and ownership connect—so
+              you can make confident business decisions before risking your time, money, or career.
             </p>
             <div className="hero-actions" aria-label="Primary actions">
               <a className="btn btn-primary" href="#clarity">
@@ -167,8 +172,8 @@ export default function Home() {
           <div className="hero-dock container" aria-label="Program scope">
             <p className="ribbon-context">
               Every successful business, regardless of industry, moves through the same connected
-              journey. DreamAndScale teaches how each stage influences the next so you understand the
-              complete system—not isolated topics.
+              journey. DreamAndScale helps you understand how each stage influences the next so you
+              can see the complete system—not isolated topics.
             </p>
             <div className="ribbon-grid">
               {ribbonItems.map((item) => (
@@ -190,18 +195,28 @@ export default function Home() {
         </section>
 
         <section className="section problem-section" id="problem">
-          <div className="container split-layout">
+          <div className="container problem-layout">
             <div className="section-kicker">
               <p className="eyebrow dark">The problem</p>
-              <h2>Most People Risk Everything On Instinct</h2>
+              <h2>Why Starting a Business Feels Confusing</h2>
             </div>
-            <div className="large-copy">
+            <div className="problem-panel">
+              <p className="problem-lead">
+                Most aspiring founders don&apos;t lack ambition. They lack business clarity.
+              </p>
+              <div className="problem-decision-grid" aria-label="Common founder decisions">
+                <span>Validate the idea</span>
+                <span>Build the product</span>
+                <span>Register a company</span>
+                <span>Find customers</span>
+                <span>Raise capital</span>
+                <span>Choose a co-founder</span>
+                <span>Quit their job</span>
+              </div>
               <p>
-                They quit a stable job, sink savings into a product, or chase an idea for years —
-                without ever learning how opportunities are actually evaluated, how businesses make
-                money, or how risk is managed. Not because they lack ambition. Because no one taught
-                them the system. DreamAndScale exists to close that gap before it costs you something
-                real.
+                Every decision depends on another decision—but no one teaches how those decisions
+                connect. DreamAndScale helps you see the complete system, so you can make important
+                business decisions with clarity instead of guesswork.
               </p>
             </div>
           </div>
@@ -222,13 +237,17 @@ export default function Home() {
             <div className="entry-grid">
               <article className="entry-card">
                 <div className="card-topline">
-                  <span>Card 1</span>
+                  <span>Start here</span>
                   <strong>Clarity Session</strong>
                 </div>
                 <h3>Explore Before You Commit</h3>
-                <p className="card-price">3 hours. Live. ₹199.</p>
+                <p className="card-price">
+                  <span>3 hours. Live.</span>
+                  <s>₹999</s>
+                  <strong>₹199</strong>
+                </p>
                 <p>
-                  A focused, real introduction to founder-level thinking — opportunity evaluation,
+                  A focused, real introduction to business-level thinking — opportunity evaluation,
                   risk reading, and how to size up your own situation honestly. Built for anyone who
                   wants a real taste before going deeper.
                 </p>
@@ -239,14 +258,13 @@ export default function Home() {
 
               <article className="entry-card" id="program">
                 <div className="card-topline">
-                  <span>Card 2</span>
+                  <span>Learn independently</span>
                   <strong>The Full Program</strong>
                 </div>
                 <h3>Build The Complete System</h3>
-                <p className="card-price">Self-paced lessons. ₹9,999.</p>
                 <p>
                   The complete DreamAndScale curriculum from idea to exit, designed for people who
-                  want to study deeply at their own pace and build founder-level clarity without live
+                  want to study deeply at their own pace and build business clarity without live
                   mentor access.
                 </p>
                 <a className="text-link" href="/course">
@@ -256,14 +274,13 @@ export default function Home() {
 
               <article className="entry-card accent">
                 <div className="card-topline">
-                  <span>Card 3</span>
+                  <span>Learn with mentorship</span>
                   <strong>Full Program + Mentor Access</strong>
                 </div>
                 <h3>Apply It With Live Guidance</h3>
-                <p className="card-price">Self-paced lessons + live mentor access. ₹49,990.</p>
                 <p>
                   The complete journey from idea to exit, applied to your own situation as you go.
-                  For people ready to build real founder-level clarity with live guidance and review.
+                  For people ready to build real business clarity with live guidance and review.
                 </p>
                 <a className="text-link" href="/course">
                   Explore the Program
@@ -279,8 +296,8 @@ export default function Home() {
               <p className="eyebrow dark">The 5 pillars</p>
               <h2>One Connected System, Five Pillars</h2>
               <p>
-                Founders don&apos;t think in isolated topics — they think in systems. DreamAndScale
-                teaches the entire arc as one connected journey.
+                Businesses don&apos;t work in isolated topics — they work as systems. DreamAndScale
+                connects the entire arc into one clear journey.
               </p>
             </div>
 
@@ -288,21 +305,17 @@ export default function Home() {
               <article>
                 <span>01</span>
                 <div>
-                  <h3>
-                    Founder Lens <small>(Idea)</small>
-                  </h3>
+                  <h3>Opportunity Thinking</h3>
                   <p>
-                    How founders actually spot, test, and judge opportunities — the thinking pattern
-                    itself, whether or not you have an idea yet.
+                    How strong business builders spot, test, and judge opportunities — the thinking
+                    pattern itself, whether or not you have an idea yet.
                   </p>
                 </div>
               </article>
               <article>
                 <span>02</span>
                 <div>
-                  <h3>
-                    Market & Customer Reality <small>(Market + Customer)</small>
-                  </h3>
+                  <h3>Market & Customer</h3>
                   <p>
                     Who actually has this problem, how big that group really is, and whether
                     they&apos;ll pay — validated before you build anything.
@@ -312,9 +325,7 @@ export default function Home() {
               <article>
                 <span>03</span>
                 <div>
-                  <h3>
-                    Product & Business Model <small>(Product)</small>
-                  </h3>
+                  <h3>Business Design</h3>
                   <p>
                     Turning a validated problem into something sellable, and the model that makes it
                     a real business, not just a project.
@@ -324,23 +335,19 @@ export default function Home() {
               <article>
                 <span>04</span>
                 <div>
-                  <h3>
-                    Company Systems & Finance <small>(Structure + Finance)</small>
-                  </h3>
+                  <h3>Business Foundation</h3>
                   <p>
                     The infrastructure of running a real company — legal structure, ownership,
-                    equity, unit economics, runway — usually the least taught, most feared part.
+                    equity, unit economics, runway — usually the least explained, most feared part.
                   </p>
                 </div>
               </article>
               <article>
                 <span>05</span>
                 <div>
-                  <h3>
-                    Growth & Exit <small>(Growth + Exit)</small>
-                  </h3>
+                  <h3>Growth & Ownership</h3>
                   <p>
-                    How businesses scale, and how founders eventually realize the value they built —
+                    How businesses scale, and how owners eventually realize the value they built —
                     thinking several moves ahead, not just to launch.
                   </p>
                 </div>
@@ -353,14 +360,15 @@ export default function Home() {
           <div className="container split-layout">
             <div className="section-kicker">
               <p className="eyebrow">Who it&apos;s for</p>
-              <h2>Built For People Thinking Beyond Employment</h2>
+              <h2>Built For People Ready To Think Beyond Their Current Limits</h2>
             </div>
             <div className="audience-panel">
               <p>
-                Professionals exploring the founder path. Freelancers ready to build systems instead
-                of selling time. Builders who want to turn skills into products. Students who want
-                real-world clarity before they commit to a direction. You don&apos;t need a finished
-                idea — you need the willingness to think clearly about one.
+                Professionals exploring entrepreneurship. Freelancers building beyond client work.
+                Students who want business clarity before making career decisions. Builders with
+                ideas they want to evaluate. Small business owners who want to think more
+                strategically. You don&apos;t need a finished idea — you need the willingness to think
+                clearly about one.
               </p>
             </div>
           </div>
@@ -370,37 +378,137 @@ export default function Home() {
           <div className="container outcome-grid">
             <div className="outcome-copy">
               <p className="eyebrow dark">Outcome</p>
-              <h2>What You Leave With</h2>
+              <h2>What You&apos;ll Walk Away With</h2>
+              <h3 className="outcome-subhead">Business Clarity That Stays With You</h3>
               <p>
-                Not just frameworks. Not just theory. You leave understanding how a business actually
-                works end to end, with a working plan if you have an idea worth pursuing — and the
-                founder-level judgment to evaluate the next opportunity that comes your way, on your
-                own.
+                DreamAndScale isn&apos;t about giving you ready-made answers. It&apos;s about helping
+                you understand how businesses actually work, so you can make better decisions long
+                after the program ends.
               </p>
             </div>
             <div className="outcome-map" aria-label="DreamAndScale outcome map">
-              <span>Judge Risk</span>
-              <span>Read Markets</span>
-              <span>Shape Products</span>
-              <span>Model Money</span>
-              <span>Plan Growth</span>
-              <strong>Founder-Level Clarity</strong>
+              <span>Validate Before You Build</span>
+              <span>Understand Customers</span>
+              <span>Design Better Businesses</span>
+              <span>Build Smarter, Not Harder</span>
+              <span>Build Beyond Self-Employment</span>
+              <span>Reduce Unnecessary Risk</span>
+              <strong>Think With Business Clarity</strong>
+            </div>
+            <div className="outcome-detail">
+              <div>
+                <p className="outcome-detail-title">
+                  After completing DreamAndScale, you&apos;ll be able to:
+                </p>
+                <ul className="outcome-list">
+                  <li>Evaluate whether an opportunity is worth pursuing.</li>
+                  <li>Decide what to do first—and what can wait.</li>
+                  <li>Understand customers, business models, and how businesses create value.</li>
+                  <li>
+                    Make informed decisions about company structure, partnerships, ownership, and
+                    finance.
+                  </li>
+                  <li>Distinguish between self-employment and building a scalable business.</li>
+                  <li>
+                    Reduce unnecessary risk by making decisions with clarity instead of guesswork.
+                  </li>
+                </ul>
+              </div>
+              <div className="outcome-note">
+                <p>
+                  You won&apos;t just leave with knowledge—you&apos;ll leave with the confidence to make
+                  better business decisions.
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="section bridge-section" id="entremento">
-          <div className="container bridge-content">
-            <p className="eyebrow">EntreMento ecosystem</p>
-            <h2>DreamAndScale Is Where The Ecosystem Starts</h2>
-            <p>
-              DreamAndScale is EntreMento&apos;s flagship program — but it&apos;s not the only one.
-              As EntreMento grows, more programs will extend this same thinking into new domains like
-              AI and technology for founders.
-            </p>
-            <a className="btn btn-primary" href="#contact">
-              Explore EntreMento
-            </a>
+        <section className="section system-section" id="business-system">
+          <div className="container system-layout">
+            <div className="section-kicker">
+              <p className="eyebrow dark">The difference</p>
+              <h2>Business Isn&apos;t Learned One Topic At A Time</h2>
+            </div>
+            <div className="system-panel">
+              <div className="system-contrast" aria-label="Business education comparison">
+                <div className="system-contrast-card">
+                  <span>Most business education</span>
+                  <ul>
+                    <li>Marketing</li>
+                    <li>Sales</li>
+                    <li>Finance</li>
+                    <li>Company registration</li>
+                    <li>Fundraising</li>
+                  </ul>
+                </div>
+                <div className="system-contrast-arrow" aria-hidden="true">
+                  ↓
+                </div>
+                <div className="system-contrast-card system-contrast-card-accent">
+                  <span>DreamAndScale</span>
+                  <strong>One Connected Business System</strong>
+                </div>
+              </div>
+              <p>
+                Most business education teaches these topics separately. DreamAndScale connects them
+                into one business system. Because businesses aren&apos;t built by mastering isolated
+                subjects. They&apos;re built by making the right decision at the right time.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="section trust-section" id="why-built">
+          <div className="container trust-layout">
+            <div className="section-kicker">
+              <p className="eyebrow dark">Why it exists</p>
+              <h2>Why We Built DreamAndScale</h2>
+            </div>
+            <div className="trust-panel">
+              <p>
+                Most people never get the chance to learn how businesses actually work. Schools teach
+                subjects. Colleges teach professions. Companies teach job roles. But almost nobody
+                teaches how all the pieces of a business connect.
+              </p>
+              <p>
+                DreamAndScale was created to bridge that gap by bringing opportunity, customers,
+                products, finance, company structure, growth, and ownership into one connected
+                system.
+              </p>
+              <strong>Because better businesses begin with better business decisions.</strong>
+            </div>
+          </div>
+        </section>
+
+        <section className="section proof-section" id="trust">
+          <div className="container proof-layout">
+            <div className="section-kicker">
+              <p className="eyebrow dark">Trust</p>
+              <h2>Why People Trust DreamAndScale</h2>
+            </div>
+            <div className="proof-list">
+              <article>
+                <span>01</span>
+                <p>
+                  Designed specifically for first-generation founders and professionals exploring
+                  entrepreneurship.
+                </p>
+              </article>
+              <article>
+                <span>02</span>
+                <p>
+                  Built around practical business decision-making rather than isolated business
+                  subjects.
+                </p>
+              </article>
+              <article>
+                <span>03</span>
+                <p>
+                  Structured as one connected business system instead of disconnected lessons.
+                </p>
+              </article>
+            </div>
           </div>
         </section>
 
@@ -428,14 +536,14 @@ export default function Home() {
         <div className="footer-grid-cap" aria-hidden="true"></div>
         <div className="container footer-grid">
           <p className="footer-brand-line">
-            <BrandLogo tone="dark" compact />
-            <span className="footer-brand-copy">is EntreMento&apos;s flagship program</span>
+            <BrandLogo tone="light" compact />
+            <span className="footer-brand-copy">Build Business Clarity Before You Build A Business.</span>
           </p>
           <nav aria-label="Footer navigation">
             <a href="#clarity">Clarity Session</a>
             <a href="/course">Full Program</a>
-            <a href="#entremento">About</a>
-            <a href="mailto:hello@entremento.com">Contact</a>
+            <a href="#for-you">About</a>
+            <a href="mailto:hello@dreamandscale.com">Contact</a>
           </nav>
         </div>
       </footer>

@@ -1,6 +1,6 @@
 # DreamAndScale
 
-DreamAndScale is a Next.js homepage for EntreMento's flagship founder-thinking and business-clarity program.
+DreamAndScale is a Next.js website for an independent business-clarity program.
 
 ## Tech Stack
 
