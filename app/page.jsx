@@ -48,6 +48,39 @@ const ribbonItems = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "Do I need a business idea before joining?",
+    answer:
+      "No. DreamAndScale is built to help you think clearly before you commit to an idea. If you already have one, you will evaluate it. If you do not, you will learn how founders spot and judge opportunities.",
+  },
+  {
+    question: "What is the ₹199 Clarity Session for?",
+    answer:
+      "It is a focused 3-hour live introduction to founder-level thinking. You get a practical taste of opportunity evaluation, risk reading, and how to size up your current situation honestly before choosing a deeper path.",
+  },
+  {
+    question: "What is the difference between the two full program options?",
+    answer:
+      "The ₹9,999 option gives you the full self-paced program. The ₹49,990 option adds live mentor access for people who want guided application, feedback, and sharper decision support while they work through the program.",
+  },
+  {
+    question: "Is this only for people who want to launch immediately?",
+    answer:
+      "No. It is for professionals, freelancers, builders, and students who want to understand how businesses actually work before taking a major risk. You can use it to build now or to make a more informed decision later.",
+  },
+  {
+    question: "Is DreamAndScale theory-heavy?",
+    answer:
+      "The program teaches frameworks, but the goal is judgment. You connect idea, market, customer, product, structure, finance, growth, and exit into one working business lens.",
+  },
+  {
+    question: "What will I have by the end?",
+    answer:
+      "You leave with founder-level clarity about how a business works end to end, plus a working plan if your idea is worth pursuing and the ability to evaluate future opportunities with more confidence.",
+  },
+];
+
 export default function Home() {
   const [navOpen, setNavOpen] = useState(false);
 
@@ -92,6 +125,9 @@ export default function Home() {
           </a>
           <a href="#outcomes" onClick={closeNav}>
             Outcomes
+          </a>
+          <a href="#faq" onClick={closeNav}>
+            FAQ
           </a>
         </nav>
 
@@ -350,6 +386,25 @@ export default function Home() {
             <a className="btn btn-primary" href="#contact">
               Explore EntreMento
             </a>
+          </div>
+        </section>
+
+        <section className="section faq-section" id="faq">
+          <div className="container faq-layout">
+            <div className="section-kicker">
+              <p className="eyebrow dark">FAQ</p>
+              <h2>Questions Before You Step In</h2>
+            </div>
+            <div className="faq-list">
+              {faqItems.map((item, index) => (
+                <details className="faq-item" key={item.question} open={index === 0}>
+                  <summary>
+                    <span>{item.question}</span>
+                  </summary>
+                  <p>{item.answer}</p>
+                </details>
+              ))}
+            </div>
           </div>
         </section>
       </main>
