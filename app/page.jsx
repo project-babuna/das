@@ -48,6 +48,46 @@ const ribbonItems = [
   },
 ];
 
+const masterclasses = [
+  {
+    title: "Business Clarity Masterclass",
+    date: "5 July 2026",
+    day: "Sunday",
+    time: "02:00 pm IST",
+    duration: "3 Hrs",
+    seats: "138 seats left",
+    price: "199",
+    compareAt: "1,299",
+    cta: "Register Now",
+    featured: true,
+    imageClass: "clarity",
+  },
+  {
+    title: "12-Week Business Masterclass",
+    date: "12 July 2026",
+    day: "Sunday",
+    time: "02:00 pm IST",
+    duration: "2 Hrs",
+    seats: "200 seats left",
+    price: "2,499",
+    cta: "Register Now",
+    imageClass: "business",
+  },
+  {
+    title: "1:1- Mentoring 18-week Business Masterclass",
+    date: "19 July 2026",
+    day: "Sunday",
+    time: "02:00 pm IST",
+    duration: "3 Hrs",
+    seats: "286 seats left",
+    price: "5,499",
+    compareAt: "3,999",
+    cta: "Register Now",
+    featured: true,
+    imageClass: "mentoring",
+  },
+];
+
 const faqItems = [
   {
     question: "Do I need a business idea before joining?",
@@ -211,11 +251,55 @@ export default function Home() {
         <section className="section start-section" id="clarity">
           <div className="container">
             <div className="section-heading">
-              <p className="eyebrow dark">Three ways in</p>
-              <h2>Start Where You Are</h2>
+              <p className="eyebrow dark">#1 Flagship program</p>
+              <h2>Our Masterclass</h2>
             </div>
 
             <div className="entry-grid">
+              {masterclasses.map((masterclass) => (
+                <article
+                  className={masterclass.featured ? "entry-card featured" : "entry-card"}
+                  id={masterclass.title.includes("12-Week") ? "program" : undefined}
+                  key={masterclass.title}
+                >
+                  <div className={`entry-card-image ${masterclass.imageClass}`} aria-hidden="true"></div>
+                  <div className="entry-card-body">
+                    <h3>{masterclass.title}</h3>
+                    <div className="entry-meta">
+                      <span className="detail-icon detail-icon-calendar" aria-hidden="true"></span>
+                      <span>{masterclass.date}</span>
+                      <span className="meta-dot" aria-hidden="true"></span>
+                      <span>{masterclass.day}</span>
+                    </div>
+                    <div className="entry-meta">
+                      <span className="detail-icon detail-icon-clock" aria-hidden="true"></span>
+                      <span>{masterclass.time}</span>
+                      <span className="meta-dot" aria-hidden="true"></span>
+                      <span>{masterclass.duration}</span>
+                    </div>
+                    <div className="entry-seat-row">
+                      <div className="entry-seat-copy">
+                        <span className="detail-icon detail-icon-seat" aria-hidden="true"></span>
+                        <span>{masterclass.seats}</span>
+                      </div>
+                      <span className="seat-meter" aria-hidden="true"></span>
+                    </div>
+                    <div className="entry-price-row">
+                      <div>
+                        <strong className="entry-price">&#8377;{masterclass.price}</strong>
+                        {masterclass.compareAt ? (
+                          <span className="entry-compare">&#8377;{masterclass.compareAt}</span>
+                        ) : null}
+                      </div>
+                      {masterclass.compareAt ? <span className="entry-badge">Early Bird</span> : null}
+                    </div>
+                    <a className="entry-register" href="/course">
+                      {masterclass.cta} &rarr;
+                    </a>
+                  </div>
+                </article>
+              ))}
+              <div hidden>
               <article className="entry-card">
                 <div className="card-topline">
                   <span>Card 1</span>
@@ -232,7 +316,7 @@ export default function Home() {
                 </a>
               </article>
 
-              <article className="entry-card" id="program">
+              <article className="entry-card">
                 <div className="card-topline">
                   <span>Card 2</span>
                   <strong>The Full Program</strong>
@@ -263,6 +347,7 @@ export default function Home() {
                 </a>
               </article>
             </div>
+          </div>
           </div>
         </section>
 
@@ -424,7 +509,7 @@ export default function Home() {
               </p>
             </div>
             <div className="outcome-map" aria-label="DreamAndScale outcome map">
-              <span>Judge Risk</span>
+              <span>Judging Risk</span>
               <span>Read Markets</span>
               <span>Shape Products</span>
               <span>Model Money</span>
@@ -435,6 +520,10 @@ export default function Home() {
         </section>
 
         <section className="section entrepreneurship-section" aria-label="Entrepreneurship global impact">
+          <div className="section-heading">
+            <h2>Future of Entrepreneurship</h2>
+          </div>
+
           <div className="container entrepreneurship-panel">
             <div className="impact-card-grid">
               <article className="impact-card">
@@ -457,12 +546,12 @@ export default function Home() {
                 “
               </span>
               <blockquote>
-                "Entrepreneurship is the engine of growth, innovation, and job creation worldwide."
+                "The biggest risk is not taking any risk.In a world that is changing really quickly, the only strategy that is guaranteed to fail is not taking risks."
               </blockquote>
               <figcaption>
-                <span className="quote-avatar" aria-hidden="true">BK</span>
+                <span className="quote-avatar" aria-hidden="true">MZ</span>
                 <span>
-                  <strong>Ban Ki-Moon</strong>, Eighth Secretary-General of the United Nations.
+                  <strong>Mark Zukerberg </strong>, Co-Founder and CEO of Meta Platforms.
                 </span>
               </figcaption>
             </figure>
