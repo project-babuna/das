@@ -149,10 +149,10 @@ export default function Home() {
               Understand How Businesses Actually Work — Before You Bet Everything On One
             </h1>
             <p className="hero-lede">
-              DreamAndScale is EntreMento&apos;s flagship program. It teaches you to think like a
-              founder — across idea, market, customer, product, structure, finance, growth, and exit
-              — so you can evaluate opportunities, build with clarity, and make decisions like
-              someone who&apos;s actually done this before. No idea required to start.
+              Most people dream of starting a business, but very few understand how businesses
+              actually work. DreamAndScale gives you complete business clarity—from opportunity and
+              customers to company structure, finance, partnerships, growth, and ownership—so you can
+              make better business decisions before risking your time, money, or career.
             </p>
             <div className="hero-actions" aria-label="Primary actions">
               <a className="btn btn-primary" href="#clarity">
@@ -165,20 +165,27 @@ export default function Home() {
           </div>
 
           <div className="hero-dock container" aria-label="Program scope">
-            {ribbonItems.map((item) => (
-              <button
-                className="ribbon-item"
-                type="button"
-                aria-describedby={`tip-${item.id}`}
-                key={item.id}
-              >
-                <span className="ribbon-label">{item.label}</span>
-                <span className="ribbon-tooltip" id={`tip-${item.id}`} role="tooltip">
-                  <strong>{item.label}</strong>
-                  <span>{item.detail}</span>
-                </span>
-              </button>
-            ))}
+            <p className="ribbon-context">
+              Every successful business, regardless of industry, moves through the same connected
+              journey. DreamAndScale teaches how each stage influences the next so you understand the
+              complete system—not isolated topics.
+            </p>
+            <div className="ribbon-grid">
+              {ribbonItems.map((item) => (
+                <button
+                  className="ribbon-item"
+                  type="button"
+                  aria-describedby={`tip-${item.id}`}
+                  key={item.id}
+                >
+                  <span className="ribbon-label">{item.label}</span>
+                  <span className="ribbon-tooltip" id={`tip-${item.id}`} role="tooltip">
+                    <strong>{item.label}</strong>
+                    <span>{item.detail}</span>
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -202,9 +209,14 @@ export default function Home() {
 
         <section className="section start-section" id="clarity">
           <div className="container">
-            <div className="section-heading">
+            <div className="section-heading progression-heading">
               <p className="eyebrow dark">Three ways in</p>
-              <h2>Start Where You Are</h2>
+              <h2>Learn At Your Own Pace—or With Guidance</h2>
+              <p>
+                Everyone starts from a different place. Some want to explore before a deep dive.
+                Others want the complete system. Some want mentorship while applying it to their own
+                ideas.
+              </p>
             </div>
 
             <div className="entry-grid">
@@ -213,7 +225,8 @@ export default function Home() {
                   <span>Card 1</span>
                   <strong>Clarity Session</strong>
                 </div>
-                <h3>3 hours. Live. ₹199.</h3>
+                <h3>Explore Before You Commit</h3>
+                <p className="card-price">3 hours. Live. ₹199.</p>
                 <p>
                   A focused, real introduction to founder-level thinking — opportunity evaluation,
                   risk reading, and how to size up your own situation honestly. Built for anyone who
@@ -229,7 +242,8 @@ export default function Home() {
                   <span>Card 2</span>
                   <strong>The Full Program</strong>
                 </div>
-                <h3>Self-paced lessons. ₹9,999.</h3>
+                <h3>Build The Complete System</h3>
+                <p className="card-price">Self-paced lessons. ₹9,999.</p>
                 <p>
                   The complete DreamAndScale curriculum from idea to exit, designed for people who
                   want to study deeply at their own pace and build founder-level clarity without live
@@ -245,7 +259,8 @@ export default function Home() {
                   <span>Card 3</span>
                   <strong>Full Program + Mentor Access</strong>
                 </div>
-                <h3>Self-paced lessons + live mentor access. ₹49,990.</h3>
+                <h3>Apply It With Live Guidance</h3>
+                <p className="card-price">Self-paced lessons + live mentor access. ₹49,990.</p>
                 <p>
                   The complete journey from idea to exit, applied to your own situation as you go.
                   For people ready to build real founder-level clarity with live guidance and review.

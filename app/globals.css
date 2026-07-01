@@ -228,6 +228,7 @@ p {
   position: relative;
   z-index: 2;
   padding-top: 24px;
+  padding-bottom: clamp(132px, 17vh, 190px);
 }
 
 .eyebrow {
@@ -295,6 +296,26 @@ h3 {
   right: 0;
   bottom: 22px;
   left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ribbon-context {
+  width: 100%;
+  margin: 0;
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(7, 12, 13, 0.42);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(0.9rem, 1.25vw, 1.02rem);
+  line-height: 1.45;
+  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.6);
+}
+
+.ribbon-grid {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(8, minmax(0, 1fr));
   gap: 1px;
@@ -304,7 +325,7 @@ h3 {
   backdrop-filter: blur(12px);
 }
 
-.hero-dock::before {
+.ribbon-grid::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -568,6 +589,10 @@ h3 {
   margin: 18px 0 0;
 }
 
+.progression-heading {
+  max-width: 940px;
+}
+
 .entry-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -623,8 +648,20 @@ h3 {
   font-size: 1.05rem;
 }
 
+.entry-card .card-price {
+  margin: 12px 0 0;
+  color: var(--teal-dark);
+  font-size: 0.94rem;
+  font-weight: 850;
+  letter-spacing: 0;
+}
+
 .entry-card.accent p {
   color: rgba(255, 255, 255, 0.72);
+}
+
+.entry-card.accent .card-price {
+  color: #f3bd50;
 }
 
 .text-link {
@@ -1134,8 +1171,13 @@ h3 {
   }
 
   .hero {
+    display: block;
     min-height: auto;
-    padding: 118px 0 112px;
+    padding: 118px 0 56px;
+  }
+
+  .hero-content {
+    padding-bottom: 0;
   }
 
   .hero-media img {
@@ -1143,8 +1185,15 @@ h3 {
   }
 
   .hero-dock {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    margin-top: 28px;
+  }
+
+  .ribbon-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    bottom: 14px;
   }
 
   .ribbon-item:nth-child(4n + 1) .ribbon-tooltip {
@@ -1216,7 +1265,7 @@ h3 {
   }
 
   .hero {
-    padding: 104px 0 132px;
+    padding: 104px 0 44px;
   }
 
   h1 {
@@ -1233,6 +1282,21 @@ h3 {
   }
 
   .hero-dock {
+    gap: 8px;
+  }
+
+  .ribbon-context {
+    font-size: 0.86rem;
+    line-height: 1.38;
+    text-align: left;
+    text-align-last: auto;
+  }
+
+  .ribbon-context::after {
+    display: none;
+  }
+
+  .ribbon-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
