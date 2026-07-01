@@ -182,6 +182,14 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="trusted-section" aria-label="Trusted by learners worldwide">
+          <div className="container trusted-grid">
+            <p>Empowering <strong>10M+</strong> Learners</p>
+            <p>Across <strong>32+</strong> Countries</p>
+            <p>Rated <strong>4.6/5</strong> Stars</p>
+          </div>
+        </section>
+
         <section className="section problem-section" id="problem">
           <div className="container split-layout">
             <div className="section-kicker">
@@ -351,6 +359,58 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="section stages-section" id="stages">
+          <div className="container stages-content">
+            <div className="section-heading">
+              <p className="eyebrow">Business for all stages</p>
+              <h2>This MasterClass is for you if...</h2>
+            </div>
+
+            <div className="stages-timeline">
+              <svg className="brush-stroke" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M 0 350 Q 250 320 500 200 T 1000 50" fill="none" stroke="url(#brushGradient)" strokeWidth="8" strokeLinecap="round" opacity="0.8" />
+                <defs>
+                  <linearGradient id="brushGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="rgba(179, 154, 50, 0.3)" />
+                    <stop offset="50%" stopColor="rgba(179, 154, 50, 0.7)" />
+                    <stop offset="100%" stopColor="rgba(179, 154, 50, 0.3)" />
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              <div className="stage-item">
+                <div className="stage-marker">
+                  <span className="stage-years">1-3yrs</span>
+                  <span className="stage-label">In Graduation</span>
+                </div>
+                <p className="stage-description">
+                  You're beginning your professional journey and want to build your own venture while exploring your potential.
+                </p>
+              </div>
+
+              <div className="stage-item">
+                <div className="stage-marker">
+                  <span className="stage-years">3–5 Yrs</span>
+                  <span className="stage-label">In Professional Role</span>
+                </div>
+                <p className="stage-description">
+                  You're excelling at your job and considering the transition into the startup and business world.
+                </p>
+              </div>
+
+              <div className="stage-item">
+                <div className="stage-marker">
+                  <span className="stage-years">10+ Yrs</span>
+                  <span className="stage-label">Of Experience</span>
+                </div>
+                <p className="stage-description">
+                  You've built substantial expertise and are ready to pivot into entrepreneurship and create your own legacy.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="section outcome-section" id="outcomes">
           <div className="container outcome-grid">
             <div className="outcome-copy">
@@ -371,6 +431,41 @@ export default function Home() {
               <span>Plan Growth</span>
               <strong>Founder-Level Clarity</strong>
             </div>
+          </div>
+        </section>
+
+        <section className="section entrepreneurship-section" aria-label="Entrepreneurship global impact">
+          <div className="container entrepreneurship-panel">
+            <div className="impact-card-grid">
+              <article className="impact-card">
+                <strong>$330 Billion</strong>
+                <p>raised by startups globally in 2023, marking a record high for venture funding.</p>
+                <cite>Source: PitchBook</cite>
+              </article>
+
+              <article className="impact-card">
+                <strong>600 Million</strong>
+                <p>
+                  entrepreneurs worldwide, representing nearly 8% of the global adult population.
+                </p>
+                <cite>Source: Global Entrepreneurship Monitor</cite>
+              </article>
+            </div>
+
+            <figure className="impact-quote-card">
+              <span className="quote-mark" aria-hidden="true">
+                “
+              </span>
+              <blockquote>
+                "Entrepreneurship is the engine of growth, innovation, and job creation worldwide."
+              </blockquote>
+              <figcaption>
+                <span className="quote-avatar" aria-hidden="true">BK</span>
+                <span>
+                  <strong>Ban Ki-Moon</strong>, Eighth Secretary-General of the United Nations.
+                </span>
+              </figcaption>
+            </figure>
           </div>
         </section>
 
