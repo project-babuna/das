@@ -1,20 +1,61 @@
 import "./globals.css";
 
+const faviconSwitcherScript = `
+(() => {
+  const icons = {
+    darkChrome: "/ds-favicon-on-dark.png?v=11",
+    lightChrome: "/ds-favicon-on-light.png?v=11",
+  };
+
+  const media = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+  function syncFavicon() {
+    const href = media && media.matches ? icons.darkChrome : icons.lightChrome;
+    document
+      .querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]')
+      .forEach((link) => link.remove());
+
+    const icon = document.createElement("link");
+    icon.rel = "icon";
+    icon.type = "image/png";
+    icon.sizes = "32x32";
+    icon.href = href;
+    document.head.appendChild(icon);
+  }
+
+  syncFavicon();
+
+  if (media) {
+    if (media.addEventListener) {
+      media.addEventListener("change", syncFavicon);
+    } else if (media.addListener) {
+      media.addListener(syncFavicon);
+    }
+  }
+
+  document.addEventListener("visibilitychange", syncFavicon);
+})();
+`;
+
 export const metadata = {
   title: "DreamAndScale | Business Clarity Program",
   description:
     "DreamAndScale helps people understand how businesses work before they risk time, money, or career capital.",
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: "/favicon.png",
+    icon: [
+      { url: "/ds-favicon-on-dark.png?v=11", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/ds-favicon-on-light-180.png", sizes: "180x180", type: "image/png" }],
   },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <script dangerouslySetInnerHTML={{ __html: faviconSwitcherScript }} />
+        {children}
+      </body>
     </html>
   );
 }
