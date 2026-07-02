@@ -226,64 +226,77 @@ export default function Home() {
           <div className="container">
             <div className="section-heading progression-heading">
               <p className="eyebrow dark">Three ways in</p>
-              <h2>Learn At Your Own Pace—or With Guidance</h2>
+              <h2>Choose Your Starting Point</h2>
               <p>
-                Everyone starts from a different place. Some want to explore before a deep dive.
-                Others want the complete system. Some want mentorship while applying it to their own
-                ideas.
+                Whether you&apos;re exploring DreamAndScale for the first time, ready to build
+                business clarity independently, or looking for mentor guidance while applying it to
+                your own ideas, choose the path that fits your stage.
               </p>
             </div>
 
-            <div className="entry-grid">
-              <article className="entry-card">
-                <div className="card-topline">
-                  <span>Start here</span>
-                  <strong>Clarity Session</strong>
+            <div className="journey-track" aria-label="DreamAndScale customer journey">
+              <span>Explore</span>
+              <span>Learn</span>
+              <span>Apply</span>
+            </div>
+
+            <div className="entry-grid journey-grid">
+              <article className="entry-card journey-card journey-card-discovery">
+                <div className="journey-card-head">
+                  <span className="step-label step-label-explore">Explore</span>
+                  <div>
+                    <h3>Clarity Session</h3>
+                    <p>Explore DreamAndScale Before You Enrol</p>
+                  </div>
                 </div>
-                <h3>Explore Before You Commit</h3>
-                <p className="card-price">
-                  <span>3 hours. Live.</span>
-                  <s>₹999</s>
-                  <strong>₹199</strong>
+                <p className="journey-price">₹199</p>
+                <p className="journey-meta">3 Hours • Live</p>
+                <p className="journey-purpose">
+                  Understand what DreamAndScale is, how it works, who it&apos;s for, and whether
+                  it&apos;s the right next step for you. Meet the mentor, explore the curriculum, ask
+                  your questions, and make an informed decision before enrolling.
                 </p>
-                <p>
-                  A focused, real introduction to business-level thinking — opportunity evaluation,
-                  risk reading, and how to size up your own situation honestly. Built for anyone who
-                  wants a real taste before going deeper.
-                </p>
-                <a className="text-link" href="#contact">
-                  Book the Session
+                <a className="journey-cta" href="#contact">
+                  Book Your Seat
                 </a>
               </article>
 
-              <article className="entry-card" id="program">
-                <div className="card-topline">
-                  <span>Learn independently</span>
-                  <strong>The Full Program</strong>
+              <article className="entry-card journey-card journey-card-core" id="program">
+                <span className="journey-badge">Most Popular / Core Program</span>
+                <div className="journey-card-head">
+                  <span className="step-label step-label-learn">Learn</span>
+                  <div>
+                    <h3>DreamAndScale</h3>
+                    <p>Build Business Clarity</p>
+                  </div>
                 </div>
-                <h3>Build The Complete System</h3>
-                <p>
-                  The complete DreamAndScale curriculum from idea to exit, designed for people who
-                  want to study deeply at their own pace and build business clarity without live
-                  mentor access.
+                <p className="journey-meta">Self-paced</p>
+                <p className="journey-purpose">
+                  Learn the complete DreamAndScale framework—from opportunity and customers to
+                  finance, company structure, growth, and ownership—through structured lessons that
+                  help you understand how businesses actually work.
                 </p>
-                <a className="text-link" href="/course">
-                  Explore the Program
+                <a className="journey-cta" href="/course">
+                  Explore Program
                 </a>
               </article>
 
-              <article className="entry-card accent">
-                <div className="card-topline">
-                  <span>Learn with mentorship</span>
-                  <strong>Full Program + Mentor Access</strong>
+              <article className="entry-card journey-card journey-card-premium">
+                <span className="journey-badge">Premium</span>
+                <div className="journey-card-head">
+                  <span className="step-label step-label-apply">Apply</span>
+                  <div>
+                    <h3>DreamAndScale Plus</h3>
+                    <p>Learn With Mentorship</p>
+                  </div>
                 </div>
-                <h3>Apply It With Live Guidance</h3>
-                <p>
-                  The complete journey from idea to exit, applied to your own situation as you go.
-                  For people ready to build real business clarity with live guidance and review.
+                <p className="journey-meta">Self-paced + Live Mentor Support</p>
+                <p className="journey-purpose">
+                  Everything in the Full Program, plus live mentor guidance to help you apply the
+                  concepts to your own ideas, decisions, and business journey.
                 </p>
-                <a className="text-link" href="/course">
-                  Explore the Program
+                <a className="journey-cta" href="/course">
+                  Apply With Mentorship
                 </a>
               </article>
             </div>
@@ -363,13 +376,28 @@ export default function Home() {
               <h2>Built For People Ready To Think Beyond Their Current Limits</h2>
             </div>
             <div className="audience-panel">
-              <p>
-                Professionals exploring entrepreneurship. Freelancers building beyond client work.
-                Students who want business clarity before making career decisions. Builders with
-                ideas they want to evaluate. Small business owners who want to think more
-                strategically. You don&apos;t need a finished idea — you need the willingness to think
-                clearly about one.
-              </p>
+              <div className="audience-card-grid">
+                <article className="audience-card">
+                  <h3>Professionals</h3>
+                  <p>Explore entrepreneurship with clarity before risking your career stability.</p>
+                </article>
+                <article className="audience-card">
+                  <h3>Freelancers</h3>
+                  <p>Build beyond client work by learning how to think in systems, not hours.</p>
+                </article>
+                <article className="audience-card">
+                  <h3>Students</h3>
+                  <p>Understand business decisions before choosing a career direction or idea.</p>
+                </article>
+                <article className="audience-card">
+                  <h3>Builders</h3>
+                  <p>Evaluate ideas, products, and opportunities before committing serious effort.</p>
+                </article>
+                <article className="audience-card">
+                  <h3>Business Owners</h3>
+                  <p>Think more strategically about structure, finance, growth, and ownership.</p>
+                </article>
+              </div>
             </div>
           </div>
         </section>
