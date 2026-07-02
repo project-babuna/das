@@ -1518,6 +1518,96 @@ h3 {
   font-weight: 900;
 }
 
+.policy-page {
+  background: var(--surface-clean);
+}
+
+.policy-hero {
+  padding: 148px 0 72px;
+  color: var(--white);
+  background:
+    linear-gradient(90deg, rgba(8, 13, 14, 0.96), rgba(8, 13, 14, 0.7)),
+    url("/assets/business-system-hero.png") center / cover;
+}
+
+.policy-hero-inner {
+  max-width: 920px;
+}
+
+.policy-updated {
+  width: max-content;
+  margin-bottom: 20px;
+  padding: 8px 12px;
+  border: 1px solid rgba(243, 189, 80, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f3bd50;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.policy-hero h1 {
+  max-width: 820px;
+}
+
+.policy-hero p:not(.policy-updated) {
+  max-width: 760px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: clamp(1.04rem, 1.65vw, 1.25rem);
+  line-height: 1.62;
+}
+
+.policy-section {
+  background: var(--surface-muted);
+}
+
+.policy-card {
+  display: grid;
+  gap: 4px;
+  max-width: 920px;
+  padding: clamp(22px, 4vw, 42px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+}
+
+.policy-block {
+  padding: clamp(20px, 3vw, 30px) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.policy-block:first-child {
+  padding-top: 0;
+}
+
+.policy-block:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.policy-block h2 {
+  margin-bottom: 14px;
+  color: var(--ink);
+  font-size: clamp(1.35rem, 2.3vw, 2rem);
+  line-height: 1.12;
+}
+
+.policy-block p {
+  max-width: 760px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.7;
+}
+
+.policy-block p + p {
+  margin-top: 12px;
+}
+
 .pillars-section {
   background: var(--surface-sage);
   border-top: 1px solid var(--line);
@@ -1922,7 +2012,7 @@ h3 {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
   gap: 28px;
   align-items: center;
   min-height: 94px;

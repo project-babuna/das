@@ -571,6 +571,9 @@ export default function Home() {
             <a href="#clarity">Clarity Session</a>
             <a href="/course">Full Program</a>
             <a href="#for-you">About</a>
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/terms-and-conditions">Terms</a>
+            <a href="/refund-policy">Refund Policy</a>
             <a href="mailto:hello@dreamandscale.com">Contact</a>
           </nav>
         </div>
