@@ -39,9 +39,9 @@ const faviconSwitcherScript = `
 `;
 
 export const metadata = {
-  title: "DreamAndScale | Business Clarity Program",
+  title: "DreamAndScale | Business Clarity Program for Aspiring Founders, Students & Professionals",
   description:
-    "DreamAndScale helps people understand how businesses work before they risk time, money, or career capital.",
+    "DreamAndScale is a business clarity program for aspiring founders, students, freelancers, and professionals who want to understand how businesses actually work before starting a business, choosing an idea, or making major career and money decisions.",
   icons: {
     icon: [
       { url: "/ds-favicon-on-dark.png?v=11", sizes: "32x32", type: "image/png" },

@@ -151,13 +151,15 @@ export default function Home() {
           <div className="container hero-content">
             <p className="eyebrow">Business clarity program</p>
             <h1 id="hero-title">
-              Understand How Businesses Actually Work — Before You Bet Everything On One
+              Understand How Businesses Actually Work — Before You Bet Your Time, Money, or Career
+              on One
             </h1>
             <p className="hero-lede">
               Most people want to build a business, but very few understand how businesses
-              actually work. DreamAndScale helps you understand how opportunities, customers,
-              products, company structure, finance, partnerships, growth, and ownership connect—so
-              you can make confident business decisions before risking your time, money, or career.
+              actually work. DreamAndScale helps aspiring founders, students, freelancers, and
+              professionals understand how opportunities, customers, products, company structure,
+              finance, growth, and ownership connect—so they can make better business decisions
+              before risking their time, money, or career.
             </p>
             <div className="hero-actions" aria-label="Primary actions">
               <a className="btn btn-primary" href="#clarity">
