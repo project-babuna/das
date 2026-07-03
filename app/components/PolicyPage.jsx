@@ -9,12 +9,13 @@ export default function PolicyPage({ page }) {
         </a>
 
         <nav className="site-nav policy-nav" aria-label="Policy navigation">
-          <a href="/#clarity">Clarity Session</a>
-          <a href="/course">Full Program</a>
+          <a href="/clarity-session">Clarity Session</a>
+          <a href="/full-program">Full Program</a>
+          <a href="/blog">Insights</a>
           <a href="/#faq">FAQ</a>
         </nav>
 
-        <a className="header-cta" href="/#clarity">
+        <a className="header-cta" href="/clarity-session">
           Book ₹199 Session
         </a>
       </header>
@@ -50,8 +51,11 @@ export default function PolicyPage({ page }) {
             <span className="footer-brand-copy">Build Business Clarity Before You Build A Business.</span>
           </p>
           <nav aria-label="Footer navigation">
+            <a href="/clarity-session">Clarity Session</a>
+            <a href="/full-program">Full Program</a>
+            <a href="/blog">Insights</a>
             <a href="/privacy-policy">Privacy Policy</a>
-            <a href="/terms-and-conditions">Terms</a>
+            <a href="/terms-and-conditions">Terms &amp; Conditions</a>
             <a href="/refund-policy">Refund Policy</a>
             <a href="mailto:hello@dreamandscale.com">Contact</a>
           </nav>

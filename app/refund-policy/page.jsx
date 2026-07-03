@@ -4,6 +4,9 @@ import { policyPages } from "../policyContent";
 export const metadata = {
   title: "Refund Policy | DreamAndScale",
   description: "Refund Policy for DreamAndScale.",
+  alternates: {
+    canonical: "https://dreamandscale.com/refund-policy",
+  },
 };
 
 export default function RefundPolicyPage() {

@@ -82,11 +82,14 @@ export default function Home() {
         </button>
 
         <nav className="site-nav" id="site-nav" aria-label="Main navigation">
-          <a href="#clarity" onClick={closeNav}>
+          <a href="/clarity-session" onClick={closeNav}>
             Clarity Session
           </a>
-          <a href="/course" onClick={closeNav}>
+          <a href="/full-program" onClick={closeNav}>
             Full Program
+          </a>
+          <a href="/blog" onClick={closeNav}>
+            Insights
           </a>
           <a href="#pillars" onClick={closeNav}>
             Pillars
@@ -99,7 +102,7 @@ export default function Home() {
           </a>
         </nav>
 
-        <a className="header-cta" href="#clarity">
+        <a className="header-cta" href="/clarity-session">
           Book ₹199 Session
         </a>
       </header>
@@ -125,10 +128,10 @@ export default function Home() {
               before risking their time, money, or career.
             </p>
             <div className="hero-actions" aria-label="Primary actions">
-              <a className="btn btn-primary" href="#clarity">
+              <a className="btn btn-primary" href="/clarity-session">
                 Book the ₹199 Clarity Session
               </a>
-              <a className="btn btn-secondary" href="/course">
+              <a className="btn btn-secondary" href="/full-program">
                 Explore the Full Program
               </a>
             </div>
@@ -221,7 +224,7 @@ export default function Home() {
                   it&apos;s the right next step for you. Meet the mentor, explore the curriculum, ask
                   your questions, and make an informed decision before enrolling.
                 </p>
-                <a className="journey-cta" href="#contact">
+                <a className="journey-cta" href="/clarity-session">
                   Book Your Seat
                 </a>
               </article>
@@ -241,7 +244,7 @@ export default function Home() {
                   finance, company structure, growth, and ownership—through structured lessons that
                   help you understand how businesses actually work.
                 </p>
-                <a className="journey-cta" href="/course">
+                <a className="journey-cta" href="/full-program">
                   Explore Program
                 </a>
               </article>
@@ -260,7 +263,7 @@ export default function Home() {
                   Everything in the Full Program, plus live mentor guidance to help you apply the
                   concepts to your own ideas, decisions, and business journey.
                 </p>
-                <a className="journey-cta" href="/course">
+                <a className="journey-cta" href="/learn-with-mentorship">
                   Apply With Mentorship
                 </a>
               </article>
@@ -533,8 +536,10 @@ export default function Home() {
             <span className="footer-brand-copy">Build Business Clarity Before You Build A Business.</span>
           </p>
           <nav aria-label="Footer navigation">
-            <a href="#clarity">Clarity Session</a>
-            <a href="/course">Full Program</a>
+            <a href="/clarity-session">Clarity Session</a>
+            <a href="/full-program">Full Program</a>
+            <a href="/learn-with-mentorship">Mentorship</a>
+            <a href="/blog">Insights</a>
             <a href="#for-you">About</a>
             <a href="/privacy-policy">Privacy Policy</a>
             <a href="/terms-and-conditions">Terms &amp; Conditions</a>

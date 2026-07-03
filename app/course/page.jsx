@@ -91,7 +91,7 @@ export default function CoursePage() {
         </button>
 
         <nav className="site-nav" id="site-nav" aria-label="Course navigation">
-          <a href="/#clarity" onClick={closeNav}>
+          <a href="/clarity-session" onClick={closeNav}>
             Clarity Session
           </a>
           <a href="#curriculum" onClick={closeNav}>
@@ -236,11 +236,13 @@ export default function CoursePage() {
             <span className="footer-brand-copy">Build Business Clarity Before You Build A Business.</span>
           </p>
           <nav aria-label="Footer navigation">
-            <a href="/#clarity">Clarity Session</a>
-            <a href="/course">Full Program</a>
+            <a href="/clarity-session">Clarity Session</a>
+            <a href="/full-program">Full Program</a>
+            <a href="/learn-with-mentorship">Mentorship</a>
+            <a href="/blog">Insights</a>
             <a href="/#for-you">About</a>
             <a href="/privacy-policy">Privacy Policy</a>
-            <a href="/terms-and-conditions">Terms</a>
+            <a href="/terms-and-conditions">Terms &amp; Conditions</a>
             <a href="/refund-policy">Refund Policy</a>
             <a href="mailto:hello@dreamandscale.com">Contact</a>
           </nav>

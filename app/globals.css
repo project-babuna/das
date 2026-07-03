@@ -1614,6 +1614,208 @@ h3 {
   margin-top: 12px;
 }
 
+.content-hero {
+  padding: 148px 0 86px;
+  color: var(--white);
+  background:
+    linear-gradient(90deg, rgba(8, 13, 14, 0.96), rgba(8, 13, 14, 0.72)),
+    url("/assets/business-system-hero.png") center / cover;
+}
+
+.content-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.72fr);
+  gap: clamp(34px, 6vw, 88px);
+  align-items: end;
+}
+
+.content-hero h1 {
+  max-width: 920px;
+  margin-bottom: 18px;
+}
+
+.content-hero h2 {
+  max-width: 780px;
+  margin-bottom: 18px;
+  color: #f3bd50;
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  line-height: 1.14;
+}
+
+.content-hero p {
+  max-width: 780px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(1.04rem, 1.65vw, 1.25rem);
+  line-height: 1.62;
+}
+
+.content-price-card {
+  padding: clamp(24px, 4vw, 38px);
+  border: 1px solid rgba(243, 189, 80, 0.22);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(13, 106, 102, 0.22), rgba(255, 255, 255, 0.04)),
+    rgba(7, 12, 13, 0.76);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.3);
+}
+
+.content-price-card span,
+.blog-card span {
+  display: inline-flex;
+  color: #f3bd50;
+  font-size: 0.75rem;
+  font-weight: 950;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.content-price-card strong {
+  display: block;
+  margin: 18px 0;
+  color: var(--white);
+  font-size: clamp(2.2rem, 4.6vw, 4rem);
+  line-height: 1;
+}
+
+.content-price-card p {
+  font-size: 1rem;
+}
+
+.content-section {
+  background: var(--surface-clean);
+}
+
+.content-section.alt {
+  background: var(--surface-muted);
+}
+
+.content-two-column {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(34px, 6vw, 86px);
+  align-items: center;
+}
+
+.content-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.content-mini-card,
+.blog-card,
+.content-feature,
+.article-cta {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+}
+
+.content-mini-card {
+  min-height: 130px;
+  padding: clamp(20px, 3vw, 28px);
+}
+
+.content-mini-card p,
+.content-feature p,
+.blog-card p,
+.article-body p,
+.article-cta p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.68;
+}
+
+.content-stack {
+  display: grid;
+  gap: 14px;
+}
+
+.content-feature {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
+  gap: clamp(22px, 4vw, 56px);
+  align-items: start;
+  padding: clamp(24px, 4vw, 38px);
+}
+
+.content-feature h2 {
+  font-size: clamp(1.35rem, 2.3vw, 2rem);
+  line-height: 1.12;
+}
+
+.blog-hero .content-price-card strong {
+  font-size: clamp(1.55rem, 2.8vw, 2.3rem);
+  line-height: 1.12;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.blog-card {
+  display: flex;
+  min-height: 320px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(24px, 4vw, 36px);
+}
+
+.blog-card span {
+  color: var(--teal);
+}
+
+.blog-card h2 {
+  margin: 20px 0 16px;
+  font-size: clamp(1.35rem, 2.3vw, 2rem);
+  line-height: 1.12;
+}
+
+.blog-card .text-link {
+  margin-top: auto;
+}
+
+.article-hero-inner {
+  max-width: 940px;
+}
+
+.article-section {
+  background: var(--surface-muted);
+}
+
+.article-body {
+  max-width: 900px;
+}
+
+.article-body > section {
+  padding: clamp(24px, 4vw, 38px) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.article-body h2 {
+  margin-bottom: 14px;
+  font-size: clamp(1.45rem, 2.5vw, 2.15rem);
+  line-height: 1.12;
+}
+
+.article-cta {
+  margin-top: 28px;
+  padding: clamp(24px, 4vw, 42px);
+}
+
+.article-cta h2 {
+  margin-bottom: 14px;
+}
+
+.article-cta .btn {
+  margin-top: 26px;
+}
+
 .pillars-section {
   background: var(--surface-sage);
   border-top: 1px solid var(--line);
@@ -2165,12 +2367,20 @@ h3 {
   .outcome-grid,
   .faq-layout,
   .course-hero-grid,
-  .course-plan-grid {
+  .course-plan-grid,
+  .content-hero-grid,
+  .content-two-column,
+  .content-feature {
     grid-template-columns: 1fr;
   }
 
   .entry-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .content-card-grid,
+  .blog-grid {
+    grid-template-columns: 1fr;
   }
 
   .journey-track {
