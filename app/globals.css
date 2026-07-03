@@ -2224,12 +2224,12 @@ h3 {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
-  gap: 28px;
-  align-items: center;
+  grid-template-columns: minmax(360px, 0.78fr) minmax(0, 1.22fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: start;
   min-height: 94px;
-  padding-top: 28px;
-  padding-bottom: 28px;
+  padding-top: 34px;
+  padding-bottom: 34px;
 }
 
 .footer-brand-line {
@@ -2248,67 +2248,114 @@ h3 {
   display: block;
   margin-left: clamp(44px, 4.8vw, 54px);
   color: rgba(243, 189, 80, 0.88);
+  font-size: clamp(0.62rem, 0.72vw, 0.74rem);
   font-weight: 800;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 3vw, 34px);
+  justify-self: end;
+  width: 100%;
+  max-width: 680px;
+}
+
+.footer-column {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  min-width: 0;
+}
+
+.footer-column h3 {
+  margin: 0;
+  color: rgba(243, 189, 80, 0.9);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
   text-transform: uppercase;
 }
 
-.footer-grid nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-self: end;
-  justify-content: flex-end;
+.footer-column nav {
+  display: grid;
+  gap: 10px;
+  justify-content: start;
   color: rgba(255, 255, 255, 0.66);
   font-size: 0.875rem;
   font-weight: 800;
   line-height: 1.25;
 }
 
-.footer-grid nav a:hover {
+.footer-column nav a:hover {
   color: var(--white);
 }
 
-.footer-link-stack {
+.footer-social-row {
+  grid-column: 1 / -1;
   display: grid;
-  gap: 16px;
-  justify-items: end;
+  gap: 14px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .social-links {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+}
+
+.social-links p {
+  margin: 0;
+  color: rgba(243, 189, 80, 0.88);
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.social-link-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  justify-content: flex-end;
+  align-items: center;
+  gap: 12px 22px;
 }
 
 .social-links a {
-  display: grid;
-  width: 38px;
-  height: 38px;
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 24px;
+  padding: 0;
   color: rgba(255, 255, 255, 0.78);
+  font-size: 0.8rem;
+  font-weight: 800;
   transition:
     transform 180ms ease,
-    border-color 180ms ease,
-    background 180ms ease,
     color 180ms ease;
 }
 
 .social-links a:hover {
   transform: translateY(-2px);
-  border-color: rgba(243, 189, 80, 0.56);
-  background: rgba(243, 189, 80, 0.12);
   color: var(--white);
 }
 
 .social-links svg {
-  width: 18px;
-  height: 18px;
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
   fill: currentColor;
+}
+
+.footer-copyright {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.54);
+  font-size: 0.8rem;
+  font-weight: 650;
 }
 
 @media (max-width: 900px) {
@@ -2480,6 +2527,31 @@ h3 {
 
   .problem-layout .section-kicker {
     max-width: 760px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .footer-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-self: start;
+    max-width: none;
+  }
+
+  .footer-column nav {
+    justify-self: start;
+    justify-content: start;
+    text-align: left;
+  }
+
+  .social-links {
+    justify-items: start;
+  }
+
+  .social-link-list {
+    justify-content: flex-start;
   }
 }
 
@@ -2692,23 +2764,13 @@ h3 {
     margin: -2px 18px 20px;
   }
 
-  .footer-grid {
+  .footer-columns {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 22px;
   }
 
-  .footer-grid nav {
-    justify-self: start;
-    justify-content: flex-start;
-    text-align: left;
-  }
-
-  .footer-link-stack {
-    justify-items: start;
-  }
-
-  .social-links {
-    justify-content: flex-start;
+  .footer-brand-copy {
+    white-space: normal;
   }
 }
 
