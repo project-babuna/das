@@ -40,18 +40,21 @@ const modules = [
 const plans = [
   {
     name: "Clarity Session",
+    originalPrice: "₹2,999",
     price: "₹199",
     label: "3 hours. Live.",
     body: "A focused introduction to opportunity evaluation, risk reading, and business-level thinking before you decide how deep you want to go.",
   },
   {
     name: "Full Program",
+    originalPrice: "₹39,990",
     price: "₹9,999",
     label: "Learn independently.",
     body: "The full DreamAndScale curriculum for people who want the complete idea-to-exit system and prefer to learn independently.",
   },
   {
     name: "Full Program + Mentor Access",
+    originalPrice: "₹1,59,999",
     price: "₹49,990",
     label: "Learn with mentorship.",
     body: "The complete curriculum with live mentor access so you can apply the system to your situation, questions, and decisions as you go.",
@@ -195,7 +198,10 @@ export default function CoursePage() {
               {plans.map((plan) => (
                 <article className={plan.featured ? "course-plan featured" : "course-plan"} key={plan.name}>
                   <span>{plan.name}</span>
-                  <strong>{plan.price}</strong>
+                  <div className="course-plan-price">
+                    <s>{plan.originalPrice}</s>
+                    <strong>{plan.price}</strong>
+                  </div>
                   <h3>{plan.label}</h3>
                   <p>{plan.body}</p>
                   <a className="text-link" href="mailto:hello@dreamandscale.com">

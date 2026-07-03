@@ -2,9 +2,11 @@ export const programPages = {
   "clarity-session": {
     eyebrow: "₹199 live introduction",
     title: "Clarity Session",
+    badge: "Best for first-time visitors",
     subtitle: "Explore DreamAndScale Before You Enrol",
     description:
       "A focused 3-hour live session that helps you understand how DreamAndScale works, who it is designed for, and whether it is the right next step before joining the full program.",
+    originalPrice: "₹2,999",
     price: "₹199",
     meta: "3 Hours • Live • Beginner friendly",
     primaryCta: "Book Your Seat",
@@ -38,15 +40,23 @@ export const programPages = {
   "full-program": {
     eyebrow: "Self-paced core program",
     title: "DreamAndScale Full Program",
+    badge: "Most Popular / Core Program",
     subtitle: "Build Business Clarity Independently",
     description:
       "A structured self-paced business clarity program for aspiring founders, students, freelancers, and professionals who want to understand how businesses actually work before taking bigger risks.",
+    originalPrice: "₹39,990",
     price: "₹9,999",
     meta: "Self-paced • Complete framework • Practical decision lens",
     primaryCta: "Start Learning",
     primaryHref: "mailto:hello@dreamandscale.com?subject=Full%20Program%20Enrollment",
     secondaryCta: "Compare Mentorship",
     secondaryHref: "/learn-with-mentorship",
+    clarityTitle: "Want to explore DreamAndScale before you enrol?",
+    clarityText:
+      "Join the ₹199 Clarity Session to understand how the program works, meet the mentor, explore the curriculum, and decide with confidence before joining.",
+    clarityOriginalPrice: "₹2,999",
+    clarityCta: "Book ₹199 Clarity Session",
+    clarityHref: "/clarity-session",
     highlights: [
       "Understand the complete business system from opportunity to ownership.",
       "Learn independently through structured lessons.",
@@ -74,15 +84,23 @@ export const programPages = {
   "learn-with-mentorship": {
     eyebrow: "Premium mentored path",
     title: "DreamAndScale Plus",
+    badge: "Premium",
     subtitle: "Learn With Mentorship",
     description:
       "The complete DreamAndScale program with live mentor support to help you apply the concepts to your own ideas, decisions, and business journey.",
+    originalPrice: "₹1,59,999",
     price: "₹49,990",
     meta: "Self-paced + Live Mentor Support",
     primaryCta: "Apply With Mentorship",
     primaryHref: "mailto:hello@dreamandscale.com?subject=DreamAndScale%20Plus%20Application",
     secondaryCta: "View Core Program",
     secondaryHref: "/full-program",
+    clarityTitle: "Want to explore DreamAndScale before you enrol?",
+    clarityText:
+      "Join the ₹199 Clarity Session to understand how the program works, meet the mentor, explore the curriculum, and decide with confidence before joining.",
+    clarityOriginalPrice: "₹2,999",
+    clarityCta: "Book ₹199 Clarity Session",
+    clarityHref: "/clarity-session",
     highlights: [
       "Everything included in the self-paced Full Program.",
       "Live mentor support while applying concepts to your situation.",

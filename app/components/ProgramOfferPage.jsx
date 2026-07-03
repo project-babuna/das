@@ -11,6 +11,7 @@ export default function ProgramOfferPage({ page }) {
           <div className="container content-hero-grid">
             <div>
               <p className="eyebrow">{page.eyebrow}</p>
+              {page.badge ? <p className="offer-badge-eyebrow">{page.badge}</p> : null}
               <h1>{page.title}</h1>
               <h2>{page.subtitle}</h2>
               <p>{page.description}</p>
@@ -40,7 +41,10 @@ export default function ProgramOfferPage({ page }) {
 
             <aside className="content-price-card" aria-label={`${page.title} summary`}>
               <span>{page.meta}</span>
-              <strong>{page.price}</strong>
+              <div className="price-display">
+                {page.originalPrice ? <s>{page.originalPrice}</s> : null}
+                <strong>{page.price}</strong>
+              </div>
               <p>{page.subtitle}</p>
             </aside>
           </div>
@@ -70,6 +74,29 @@ export default function ProgramOfferPage({ page }) {
                 <p>{section.body}</p>
               </article>
             ))}
+            {page.clarityCta ? (
+              <article className="content-feature clarity-session-callout">
+                <div>
+                  <span className="clarity-session-price">
+                    {page.clarityOriginalPrice ? <s>{page.clarityOriginalPrice}</s> : null}
+                    <strong>₹199 Clarity Session</strong>
+                  </span>
+                  <h2>{page.clarityTitle}</h2>
+                </div>
+                <div>
+                  <p>{page.clarityText}</p>
+                  <a
+                    className="btn btn-primary"
+                    href={page.clarityHref}
+                    data-meta-event="ViewContent"
+                    data-meta-content-name={page.clarityCta}
+                    data-meta-content-category="Clarity Session"
+                  >
+                    {page.clarityCta}
+                  </a>
+                </div>
+              </article>
+            ) : null}
           </div>
         </section>
       </main>

@@ -1088,8 +1088,9 @@ h3 {
 }
 
 .card-price s {
-  color: rgba(17, 31, 33, 0.48);
-  font-weight: 750;
+  color: rgba(17, 31, 33, 0.68);
+  font-weight: 900;
+  text-decoration-color: currentColor;
   text-decoration-thickness: 2px;
 }
 
@@ -1217,10 +1218,36 @@ h3 {
 }
 
 .journey-card .journey-price {
+  display: grid;
+  gap: 5px;
   color: var(--ink);
+  line-height: 1;
+}
+
+.journey-price s,
+.price-display s,
+.course-plan-price s {
+  color: rgba(17, 31, 33, 0.68);
+  font-weight: 900;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 3px;
+}
+
+.journey-price s {
+  font-size: clamp(1.2rem, 2.4vw, 1.8rem);
+}
+
+.price-display s {
+  font-size: clamp(1.32rem, 2.76vw, 2.4rem);
+}
+
+.course-plan-price s {
+  font-size: clamp(1.2rem, 2.4vw, 2.04rem);
+}
+
+.journey-card .journey-price strong {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 950;
-  line-height: 1;
 }
 
 .journey-card .journey-meta {
@@ -1279,12 +1306,16 @@ h3 {
 .journey-badge {
   position: absolute;
   top: 18px;
-  right: 18px;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
   padding: 8px 10px;
   color: var(--teal-dark);
   background: rgba(201, 154, 46, 0.14);
+  white-space: nowrap;
 }
 
+.journey-card-discovery .journey-card-head,
 .journey-card-core .journey-card-head,
 .journey-card-premium .journey-card-head {
   margin-top: 34px;
@@ -1321,6 +1352,14 @@ h3 {
 
 .journey-card-premium .journey-purpose {
   color: rgba(255, 255, 255, 0.72);
+}
+
+.journey-card-premium .journey-price strong {
+  color: var(--white);
+}
+
+.journey-card-premium .journey-price s {
+  color: rgba(255, 255, 255, 0.68);
 }
 
 .journey-card-premium .journey-cta {
@@ -1478,11 +1517,19 @@ h3 {
   box-shadow: var(--shadow-dark);
 }
 
-.course-plan > strong {
-  display: block;
+.course-plan-price {
+  display: grid;
+  gap: 8px;
   margin: 22px 0 12px;
+}
+
+.course-plan-price strong {
   font-size: clamp(2rem, 4vw, 3.4rem);
   line-height: 1;
+}
+
+.course-plan.featured .course-plan-price s {
+  color: rgba(255, 255, 255, 0.68);
 }
 
 .course-plan h3 {
@@ -1660,6 +1707,39 @@ h3 {
   box-shadow: 0 28px 70px rgba(0, 0, 0, 0.3);
 }
 
+.offer-badge-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+  margin: 2px 0 28px;
+  padding: 3px 7px;
+  border: 1px solid rgba(137, 199, 195, 0.24);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.025)),
+    rgba(5, 30, 28, 0.42);
+  color: rgba(203, 224, 221, 0.9);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 12px 34px rgba(0, 0, 0, 0.16);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  line-height: 1.2;
+  text-transform: none;
+}
+
+.offer-badge-eyebrow::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: #f3bd50;
+  box-shadow: 0 0 0 3px rgba(243, 189, 80, 0.13);
+}
+
 .content-price-card span,
 .blog-card span {
   display: inline-flex;
@@ -1670,12 +1750,21 @@ h3 {
   text-transform: uppercase;
 }
 
-.content-price-card strong {
-  display: block;
+.price-display {
+  display: grid;
+  gap: 8px;
   margin: 18px 0;
+}
+
+.content-price-card .price-display strong {
+  display: block;
   color: var(--white);
   font-size: clamp(2.2rem, 4.6vw, 4rem);
   line-height: 1;
+}
+
+.content-price-card .price-display s {
+  color: rgba(255, 255, 255, 0.68);
 }
 
 .content-price-card p {
@@ -1745,6 +1834,39 @@ h3 {
 .content-feature h2 {
   font-size: clamp(1.35rem, 2.3vw, 2rem);
   line-height: 1.12;
+}
+
+.clarity-session-callout {
+  border-color: rgba(201, 154, 46, 0.28);
+  background:
+    linear-gradient(135deg, rgba(243, 189, 80, 0.12), rgba(255, 255, 255, 0.92)),
+    var(--white);
+}
+
+.clarity-session-callout span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: var(--teal);
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.clarity-session-callout span s {
+  color: rgba(17, 31, 33, 0.46);
+  text-decoration-thickness: 2px;
+}
+
+.clarity-session-callout span strong {
+  color: var(--teal);
+}
+
+.clarity-session-callout .btn {
+  width: fit-content;
+  margin-top: 22px;
 }
 
 .blog-hero .content-price-card strong {
@@ -2706,6 +2828,7 @@ h3 {
     padding: 22px;
   }
 
+  .journey-card-discovery .journey-card-head,
   .journey-card-core .journey-card-head,
   .journey-card-premium .journey-card-head {
     margin-top: 30px;
@@ -2713,9 +2836,11 @@ h3 {
 
   .journey-badge {
     position: static;
+    transform: none;
     margin-bottom: 18px;
   }
 
+  .journey-card-discovery .journey-card-head,
   .journey-card-core .journey-card-head,
   .journey-card-premium .journey-card-head {
     margin-top: 0;

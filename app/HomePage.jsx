@@ -229,6 +229,7 @@ export default function Home() {
 
             <div className="entry-grid journey-grid">
               <article className="entry-card journey-card journey-card-discovery">
+                <span className="journey-badge">Best for first-time visitors</span>
                 <div className="journey-card-head">
                   <span className="step-label step-label-explore">Explore</span>
                   <div>
@@ -236,7 +237,10 @@ export default function Home() {
                     <p>Explore DreamAndScale Before You Enrol</p>
                   </div>
                 </div>
-                <p className="journey-price">₹199</p>
+                <p className="journey-price">
+                  <s>₹2,999</s>
+                  <strong>₹199</strong>
+                </p>
                 <p className="journey-meta">3 Hours • Live</p>
                 <p className="journey-purpose">
                   Understand what DreamAndScale is, how it works, who it&apos;s for, and whether
@@ -263,6 +267,10 @@ export default function Home() {
                     <p>Build Business Clarity</p>
                   </div>
                 </div>
+                <p className="journey-price">
+                  <s>₹39,990</s>
+                  <strong>₹9,999</strong>
+                </p>
                 <p className="journey-meta">Self-paced</p>
                 <p className="journey-purpose">
                   Learn the complete DreamAndScale framework—from opportunity and customers to
@@ -289,6 +297,10 @@ export default function Home() {
                     <p>Learn With Mentorship</p>
                   </div>
                 </div>
+                <p className="journey-price">
+                  <s>₹1,59,999</s>
+                  <strong>₹49,990</strong>
+                </p>
                 <p className="journey-meta">Self-paced + Live Mentor Support</p>
                 <p className="journey-purpose">
                   Everything in the Full Program, plus live mentor guidance to help you apply the
