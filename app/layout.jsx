@@ -55,6 +55,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="facebook-domain-verification" content="v8fm3olc3n9wajgyrr1bk4jb1xsr12" />
+      </head>
       <body>
         <script dangerouslySetInnerHTML={{ __html: faviconSwitcherScript }} />
         <Script
