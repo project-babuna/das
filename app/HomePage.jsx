@@ -338,7 +338,7 @@ export default function Home() {
           <div className="container split-layout">
             <div className="section-kicker">
               <p className="eyebrow">Who it&apos;s for</p>
-              <h2>Built For People Ready To Think Beyond Their Current Limits</h2>
+              <h2>Who DreamAndScale Is Built For</h2>
             </div>
             <div className="audience-panel">
               <div className="audience-card-grid">
