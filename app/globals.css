@@ -891,7 +891,7 @@ h3 {
   display: grid;
   grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
   gap: clamp(34px, 6vw, 86px);
-  align-items: start;
+  align-items: center;
 }
 
 .proof-list {
@@ -1672,6 +1672,10 @@ h3 {
 
 .audience-section .eyebrow {
   color: #f3bd50;
+}
+
+.audience-section .split-layout {
+  align-items: center;
 }
 
 .audience-panel {
