@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import BrandLogo from "./BrandLogo";
+import SocialLinks from "./SocialLinks";
 
 const navItems = [
   { href: "/clarity-session", label: "Clarity Session" },
@@ -76,18 +77,21 @@ export default function SiteFrame({
             <BrandLogo tone="light" compact />
             <span className="footer-brand-copy">Build Business Clarity Before You Build A Business.</span>
           </p>
-          <nav aria-label="Footer navigation">
-            <a href="/clarity-session">Clarity Session</a>
-            <a href="/full-program">Full Program</a>
-            <a href="/learn-with-mentorship">Mentorship</a>
-            <a href="/blog">Insights</a>
-            <a href="/privacy-policy">Privacy Policy</a>
-            <a href="/terms-and-conditions">Terms &amp; Conditions</a>
-            <a href="/refund-policy">Refund Policy</a>
-            <a href="mailto:hello@dreamandscale.com" data-meta-event="Contact">
-              Contact
-            </a>
-          </nav>
+          <div className="footer-link-stack">
+            <nav aria-label="Footer navigation">
+              <a href="/clarity-session">Clarity Session</a>
+              <a href="/full-program">Full Program</a>
+              <a href="/learn-with-mentorship">Mentorship</a>
+              <a href="/blog">Insights</a>
+              <a href="/privacy-policy">Privacy Policy</a>
+              <a href="/terms-and-conditions">Terms &amp; Conditions</a>
+              <a href="/refund-policy">Refund Policy</a>
+              <a href="mailto:hello@dreamandscale.com" data-meta-event="Contact">
+                Contact
+              </a>
+            </nav>
+            <SocialLinks />
+          </div>
         </div>
       </footer>
     </>
