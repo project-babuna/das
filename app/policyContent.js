@@ -33,6 +33,12 @@ export const policyPages = {
         ],
       },
       {
+        heading: "Intellectual Property",
+        body: [
+          "All content, course material, text, graphics, videos, worksheets, frameworks, and digital resources available on DreamAndScale are the intellectual property of DreamAndScale unless otherwise stated. No part of this website or program material may be copied, reproduced, distributed, modified, republished, uploaded, posted, or transmitted in any form without prior written permission.",
+        ],
+      },
+      {
         heading: "Contact",
         body: [
           "For privacy-related questions, contact us at hello@dreamandscale.com.",
@@ -69,8 +75,7 @@ export const policyPages = {
       {
         heading: "Intellectual Property",
         body: [
-          "All DreamAndScale content, frameworks, materials, page copy, visuals, and program resources are owned by DreamAndScale unless otherwise stated.",
-          "You may not copy, resell, redistribute, or publicly share program materials without written permission.",
+          "All content, course material, text, graphics, videos, worksheets, frameworks, and digital resources available on DreamAndScale are the intellectual property of DreamAndScale unless otherwise stated. No part of this website or program material may be copied, reproduced, distributed, modified, republished, uploaded, posted, or transmitted in any form without prior written permission.",
         ],
       },
       {
