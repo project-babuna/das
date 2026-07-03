@@ -102,7 +102,13 @@ export default function Home() {
           </a>
         </nav>
 
-        <a className="header-cta" href="/clarity-session">
+        <a
+          className="header-cta"
+          href="/clarity-session"
+          data-meta-event="ViewContent"
+          data-meta-content-name="Clarity Session"
+          data-meta-content-category="Program Offer"
+        >
           Book ₹199 Session
         </a>
       </header>
@@ -128,10 +134,22 @@ export default function Home() {
               before risking their time, money, or career.
             </p>
             <div className="hero-actions" aria-label="Primary actions">
-              <a className="btn btn-primary" href="/clarity-session">
+              <a
+                className="btn btn-primary"
+                href="/clarity-session"
+                data-meta-event="ViewContent"
+                data-meta-content-name="Clarity Session"
+                data-meta-content-category="Program Offer"
+              >
                 Book the ₹199 Clarity Session
               </a>
-              <a className="btn btn-secondary" href="/full-program">
+              <a
+                className="btn btn-secondary"
+                href="/full-program"
+                data-meta-event="ViewContent"
+                data-meta-content-name="DreamAndScale Full Program"
+                data-meta-content-category="Program Offer"
+              >
                 Explore the Full Program
               </a>
             </div>
@@ -224,7 +242,13 @@ export default function Home() {
                   it&apos;s the right next step for you. Meet the mentor, explore the curriculum, ask
                   your questions, and make an informed decision before enrolling.
                 </p>
-                <a className="journey-cta" href="/clarity-session">
+                <a
+                  className="journey-cta"
+                  href="/clarity-session"
+                  data-meta-event="ViewContent"
+                  data-meta-content-name="Clarity Session"
+                  data-meta-content-category="Program Offer"
+                >
                   Book Your Seat
                 </a>
               </article>
@@ -244,7 +268,13 @@ export default function Home() {
                   finance, company structure, growth, and ownership—through structured lessons that
                   help you understand how businesses actually work.
                 </p>
-                <a className="journey-cta" href="/full-program">
+                <a
+                  className="journey-cta"
+                  href="/full-program"
+                  data-meta-event="ViewContent"
+                  data-meta-content-name="DreamAndScale Full Program"
+                  data-meta-content-category="Program Offer"
+                >
                   Explore Program
                 </a>
               </article>
@@ -263,7 +293,13 @@ export default function Home() {
                   Everything in the Full Program, plus live mentor guidance to help you apply the
                   concepts to your own ideas, decisions, and business journey.
                 </p>
-                <a className="journey-cta" href="/learn-with-mentorship">
+                <a
+                  className="journey-cta"
+                  href="/learn-with-mentorship"
+                  data-meta-event="ViewContent"
+                  data-meta-content-name="DreamAndScale Plus"
+                  data-meta-content-category="Mentorship Offer"
+                >
                   Apply With Mentorship
                 </a>
               </article>
@@ -544,7 +580,9 @@ export default function Home() {
             <a href="/privacy-policy">Privacy Policy</a>
             <a href="/terms-and-conditions">Terms &amp; Conditions</a>
             <a href="/refund-policy">Refund Policy</a>
-            <a href="mailto:hello@dreamandscale.com">Contact</a>
+            <a href="mailto:hello@dreamandscale.com" data-meta-event="Contact">
+              Contact
+            </a>
           </nav>
         </div>
       </footer>

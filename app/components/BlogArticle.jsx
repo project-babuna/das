@@ -28,7 +28,13 @@ export default function BlogArticle({ post }) {
                   DreamAndScale helps you connect ideas, customers, markets, products, finance,
                   growth, and ownership into one practical decision system.
                 </p>
-                <a className="btn btn-primary" href="/full-program">
+                <a
+                  className="btn btn-primary"
+                  href="/full-program"
+                  data-meta-event="ViewContent"
+                  data-meta-content-name="DreamAndScale Full Program"
+                  data-meta-content-category="Blog CTA"
+                >
                   Explore DreamAndScale
                 </a>
               </div>

@@ -1,4 +1,5 @@
 import Script from "next/script";
+import MetaPixel from "./components/MetaPixel";
 import "./globals.css";
 
 const faviconSwitcherScript = `
@@ -68,6 +69,7 @@ export default function RootLayout({ children }) {
             gtag('config', 'G-2RDW6CEW10');
           `}
         </Script>
+        <MetaPixel />
         {children}
       </body>
     </html>

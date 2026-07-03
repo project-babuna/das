@@ -15,7 +15,13 @@ export default function PolicyPage({ page }) {
           <a href="/#faq">FAQ</a>
         </nav>
 
-        <a className="header-cta" href="/clarity-session">
+        <a
+          className="header-cta"
+          href="/clarity-session"
+          data-meta-event="ViewContent"
+          data-meta-content-name="Clarity Session"
+          data-meta-content-category="Header CTA"
+        >
           Book ₹199 Session
         </a>
       </header>
@@ -57,7 +63,9 @@ export default function PolicyPage({ page }) {
             <a href="/privacy-policy">Privacy Policy</a>
             <a href="/terms-and-conditions">Terms &amp; Conditions</a>
             <a href="/refund-policy">Refund Policy</a>
-            <a href="mailto:hello@dreamandscale.com">Contact</a>
+            <a href="mailto:hello@dreamandscale.com" data-meta-event="Contact">
+              Contact
+            </a>
           </nav>
         </div>
       </footer>

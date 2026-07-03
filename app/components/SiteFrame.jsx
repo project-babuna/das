@@ -17,6 +17,7 @@ export default function SiteFrame({
   ctaLabel = "Book ₹199 Session",
 }) {
   const [navOpen, setNavOpen] = useState(false);
+  const headerMetaEvent = ctaHref.startsWith("mailto:") ? "Lead" : "ViewContent";
 
   useEffect(() => {
     document.body.classList.toggle("nav-open", navOpen);
@@ -55,7 +56,13 @@ export default function SiteFrame({
           ))}
         </nav>
 
-        <a className="header-cta" href={ctaHref}>
+        <a
+          className="header-cta"
+          href={ctaHref}
+          data-meta-event={headerMetaEvent}
+          data-meta-content-name={ctaLabel}
+          data-meta-content-category="Header CTA"
+        >
           {ctaLabel}
         </a>
       </header>
@@ -77,7 +84,9 @@ export default function SiteFrame({
             <a href="/privacy-policy">Privacy Policy</a>
             <a href="/terms-and-conditions">Terms &amp; Conditions</a>
             <a href="/refund-policy">Refund Policy</a>
-            <a href="mailto:hello@dreamandscale.com">Contact</a>
+            <a href="mailto:hello@dreamandscale.com" data-meta-event="Contact">
+              Contact
+            </a>
           </nav>
         </div>
       </footer>

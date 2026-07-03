@@ -1,6 +1,9 @@
 import SiteFrame from "./SiteFrame";
 
 export default function ProgramOfferPage({ page }) {
+  const priceValue = Number(page.price.replace(/[^\d]/g, ""));
+  const primaryMetaEvent = page.price === "₹199" ? "Lead" : "InitiateCheckout";
+
   return (
     <SiteFrame ctaHref={page.primaryHref} ctaLabel={page.primaryCta}>
       <main>
@@ -12,10 +15,24 @@ export default function ProgramOfferPage({ page }) {
               <h2>{page.subtitle}</h2>
               <p>{page.description}</p>
               <div className="hero-actions">
-                <a className="btn btn-primary" href={page.primaryHref}>
+                <a
+                  className="btn btn-primary"
+                  href={page.primaryHref}
+                  data-meta-event={primaryMetaEvent}
+                  data-meta-content-name={page.title}
+                  data-meta-content-category="Program Conversion"
+                  data-meta-value={priceValue}
+                  data-meta-currency="INR"
+                >
                   {page.primaryCta}
                 </a>
-                <a className="btn btn-secondary" href={page.secondaryHref}>
+                <a
+                  className="btn btn-secondary"
+                  href={page.secondaryHref}
+                  data-meta-event="ViewContent"
+                  data-meta-content-name={page.secondaryCta}
+                  data-meta-content-category="Program Offer"
+                >
                   {page.secondaryCta}
                 </a>
               </div>
