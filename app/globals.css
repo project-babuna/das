@@ -2236,7 +2236,7 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 3px;
+  gap: 0;
   margin: 0;
   color: rgba(255, 255, 255, 0.82);
   font-size: 0.74rem;
@@ -2246,22 +2246,24 @@ h3 {
 
 .footer-brand-copy {
   display: block;
-  margin-left: clamp(44px, 4.8vw, 54px);
-  color: rgba(243, 189, 80, 0.88);
-  font-size: clamp(0.62rem, 0.72vw, 0.74rem);
-  font-weight: 800;
-  letter-spacing: 0.025em;
-  text-transform: uppercase;
-  white-space: nowrap;
+  max-width: 420px;
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.48;
 }
 
 .footer-columns {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(18px, 3vw, 34px);
+  column-gap: clamp(10px, 1.6vw, 18px);
+  row-gap: clamp(18px, 3vw, 34px);
   justify-self: end;
   width: 100%;
   max-width: 680px;
+  padding-left: clamp(24px, 4vw, 56px);
 }
 
 .footer-column {
@@ -2769,9 +2771,6 @@ h3 {
     gap: 22px;
   }
 
-  .footer-brand-copy {
-    white-space: normal;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

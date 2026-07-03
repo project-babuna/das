@@ -34,10 +34,14 @@ export default function SiteFooter() {
     <footer className="footer-strip" id="contact">
       <div className="footer-grid-cap" aria-hidden="true"></div>
       <div className="container footer-grid">
-        <p className="footer-brand-line">
+        <div className="footer-brand-line">
           <BrandLogo tone="light" compact />
-          <span className="footer-brand-copy">Build Business Clarity Before You Build A Business.</span>
-        </p>
+          <p className="footer-brand-copy">
+            Build Business Clarity Before You Build A Business.
+            <br />
+            Helping aspiring founders understand how businesses actually work.
+          </p>
+        </div>
         <div className="footer-columns">
           {footerColumns.map((column) => (
             <section className="footer-column" key={column.title}>
