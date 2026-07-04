@@ -102,10 +102,12 @@ export default function Home() {
 
         <a
           className="header-cta"
-          href="/clarity-session"
-          data-meta-event="ViewContent"
+          href="/register?program=clarity_session"
+          data-meta-event="InitiateCheckout"
           data-meta-content-name="Clarity Session"
           data-meta-content-category="Program Offer"
+          data-meta-value="199"
+          data-meta-currency="INR"
         >
           Book ₹199 Session
         </a>
@@ -134,10 +136,12 @@ export default function Home() {
             <div className="hero-actions" aria-label="Primary actions">
               <a
                 className="btn btn-primary"
-                href="/clarity-session"
-                data-meta-event="ViewContent"
+                href="/register?program=clarity_session"
+                data-meta-event="InitiateCheckout"
                 data-meta-content-name="Clarity Session"
                 data-meta-content-category="Program Offer"
+                data-meta-value="199"
+                data-meta-currency="INR"
               >
                 Book the ₹199 Clarity Session
               </a>
@@ -249,10 +253,12 @@ export default function Home() {
                 </p>
                 <a
                   className="journey-cta"
-                  href="/clarity-session"
-                  data-meta-event="ViewContent"
+                  href="/register?program=clarity_session"
+                  data-meta-event="InitiateCheckout"
                   data-meta-content-name="Clarity Session"
                   data-meta-content-category="Program Offer"
+                  data-meta-value="199"
+                  data-meta-currency="INR"
                 >
                   Book Your Seat
                 </a>

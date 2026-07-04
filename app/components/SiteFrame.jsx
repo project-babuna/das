@@ -15,7 +15,7 @@ const navItems = [
 
 export default function SiteFrame({
   children,
-  ctaHref = "/clarity-session",
+  ctaHref = "/register?program=clarity_session",
   ctaLabel = "Book ₹199 Session",
 }) {
   const [navOpen, setNavOpen] = useState(false);

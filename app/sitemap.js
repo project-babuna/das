@@ -20,6 +20,11 @@ const routes = [
     priority: 0.9,
   },
   {
+    path: "/register",
+    changeFrequency: "monthly",
+    priority: 0.85,
+  },
+  {
     path: "/full-program",
     changeFrequency: "monthly",
     priority: 0.9,

@@ -2,7 +2,7 @@ import SiteFrame from "./SiteFrame";
 
 export default function ProgramOfferPage({ page }) {
   const priceValue = Number(page.price.replace(/[^\d]/g, ""));
-  const primaryMetaEvent = page.price === "₹199" ? "Lead" : "InitiateCheckout";
+  const primaryMetaEvent = "InitiateCheckout";
 
   return (
     <SiteFrame ctaHref={page.primaryHref} ctaLabel={page.primaryCta}>
@@ -88,9 +88,11 @@ export default function ProgramOfferPage({ page }) {
                   <a
                     className="btn btn-primary"
                     href={page.clarityHref}
-                    data-meta-event="ViewContent"
+                    data-meta-event="InitiateCheckout"
                     data-meta-content-name={page.clarityCta}
                     data-meta-content-category="Clarity Session"
+                    data-meta-value="199"
+                    data-meta-currency="INR"
                   >
                     {page.clarityCta}
                   </a>
