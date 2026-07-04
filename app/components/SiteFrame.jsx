@@ -5,6 +5,7 @@ import BrandLogo from "./BrandLogo";
 import SiteFooter from "./SiteFooter";
 
 const navItems = [
+  { href: "/", label: "Home" },
   { href: "/clarity-session", label: "Clarity Session" },
   { href: "/full-program", label: "Full Program" },
   { href: "/learn-with-mentorship", label: "Mentorship" },

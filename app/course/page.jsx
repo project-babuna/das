@@ -95,6 +95,9 @@ export default function CoursePage() {
         </button>
 
         <nav className="site-nav" id="site-nav" aria-label="Course navigation">
+          <a href="/" onClick={closeNav}>
+            Home
+          </a>
           <a href="/clarity-session" onClick={closeNav}>
             Clarity Session
           </a>

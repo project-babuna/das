@@ -89,14 +89,11 @@ export default function Home() {
           <a href="/full-program" onClick={closeNav}>
             Full Program
           </a>
+          <a href="/learn-with-mentorship" onClick={closeNav}>
+            Mentorship
+          </a>
           <a href="/blog" onClick={closeNav}>
             Insights
-          </a>
-          <a href="#pillars" onClick={closeNav}>
-            Pillars
-          </a>
-          <a href="#outcomes" onClick={closeNav}>
-            Outcomes
           </a>
           <a href="#faq" onClick={closeNav}>
             FAQ
