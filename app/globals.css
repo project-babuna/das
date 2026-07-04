@@ -642,6 +642,8 @@ h3 {
 }
 
 .problem-layout .section-kicker {
+  position: sticky;
+  top: 112px;
   max-width: 520px;
   padding-top: 16px;
   border-top: 1px solid rgba(8, 71, 68, 0.2);
@@ -705,10 +707,6 @@ h3 {
   background: var(--white);
   color: var(--ink-2);
   font-weight: 820;
-}
-
-.problem-decision-grid span:last-child {
-  grid-column: 1 / -1;
 }
 
 .problem-decision-grid span::before {
@@ -2650,6 +2648,7 @@ h3 {
   }
 
   .problem-layout .section-kicker {
+    position: static;
     max-width: 760px;
   }
 

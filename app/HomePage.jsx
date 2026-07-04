@@ -192,18 +192,21 @@ export default function Home() {
                 Most aspiring founders don&apos;t lack ambition. They lack business clarity.
               </p>
               <div className="problem-decision-grid" aria-label="Common founder decisions">
-                <span>Validate the idea</span>
-                <span>Build the product</span>
-                <span>Register a company</span>
-                <span>Find customers</span>
-                <span>Raise capital</span>
-                <span>Choose a co-founder</span>
-                <span>Quit their job</span>
+                <span>Is the idea worth pursuing?</span>
+                <span>Build the product or register a company first?</span>
+                <span>Proprietorship or Private Limited?</span>
+                <span>Do I need a co-founder?</span>
+                <span>How should ownership and shares be divided between co-founders?</span>
+                <span>When do I need a CA, and what do they actually do?</span>
+                <span>Do I need funding?</span>
+                <span>When and how should I approach investors?</span>
+                <span>How do I find customers?</span>
+                <span>Should I quit my job to start?</span>
               </div>
               <p>
-                Every decision depends on another decision—but no one teaches how those decisions
-                connect. DreamAndScale helps you see the complete system, so you can make important
-                business decisions with clarity instead of guesswork.
+                Most people don&apos;t stop because they lack ambition. They stop because they don&apos;t
+                know which decision comes first. They spend months—or even years—waiting for
+                clarity, or move ahead with guesswork that leads to costly mistakes.
               </p>
             </div>
           </div>
