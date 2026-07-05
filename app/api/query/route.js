@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getClientIp, rateLimit } from "@/lib/rateLimit";
-import { supabaseAdmin } from "@/lib/supabaseAdmin";
+import { isSupabaseConfigured, supabaseAdmin } from "@/lib/supabaseAdmin";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^[6-9]\d{9}$/;
@@ -73,6 +73,16 @@ export async function POST(request) {
 
     if (phone && !PHONE_PATTERN.test(phone)) {
       return validationError();
+    }
+
+    if (!isSupabaseConfigured()) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Contact form is not connected yet. Please configure Supabase.",
+        },
+        { status: 503 }
+      );
     }
 
     const { data, error } = await supabaseAdmin
