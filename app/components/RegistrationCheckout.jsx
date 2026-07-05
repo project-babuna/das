@@ -7,11 +7,12 @@ const programOptions = [
   {
     key: "clarity_session",
     title: "Clarity Session",
-    subtitle: "Explore DreamAndScale Before You Enrol",
+    registrationName: "DreamAndScale Clarity Session",
+    subtitle: "3-hour live founder clarity session",
     originalPrice: "₹2,999",
     price: "₹199",
     amount: 199,
-    meta: "3 Hours • Live",
+    meta: "3 HOURS • LIVE",
   },
   {
     key: "full_program",
@@ -42,8 +43,7 @@ const initialForm = {
 };
 
 const trustItems = [
-  "Secure Razorpay checkout",
-  "Server-side payment verification",
+  "Secure Razorpay payment",
   "Registration saved before payment",
 ];
 
@@ -87,11 +87,7 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
       return "Please enter a valid 10-digit Indian mobile number.";
     }
 
-    if (!cleanEmail) {
-      return "Please enter your email address.";
-    }
-
-    if (!emailPattern.test(cleanEmail)) {
+    if (cleanEmail && !emailPattern.test(cleanEmail)) {
       return "Please enter a valid email address.";
     }
 
@@ -248,10 +244,13 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
         <div className="container registration-layout">
           <div className="section-kicker">
             <p className="eyebrow dark">Razorpay secure checkout</p>
-            <h2>Continue with your selected program.</h2>
+            <h2>Complete Your Registration</h2>
             <p>
-              Complete a few details and continue to Razorpay. Your payment is authenticated by
-              Razorpay and verified on DreamAndScale before your registration is marked as paid.
+              You are registering for the {selectedProgram.registrationName || selectedProgram.title}.
+            </p>
+            <p>
+              Complete your details and continue to Razorpay. Your registration will be confirmed
+              after successful payment.
             </p>
             <div className="registration-assurance" aria-label="Checkout assurances">
               {trustItems.map((item) => (
@@ -308,7 +307,7 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
             </label>
 
             <label>
-              <span>Email *</span>
+              <span>Email</span>
               <input
                 name="email"
                 type="email"
@@ -317,12 +316,11 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
                 autoComplete="email"
                 inputMode="email"
                 placeholder="you@example.com"
-                required
               />
             </label>
 
             <label>
-              <span>You are</span>
+              <span>Which best describes you?</span>
               <select
                 className={form.role ? "" : "select-placeholder"}
                 name="role"
@@ -332,11 +330,14 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
                 <option value="" disabled>
                   Select one
                 </option>
-                <option value="professional">Professional</option>
-                <option value="student">Student</option>
-                <option value="freelancer">Freelancer</option>
-                <option value="builder">Builder</option>
-                <option value="business_owner">Business owner</option>
+                <option value="has_business_idea">I have a business idea</option>
+                <option value="no_idea_yet">I want to start but no idea yet</option>
+                <option value="working_professional">I am working professional</option>
+                <option value="student">I am student</option>
+                <option value="freelancer_self_employed">I am freelancer/self-employed</option>
+                <option value="understand_business_first">
+                  I want to understand business first
+                </option>
               </select>
             </label>
 
@@ -365,12 +366,11 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
               data-meta-value={selectedProgram.amount}
               data-meta-currency="INR"
             >
-              {isSubmitting ? "Authenticating..." : `Continue to Razorpay • ${selectedProgram.price}`}
+              {isSubmitting ? "Authenticating..." : `Register & Pay ${selectedProgram.price}`}
             </button>
 
             <p className="registration-payment-note registration-form-full">
-              Razorpay may ask for OTP, UPI approval, card authentication, or bank confirmation
-              depending on your selected payment method.
+              After payment, session details will be shared on WhatsApp/email.
             </p>
           </form>
         </div>
