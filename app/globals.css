@@ -2194,6 +2194,12 @@ h3 {
   justify-content: center;
 }
 
+.status-note {
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.92rem;
+}
+
 .status-mark {
   display: inline-grid;
   width: 58px;

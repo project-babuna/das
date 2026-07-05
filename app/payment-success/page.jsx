@@ -2,7 +2,7 @@ import SiteFrame from "../components/SiteFrame";
 
 export const metadata = {
   title: "Payment Successful | DreamAndScale",
-  description: "Your DreamAndScale program payment was completed successfully.",
+  description: "Your DreamAndScale Clarity Session registration is confirmed.",
   robots: {
     index: false,
     follow: false,
@@ -19,10 +19,13 @@ export default function PaymentSuccessPage() {
               ✓
             </span>
             <p className="eyebrow">Payment successful</p>
-            <h1>Your DreamAndScale Registration Is Confirmed</h1>
+            <h1>Your Registration Is Confirmed</h1>
             <p>
-              Thank you for registering with DreamAndScale. Your payment has been verified, and
-              your selected program has been marked as paid.
+              Your payment is successful and your seat for the DreamAndScale Clarity Session is
+              confirmed.
+            </p>
+            <p>
+              Session details will be shared on WhatsApp/email.
             </p>
             <div className="hero-actions">
               <a className="btn btn-primary" href="/full-program">
@@ -32,6 +35,7 @@ export default function PaymentSuccessPage() {
                 Back To Home
               </a>
             </div>
+            <p className="status-note">Please keep your WhatsApp number active for session updates.</p>
           </div>
         </section>
       </main>
