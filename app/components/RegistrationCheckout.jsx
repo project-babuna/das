@@ -41,6 +41,15 @@ const initialForm = {
   message: "",
 };
 
+const trustItems = [
+  "Secure Razorpay checkout",
+  "Server-side payment verification",
+  "Registration saved before payment",
+];
+
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const phonePattern = /^[6-9]\d{9}$/;
+
 const getProgramOption = (programKey) =>
   programOptions.find((program) => program.key === programKey) || programOptions[0];
 
@@ -65,7 +74,28 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
 
   const updateField = (event) => {
     const { name, value } = event.target;
-    setForm((current) => ({ ...current, [name]: value }));
+    const nextValue = name === "phone" ? value.replace(/\D/g, "").slice(0, 10) : value;
+
+    setForm((current) => ({ ...current, [name]: nextValue }));
+  };
+
+  const validateForm = () => {
+    const cleanPhone = form.phone.trim();
+    const cleanEmail = form.email.trim();
+
+    if (!phonePattern.test(cleanPhone)) {
+      return "Please enter a valid 10-digit Indian mobile number.";
+    }
+
+    if (!cleanEmail) {
+      return "Please enter your email address.";
+    }
+
+    if (!emailPattern.test(cleanEmail)) {
+      return "Please enter a valid email address.";
+    }
+
+    return null;
   };
 
   const getUtmFields = () => {
@@ -107,6 +137,13 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
         return;
       }
 
+      const verifyPayment = async (response) =>
+        postJson("/api/verify-payment", {
+          ...response,
+          lead_id: lead.id,
+          program: selectedProgram.key,
+        });
+
       const checkout = new window.Razorpay({
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
         amount: order.amount,
@@ -114,6 +151,7 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
         name: "DreamAndScale",
         description: selectedProgram.title,
         order_id: order.id,
+        image: "/ds-favicon-on-light-180.png",
         prefill: {
           name: form.name,
           email: form.email,
@@ -124,11 +162,16 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
           program: selectedProgram.title,
         },
         theme: {
-          color: "#0b2f2c",
+          color: "#2563eb",
         },
+        retry: {
+          enabled: true,
+          max_count: 2,
+        },
+        remember_customer: true,
         handler: async (response) => {
           try {
-            await postJson("/api/verify-payment", response);
+            await verifyPayment(response);
             resolve();
           } catch (error) {
             reject(error);
@@ -150,8 +193,19 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setIsSubmitting(true);
     setNotice(null);
+
+    const validationMessage = validateForm();
+
+    if (validationMessage) {
+      setNotice({
+        type: "error",
+        message: validationMessage,
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
     let paymentStarted = false;
 
     try {
@@ -190,42 +244,28 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
     <>
       <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="afterInteractive" />
 
-      <section className="content-hero registration-hero">
-        <div className="container content-hero-grid">
-          <div>
-            <p className="eyebrow">DreamAndScale registration</p>
-            <h1>Complete Registration For {selectedProgram.title}</h1>
-            <p>
-              Share your details and complete payment securely through Razorpay. Your payment is
-              linked to the program you selected before reaching this page.
-            </p>
-          </div>
-          <aside
-            className="content-price-card"
-            aria-label={`${selectedProgram.title} payment summary`}
-          >
-            <span>{selectedProgram.meta}</span>
-            <div className="price-display">
-              <s>{selectedProgram.originalPrice}</s>
-              <strong>{selectedProgram.price}</strong>
-            </div>
-            <p>{selectedProgram.subtitle}</p>
-          </aside>
-        </div>
-      </section>
-
-      <section className="section registration-section">
+      <section className="section registration-section registration-section-compact">
         <div className="container registration-layout">
           <div className="section-kicker">
-            <p className="eyebrow dark">Secure registration</p>
+            <p className="eyebrow dark">Razorpay secure checkout</p>
             <h2>Continue with your selected program.</h2>
             <p>
-              Your registration is saved first, then Razorpay opens for payment. After payment,
-              your selected program is marked as paid automatically.
+              Complete a few details and continue to Razorpay. Your payment is authenticated by
+              Razorpay and verified on DreamAndScale before your registration is marked as paid.
             </p>
+            <div className="registration-assurance" aria-label="Checkout assurances">
+              {trustItems.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
           </div>
 
           <form className="registration-form" onSubmit={handleSubmit}>
+            <div className="registration-form-header registration-form-full">
+              <span>Selected program</span>
+              <strong>Confirm your details</strong>
+            </div>
+
             <div className="registration-selected-card registration-form-full">
               <span>{selectedProgram.meta}</span>
               <div>
@@ -258,25 +298,40 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
                 value={form.phone}
                 onChange={updateField}
                 autoComplete="tel"
+                inputMode="numeric"
+                minLength="10"
+                maxLength="10"
+                pattern="[6-9][0-9]{9}"
+                placeholder="10-digit mobile number"
                 required
               />
             </label>
 
             <label>
-              <span>Email</span>
+              <span>Email *</span>
               <input
                 name="email"
                 type="email"
                 value={form.email}
                 onChange={updateField}
                 autoComplete="email"
+                inputMode="email"
+                placeholder="you@example.com"
+                required
               />
             </label>
 
             <label>
               <span>You are</span>
-              <select name="role" value={form.role} onChange={updateField}>
-                <option value="">Select one</option>
+              <select
+                className={form.role ? "" : "select-placeholder"}
+                name="role"
+                value={form.role}
+                onChange={updateField}
+              >
+                <option value="" disabled>
+                  Select one
+                </option>
                 <option value="professional">Professional</option>
                 <option value="student">Student</option>
                 <option value="freelancer">Freelancer</option>
@@ -301,7 +356,7 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
             ) : null}
 
             <button
-              className="btn btn-primary registration-submit"
+              className="btn registration-submit registration-submit-blue"
               type="submit"
               disabled={isSubmitting}
               data-meta-event="InitiateCheckout"
@@ -310,8 +365,13 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
               data-meta-value={selectedProgram.amount}
               data-meta-currency="INR"
             >
-              {isSubmitting ? "Processing..." : `Pay Securely ${selectedProgram.price}`}
+              {isSubmitting ? "Authenticating..." : `Continue to Razorpay • ${selectedProgram.price}`}
             </button>
+
+            <p className="registration-payment-note registration-form-full">
+              Razorpay may ask for OTP, UPI approval, card authentication, or bank confirmation
+              depending on your selected payment method.
+            </p>
           </form>
         </div>
       </section>

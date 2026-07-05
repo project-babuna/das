@@ -1867,12 +1867,15 @@ h3 {
   margin-top: 22px;
 }
 
-.registration-hero .content-price-card {
-  align-self: stretch;
+.registration-section {
+  background:
+    radial-gradient(circle at 18% 16%, rgba(37, 99, 235, 0.08), transparent 28%),
+    linear-gradient(180deg, #fffdf8 0%, #f5f7fb 100%);
 }
 
-.registration-section {
-  background: var(--surface-clean);
+.registration-section-compact {
+  padding-top: clamp(96px, 11vw, 124px);
+  padding-bottom: clamp(50px, 6vw, 76px);
 }
 
 .registration-layout {
@@ -1884,34 +1887,100 @@ h3 {
 
 .registration-layout .section-kicker p:not(.eyebrow) {
   max-width: 520px;
-  margin-top: 18px;
+  margin-top: 14px;
   color: var(--muted);
-  font-size: 1.04rem;
-  line-height: 1.62;
+  font-size: 0.98rem;
+  line-height: 1.54;
+}
+
+.registration-assurance {
+  display: grid;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.registration-assurance span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  padding: 8px 11px;
+  border: 1px solid rgba(17, 25, 27, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink-2);
+  font-size: 0.86rem;
+  font-weight: 760;
+  box-shadow: 0 12px 30px rgba(17, 25, 27, 0.05);
+}
+
+.registration-assurance span::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
 }
 
 .registration-form {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  padding: clamp(22px, 4vw, 36px);
-  border: 1px solid var(--line);
+  gap: 13px 16px;
+  padding: clamp(18px, 2.8vw, 26px);
+  border: 1px solid rgba(17, 25, 27, 0.09);
   border-radius: 8px;
-  background: var(--white);
-  box-shadow: var(--shadow-soft);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.94)),
+    var(--white);
+  box-shadow: 0 28px 70px rgba(17, 25, 27, 0.11);
+}
+
+.registration-form::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  border-radius: 8px 8px 0 0;
+  background: linear-gradient(90deg, #2563eb, rgba(37, 99, 235, 0.16), var(--brand-gold));
+}
+
+.registration-form-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 0;
+}
+
+.registration-form-header span {
+  color: #2563eb;
+  font-size: 0.68rem;
+  font-weight: 760;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.registration-form-header strong {
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.08rem, 1.7vw, 1.34rem);
+  line-height: 1.05;
 }
 
 .registration-selected-card {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 18px;
+  gap: 12px 16px;
   align-items: center;
-  padding: 18px;
-  border: 1px solid rgba(201, 154, 46, 0.28);
+  padding: 15px;
+  border: 1px solid rgba(37, 99, 235, 0.16);
   border-radius: 8px;
   background:
-    linear-gradient(145deg, rgba(13, 106, 102, 0.08), rgba(243, 189, 80, 0.08)),
+    linear-gradient(145deg, rgba(37, 99, 235, 0.08), rgba(243, 189, 80, 0.08)),
     var(--white);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
 }
 
 .registration-selected-card > span {
@@ -1919,10 +1988,10 @@ h3 {
   width: fit-content;
   padding: 4px 8px;
   border-radius: 999px;
-  background: rgba(201, 154, 46, 0.14);
-  color: var(--teal-dark);
-  font-size: 0.68rem;
-  font-weight: 950;
+  background: rgba(37, 99, 235, 0.1);
+  color: #1d4ed8;
+  font-size: 0.62rem;
+  font-weight: 840;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -1930,15 +1999,15 @@ h3 {
 .registration-selected-card strong {
   display: block;
   color: var(--ink);
-  font-size: 1.15rem;
+  font-size: 1.02rem;
   line-height: 1.15;
 }
 
 .registration-selected-card p {
-  margin: 8px 0 0;
+  margin: 5px 0 0;
   color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.45;
+  font-size: 0.86rem;
+  line-height: 1.35;
 }
 
 .registration-selected-card em {
@@ -1946,7 +2015,7 @@ h3 {
   align-items: baseline;
   gap: 8px;
   color: var(--ink);
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-size: clamp(1.3rem, 2.2vw, 1.8rem);
   font-style: normal;
   font-weight: 950;
   line-height: 1;
@@ -1960,50 +2029,68 @@ h3 {
 
 .registration-form label {
   display: grid;
-  gap: 9px;
+  gap: 6px;
   color: var(--ink);
-  font-weight: 850;
+  font-weight: 760;
 }
 
 .registration-form label span {
-  font-size: 0.9rem;
+  color: var(--ink-2);
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
 }
 
 .registration-form input,
 .registration-form select,
 .registration-form textarea {
   width: 100%;
-  border: 1px solid rgba(12, 42, 38, 0.16);
+  border: 1px solid rgba(12, 42, 38, 0.2);
   border-radius: 8px;
-  background: #fbfaf6;
+  background: var(--white);
   color: var(--ink);
   font: inherit;
-  font-size: 1rem;
+  font-size: 0.96rem;
   outline: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 1px 2px rgba(17, 25, 27, 0.035);
   transition:
     border-color 180ms ease,
     box-shadow 180ms ease,
     background 180ms ease;
 }
 
+.registration-form input::placeholder,
+.registration-form textarea::placeholder {
+  color: rgba(102, 113, 111, 0.5);
+  font-size: 0.88rem;
+  font-weight: 430;
+}
+
+.registration-form select.select-placeholder {
+  color: rgba(102, 113, 111, 0.58);
+  font-size: 0.86rem;
+  font-weight: 460;
+}
+
 .registration-form input,
 .registration-form select {
-  min-height: 48px;
-  padding: 0 14px;
+  min-height: 46px;
+  padding: 0 13px;
 }
 
 .registration-form textarea {
-  min-height: 120px;
-  padding: 13px 14px;
+  min-height: 76px;
+  padding: 11px 13px;
   resize: vertical;
 }
 
 .registration-form input:focus,
 .registration-form select:focus,
 .registration-form textarea:focus {
-  border-color: rgba(13, 106, 102, 0.55);
+  border-color: rgba(37, 99, 235, 0.58);
   background: var(--white);
-  box-shadow: 0 0 0 4px rgba(13, 106, 102, 0.09);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
 }
 
 .registration-form-full,
@@ -2035,14 +2122,40 @@ h3 {
 
 .registration-submit {
   width: 100%;
-  min-height: 52px;
+  min-height: 50px;
   cursor: pointer;
+  font-size: 0.96rem;
+}
+
+.registration-submit-blue {
+  border: 1px solid rgba(37, 99, 235, 0.72);
+  background: linear-gradient(180deg, #2f72f0 0%, #2563eb 45%, #1747b6 100%);
+  color: var(--white);
+  box-shadow:
+    0 18px 38px rgba(37, 99, 235, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.24);
+}
+
+.registration-submit-blue:hover {
+  background: linear-gradient(180deg, #2f6df4, #1d4ed8);
+  box-shadow: 0 22px 44px rgba(37, 99, 235, 0.3);
+  transform: translateY(-2px);
 }
 
 .registration-submit:disabled {
   cursor: not-allowed;
   opacity: 0.62;
+  box-shadow: none;
   transform: none;
+}
+
+.registration-payment-note {
+  margin: -4px auto 0;
+  max-width: 620px;
+  color: rgba(102, 113, 111, 0.82);
+  font-size: 0.78rem;
+  line-height: 1.38;
+  text-align: center;
 }
 
 .status-hero {

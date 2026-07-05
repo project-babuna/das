@@ -17,6 +17,7 @@ export default function SiteFrame({
   children,
   ctaHref = "/register?program=clarity_session",
   ctaLabel = "Book ₹199 Session",
+  hideCta = false,
 }) {
   const [navOpen, setNavOpen] = useState(false);
   const headerMetaEvent = ctaHref.startsWith("mailto:") ? "Lead" : "ViewContent";
@@ -58,15 +59,17 @@ export default function SiteFrame({
           ))}
         </nav>
 
-        <a
-          className="header-cta"
-          href={ctaHref}
-          data-meta-event={headerMetaEvent}
-          data-meta-content-name={ctaLabel}
-          data-meta-content-category="Header CTA"
-        >
-          {ctaLabel}
-        </a>
+        {!hideCta ? (
+          <a
+            className="header-cta"
+            href={ctaHref}
+            data-meta-event={headerMetaEvent}
+            data-meta-content-name={ctaLabel}
+            data-meta-content-category="Header CTA"
+          >
+            {ctaLabel}
+          </a>
+        ) : null}
       </header>
 
       {children}
