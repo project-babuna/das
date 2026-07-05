@@ -36,84 +36,18 @@ function rateLimitError() {
 }
 
 async function insertQuery(payload) {
-  const tables = ["queries", "contact_queries"];
-  const attempts = tables.flatMap((table) => [
-    {
-      name: `${table}.question.full`,
-      table,
-      data: {
-        name: payload.name,
-        email: payload.email || null,
-        phone: payload.phone || null,
-        question: payload.question,
-        source_page: payload.source_page || null,
-        status: "new",
-      },
-    },
-    {
-      name: `${table}.question.minimal`,
-      table,
-      data: {
-        name: payload.name,
-        email: payload.email || null,
-        phone: payload.phone || null,
-        question: payload.question,
-      },
-    },
-    {
-      name: `${table}.message.full`,
-      table,
-      data: {
-        name: payload.name,
-        email: payload.email || null,
-        phone: payload.phone || null,
-        message: payload.question,
-        source_page: payload.source_page || null,
-        status: "new",
-      },
-    },
-    {
-      name: `${table}.message.minimal`,
-      table,
-      data: {
-        name: payload.name,
-        email: payload.email || null,
-        phone: payload.phone || null,
-        message: payload.question,
-      },
-    },
-  ]);
-
-  const errors = [];
-
-  for (const attempt of attempts) {
-    const { data, error } = await supabaseAdmin
-      .from(attempt.table)
-      .insert(attempt.data)
-      .select()
-      .single();
-
-    if (!error) {
-      return {
-        data,
-        error: null,
-        attempt: attempt.name,
-      };
-    }
-
-    errors.push({
-      attempt: attempt.name,
-      code: error.code,
-      message: error.message,
-      details: error.details,
-    });
-  }
-
-  return {
-    data: null,
-    error: errors,
-    attempt: null,
-  };
+  return supabaseAdmin
+    .from("queries")
+    .insert({
+      name: payload.name,
+      email: payload.email || null,
+      phone: payload.phone || null,
+      question: payload.question,
+      source_page: payload.source_page || null,
+      status: "new",
+    })
+    .select()
+    .single();
 }
 
 export async function POST(request) {
@@ -162,7 +96,7 @@ export async function POST(request) {
       );
     }
 
-    const { data, error, attempt } = await insertQuery({
+    const { data, error } = await insertQuery({
       name,
       email,
       phone,
@@ -181,7 +115,6 @@ export async function POST(request) {
     return NextResponse.json({
       success: true,
       query: data,
-      saved_with: attempt,
     });
   } catch (error) {
     console.error("Query API error:", error);
