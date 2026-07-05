@@ -8,7 +8,6 @@ const initialForm = {
   email: "",
   phone: "",
   question: "",
-  website: "",
 };
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -84,7 +83,10 @@ export default function ContactQueryPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          ...form,
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          question: form.question,
           source_page: window.location.pathname,
         }),
       });
@@ -135,17 +137,6 @@ export default function ContactQueryPage() {
             </div>
 
             <form className="registration-form contact-query-form" onSubmit={handleSubmit}>
-              <input
-                aria-hidden="true"
-                autoComplete="off"
-                className="form-honeypot"
-                name="website"
-                onChange={updateField}
-                tabIndex="-1"
-                type="text"
-                value={form.website}
-              />
-
               <div className="registration-form-header registration-form-full">
                 <span>CONTACT DREAMANDSCALE</span>
                 <strong>Send your message</strong>

@@ -5,7 +5,7 @@ import { isSupabaseConfigured, supabaseAdmin } from "@/lib/supabaseAdmin";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^[6-9]\d{9}$/;
 const RATE_LIMIT = {
-  limit: 5,
+  limit: 20,
   windowMs: 60 * 1000,
 };
 
@@ -35,6 +35,87 @@ function rateLimitError() {
   );
 }
 
+async function insertQuery(payload) {
+  const tables = ["queries", "contact_queries"];
+  const attempts = tables.flatMap((table) => [
+    {
+      name: `${table}.question.full`,
+      table,
+      data: {
+        name: payload.name,
+        email: payload.email || null,
+        phone: payload.phone || null,
+        question: payload.question,
+        source_page: payload.source_page || null,
+        status: "new",
+      },
+    },
+    {
+      name: `${table}.question.minimal`,
+      table,
+      data: {
+        name: payload.name,
+        email: payload.email || null,
+        phone: payload.phone || null,
+        question: payload.question,
+      },
+    },
+    {
+      name: `${table}.message.full`,
+      table,
+      data: {
+        name: payload.name,
+        email: payload.email || null,
+        phone: payload.phone || null,
+        message: payload.question,
+        source_page: payload.source_page || null,
+        status: "new",
+      },
+    },
+    {
+      name: `${table}.message.minimal`,
+      table,
+      data: {
+        name: payload.name,
+        email: payload.email || null,
+        phone: payload.phone || null,
+        message: payload.question,
+      },
+    },
+  ]);
+
+  const errors = [];
+
+  for (const attempt of attempts) {
+    const { data, error } = await supabaseAdmin
+      .from(attempt.table)
+      .insert(attempt.data)
+      .select()
+      .single();
+
+    if (!error) {
+      return {
+        data,
+        error: null,
+        attempt: attempt.name,
+      };
+    }
+
+    errors.push({
+      attempt: attempt.name,
+      code: error.code,
+      message: error.message,
+      details: error.details,
+    });
+  }
+
+  return {
+    data: null,
+    error: errors,
+    attempt: null,
+  };
+}
+
 export async function POST(request) {
   try {
     const clientIp = getClientIp(request);
@@ -49,14 +130,10 @@ export async function POST(request) {
 
     const body = await request.json();
 
-    if (body?.website) {
-      return NextResponse.json({ success: true });
-    }
-
     const name = cleanString(body?.name, 80);
     const email = cleanString(body?.email, 120);
     const phone = cleanPhone(body?.phone);
-    const question = cleanString(body?.question, 1500);
+    const question = cleanString(body?.question || body?.message, 1500);
     const source_page = cleanString(body?.source_page, 300);
 
     if (!name || !question) {
@@ -85,18 +162,13 @@ export async function POST(request) {
       );
     }
 
-    const { data, error } = await supabaseAdmin
-      .from("queries")
-      .insert({
-        name,
-        email,
-        phone,
-        question,
-        source_page,
-        status: "new",
-      })
-      .select()
-      .single();
+    const { data, error, attempt } = await insertQuery({
+      name,
+      email,
+      phone,
+      question,
+      source_page,
+    });
 
     if (error) {
       console.error("Query insert error:", error);
@@ -109,6 +181,7 @@ export async function POST(request) {
     return NextResponse.json({
       success: true,
       query: data,
+      saved_with: attempt,
     });
   } catch (error) {
     console.error("Query API error:", error);
