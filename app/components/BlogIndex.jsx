@@ -1,4 +1,5 @@
 import SiteFrame from "./SiteFrame";
+import BrandLogo from "./BrandLogo";
 
 export default function BlogIndex({ posts }) {
   return (
@@ -14,10 +15,14 @@ export default function BlogIndex({ posts }) {
                 want to understand business decisions before taking bigger risks.
               </p>
             </div>
-            <aside className="content-price-card">
-              <span>DreamAndScale</span>
-              <strong>Think Clearly Before You Build</strong>
-              <p>Read about ideas, customers, markets, risk, and business systems.</p>
+            <aside className="insights-hero-card" aria-label="DreamAndScale insights">
+              <BrandLogo tone="light" compact />
+              <div>
+                <span>DreamAndScale Insights</span>
+                <strong>Think Clearly Before You Build</strong>
+                <p>Essays on ideas, customers, markets, risk, and business systems.</p>
+              </div>
+              <small>Business clarity for better decisions</small>
             </aside>
           </div>
         </section>

@@ -2237,9 +2237,86 @@ h3 {
   color: #f3bd50;
 }
 
-.blog-hero .content-price-card strong {
-  font-size: clamp(1.55rem, 2.8vw, 2.3rem);
-  line-height: 1.12;
+.insights-hero-card {
+  position: relative;
+  display: grid;
+  gap: 18px;
+  overflow: hidden;
+  padding: clamp(24px, 4vw, 38px);
+  border: 1px solid rgba(243, 189, 80, 0.2);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.025)),
+    linear-gradient(135deg, rgba(13, 106, 102, 0.24), rgba(5, 17, 18, 0.78));
+  box-shadow:
+    0 30px 74px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+}
+
+.insights-hero-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -18% -38% 22%;
+  height: 170px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(243, 189, 80, 0.18), transparent 68%);
+  pointer-events: none;
+}
+
+.insights-hero-card .brand-logo {
+  width: fit-content;
+  max-width: none;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.insights-hero-card .brand-logo-mark {
+  width: clamp(150px, 13vw, 184px);
+}
+
+.insights-hero-card span {
+  display: inline-flex;
+  margin-bottom: 10px;
+  color: #f3bd50;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.insights-hero-card strong {
+  display: block;
+  max-width: 430px;
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 2.7vw, 2.35rem);
+  font-weight: 760;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.insights-hero-card p {
+  max-width: 410px;
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1rem;
+  line-height: 1.58;
+}
+
+.insights-hero-card small {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 4px;
+  padding: 8px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.045);
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 0.78rem;
+  font-weight: 760;
+  letter-spacing: 0.01em;
 }
 
 .blog-grid {
