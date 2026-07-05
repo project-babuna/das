@@ -40,6 +40,7 @@ const initialForm = {
   phone: "",
   role: "",
   message: "",
+  website: "",
 };
 
 const trustItems = [
@@ -137,7 +138,6 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
         postJson("/api/verify-payment", {
           ...response,
           lead_id: lead.id,
-          program: selectedProgram.key,
         });
 
       const checkout = new window.Razorpay({
@@ -167,8 +167,8 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
         remember_customer: true,
         handler: async (response) => {
           try {
-            await verifyPayment(response);
-            resolve();
+            const verification = await verifyPayment(response);
+            resolve(verification);
           } catch (error) {
             reject(error);
           }
@@ -213,14 +213,13 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
 
       const { order } = await postJson("/api/create-order", {
         lead_id: registration.lead.id,
-        program: selectedProgram.key,
       });
 
       paymentStarted = true;
-      await openRazorpay({ lead: registration.lead, order });
+      const verification = await openRazorpay({ lead: registration.lead, order });
 
       setForm(initialForm);
-      window.location.assign(`/payment-success?program=${selectedProgram.key}`);
+      window.location.assign(`/payment-success?order_id=${verification.order_id}`);
     } catch (error) {
       if (paymentStarted && error.message !== "Payment window closed before completion.") {
         window.location.assign(`/payment-failed?program=${selectedProgram.key}`);
@@ -260,6 +259,17 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
           </div>
 
           <form className="registration-form" onSubmit={handleSubmit}>
+            <input
+              aria-hidden="true"
+              autoComplete="off"
+              className="form-honeypot"
+              name="website"
+              onChange={updateField}
+              tabIndex="-1"
+              type="text"
+              value={form.website}
+            />
+
             <div className="registration-form-header registration-form-full">
               <span>Selected program</span>
               <strong>Confirm your details</strong>

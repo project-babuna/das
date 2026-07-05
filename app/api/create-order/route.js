@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import Razorpay from "razorpay";
+import { getProgram } from "@/lib/programs";
+import { getClientIp, rateLimit } from "@/lib/rateLimit";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
 
 const razorpay = new Razorpay({
@@ -7,25 +9,32 @@ const razorpay = new Razorpay({
   key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
 
-const programOrders = {
-  clarity_session: {
-    amount: 19900,
-    label: "DreamAndScale Clarity Session",
-  },
-  full_program: {
-    amount: 999900,
-    label: "DreamAndScale Full Program",
-  },
-  mentorship: {
-    amount: 4999000,
-    label: "DreamAndScale Plus",
-  },
+const RATE_LIMIT = {
+  limit: 5,
+  windowMs: 60 * 1000,
 };
+
+function rateLimitError() {
+  return NextResponse.json(
+    { success: false, message: "Too many requests. Please try again later." },
+    { status: 429 }
+  );
+}
 
 export async function POST(request) {
   try {
+    const clientIp = getClientIp(request);
+    const rate = rateLimit({
+      key: `create-order:${clientIp}`,
+      ...RATE_LIMIT,
+    });
+
+    if (!rate.allowed) {
+      return rateLimitError();
+    }
+
     const body = await request.json();
-    const { lead_id, program = "clarity_session" } = body;
+    const { lead_id } = body;
 
     if (!lead_id) {
       return NextResponse.json(
@@ -34,24 +43,37 @@ export async function POST(request) {
       );
     }
 
-    const selectedProgram = programOrders[program];
+    const { data: lead, error: leadError } = await supabaseAdmin
+      .from("leads")
+      .select("id, interest, payment_status")
+      .eq("id", lead_id)
+      .single();
 
-    if (!selectedProgram) {
+    if (leadError || !lead) {
       return NextResponse.json(
-        { success: false, message: "Invalid program selected." },
+        { success: false, message: "Registration not found." },
+        { status: 404 }
+      );
+    }
+
+    if (lead.payment_status === "success") {
+      return NextResponse.json(
+        { success: false, message: "This registration is already paid." },
         { status: 400 }
       );
     }
 
+    const selectedProgram = getProgram(lead.interest);
     const amount = selectedProgram.amount;
+    const currency = selectedProgram.currency;
 
     const order = await razorpay.orders.create({
       amount,
-      currency: "INR",
+      currency,
       receipt: `das_${lead_id.slice(0, 20)}`,
       notes: {
         lead_id,
-        program: selectedProgram.label,
+        program_id: selectedProgram.id,
       },
     });
 
@@ -59,7 +81,10 @@ export async function POST(request) {
       lead_id,
       razorpay_order_id: order.id,
       amount,
-      currency: "INR",
+      currency,
+      program_id: selectedProgram.id,
+      expected_amount: amount,
+      expected_currency: currency,
       status: "created",
     });
 
@@ -73,7 +98,11 @@ export async function POST(request) {
 
     return NextResponse.json({
       success: true,
-      order,
+      order: {
+        id: order.id,
+        amount: order.amount,
+        currency: order.currency,
+      },
     });
   } catch (error) {
     console.error("Create order error:", error);

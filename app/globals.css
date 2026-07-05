@@ -1953,6 +1953,15 @@ h3 {
   box-shadow: 0 28px 70px rgba(17, 25, 27, 0.11);
 }
 
+.form-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .registration-form::before {
   content: "";
   position: absolute;
@@ -2099,6 +2108,10 @@ h3 {
   min-height: 76px;
   padding: 11px 13px;
   resize: vertical;
+}
+
+.contact-query-form textarea {
+  min-height: 132px;
 }
 
 .registration-form input:focus,

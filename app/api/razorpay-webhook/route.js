@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import crypto from "crypto";
+import { safeCompareHex } from "@/lib/security";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
 
 export async function POST(request) {
@@ -20,7 +21,7 @@ export async function POST(request) {
       .update(rawBody)
       .digest("hex");
 
-    if (expectedSignature !== razorpaySignature) {
+    if (!safeCompareHex(expectedSignature, razorpaySignature)) {
       return NextResponse.json(
         { success: false, message: "Invalid webhook signature." },
         { status: 400 }
@@ -47,23 +48,42 @@ export async function POST(request) {
     if (eventType === "payment.captured" || eventType === "order.paid") {
       const { data: payment } = await supabaseAdmin
         .from("payments")
-        .update({
-          status: "success",
-          razorpay_payment_id: razorpayPaymentId,
-          updated_at: new Date().toISOString(),
-        })
+        .select("id, lead_id, razorpay_order_id, expected_amount, expected_currency, status")
         .eq("razorpay_order_id", razorpayOrderId)
-        .select()
         .single();
 
-      if (payment?.lead_id) {
-        await supabaseAdmin
-          .from("leads")
+      const paidAmount = paymentEntity?.amount ?? orderEntity?.amount_paid ?? orderEntity?.amount;
+      const paidCurrency = paymentEntity?.currency ?? orderEntity?.currency;
+      const eventOrderId = paymentEntity?.order_id || orderEntity?.id;
+      const isVerifiedEvent =
+        payment &&
+        eventOrderId === payment.razorpay_order_id &&
+        paidAmount === payment.expected_amount &&
+        paidCurrency === payment.expected_currency;
+
+      if (isVerifiedEvent) {
+        const { data: updatedPayment } = await supabaseAdmin
+          .from("payments")
           .update({
-            status: "paid",
-            payment_status: "success",
+            status: "success",
+            razorpay_payment_id: razorpayPaymentId || null,
+            amount: paidAmount,
+            currency: paidCurrency,
+            updated_at: new Date().toISOString(),
           })
-          .eq("id", payment.lead_id);
+          .eq("razorpay_order_id", razorpayOrderId)
+          .select()
+          .single();
+
+        if (updatedPayment?.lead_id) {
+          await supabaseAdmin
+            .from("leads")
+            .update({
+              status: "paid",
+              payment_status: "success",
+            })
+            .eq("id", updatedPayment.lead_id);
+        }
       }
     }
 

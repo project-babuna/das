@@ -16,7 +16,7 @@ const footerColumns = [
       { href: "/blog", label: "Insights" },
       { href: "/#for-you", label: "About" },
       { href: "/#faq", label: "FAQ" },
-      { href: "mailto:hello@dreamandscale.com", label: "Contact", metaEvent: "Contact" },
+      { href: "/contact", label: "Contact", metaEvent: "Contact" },
     ],
   },
   {
