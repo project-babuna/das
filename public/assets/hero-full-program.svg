@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Abstract self-paced learning system illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071614"/>
+      <stop offset=".52" stop-color="#092521"/>
+      <stop offset="1" stop-color="#1b2633"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity=".04"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g opacity=".55" fill="none" stroke="#d8ece7" stroke-width="2">
+    <path d="M850 215h360l160 160v250H850z" opacity=".24"/>
+    <path d="M1210 215v160h160" opacity=".28"/>
+    <path d="M920 330h230M920 384h350M920 438h310M920 492h250" opacity=".38"/>
+  </g>
+  <g transform="translate(840 250)">
+    <rect width="150" height="116" rx="20" fill="url(#card)" stroke="#fff" stroke-opacity=".16"/>
+    <rect x="190" y="0" width="150" height="116" rx="20" fill="url(#card)" stroke="#fff" stroke-opacity=".16"/>
+    <rect x="380" y="0" width="150" height="116" rx="20" fill="url(#card)" stroke="#fff" stroke-opacity=".16"/>
+    <rect x="95" y="170" width="150" height="116" rx="20" fill="url(#card)" stroke="#fff" stroke-opacity=".16"/>
+    <rect x="285" y="170" width="150" height="116" rx="20" fill="url(#card)" stroke="#fff" stroke-opacity=".16"/>
+    <path d="M150 58h40M340 58h40M245 228h40" stroke="#f3bd50" stroke-opacity=".75" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="75" cy="58" r="18" fill="#f3bd50"/>
+    <circle cx="265" cy="58" r="18" fill="#89c7c3"/>
+    <circle cx="455" cy="58" r="18" fill="#f3bd50" opacity=".75"/>
+    <circle cx="170" cy="228" r="18" fill="#89c7c3"/>
+    <circle cx="360" cy="228" r="18" fill="#f3bd50"/>
+  </g>
+</svg>

@@ -1,5 +1,6 @@
 export const programPages = {
   "clarity-session": {
+    heroTheme: "clarity",
     eyebrow: "₹199 live introduction",
     title: "Clarity Session",
     badge: "Best for first-time visitors",
@@ -38,6 +39,7 @@ export const programPages = {
     ],
   },
   "full-program": {
+    heroTheme: "full-program",
     eyebrow: "Self-paced core program",
     title: "DreamAndScale Full Program",
     badge: "Most Popular / Core Program",
@@ -82,6 +84,7 @@ export const programPages = {
     ],
   },
   "learn-with-mentorship": {
+    heroTheme: "mentorship",
     eyebrow: "Premium mentored path",
     title: "DreamAndScale Plus",
     badge: "Premium",

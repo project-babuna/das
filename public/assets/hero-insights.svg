@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Abstract business insights editorial illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071614"/>
+      <stop offset=".5" stop-color="#10201d"/>
+      <stop offset="1" stop-color="#2a2115"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g transform="translate(860 190)">
+    <rect width="430" height="520" rx="34" fill="#fff" fill-opacity=".08" stroke="#fff" stroke-opacity=".14"/>
+    <rect x="58" y="70" width="196" height="16" rx="8" fill="#f3bd50" fill-opacity=".82"/>
+    <rect x="58" y="126" width="304" height="11" rx="6" fill="#fff" fill-opacity=".32"/>
+    <rect x="58" y="162" width="248" height="11" rx="6" fill="#fff" fill-opacity=".22"/>
+    <rect x="58" y="236" width="86" height="122" rx="14" fill="#89c7c3" fill-opacity=".62"/>
+    <rect x="172" y="198" width="86" height="160" rx="14" fill="#f3bd50" fill-opacity=".68"/>
+    <rect x="286" y="152" width="86" height="206" rx="14" fill="#fff" fill-opacity=".16"/>
+    <path d="M58 424h314" stroke="#fff" stroke-opacity=".18" stroke-width="2"/>
+    <path d="M58 462h228" stroke="#fff" stroke-opacity=".24" stroke-width="10" stroke-linecap="round"/>
+  </g>
+</svg>

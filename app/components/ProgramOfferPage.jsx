@@ -7,7 +7,7 @@ export default function ProgramOfferPage({ page }) {
   return (
     <SiteFrame ctaHref={page.primaryHref} ctaLabel={page.primaryCta}>
       <main>
-        <section className="content-hero">
+        <section className={`content-hero program-hero program-hero-${page.heroTheme}`}>
           <div className="container content-hero-grid">
             <div>
               <p className="eyebrow">{page.eyebrow}</p>

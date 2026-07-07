@@ -1374,9 +1374,11 @@ h3 {
   overflow: hidden;
   padding: 144px 0 88px;
   color: var(--white);
-  background:
+  background-image:
     linear-gradient(90deg, rgba(8, 13, 14, 0.96), rgba(8, 13, 14, 0.72)),
-    url("/assets/business-system-hero.png") center / cover;
+    url("/assets/hero-full-program.svg");
+  background-position: center;
+  background-size: cover;
 }
 
 .course-hero-grid {
@@ -1576,9 +1578,11 @@ h3 {
 .policy-hero {
   padding: 148px 0 72px;
   color: var(--white);
-  background:
+  background-image:
     linear-gradient(90deg, rgba(8, 13, 14, 0.96), rgba(8, 13, 14, 0.7)),
-    url("/assets/business-system-hero.png") center / cover;
+    url("/assets/hero-policy.svg");
+  background-position: center;
+  background-size: cover;
 }
 
 .policy-hero-inner {
@@ -1662,9 +1666,29 @@ h3 {
 .content-hero {
   padding: 148px 0 86px;
   color: var(--white);
-  background:
+  background-image:
     linear-gradient(90deg, rgba(8, 13, 14, 0.96), rgba(8, 13, 14, 0.72)),
-    url("/assets/business-system-hero.png") center / cover;
+    url("/assets/hero-full-program.svg");
+  background-position: center;
+  background-size: cover;
+}
+
+.program-hero-clarity {
+  background-image:
+    linear-gradient(90deg, rgba(8, 13, 14, 0.96), rgba(8, 13, 14, 0.68)),
+    url("/assets/hero-clarity.svg");
+}
+
+.program-hero-full-program {
+  background-image:
+    linear-gradient(90deg, rgba(8, 13, 14, 0.96), rgba(8, 13, 14, 0.7)),
+    url("/assets/hero-full-program.svg");
+}
+
+.program-hero-mentorship {
+  background-image:
+    linear-gradient(90deg, rgba(8, 13, 14, 0.96), rgba(8, 13, 14, 0.68)),
+    url("/assets/hero-mentorship.svg");
 }
 
 .content-hero-grid {
@@ -2327,9 +2351,11 @@ h3 {
 
 .partner-hero {
   padding: 150px 0 80px;
-  background:
-    linear-gradient(90deg, rgba(8, 13, 14, 0.95), rgba(8, 13, 14, 0.78)),
-    url("/assets/business-system-hero.png") center / cover;
+  background-image:
+    linear-gradient(90deg, rgba(8, 13, 14, 0.95), rgba(8, 13, 14, 0.72)),
+    url("/assets/hero-partner.svg");
+  background-position: center;
+  background-size: cover;
   color: var(--white);
 }
 
@@ -2542,6 +2568,9 @@ h3 {
   min-height: 100vh;
   display: grid;
   align-items: center;
+  background-image:
+    linear-gradient(90deg, rgba(8, 13, 14, 0.95), rgba(8, 13, 14, 0.7)),
+    url("/assets/hero-status.svg");
 }
 
 .status-card {
@@ -2586,6 +2615,18 @@ h3 {
   border: 1px solid rgba(243, 189, 80, 0.3);
   background: rgba(243, 189, 80, 0.14);
   color: #f3bd50;
+}
+
+.blog-hero {
+  background-image:
+    linear-gradient(90deg, rgba(8, 13, 14, 0.96), rgba(8, 13, 14, 0.68)),
+    url("/assets/hero-insights.svg");
+}
+
+.article-hero {
+  background-image:
+    linear-gradient(90deg, rgba(8, 13, 14, 0.96), rgba(8, 13, 14, 0.7)),
+    url("/assets/hero-article.svg");
 }
 
 .insights-hero-card {

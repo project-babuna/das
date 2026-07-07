@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Abstract knowledge partner collaboration illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071614"/>
+      <stop offset=".45" stop-color="#102522"/>
+      <stop offset="1" stop-color="#302312"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="2">
+    <circle cx="1130" cy="430" r="210"/>
+    <circle cx="1130" cy="430" r="122"/>
+    <path d="M1130 220v420M920 430h420"/>
+  </g>
+  <g>
+    <circle cx="1130" cy="430" r="40" fill="#f3bd50"/>
+    <circle cx="950" cy="430" r="30" fill="#89c7c3"/>
+    <circle cx="1310" cy="430" r="30" fill="#89c7c3"/>
+    <circle cx="1130" cy="250" r="30" fill="#fff" fill-opacity=".76"/>
+    <circle cx="1130" cy="610" r="30" fill="#fff" fill-opacity=".76"/>
+    <path d="M980 430h110M1170 430h110M1130 280v110M1130 470v110" stroke="#f3bd50" stroke-width="5" stroke-linecap="round"/>
+  </g>
+</svg>
