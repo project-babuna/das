@@ -4,6 +4,12 @@ import { isSupabaseConfigured, supabaseAdmin } from "@/lib/supabaseAdmin";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^[6-9]\d{9}$/;
+const ALLOWED_CATEGORIES = new Set([
+  "General enquiries",
+  "Program and mentorship support",
+  "Payment and registration help",
+  "Want to be a knowledge partner",
+]);
 const RATE_LIMIT = {
   limit: 20,
   windowMs: 60 * 1000,
@@ -36,13 +42,31 @@ function rateLimitError() {
 }
 
 async function insertQuery(payload) {
-  return supabaseAdmin
+  const queryWithCategory = await supabaseAdmin
     .from("queries")
     .insert({
       name: payload.name,
       email: payload.email || null,
       phone: payload.phone || null,
       question: payload.question,
+      help_category: payload.category,
+      source_page: payload.source_page || null,
+      status: "new",
+    })
+    .select()
+    .single();
+
+  if (!queryWithCategory.error) {
+    return queryWithCategory;
+  }
+
+  return supabaseAdmin
+    .from("queries")
+    .insert({
+      name: payload.name,
+      email: payload.email || null,
+      phone: payload.phone || null,
+      question: `Inquiry type: ${payload.category}\n\n${payload.question}`,
       source_page: payload.source_page || null,
       status: "new",
     })
@@ -68,6 +92,8 @@ export async function POST(request) {
     const email = cleanString(body?.email, 120);
     const phone = cleanPhone(body?.phone);
     const question = cleanString(body?.question || body?.message, 1500);
+    const rawCategory = cleanString(body?.category, 80);
+    const category = ALLOWED_CATEGORIES.has(rawCategory) ? rawCategory : "General enquiries";
     const source_page = cleanString(body?.source_page, 300);
 
     if (!name || !question) {
@@ -100,6 +126,7 @@ export async function POST(request) {
       name,
       email,
       phone,
+      category,
       question,
       source_page,
     });

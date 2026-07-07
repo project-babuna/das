@@ -1,12 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SiteFrame from "./SiteFrame";
+
+const inquiryOptions = [
+  "General enquiries",
+  "Program and mentorship support",
+  "Payment and registration help",
+  "Want to be a knowledge partner",
+];
 
 const initialForm = {
   name: "",
   email: "",
   phone: "",
+  category: inquiryOptions[0],
   question: "",
 };
 
@@ -17,12 +25,25 @@ const contactSignals = [
   "General enquiries",
   "Program and mentorship support",
   "Payment and registration help",
+  "Knowledge partner collaboration",
 ];
 
 export default function ContactQueryPage() {
   const [form, setForm] = useState(initialForm);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [notice, setNotice] = useState(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get("type");
+
+    if (type === "knowledge_partner") {
+      setForm((current) => ({
+        ...current,
+        category: "Want to be a knowledge partner",
+      }));
+    }
+  }, []);
 
   const updateField = (event) => {
     const { name, value } = event.target;
@@ -86,8 +107,9 @@ export default function ContactQueryPage() {
           name: form.name,
           email: form.email,
           phone: form.phone,
+          category: form.category,
           question: form.question,
-          source_page: window.location.pathname,
+          source_page: `${window.location.pathname}${window.location.search}`,
         }),
       });
       const data = await response.json();
@@ -193,6 +215,22 @@ export default function ContactQueryPage() {
                 <small className="contact-field-hint">
                   Share either your phone number or email so we can respond.
                 </small>
+              </label>
+
+              <label>
+                <span>What can we help with? *</span>
+                <select
+                  name="category"
+                  value={form.category}
+                  onChange={updateField}
+                  required
+                >
+                  {inquiryOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
               </label>
 
               <label>

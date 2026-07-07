@@ -44,6 +44,11 @@ const routes = [
     changeFrequency: "monthly",
     priority: 0.65,
   },
+  {
+    path: "/become-a-partner",
+    changeFrequency: "monthly",
+    priority: 0.65,
+  },
   ...blogRoutes.map((path) => ({
     path,
     changeFrequency: "monthly",

@@ -2253,6 +2253,7 @@ h3 {
 }
 
 .contact-form input,
+.contact-form select,
 .contact-form textarea {
   width: 100%;
   border: 1px solid rgba(12, 42, 38, 0.18);
@@ -2273,6 +2274,12 @@ h3 {
   padding: 0 13px;
 }
 
+.contact-form select {
+  min-height: 48px;
+  padding: 0 13px;
+  appearance: none;
+}
+
 .contact-form textarea {
   min-height: 150px;
   padding: 12px 13px;
@@ -2287,6 +2294,7 @@ h3 {
 }
 
 .contact-form input:focus,
+.contact-form select:focus,
 .contact-form textarea:focus {
   border-color: rgba(13, 106, 102, 0.52);
   background: var(--white);
@@ -2315,6 +2323,146 @@ h3 {
   color: var(--muted);
   font-size: 0.86rem;
   line-height: 1.5;
+}
+
+.partner-hero {
+  padding: 150px 0 80px;
+  background:
+    linear-gradient(90deg, rgba(8, 13, 14, 0.95), rgba(8, 13, 14, 0.78)),
+    url("/assets/business-system-hero.png") center / cover;
+  color: var(--white);
+}
+
+.partner-hero-inner {
+  max-width: 900px;
+}
+
+.partner-label {
+  width: fit-content;
+  margin: 0 0 22px;
+  padding: 7px 10px;
+  border: 1px solid rgba(243, 189, 80, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #f3bd50;
+  font-size: 0.72rem;
+  font-weight: 820;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.partner-hero h1 {
+  max-width: 860px;
+  margin-bottom: 22px;
+  font-size: clamp(2.7rem, 6vw, 5.6rem);
+  line-height: 0.95;
+}
+
+.partner-hero p:not(.partner-label) {
+  max-width: 760px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.65;
+}
+
+.partner-section {
+  background: var(--surface-clean);
+}
+
+.partner-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(320px, 0.68fr);
+  gap: clamp(34px, 6vw, 92px);
+  align-items: center;
+}
+
+.partner-copy h2,
+.partner-cta h2 {
+  max-width: 620px;
+  margin-bottom: 18px;
+  font-size: clamp(2rem, 3.6vw, 3.6rem);
+  line-height: 1;
+}
+
+.partner-copy p,
+.partner-cta p {
+  max-width: 680px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.03rem;
+  line-height: 1.7;
+}
+
+.partner-copy p + p,
+.partner-cta p + p {
+  margin-top: 14px;
+}
+
+.partner-card {
+  padding: clamp(24px, 4vw, 38px);
+  border: 1px solid rgba(12, 42, 38, 0.11);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: 0 24px 64px rgba(17, 25, 27, 0.09);
+}
+
+.partner-card span {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--teal-dark);
+  font-size: 0.78rem;
+  font-weight: 840;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.partner-card ul {
+  display: grid;
+  gap: 13px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.partner-card li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 11px;
+  align-items: start;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 720;
+  line-height: 1.45;
+}
+
+.partner-card li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: var(--brand-gold);
+}
+
+.partner-cta-section {
+  background: var(--surface-muted);
+}
+
+.partner-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(24px, 5vw, 72px);
+  padding: clamp(26px, 4vw, 44px);
+  border: 1px solid rgba(12, 42, 38, 0.1);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+}
+
+.partner-cta .btn {
+  flex: 0 0 auto;
 }
 
 .registration-form input:focus,
@@ -3233,6 +3381,7 @@ h3 {
   .content-two-column,
   .registration-layout,
   .contact-page-layout,
+  .partner-layout,
   .content-feature {
     grid-template-columns: 1fr;
   }
@@ -3244,6 +3393,11 @@ h3 {
   .contact-form {
     justify-self: stretch;
     width: 100%;
+  }
+
+  .partner-cta {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .entry-grid {
@@ -3367,6 +3521,14 @@ h3 {
 
   .contact-page-intro h2 {
     font-size: clamp(2.05rem, 10vw, 3.05rem);
+  }
+
+  .partner-hero {
+    padding: 112px 0 58px;
+  }
+
+  .partner-hero h1 {
+    font-size: clamp(2.35rem, 12vw, 3.45rem);
   }
 
   .contact-form-grid {
