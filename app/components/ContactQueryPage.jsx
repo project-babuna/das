@@ -111,13 +111,16 @@ export default function ContactQueryPage() {
     }
   };
 
+  const hasEmail = Boolean(form.email.trim());
+  const hasPhone = Boolean(form.phone.trim());
+
   return (
     <SiteFrame>
       <main>
-        <section className="section registration-section registration-section-compact">
-          <div className="container registration-layout contact-layout">
-            <div className="section-kicker">
-              <p className="eyebrow dark">Contact DreamAndScale</p>
+        <section className="section contact-page-section">
+          <div className="container contact-page-layout">
+            <div className="contact-page-intro">
+              <p className="contact-label">Contact DreamAndScale</p>
               <h2>Get in touch with DreamAndScale</h2>
               <p>
                 Have a question, request, collaboration idea, payment issue, or need help choosing
@@ -129,49 +132,53 @@ export default function ContactQueryPage() {
               <p>
                 Please include your phone or email so we can contact you.
               </p>
-              <div className="registration-assurance" aria-label="Contact assurances">
+              <div className="contact-support-list" aria-label="Contact support areas">
                 {contactSignals.map((item) => (
                   <span key={item}>{item}</span>
                 ))}
               </div>
             </div>
 
-            <form className="registration-form contact-query-form" onSubmit={handleSubmit}>
-              <div className="registration-form-header registration-form-full">
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <div className="contact-form-header">
                 <span>CONTACT DREAMANDSCALE</span>
                 <strong>Send your message</strong>
               </div>
 
-              <label>
-                <span>Name *</span>
-                <input
-                  name="name"
-                  type="text"
-                  value={form.name}
-                  onChange={updateField}
-                  autoComplete="name"
-                  required
-                />
-              </label>
+              <div className="contact-form-grid">
+                <label>
+                  <span>Name *</span>
+                  <input
+                    name="name"
+                    type="text"
+                    value={form.name}
+                    onChange={updateField}
+                    autoComplete="name"
+                    required
+                  />
+                </label>
+
+                <label>
+                  <span>Phone {!hasEmail ? "*" : ""}</span>
+                  <input
+                    name="phone"
+                    type="tel"
+                    value={form.phone}
+                    onChange={updateField}
+                    autoComplete="tel"
+                    inputMode="numeric"
+                    minLength="10"
+                    maxLength="10"
+                    pattern="[6-9][0-9]{9}"
+                    placeholder="10-digit mobile number"
+                    required={!hasEmail}
+                    aria-required={!hasEmail}
+                  />
+                </label>
+              </div>
 
               <label>
-                <span>Phone</span>
-                <input
-                  name="phone"
-                  type="tel"
-                  value={form.phone}
-                  onChange={updateField}
-                  autoComplete="tel"
-                  inputMode="numeric"
-                  minLength="10"
-                  maxLength="10"
-                  pattern="[6-9][0-9]{9}"
-                  placeholder="10-digit mobile number"
-                />
-              </label>
-
-              <label className="registration-form-full">
-                <span>Email</span>
+                <span>Email {!hasPhone ? "*" : ""}</span>
                 <input
                   name="email"
                   type="email"
@@ -180,10 +187,15 @@ export default function ContactQueryPage() {
                   autoComplete="email"
                   inputMode="email"
                   placeholder="you@example.com"
+                  required={!hasPhone}
+                  aria-required={!hasPhone}
                 />
+                <small className="contact-field-hint">
+                  Share either your phone number or email so we can respond.
+                </small>
               </label>
 
-              <label className="registration-form-full">
+              <label>
                 <span>Your message *</span>
                 <textarea
                   name="question"
@@ -200,7 +212,7 @@ export default function ContactQueryPage() {
               ) : null}
 
               <button
-                className="btn registration-submit registration-submit-blue"
+                className="btn contact-submit"
                 type="submit"
                 disabled={isSubmitting}
                 data-meta-event="Contact"
@@ -208,7 +220,7 @@ export default function ContactQueryPage() {
                 {isSubmitting ? "Sending..." : "Send Message"}
               </button>
 
-              <p className="registration-payment-note registration-form-full">
+              <p className="contact-form-note">
                 For payment or registration-related help, include your registered phone number.
               </p>
             </form>
