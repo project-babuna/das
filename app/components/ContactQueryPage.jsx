@@ -15,11 +15,14 @@ const initialForm = {
   email: "",
   phone: "",
   category: inquiryOptions[0],
+  linkedin_profile: "",
   question: "",
 };
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phonePattern = /^[6-9]\d{9}$/;
+const linkedinPattern = /^https:\/\/(www\.)?linkedin\.com\/.+/i;
+const knowledgePartnerCategory = "Want to be a knowledge partner";
 
 const contactSignals = [
   "General enquiries",
@@ -40,7 +43,7 @@ export default function ContactQueryPage() {
     if (type === "knowledge_partner") {
       setForm((current) => ({
         ...current,
-        category: "Want to be a knowledge partner",
+        category: knowledgePartnerCategory,
       }));
     }
   }, []);
@@ -56,7 +59,9 @@ export default function ContactQueryPage() {
     const cleanName = form.name.trim();
     const cleanEmail = form.email.trim();
     const cleanPhone = form.phone.trim();
+    const cleanLinkedinProfile = form.linkedin_profile.trim();
     const cleanQuestion = form.question.trim();
+    const isKnowledgePartner = form.category === knowledgePartnerCategory;
 
     if (!cleanName) {
       return "Please enter your name.";
@@ -76,6 +81,14 @@ export default function ContactQueryPage() {
 
     if (cleanPhone && !phonePattern.test(cleanPhone)) {
       return "Please enter a valid 10-digit Indian mobile number.";
+    }
+
+    if (isKnowledgePartner && !cleanLinkedinProfile) {
+      return "Please add your LinkedIn profile link.";
+    }
+
+    if (isKnowledgePartner && !linkedinPattern.test(cleanLinkedinProfile)) {
+      return "Please enter a valid LinkedIn profile link starting with https://linkedin.com/ or https://www.linkedin.com/.";
     }
 
     return null;
@@ -108,6 +121,7 @@ export default function ContactQueryPage() {
           email: form.email,
           phone: form.phone,
           category: form.category,
+          linkedin_profile: form.linkedin_profile,
           question: form.question,
           source_page: `${window.location.pathname}${window.location.search}`,
         }),
@@ -232,6 +246,22 @@ export default function ContactQueryPage() {
                   ))}
                 </select>
               </label>
+
+              {form.category === knowledgePartnerCategory ? (
+                <label>
+                  <span>LinkedIn profile *</span>
+                  <input
+                    name="linkedin_profile"
+                    type="url"
+                    value={form.linkedin_profile}
+                    onChange={updateField}
+                    autoComplete="url"
+                    inputMode="url"
+                    placeholder="https://www.linkedin.com/in/your-profile"
+                    required
+                  />
+                </label>
+              ) : null}
 
               <label>
                 <span>Your message *</span>

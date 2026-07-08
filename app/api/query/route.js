@@ -4,11 +4,13 @@ import { isSupabaseConfigured, supabaseAdmin } from "@/lib/supabaseAdmin";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^[6-9]\d{9}$/;
+const LINKEDIN_PATTERN = /^https:\/\/(www\.)?linkedin\.com\/.+/i;
+const KNOWLEDGE_PARTNER_CATEGORY = "Want to be a knowledge partner";
 const ALLOWED_CATEGORIES = new Set([
   "General enquiries",
   "Program and mentorship support",
   "Payment and registration help",
-  "Want to be a knowledge partner",
+  KNOWLEDGE_PARTNER_CATEGORY,
 ]);
 const RATE_LIMIT = {
   limit: 20,
@@ -66,7 +68,7 @@ async function insertQuery(payload) {
       name: payload.name,
       email: payload.email || null,
       phone: payload.phone || null,
-      question: `Inquiry type: ${payload.category}\n\n${payload.question}`,
+      question: payload.question,
       source_page: payload.source_page || null,
       status: "new",
     })
@@ -92,9 +94,11 @@ export async function POST(request) {
     const email = cleanString(body?.email, 120);
     const phone = cleanPhone(body?.phone);
     const question = cleanString(body?.question || body?.message, 1500);
+    const linkedin_profile = cleanString(body?.linkedin_profile, 300);
     const rawCategory = cleanString(body?.category, 80);
     const category = ALLOWED_CATEGORIES.has(rawCategory) ? rawCategory : "General enquiries";
     const source_page = cleanString(body?.source_page, 300);
+    const isKnowledgePartner = category === KNOWLEDGE_PARTNER_CATEGORY;
 
     if (!name || !question) {
       return validationError();
@@ -112,6 +116,14 @@ export async function POST(request) {
       return validationError();
     }
 
+    if (isKnowledgePartner && !linkedin_profile) {
+      return validationError();
+    }
+
+    if (isKnowledgePartner && !LINKEDIN_PATTERN.test(linkedin_profile)) {
+      return validationError();
+    }
+
     if (!isSupabaseConfigured()) {
       return NextResponse.json(
         {
@@ -122,12 +134,20 @@ export async function POST(request) {
       );
     }
 
+    const enrichedQuestion = [
+      `Inquiry type: ${category}`,
+      isKnowledgePartner ? `LinkedIn profile: ${linkedin_profile}` : null,
+      question,
+    ]
+      .filter(Boolean)
+      .join("\n\n");
+
     const { data, error } = await insertQuery({
       name,
       email,
       phone,
       category,
-      question,
+      question: enrichedQuestion,
       source_page,
     });
 
