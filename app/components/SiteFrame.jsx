@@ -9,6 +9,7 @@ const navItems = [
   { href: "/clarity-session", label: "Clarity Session" },
   { href: "/full-program", label: "Full Program" },
   { href: "/learn-with-mentorship", label: "Mentorship" },
+  { href: "/#business-assessment", label: "Assessment" },
   { href: "/blog", label: "Insights" },
   { href: "/#faq", label: "FAQ" },
 ];
