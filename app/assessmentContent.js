@@ -9,31 +9,32 @@ export const assessmentCategories = [
     id: "customer_clarity",
     title: "Customer Clarity",
     label: "customer clarity",
-    description: "Do they know who will pay?",
+    description: "Do you know who will pay and why?",
   },
   {
     id: "market_understanding",
     title: "Market Understanding",
     label: "market understanding",
-    description: "Do they understand demand, competition, and alternatives?",
+    description: "Do you understand demand, competition, and available alternatives?",
   },
   {
     id: "business_model",
     title: "Business Model",
-    label: "business model",
-    description: "Do they know how money will be made?",
+    label: "money model",
+    description: "Do you know how the business will make money?",
   },
   {
     id: "execution_readiness",
     title: "Execution Readiness",
     label: "execution readiness",
-    description: "Can they take practical next steps?",
+    description: "Do you know the practical next steps?",
   },
   {
     id: "structure_growth",
     title: "Structure, Finance & Growth",
     label: "structure, finance, and growth",
-    description: "Do they understand company, co-founder, finance, and scaling decisions?",
+    description:
+      "Do you understand company structure, co-founders, finance, funding, and scaling decisions?",
   },
 ];
 

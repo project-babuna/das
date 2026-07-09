@@ -93,7 +93,7 @@ export default function Home() {
           <a href="/learn-with-mentorship" onClick={closeNav}>
             Mentorship
           </a>
-          <a href="#business-assessment" onClick={closeNav}>
+          <a href="/business-readiness-assessment" onClick={closeNav}>
             Assessment
           </a>
           <a href="/blog" onClick={closeNav}>

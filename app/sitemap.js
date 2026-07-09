@@ -25,6 +25,11 @@ const routes = [
     priority: 0.85,
   },
   {
+    path: "/business-readiness-assessment",
+    changeFrequency: "monthly",
+    priority: 0.85,
+  },
+  {
     path: "/full-program",
     changeFrequency: "monthly",
     priority: 0.9,
