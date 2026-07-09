@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import BrandLogo from "./components/BrandLogo";
+import BusinessAssessmentTool from "./components/BusinessAssessmentTool";
 import SiteFooter from "./components/SiteFooter";
 import { faqItems } from "./faqContent";
 
@@ -91,6 +92,9 @@ export default function Home() {
           </a>
           <a href="/learn-with-mentorship" onClick={closeNav}>
             Mentorship
+          </a>
+          <a href="/business-readiness-assessment" onClick={closeNav}>
+            Assessment
           </a>
           <a href="/blog" onClick={closeNav}>
             Insights
@@ -212,6 +216,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <BusinessAssessmentTool />
 
         <section className="section start-section" id="clarity">
           <div className="container">

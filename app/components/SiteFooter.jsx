@@ -14,6 +14,7 @@ const footerColumns = [
     title: "Explore",
     links: [
       { href: "/blog", label: "Insights" },
+      { href: "/business-readiness-assessment", label: "Business Assessment" },
       { href: "/#for-you", label: "About" },
       { href: "/#faq", label: "FAQ" },
       { href: "/become-a-partner", label: "Become a partner" },
