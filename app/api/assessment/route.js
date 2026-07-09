@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
-import { assessmentQuestions, getAssessmentOption, scoreAssessment } from "@/app/assessmentContent";
+import {
+  assessmentQuestionBank,
+  getAssessmentOption,
+  getAssessmentQuestion,
+  scoreAssessment,
+} from "@/app/assessmentContent";
 import { getClientIp, rateLimit } from "@/lib/rateLimit";
 import { isSupabaseConfigured, supabaseAdmin } from "@/lib/supabaseAdmin";
 
@@ -42,15 +47,29 @@ function cleanAnswers(rawAnswers) {
   }
 
   const answers = {};
+  const seenTopics = new Set();
+  const answerEntries = Object.entries(rawAnswers);
 
-  for (const question of assessmentQuestions) {
-    const value = Number(rawAnswers[question.id]);
+  if (answerEntries.length !== assessmentQuestionBank.length) {
+    return null;
+  }
 
-    if (!Number.isFinite(value) || value < 0 || value > 3) {
+  for (const [questionId, value] of answerEntries) {
+    const question = getAssessmentQuestion(questionId);
+    const option = getAssessmentOption(questionId, value);
+
+    if (!question || !option || seenTopics.has(question.topicId)) {
       return null;
     }
 
-    answers[question.id] = value;
+    seenTopics.add(question.topicId);
+    answers[question.id] = option.id;
+  }
+
+  for (const topic of assessmentQuestionBank) {
+    if (!seenTopics.has(topic.id)) {
+      return null;
+    }
   }
 
   return answers;
@@ -60,21 +79,27 @@ function buildAssessmentMessage({ report, answers }) {
   const categoryLines = report.categoryScores
     .map((category) => `- ${category.title}: ${category.percentage}%`)
     .join("\n");
-  const answerLines = assessmentQuestions
-    .map((question) => {
-      const selectedOption = getAssessmentOption(question.id, answers[question.id]);
-      const answerText = selectedOption
-        ? `${selectedOption.letter}. ${selectedOption.label}`
-        : `Answer score: ${answers[question.id]}`;
+  const answerLines = assessmentQuestionBank
+    .map((topic) => {
+      const questionId = Object.keys(answers).find((answerId) => answerId.startsWith(`${topic.id}:`));
+      const question = getAssessmentQuestion(questionId);
+
+      if (!question) {
+        return null;
+      }
+
+      const selectedOption = getAssessmentOption(questionId, answers[questionId]);
+      const answerText = selectedOption ? selectedOption.label : `Answer score: ${answers[question.id]}`;
 
       return `- ${question.question}\n  ${answerText}`;
     })
+    .filter(Boolean)
     .join("\n");
 
   return [
     "Business Readiness Assessment completed.",
     "",
-    `Overall score: ${report.percentage}%`,
+    `Overall score: ${report.earned}/${report.max} (${report.percentage}%)`,
     `Readiness level: ${report.level}`,
     `Biggest clarity gap: ${report.weakestCategory?.title || "Not available"}`,
     "",
@@ -83,6 +108,9 @@ function buildAssessmentMessage({ report, answers }) {
     "",
     "Summary:",
     report.summary,
+    "",
+    "Important note:",
+    report.note,
     "",
     "Recommended next step: Book the ₹199 Business Clarity Session.",
     "",
