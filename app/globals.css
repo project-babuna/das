@@ -1349,12 +1349,14 @@ h3 {
   z-index: 1;
   display: grid;
   width: min(100%, 860px);
-  gap: 22px;
-  padding: clamp(22px, 4vw, 34px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  gap: 20px;
+  padding: clamp(20px, 3.4vw, 30px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 8px;
-  background: var(--paper-2);
-  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.32);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(246, 249, 247, 0.96)),
+    var(--paper-2);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.3);
 }
 
 body.assessment-open {
@@ -1374,8 +1376,10 @@ body.assessment-open {
   position: absolute;
   inset: 0;
   border: 0;
-  background: rgba(4, 18, 16, 0.72);
-  backdrop-filter: blur(12px);
+  background:
+    radial-gradient(circle at 20% 12%, rgba(201, 154, 46, 0.12), transparent 32%),
+    rgba(4, 18, 16, 0.76);
+  backdrop-filter: blur(14px);
   cursor: pointer;
 }
 
@@ -1395,8 +1399,8 @@ body.assessment-open {
 .assessment-dialog-header h2 {
   margin: 6px 0 0;
   color: var(--ink);
-  font-size: clamp(1.5rem, 3.4vw, 2.8rem);
-  line-height: 1.05;
+  font-size: clamp(1.35rem, 2.8vw, 2.25rem);
+  line-height: 1.08;
 }
 
 .assessment-dialog-header button {
@@ -1418,16 +1422,16 @@ body.assessment-open {
   gap: 8px 14px;
   align-items: center;
   color: var(--muted);
-  font-size: 0.82rem;
-  font-weight: 820;
+  font-size: 0.78rem;
+  font-weight: 780;
 }
 
 .assessment-progress > div {
   grid-column: 1 / -1;
-  height: 8px;
+  height: 7px;
   overflow: hidden;
   border-radius: 999px;
-  background: rgba(7, 63, 59, 0.1);
+  background: rgba(7, 63, 59, 0.08);
 }
 
 .assessment-progress i {
@@ -1442,12 +1446,12 @@ body.assessment-open {
 .assessment-lead-form,
 .assessment-result {
   display: grid;
-  gap: 22px;
-  padding: clamp(20px, 3vw, 30px);
-  border: 1px solid var(--line);
+  gap: 20px;
+  padding: clamp(18px, 2.8vw, 28px);
+  border: 1px solid rgba(17, 25, 27, 0.09);
   border-radius: 8px;
-  background: var(--white);
-  box-shadow: var(--shadow-soft);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 16px 48px rgba(17, 25, 27, 0.08);
 }
 
 .assessment-question-panel h3,
@@ -1455,8 +1459,9 @@ body.assessment-open {
 .assessment-report-copy h3 {
   margin: 0;
   color: var(--ink);
-  font-size: clamp(1.35rem, 2.6vw, 2.2rem);
-  line-height: 1.12;
+  font-size: clamp(1.08rem, 1.85vw, 1.55rem);
+  font-weight: 680;
+  line-height: 1.28;
 }
 
 .assessment-lead-form p,
@@ -1471,19 +1476,19 @@ body.assessment-open {
 .assessment-options {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
+  gap: 9px;
 }
 
 .assessment-options button {
   display: grid;
-  grid-template-columns: 34px 1fr;
+  grid-template-columns: 30px 1fr;
   gap: 12px;
   align-items: center;
-  min-height: 58px;
-  border: 1px solid var(--line);
+  min-height: 54px;
+  border: 1px solid rgba(17, 25, 27, 0.1);
   border-radius: 8px;
-  padding: 12px 14px;
-  background: var(--surface-clean);
+  padding: 11px 13px;
+  background: rgba(250, 249, 245, 0.86);
   color: var(--ink-2);
   cursor: pointer;
   text-align: left;
@@ -1496,27 +1501,27 @@ body.assessment-open {
 
 .assessment-options button strong {
   display: grid;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   place-items: center;
   border-radius: 8px;
-  background: rgba(7, 63, 59, 0.1);
+  background: rgba(7, 63, 59, 0.08);
   color: var(--teal-dark);
-  font-size: 0.82rem;
-  font-weight: 940;
+  font-size: 0.76rem;
+  font-weight: 820;
 }
 
 .assessment-options button span {
-  font-size: 0.98rem;
-  font-weight: 780;
-  line-height: 1.42;
+  font-size: 0.94rem;
+  font-weight: 620;
+  line-height: 1.45;
 }
 
 .assessment-options button:hover,
 .assessment-options button.selected {
-  border-color: rgba(7, 63, 59, 0.45);
-  background: rgba(13, 106, 102, 0.08);
-  box-shadow: 0 0 0 4px rgba(13, 106, 102, 0.08);
+  border-color: rgba(7, 63, 59, 0.36);
+  background: rgba(13, 106, 102, 0.065);
+  box-shadow: 0 0 0 3px rgba(13, 106, 102, 0.07);
   transform: translateY(-1px);
 }
 

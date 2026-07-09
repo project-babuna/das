@@ -3,8 +3,8 @@
 import { useEffect, useMemo, useState } from "react";
 import {
   assessmentCategories,
-  assessmentQuestions,
   assessmentRoles,
+  createAssessmentSession,
   scoreAssessment,
 } from "../assessmentContent";
 
@@ -21,6 +21,7 @@ const phonePattern = /^[6-9]\d{9}$/;
 export default function BusinessAssessmentTool({ mode = "section" }) {
   const isPageMode = mode === "page";
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [sessionQuestions, setSessionQuestions] = useState(() => createAssessmentSession());
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState({});
   const [lead, setLead] = useState(initialLead);
@@ -28,13 +29,13 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
   const [notice, setNotice] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const totalQuestions = assessmentQuestions.length;
-  const currentQuestion = assessmentQuestions[step];
+  const totalQuestions = sessionQuestions.length;
+  const currentQuestion = sessionQuestions[step];
   const isQuestionStep = step < totalQuestions;
   const isLeadStep = step === totalQuestions && !result;
   const answeredCount = useMemo(
-    () => assessmentQuestions.filter((question) => answers[question.id] !== undefined).length,
-    [answers]
+    () => sessionQuestions.filter((question) => answers[question.id] !== undefined).length,
+    [answers, sessionQuestions]
   );
   const progress = result ? 100 : Math.round((Math.min(step, totalQuestions) / totalQuestions) * 100);
   const previewScore = useMemo(() => scoreAssessment(answers), [answers]);
@@ -67,7 +68,18 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isPageMode, isPopupOpen]);
 
-  const startAssessment = () => setIsPopupOpen(true);
+  const startAssessment = () => {
+    if (result) {
+      setStep(0);
+      setAnswers({});
+      setLead(initialLead);
+      setResult(null);
+      setNotice(null);
+      setSessionQuestions(createAssessmentSession());
+    }
+
+    setIsPopupOpen(true);
+  };
   const closeAssessment = () => setIsPopupOpen(false);
 
   const selectAnswer = (questionId, value) => {
@@ -308,7 +320,9 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
         <div className="assessment-result">
           <div className="assessment-score-card">
             <span>Your score</span>
-            <strong>{result.percentage}%</strong>
+            <strong>
+              {result.earned}/{result.max}
+            </strong>
             <p>{result.level}</p>
           </div>
           <div className="assessment-report-copy">
@@ -318,6 +332,7 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
               Your biggest clarity gap right now appears to be{" "}
               <strong>{result.weakestCategory?.label || "business clarity"}</strong>.
             </p>
+            {result.note ? <p>{result.note}</p> : null}
           </div>
           <div className="assessment-category-report" aria-label="Category report">
             {result.categoryScores?.map((category) => (
