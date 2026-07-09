@@ -33,7 +33,7 @@ const partnerContributions = [
 
 export default function BecomePartnerPage() {
   return (
-    <SiteFrame ctaHref="/contact?type=knowledge_partner" ctaLabel="Become a partner">
+    <SiteFrame ctaHref="/contact?type=knowledge_partner" ctaLabel="Become a Partner">
       <main>
         <section className="section partner-hero">
           <div className="container partner-hero-inner">

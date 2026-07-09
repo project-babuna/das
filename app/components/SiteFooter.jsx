@@ -13,11 +13,11 @@ const footerColumns = [
   {
     title: "Explore",
     links: [
-      { href: "/blog", label: "Insights" },
       { href: "/business-readiness-assessment", label: "Business Assessment" },
+      { href: "/blog", label: "Insights" },
       { href: "/#for-you", label: "About" },
       { href: "/#faq", label: "FAQ" },
-      { href: "/become-a-partner", label: "Become a partner" },
+      { href: "/become-a-partner", label: "Become a Partner" },
       { href: "/contact", label: "Contact", metaEvent: "Contact" },
     ],
   },
@@ -39,7 +39,7 @@ export default function SiteFooter() {
         <div className="footer-brand-line">
           <BrandLogo tone="light" compact />
           <p className="footer-brand-copy">
-            Build Business Clarity Before You Build A Business.
+            Build Business Clarity Before You Build a Business.
             <br />
             Helping aspiring founders understand how businesses actually work.
           </p>

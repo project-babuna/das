@@ -3,7 +3,7 @@ export const assessmentCategories = [
     id: "idea_clarity",
     title: "Idea Clarity",
     label: "idea clarity",
-    description: "Do they know what problem they want to solve?",
+    description: "Do you know what problem you want to solve?",
   },
   {
     id: "customer_clarity",
