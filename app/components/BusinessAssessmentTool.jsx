@@ -214,59 +214,59 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
 
         const contentX = 550;
         const contentWidth = 880;
-        const categoryGap = 12;
-        const categoryCardHeight = 38;
+        const categoryGap = 8;
+        const categoryCardHeight = 34;
 
         context.fillStyle = "#65706d";
-        context.font = "500 24px Arial, sans-serif";
-        context.fillText("Prepared for", contentX, 220);
+        context.font = "500 22px Arial, sans-serif";
+        context.fillText("Prepared for", contentX, 198);
         context.fillStyle = "#10191b";
         context.font =
           resultOwnerName.length > 32
-            ? "800 42px Arial, sans-serif"
+            ? "800 38px Arial, sans-serif"
             : resultOwnerName.length > 22
-              ? "800 50px Arial, sans-serif"
-              : "800 62px Arial, sans-serif";
-        const nameEndY = wrapCanvasText(context, resultOwnerName, contentX, 278, 780, 62);
+              ? "800 46px Arial, sans-serif"
+              : "800 54px Arial, sans-serif";
+        const nameEndY = wrapCanvasText(context, resultOwnerName, contentX, 262, 780, 56);
 
         context.fillStyle = "#65706d";
-        context.font = "400 23px Arial, sans-serif";
-        const summaryY = Math.max(360, nameEndY + 14);
+        context.font = "400 21px Arial, sans-serif";
+        const summaryY = Math.max(334, nameEndY + 8);
         const summaryEndY = wrapCanvasText(
           context,
           "This scorecard summarizes your current business clarity based on your assessment responses.",
           contentX,
           summaryY,
           760,
-          34
+          30
         );
 
-        const focusY = Math.max(438, summaryEndY + 18);
-        const focusHeight = 136;
-        fillRoundedRect(contentX, focusY, contentWidth, focusHeight, 18, "#f7f1e4");
-        strokeRoundedRect(contentX, focusY, contentWidth, focusHeight, 18, "rgba(201, 154, 46, 0.22)", 1);
+        const focusY = Math.max(408, summaryEndY + 14);
+        const focusHeight = 112;
+        fillRoundedRect(contentX, focusY, contentWidth, focusHeight, 16, "#f7f1e4");
+        strokeRoundedRect(contentX, focusY, contentWidth, focusHeight, 16, "rgba(201, 154, 46, 0.22)", 1);
         context.fillStyle = "#0b302d";
-        context.font = "800 22px Arial, sans-serif";
-        context.fillText("Focus Areas", 584, focusY + 44);
+        context.font = "800 20px Arial, sans-serif";
+        context.fillText("Focus Areas", 584, focusY + 36);
         context.fillStyle = "#65706d";
-        context.font = "400 20px Arial, sans-serif";
-        wrapCanvasText(context, resultFocusText, 584, focusY + 82, 805, 28);
+        context.font = "400 19px Arial, sans-serif";
+        wrapCanvasText(context, resultFocusText, 584, focusY + 68, 805, 25);
 
         context.fillStyle = "#10191b";
-        context.font = "800 24px Arial, sans-serif";
-        const snapshotTitleY = focusY + focusHeight + 32;
+        context.font = "800 22px Arial, sans-serif";
+        const snapshotTitleY = focusY + focusHeight + 28;
         context.fillText("Category Snapshot", contentX, snapshotTitleY);
 
         result.categoryScores?.forEach((category, index) => {
           const column = index % 2;
           const row = Math.floor(index / 2);
           const cardX = column === 0 ? contentX : 1000;
-          const cardY = snapshotTitleY + 22 + row * (categoryCardHeight + categoryGap);
+          const cardY = snapshotTitleY + 20 + row * (categoryCardHeight + categoryGap);
           const cardWidth = 410;
           const cardHeight = categoryCardHeight;
 
-          fillRoundedRect(cardX, cardY, cardWidth, cardHeight, 12, "rgba(255, 255, 255, 0.82)");
-          strokeRoundedRect(cardX, cardY, cardWidth, cardHeight, 12, "rgba(17, 25, 27, 0.08)", 1);
+          fillRoundedRect(cardX, cardY, cardWidth, cardHeight, 10, "rgba(255, 255, 255, 0.82)");
+          strokeRoundedRect(cardX, cardY, cardWidth, cardHeight, 10, "rgba(17, 25, 27, 0.08)", 1);
 
           context.font = "800 15px Arial, sans-serif";
           const pillWidth = context.measureText(category.rating).width + 34;
@@ -274,29 +274,29 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
 
           context.save();
           context.beginPath();
-          context.rect(cardX + 18, cardY + 6, pillX - cardX - 32, cardHeight - 12);
+          context.rect(cardX + 18, cardY + 5, pillX - cardX - 32, cardHeight - 10);
           context.clip();
           context.fillStyle = "#10191b";
-          context.font = category.title.length > 26 ? "700 15px Arial, sans-serif" : "700 17px Arial, sans-serif";
-          context.fillText(category.title, cardX + 18, cardY + 25);
+          context.font = category.title.length > 26 ? "700 14px Arial, sans-serif" : "700 16px Arial, sans-serif";
+          context.fillText(category.title, cardX + 18, cardY + 23);
           context.restore();
 
-          fillRoundedRect(pillX, cardY + 6, pillWidth, 26, 13, "#eaf0ec");
+          fillRoundedRect(pillX, cardY + 5, pillWidth, 24, 12, "#eaf0ec");
           context.fillStyle = "#0b302d";
-          context.font = "800 15px Arial, sans-serif";
-          context.fillText(category.rating, pillX + 17, cardY + 25);
+          context.font = "800 14px Arial, sans-serif";
+          context.fillText(category.rating, pillX + 17, cardY + 22);
         });
 
         context.fillStyle = "#65706d";
-        context.font = "400 16px Arial, sans-serif";
-        const footerY = Math.min(800, snapshotTitleY + 22 + 3 * (categoryCardHeight + categoryGap) + 24);
+        context.font = "400 15px Arial, sans-serif";
+        const footerY = Math.min(794, snapshotTitleY + 20 + 3 * (categoryCardHeight + categoryGap) + 22);
         context.fillText(
           "This score is not a final judgment of business potential. It reflects current clarity based on assessment responses.",
           contentX,
           footerY
         );
         context.fillStyle = "#1f67b1";
-        context.font = "600 17px Arial, sans-serif";
+        context.font = "600 16px Arial, sans-serif";
         const urlText = "www.dreamandscale.com/business-readiness-assessment";
         context.fillText(urlText, contentX, footerY + 26);
         context.fillRect(contentX, footerY + 31, context.measureText(urlText).width, 1.5);
