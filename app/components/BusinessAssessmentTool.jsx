@@ -40,6 +40,15 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
   const progress = result ? 100 : Math.round((Math.min(step, totalQuestions) / totalQuestions) * 100);
   const previewScore = useMemo(() => scoreAssessment(answers), [answers]);
   const leadFirstName = lead.name.trim().split(/\s+/)[0] || "";
+  const formatCategoryList = (categories = []) => {
+    const labels = categories.map((category) => category.title);
+
+    if (labels.length <= 1) {
+      return labels[0] || "business clarity";
+    }
+
+    return `${labels.slice(0, -1).join(", ")} and ${labels[labels.length - 1]}`;
+  };
 
   useEffect(() => {
     if (!isPageMode) {
@@ -325,10 +334,10 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
               {leadFirstName ? `${leadFirstName}, your readiness level is ${result.level}` : result.level}
             </h3>
             <p>{result.summary}</p>
-            {result.weakestCategory ? (
+            {result.focusCategories?.length ? (
               <p>
-                The area that may need the most clarity right now is{" "}
-                <strong>{result.weakestCategory.label}</strong>.
+                The areas that may need more clarity right now are{" "}
+                <strong>{formatCategoryList(result.focusCategories)}</strong>.
               </p>
             ) : (
               <p>
@@ -361,7 +370,7 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
               data-meta-value="199"
               data-meta-currency="INR"
             >
-              Book ₹199 Clarity Session
+              Book ₹199 Session
             </a>
           </div>
         </div>

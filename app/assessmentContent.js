@@ -691,6 +691,9 @@ export function scoreAssessment(answerMap) {
     .filter((category) => category.max > 0)
     .sort((a, b) => a.percentage - b.percentage)[0];
   const weakestCategory = lowestCategory && lowestCategory.percentage < 75 ? lowestCategory : null;
+  const focusCategories = [...categoryScores]
+    .filter((category) => category.max > 0 && category.percentage < 75)
+    .sort((a, b) => a.percentage - b.percentage);
 
   let level = "Beginner Explorer";
   let scoreLabel = "Foundational";
@@ -723,6 +726,7 @@ export function scoreAssessment(answerMap) {
     note:
       "This score is not a final judgment of your business potential. It reflects your current clarity based on your answers.",
     weakestCategory,
+    focusCategories,
     categoryScores,
   };
 }
