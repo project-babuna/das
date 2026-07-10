@@ -319,36 +319,39 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
       {result ? (
         <div className="assessment-result">
           <div className="assessment-score-card">
-            <span>Your score</span>
-            <strong>
-              {result.earned}/{result.max}
-            </strong>
+            <span>Diagnostic read</span>
+            <strong>{result.scoreLabel || result.level}</strong>
             <p>{result.level}</p>
+            <small>{result.earned} readiness points</small>
           </div>
           <div className="assessment-report-copy">
             <h3>{result.level}</h3>
             <p>{result.summary}</p>
-            <p>
-              Your biggest clarity gap right now appears to be{" "}
-              <strong>{result.weakestCategory?.label || "business clarity"}</strong>.
-            </p>
+            {result.weakestCategory ? (
+              <p>
+                The area that may need the most clarity right now is{" "}
+                <strong>{result.weakestCategory.label}</strong>.
+              </p>
+            ) : (
+              <p>
+                No major clarity gap surfaced in this diagnostic. Your next step is to validate
+                assumptions with real customer evidence.
+              </p>
+            )}
             {result.note ? <p>{result.note}</p> : null}
           </div>
           <div className="assessment-category-report" aria-label="Category report">
             {result.categoryScores?.map((category) => (
               <article key={category.id}>
                 <span>{category.title}</span>
-                <div>
-                  <i style={{ width: `${category.percentage}%` }}></i>
-                </div>
-                <strong>{category.percentage}%</strong>
+                <strong>{category.rating}</strong>
               </article>
             ))}
           </div>
           <div className="assessment-recommendation">
             <p>
-              Recommended next step: book the ₹199 Business Clarity Session to review where you are
-              and what to clarify before taking bigger business risks.
+              Recommended next step: discuss your diagnostic in the ₹199 Business Clarity Session
+              and identify what to validate before taking bigger business risks.
             </p>
             <a
               className="btn btn-primary"
@@ -359,7 +362,7 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
               data-meta-value="199"
               data-meta-currency="INR"
             >
-              Book ₹199 Business Clarity Session
+              Book ₹199 Clarity Session
             </a>
           </div>
         </div>

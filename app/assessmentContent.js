@@ -642,6 +642,22 @@ export function getAssessmentOption(questionId, value) {
   return question.options.find((option) => option.id === value) || null;
 }
 
+function getDiagnosticRating(percentage) {
+  if (percentage >= 75) {
+    return "Strong";
+  }
+
+  if (percentage >= 55) {
+    return "Developing";
+  }
+
+  if (percentage >= 35) {
+    return "Needs Clarity";
+  }
+
+  return "Foundational";
+}
+
 export function scoreAssessment(answerMap) {
   const selectedQuestions = Object.keys(answerMap || {})
     .map((questionId) => getAssessmentQuestion(questionId))
@@ -657,34 +673,42 @@ export function scoreAssessment(answerMap) {
     }, 0);
     const max = categoryQuestions.length * 3;
 
+    const percentage = max > 0 ? Math.round((earned / max) * 100) : 0;
+
     return {
       ...category,
       earned,
       max,
-      percentage: max > 0 ? Math.round((earned / max) * 100) : 0,
+      percentage,
+      rating: getDiagnosticRating(percentage),
     };
   });
 
   const earned = categoryScores.reduce((sum, item) => sum + item.earned, 0);
   const max = categoryScores.reduce((sum, item) => sum + item.max, 0);
   const percentage = max > 0 ? Math.round((earned / max) * 100) : 0;
-  const weakestCategory = [...categoryScores]
+  const lowestCategory = [...categoryScores]
     .filter((category) => category.max > 0)
     .sort((a, b) => a.percentage - b.percentage)[0];
+  const weakestCategory = lowestCategory && lowestCategory.percentage < 75 ? lowestCategory : null;
 
   let level = "Beginner Explorer";
+  let scoreLabel = "Foundational";
   let summary = "You are interested in business but need stronger foundational clarity.";
 
   if (earned >= 43) {
     level = "Business Ready";
+    scoreLabel = "Strong";
     summary =
       "You show strong business clarity, but you should still validate assumptions with real customer evidence before major investment.";
   } else if (earned >= 31) {
     level = "Serious Starter";
+    scoreLabel = "Developing";
     summary =
       "You understand many basics, but you need stronger validation, structure, and execution planning.";
   } else if (earned >= 16) {
     level = "Early Builder";
+    scoreLabel = "Emerging";
     summary =
       "You have direction, but important parts like customer, market, money model, or execution may still be unclear.";
   }
@@ -694,6 +718,7 @@ export function scoreAssessment(answerMap) {
     max,
     percentage,
     level,
+    scoreLabel,
     summary,
     note:
       "This score is not a final judgment of your business potential. It reflects your current clarity based on your answers.",
