@@ -76,6 +76,9 @@ function cleanAnswers(rawAnswers) {
 }
 
 function buildAssessmentMessage({ report, answers }) {
+  const focusAreaText = report.focusCategories?.length
+    ? report.focusCategories.map((category) => category.title).join(", ")
+    : "No major clarity gap surfaced in this diagnostic.";
   const categoryLines = report.categoryScores
     .map((category) => `- ${category.title}: ${category.rating} (${category.earned}/${category.max})`)
     .join("\n");
@@ -101,9 +104,7 @@ function buildAssessmentMessage({ report, answers }) {
     "",
     `Overall score: ${report.earned}/${report.max} (${report.percentage}%)`,
     `Readiness level: ${report.level}`,
-    report.weakestCategory
-      ? `Area needing most clarity: ${report.weakestCategory.title}`
-      : "Area needing most clarity: No major clarity gap surfaced in this diagnostic.",
+    `Areas needing more clarity: ${focusAreaText}`,
     "",
     "Category scores:",
     categoryLines,

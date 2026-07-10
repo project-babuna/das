@@ -1592,16 +1592,17 @@ body.assessment-open {
 }
 
 .assessment-result {
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 250px minmax(0, 1fr);
   align-items: start;
+  gap: 24px;
 }
 
 .assessment-score-card {
   display: grid;
-  gap: 8px;
-  min-height: 190px;
+  gap: 9px;
+  min-height: 176px;
   align-content: center;
-  padding: 22px;
+  padding: 20px;
   border-radius: 8px;
   background:
     linear-gradient(145deg, rgba(13, 106, 102, 0.24), rgba(255, 255, 255, 0.04)),
@@ -1612,16 +1613,18 @@ body.assessment-open {
 
 .assessment-score-card span {
   color: rgba(255, 255, 255, 0.68);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 860;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .assessment-score-card strong {
   color: #f3bd50;
-  font-size: clamp(2.25rem, 5vw, 3.4rem);
-  line-height: 0.95;
+  max-width: 100%;
+  font-size: clamp(1.9rem, 3.4vw, 2.65rem);
+  line-height: 1;
+  overflow-wrap: anywhere;
 }
 
 .assessment-score-card p {
@@ -1633,7 +1636,7 @@ body.assessment-open {
 
 .assessment-score-card small {
   color: rgba(255, 255, 255, 0.62);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 780;
 }
 
@@ -1675,15 +1678,25 @@ body.assessment-open {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding-top: 18px;
+  gap: 24px;
+  padding-top: 20px;
   border-top: 1px solid var(--line);
 }
 
 .assessment-recommendation p {
-  max-width: 520px;
+  max-width: 680px;
   color: var(--ink-2);
-  font-weight: 760;
+  font-size: clamp(1rem, 1.35vw, 1.12rem);
+  font-weight: 720;
+  line-height: 1.55;
+}
+
+.assessment-recommendation .btn {
+  flex: 0 0 auto;
+  min-width: 178px;
+  min-height: 48px;
+  padding: 0 18px;
+  white-space: nowrap;
 }
 
 .section-heading {
