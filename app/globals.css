@@ -1396,8 +1396,18 @@ body.assessment-open {
   gap: 18px;
 }
 
+.assessment-modal-brand {
+  display: grid;
+  gap: 14px;
+}
+
+.assessment-modal-brand .brand-logo-mark,
+.assessment-certificate-brand .brand-logo-mark {
+  width: clamp(150px, 15vw, 190px);
+}
+
 .assessment-dialog-header h2 {
-  margin: 6px 0 0;
+  margin: 0;
   color: var(--ink);
   font-size: clamp(1.35rem, 2.8vw, 2.25rem);
   line-height: 1.08;
@@ -1595,6 +1605,31 @@ body.assessment-open {
   grid-template-columns: 250px minmax(0, 1fr);
   align-items: start;
   gap: 24px;
+  border-color: rgba(201, 154, 46, 0.24);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.96), rgba(250, 249, 245, 0.9)),
+    var(--white);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.72),
+    0 18px 54px rgba(17, 25, 27, 0.1);
+}
+
+.assessment-certificate-brand {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(201, 154, 46, 0.22);
+}
+
+.assessment-certificate-brand span {
+  color: var(--teal-dark);
+  font-size: 0.78rem;
+  font-weight: 880;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .assessment-score-card {
@@ -1671,6 +1706,30 @@ body.assessment-open {
   font-size: 0.76rem;
   font-weight: 850;
   text-align: center;
+}
+
+.assessment-certificate-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 2px;
+}
+
+.assessment-certificate-actions button {
+  min-height: 40px;
+  border: 1px solid rgba(7, 63, 59, 0.18);
+  border-radius: 8px;
+  padding: 0 14px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--teal-dark);
+  cursor: pointer;
+  font-size: 0.86rem;
+  font-weight: 820;
+}
+
+.assessment-certificate-actions button:hover {
+  background: rgba(7, 63, 59, 0.08);
 }
 
 .assessment-recommendation {
