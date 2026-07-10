@@ -140,9 +140,9 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
         strokeRoundedRect(44, 44, width - 88, height - 88, 28, "rgba(201, 154, 46, 0.36)", 3);
 
         fillRoundedRect(74, 74, 420, height - 148, 22, "#082c29");
-        context.fillStyle = "rgba(201, 154, 46, 0.18)";
+        context.fillStyle = "rgba(201, 154, 46, 0.1)";
         context.beginPath();
-        context.arc(372, 192, 180, 0, Math.PI * 2);
+        context.arc(424, 190, 155, 0, Math.PI * 2);
         context.fill();
         context.fillStyle = "rgba(255, 255, 255, 0.06)";
         context.beginPath();
@@ -203,43 +203,52 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
           38
         );
 
-        fillRoundedRect(550, 480, 880, 128, 18, "#f7f1e4");
-        strokeRoundedRect(550, 480, 880, 128, 18, "rgba(201, 154, 46, 0.22)", 1);
+        fillRoundedRect(550, 462, 880, 122, 18, "#f7f1e4");
+        strokeRoundedRect(550, 462, 880, 122, 18, "rgba(201, 154, 46, 0.22)", 1);
         context.fillStyle = "#0b302d";
         context.font = "800 22px Arial, sans-serif";
-        context.fillText("Focus Areas", 584, 524);
+        context.fillText("Focus Areas", 584, 506);
         context.fillStyle = "#65706d";
         context.font = "400 22px Arial, sans-serif";
-        wrapCanvasText(context, resultFocusText, 584, 566, 800, 32);
+        wrapCanvasText(context, resultFocusText, 584, 548, 800, 31);
 
         context.fillStyle = "#10191b";
         context.font = "800 24px Arial, sans-serif";
-        context.fillText("Category Snapshot", 550, 674);
+        context.fillText("Category Snapshot", 550, 638);
 
         result.categoryScores?.forEach((category, index) => {
           const column = index % 2;
           const row = Math.floor(index / 2);
           const cardX = column === 0 ? 550 : 1000;
-          const cardY = 706 + row * 58;
+          const cardY = 664 + row * 54;
           const cardWidth = 410;
-          const cardHeight = 42;
+          const cardHeight = 40;
 
           fillRoundedRect(cardX, cardY, cardWidth, cardHeight, 12, "rgba(255, 255, 255, 0.82)");
           strokeRoundedRect(cardX, cardY, cardWidth, cardHeight, 12, "rgba(17, 25, 27, 0.08)", 1);
-          context.fillStyle = "#10191b";
-          context.font = "700 18px Arial, sans-serif";
-          context.fillText(category.title, cardX + 18, cardY + 27);
 
+          context.font = "800 15px Arial, sans-serif";
           const pillWidth = context.measureText(category.rating).width + 34;
-          fillRoundedRect(cardX + cardWidth - pillWidth - 14, cardY + 8, pillWidth, 26, 13, "#eaf0ec");
+          const pillX = cardX + cardWidth - pillWidth - 14;
+
+          context.save();
+          context.beginPath();
+          context.rect(cardX + 18, cardY + 6, pillX - cardX - 32, cardHeight - 12);
+          context.clip();
+          context.fillStyle = "#10191b";
+          context.font = category.title.length > 26 ? "700 15px Arial, sans-serif" : "700 17px Arial, sans-serif";
+          context.fillText(category.title, cardX + 18, cardY + 26);
+          context.restore();
+
+          fillRoundedRect(pillX, cardY + 7, pillWidth, 26, 13, "#eaf0ec");
           context.fillStyle = "#0b302d";
           context.font = "800 15px Arial, sans-serif";
-          context.fillText(category.rating, cardX + cardWidth - pillWidth + 3, cardY + 27);
+          context.fillText(category.rating, pillX + 17, cardY + 26);
         });
 
         context.fillStyle = "#65706d";
         context.font = "500 18px Arial, sans-serif";
-        context.fillText("dreamandscale.com/business-readiness-assessment", 550, 824);
+        context.fillText("dreamandscale.com/business-readiness-assessment", 550, 850);
       };
 
       drawScoreCard();
