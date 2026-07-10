@@ -289,17 +289,16 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
 
         context.fillStyle = "#65706d";
         context.font = "400 15px Arial, sans-serif";
-        const footerY = Math.max(808, snapshotTitleY + 22 + 3 * (categoryCardHeight + categoryGap) + 44);
+        const footerY = Math.max(800, snapshotTitleY + 22 + 3 * (categoryCardHeight + categoryGap) + 44);
         context.fillText(
-          "This score is not a final judgment of business potential. It reflects current clarity based on assessment responses.",
+          "This score is not a final judgment of business potential. It reflects your current clarity based on your assessment responses.",
           contentX,
           footerY
         );
-        context.fillStyle = "#1f67b1";
-        context.font = "600 16px Arial, sans-serif";
-        const urlText = "www.dreamandscale.com/business-readiness-assessment";
-        context.fillText(urlText, contentX, footerY + 26);
-        context.fillRect(contentX, footerY + 31, context.measureText(urlText).width, 1.5);
+        context.fillStyle = "#0b302d";
+        context.font = "700 15px Arial, sans-serif";
+        const urlText = "dreamandscale.com/business-readiness-assessment";
+        context.fillText(urlText, contentX, footerY + 34);
       };
 
       drawScoreCard();
