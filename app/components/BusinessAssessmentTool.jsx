@@ -40,7 +40,6 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
   );
   const progress = result ? 100 : Math.round((Math.min(step, totalQuestions) / totalQuestions) * 100);
   const previewScore = useMemo(() => scoreAssessment(answers), [answers]);
-  const leadFirstName = lead.name.trim().split(/\s+/)[0] || "";
   const formatCategoryList = (categories = []) => {
     const labels = categories.map((category) => category.title);
 
@@ -50,10 +49,18 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
 
     return `${labels.slice(0, -1).join(", ")} and ${labels[labels.length - 1]}`;
   };
-  const resultOwnerName = lead.name.trim() || "DreamAndScale Learner";
+  const toTitleCase = (value) =>
+    value
+      .trim()
+      .toLowerCase()
+      .split(/\s+/)
+      .map((word) => (word ? `${word.charAt(0).toUpperCase()}${word.slice(1)}` : word))
+      .join(" ");
+  const resultOwnerName = toTitleCase(lead.name) || "DreamAndScale Learner";
+  const leadFirstName = resultOwnerName.split(/\s+/)[0] || "";
   const resultFocusText = result?.focusCategories?.length
     ? formatCategoryList(result.focusCategories)
-    : "No major clarity gap surfaced in this diagnostic";
+    : "No major clarity gap surfaced in this diagnostic. Your next step is to validate your assumptions with real customer evidence.";
 
   const wrapCanvasText = (context, text, x, y, maxWidth, lineHeight) => {
     const words = text.split(" ");
@@ -178,7 +185,7 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
         context.fillStyle = "rgba(255, 255, 255, 0.7)";
         context.font = "700 20px Arial, sans-serif";
         context.fillText("BUSINESS READINESS", 116, 265);
-        context.fillText("SCORE CARD", 116, 296);
+        context.fillText("SCORECARD", 116, 296);
 
         context.fillStyle = "#c99a2e";
         context.font = "800 54px Arial, sans-serif";
@@ -201,7 +208,7 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
 
         context.fillStyle = "#0e191a";
         context.font = "800 24px Arial, sans-serif";
-        context.fillText("BUSINESS READINESS SCORE CARD", 550, 132);
+        context.fillText("BUSINESS READINESS SCORECARD", 550, 132);
         context.fillStyle = "#c99a2e";
         context.fillRect(550, 152, 160, 5);
 
@@ -216,7 +223,7 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
         context.font = "400 25px Arial, sans-serif";
         wrapCanvasText(
           context,
-          "Completed the DreamAndScale Business Readiness Assessment.",
+          "This scorecard summarizes your current business clarity based on your assessment responses.",
           550,
           394,
           760,
@@ -234,13 +241,13 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
 
         context.fillStyle = "#10191b";
         context.font = "800 24px Arial, sans-serif";
-        context.fillText("Category Snapshot", 550, 638);
+        context.fillText("Category Snapshot", 550, 618);
 
         result.categoryScores?.forEach((category, index) => {
           const column = index % 2;
           const row = Math.floor(index / 2);
           const cardX = column === 0 ? 550 : 1000;
-          const cardY = 664 + row * 54;
+          const cardY = 644 + row * 50;
           const cardWidth = 410;
           const cardHeight = 40;
 
@@ -267,8 +274,15 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
         });
 
         context.fillStyle = "#65706d";
-        context.font = "500 18px Arial, sans-serif";
-        context.fillText("dreamandscale.com/business-readiness-assessment", 550, 850);
+        context.font = "400 16px Arial, sans-serif";
+        context.fillText(
+          "This score is not a final judgment of business potential. It reflects current clarity based on assessment responses.",
+          550,
+          812
+        );
+        context.fillStyle = "#0b302d";
+        context.font = "600 17px Arial, sans-serif";
+        context.fillText("www.dreamandscale.com/business-readiness-assessment", 550, 838);
       };
 
       drawScoreCard();
@@ -277,7 +291,7 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
         if (blob) {
           resolve(blob);
         } else {
-          reject(new Error("Could not create score card."));
+          reject(new Error("Could not create scorecard."));
         }
       }, "image/png");
     });
@@ -288,38 +302,39 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = "dreamandscale-business-readiness-score-card.png";
+      link.download = "dreamandscale-business-readiness-scorecard.png";
       link.click();
       URL.revokeObjectURL(url);
-      setNotice({ type: "success", message: "Score card downloaded." });
+      setNotice({ type: "success", message: "Scorecard downloaded." });
     } catch (error) {
-      setNotice({ type: "error", message: error.message || "Could not download score card." });
+      setNotice({ type: "error", message: error.message || "Could not download scorecard." });
     }
   };
 
   const shareScoreCard = async () => {
     const shareText = `${resultOwnerName} completed the DreamAndScale Business Readiness Assessment with readiness level: ${result?.level}.`;
+    const shareUrl = "https://www.dreamandscale.com/business-readiness-assessment";
 
     try {
       const blob = await createScoreCardBlob();
-      const file = new File([blob], "dreamandscale-business-readiness-score-card.png", {
+      const file = new File([blob], "dreamandscale-business-readiness-scorecard.png", {
         type: "image/png",
       });
 
       if (navigator.canShare?.({ files: [file] })) {
         await navigator.share({
-          title: "DreamAndScale Business Readiness Score Card",
+          title: "DreamAndScale Business Readiness Scorecard",
           text: shareText,
           files: [file],
         });
       } else if (navigator.share) {
         await navigator.share({
-          title: "DreamAndScale Business Readiness Score Card",
+          title: "DreamAndScale Business Readiness Scorecard",
           text: shareText,
-          url: window.location.href,
+          url: shareUrl,
         });
       } else {
-        await navigator.clipboard.writeText(`${shareText} ${window.location.href}`);
+        await navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
         setNotice({ type: "success", message: "Share text copied to clipboard." });
       }
     } catch (error) {
@@ -605,7 +620,7 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
         <div className="assessment-result">
           <div className="assessment-certificate-brand">
             <BrandLogo tone="dark" compact />
-            <span>Business Readiness Score Card</span>
+            <span>Business Readiness Scorecard</span>
           </div>
           <div className="assessment-score-card">
             <span>Readiness level</span>
@@ -657,11 +672,11 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
               Book ₹199 Session
             </a>
           </div>
-          <div className="assessment-certificate-actions" aria-label="Score card actions">
-            <span>Save or share your branded readiness score card</span>
+          <div className="assessment-certificate-actions" aria-label="Scorecard actions">
+            <span>Save or share your branded readiness scorecard</span>
             <div>
               <button type="button" onClick={downloadScoreCard}>
-                Download Score Card
+                Download Scorecard
               </button>
               <button type="button" onClick={shareScoreCard}>
                 Share Result
