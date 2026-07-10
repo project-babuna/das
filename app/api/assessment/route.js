@@ -77,7 +77,7 @@ function cleanAnswers(rawAnswers) {
 
 function buildAssessmentMessage({ report, answers }) {
   const categoryLines = report.categoryScores
-    .map((category) => `- ${category.title}: ${category.percentage}%`)
+    .map((category) => `- ${category.title}: ${category.rating} (${category.earned}/${category.max})`)
     .join("\n");
   const answerLines = assessmentQuestionBank
     .map((topic) => {
@@ -101,7 +101,9 @@ function buildAssessmentMessage({ report, answers }) {
     "",
     `Overall score: ${report.earned}/${report.max} (${report.percentage}%)`,
     `Readiness level: ${report.level}`,
-    `Biggest clarity gap: ${report.weakestCategory?.title || "Not available"}`,
+    report.weakestCategory
+      ? `Area needing most clarity: ${report.weakestCategory.title}`
+      : "Area needing most clarity: No major clarity gap surfaced in this diagnostic.",
     "",
     "Category scores:",
     categoryLines,
