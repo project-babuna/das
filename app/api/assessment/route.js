@@ -114,7 +114,7 @@ function buildAssessmentMessage({ report, answers }) {
     "Important note:",
     report.note,
     "",
-    "Recommended next step: Book the ₹199 Business Clarity Session.",
+    "Recommended next step: Book the ₹199 Business Clarity Session to review assumptions, identify hidden gaps, and decide what to validate before taking bigger business risks.",
     "",
     "Answer log:",
     answerLines,

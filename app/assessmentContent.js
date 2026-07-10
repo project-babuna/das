@@ -20,7 +20,7 @@ export const assessmentCategories = [
   {
     id: "business_model",
     title: "Business Model",
-    label: "money model",
+    label: "business model",
     description: "Do you know how the business will make money?",
   },
   {
@@ -700,7 +700,7 @@ export function scoreAssessment(answerMap) {
     level = "Business Ready";
     scoreLabel = "Strong";
     summary =
-      "You show strong business clarity, but you should still validate assumptions with real customer evidence before major investment.";
+      "You show strong business clarity, but your assumptions still need to be validated with real customer conversations, pricing signals, and practical execution tests before major investment.";
   } else if (earned >= 31) {
     level = "Serious Starter";
     scoreLabel = "Developing";
@@ -710,7 +710,7 @@ export function scoreAssessment(answerMap) {
     level = "Early Builder";
     scoreLabel = "Emerging";
     summary =
-      "You have direction, but important parts like customer, market, money model, or execution may still be unclear.";
+      "You have direction, but important parts like customer, market, business model, or execution may still be unclear.";
   }
 
   return {

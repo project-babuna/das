@@ -39,6 +39,7 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
   );
   const progress = result ? 100 : Math.round((Math.min(step, totalQuestions) / totalQuestions) * 100);
   const previewScore = useMemo(() => scoreAssessment(answers), [answers]);
+  const leadFirstName = lead.name.trim().split(/\s+/)[0] || "";
 
   useEffect(() => {
     if (!isPageMode) {
@@ -200,7 +201,6 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
     <>
       <div className="assessment-dialog-header">
         <div>
-          <p>DreamAndScale Diagnostic</p>
           <h2 id="assessment-title">
             {result ? "Your Business Readiness Report" : "Business Readiness Assessment"}
           </h2>
@@ -228,9 +228,6 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
 
       {isQuestionStep ? (
         <div className="assessment-question-panel">
-          <span className="assessment-category">
-            {assessmentCategories.find((category) => category.id === currentQuestion.category)?.title}
-          </span>
           <h3>{currentQuestion.question}</h3>
           <div className="assessment-options" role="radiogroup" aria-label={currentQuestion.question}>
             {currentQuestion.options.map((option) => (
@@ -253,7 +250,6 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
       {isLeadStep ? (
         <form className="assessment-lead-form" onSubmit={submitLead}>
           <div>
-            <span className="assessment-category">Get your score</span>
             <h3>Where should we send your assessment record?</h3>
             <p>
               Enter your details to see your score and short report. Your responses help us
@@ -319,13 +315,15 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
       {result ? (
         <div className="assessment-result">
           <div className="assessment-score-card">
-            <span>Diagnostic read</span>
+            <span>Readiness level</span>
             <strong>{result.scoreLabel || result.level}</strong>
             <p>{result.level}</p>
             <small>{result.earned} readiness points</small>
           </div>
           <div className="assessment-report-copy">
-            <h3>{result.level}</h3>
+            <h3>
+              {leadFirstName ? `${leadFirstName}, your readiness level is ${result.level}` : result.level}
+            </h3>
             <p>{result.summary}</p>
             {result.weakestCategory ? (
               <p>
@@ -350,8 +348,9 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
           </div>
           <div className="assessment-recommendation">
             <p>
-              Recommended next step: discuss your diagnostic in the ₹199 Business Clarity Session
-              and identify what to validate before taking bigger business risks.
+              Recommended next step: book the ₹199 Business Clarity Session to review your
+              assumptions, identify hidden gaps, and decide what to validate before taking bigger
+              business risks.
             </p>
             <a
               className="btn btn-primary"
@@ -408,7 +407,7 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
             {isPageMode ? (
               <p className="assessment-page-support">
                 Answer 18 focused questions and see how ready you are across idea, customer,
-                market, money model, execution, structure, finance, and growth.
+                market, business model, execution, structure, finance, and growth.
               </p>
             ) : null}
             <div className="assessment-actions">
@@ -447,7 +446,7 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
                 <span>Idea</span>
                 <span>Customer</span>
                 <span>Market</span>
-                <span>Money Model</span>
+                <span>Business Model</span>
                 <span>Execution</span>
                 <span>Structure</span>
               </div>
