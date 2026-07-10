@@ -254,7 +254,7 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
 
         context.fillStyle = "#10191b";
         context.font = "800 22px Arial, sans-serif";
-        const snapshotTitleY = focusY + focusHeight + 36;
+        const snapshotTitleY = focusY + focusHeight + 50;
         context.fillText("Category Snapshot", contentX, snapshotTitleY);
 
         result.categoryScores?.forEach((category, index) => {
@@ -289,7 +289,7 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
 
         context.fillStyle = "#65706d";
         context.font = "400 15px Arial, sans-serif";
-        const footerY = Math.min(798, snapshotTitleY + 22 + 3 * (categoryCardHeight + categoryGap) + 30);
+        const footerY = Math.max(808, snapshotTitleY + 22 + 3 * (categoryCardHeight + categoryGap) + 44);
         context.fillText(
           "This score is not a final judgment of business potential. It reflects current clarity based on assessment responses.",
           contentX,
