@@ -7,6 +7,7 @@ import {
   createAssessmentSession,
   scoreAssessment,
 } from "../assessmentContent";
+import BrandLogo from "./BrandLogo";
 
 const initialLead = {
   name: "",
@@ -48,6 +49,184 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
     }
 
     return `${labels.slice(0, -1).join(", ")} and ${labels[labels.length - 1]}`;
+  };
+  const resultOwnerName = lead.name.trim() || "DreamAndScale Learner";
+  const resultFocusText = result?.focusCategories?.length
+    ? formatCategoryList(result.focusCategories)
+    : "No major clarity gap surfaced in this diagnostic";
+
+  const wrapCanvasText = (context, text, x, y, maxWidth, lineHeight) => {
+    const words = text.split(" ");
+    let line = "";
+    let nextY = y;
+
+    words.forEach((word) => {
+      const testLine = line ? `${line} ${word}` : word;
+
+      if (context.measureText(testLine).width > maxWidth && line) {
+        context.fillText(line, x, nextY);
+        line = word;
+        nextY += lineHeight;
+      } else {
+        line = testLine;
+      }
+    });
+
+    if (line) {
+      context.fillText(line, x, nextY);
+    }
+
+    return nextY + lineHeight;
+  };
+
+  const createCertificateBlob = () =>
+    new Promise((resolve, reject) => {
+      if (!result) {
+        reject(new Error("No assessment result available."));
+        return;
+      }
+
+      const canvas = document.createElement("canvas");
+      const scale = 2;
+      const width = 1400;
+      const height = 900;
+      canvas.width = width * scale;
+      canvas.height = height * scale;
+
+      const context = canvas.getContext("2d");
+      context.scale(scale, scale);
+
+      context.fillStyle = "#fffaf0";
+      context.fillRect(0, 0, width, height);
+      context.strokeStyle = "#d7c39c";
+      context.lineWidth = 4;
+      context.strokeRect(34, 34, width - 68, height - 68);
+      context.strokeStyle = "#0b302d";
+      context.lineWidth = 1.5;
+      context.strokeRect(58, 58, width - 116, height - 116);
+
+      context.fillStyle = "#0b302d";
+      context.font = "700 34px Georgia, serif";
+      context.fillText("DreamAndScale", 86, 120);
+      context.fillStyle = "#c99a2e";
+      context.fillRect(87, 138, 160, 5);
+
+      context.fillStyle = "#5f6a67";
+      context.font = "700 22px Arial, sans-serif";
+      context.letterSpacing = "4px";
+      context.fillText("BUSINESS READINESS CERTIFICATE", 86, 205);
+
+      context.fillStyle = "#10191b";
+      context.font = "700 58px Arial, sans-serif";
+      wrapCanvasText(context, resultOwnerName, 86, 285, 760, 68);
+
+      context.fillStyle = "#5f6a67";
+      context.font = "400 28px Arial, sans-serif";
+      wrapCanvasText(
+        context,
+        "has completed the DreamAndScale Business Readiness Assessment.",
+        86,
+        370,
+        760,
+        42
+      );
+
+      context.fillStyle = "#0b302d";
+      context.font = "700 26px Arial, sans-serif";
+      context.fillText("Readiness Level", 86, 495);
+      context.fillStyle = "#c99a2e";
+      context.font = "800 58px Arial, sans-serif";
+      context.fillText(result.level, 86, 565);
+
+      context.fillStyle = "#0b302d";
+      context.font = "700 24px Arial, sans-serif";
+      context.fillText("Diagnostic Result", 870, 260);
+      context.fillStyle = "#c99a2e";
+      context.font = "800 54px Arial, sans-serif";
+      context.fillText(result.scoreLabel || result.level, 870, 330);
+
+      context.fillStyle = "#5f6a67";
+      context.font = "400 22px Arial, sans-serif";
+      wrapCanvasText(
+        context,
+        `Focus areas: ${resultFocusText}.`,
+        870,
+        405,
+        390,
+        34
+      );
+
+      context.fillStyle = "#10191b";
+      context.font = "700 24px Arial, sans-serif";
+      context.fillText("Category Snapshot", 86, 675);
+      context.font = "600 20px Arial, sans-serif";
+      result.categoryScores?.forEach((category, index) => {
+        const x = index % 2 === 0 ? 86 : 560;
+        const y = 725 + Math.floor(index / 2) * 42;
+        context.fillStyle = "#10191b";
+        context.fillText(category.title, x, y);
+        context.fillStyle = "#0b302d";
+        context.fillText(category.rating, x + 300, y);
+      });
+
+      context.fillStyle = "#5f6a67";
+      context.font = "400 18px Arial, sans-serif";
+      context.fillText("dreamandscale.com/business-readiness-assessment", 86, 838);
+
+      canvas.toBlob((blob) => {
+        if (blob) {
+          resolve(blob);
+        } else {
+          reject(new Error("Could not create certificate."));
+        }
+      }, "image/png");
+    });
+
+  const downloadCertificate = async () => {
+    try {
+      const blob = await createCertificateBlob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "dreamandscale-business-readiness-certificate.png";
+      link.click();
+      URL.revokeObjectURL(url);
+      setNotice({ type: "success", message: "Certificate downloaded." });
+    } catch (error) {
+      setNotice({ type: "error", message: error.message || "Could not download certificate." });
+    }
+  };
+
+  const shareCertificate = async () => {
+    const shareText = `${resultOwnerName} completed the DreamAndScale Business Readiness Assessment with readiness level: ${result?.level}.`;
+
+    try {
+      const blob = await createCertificateBlob();
+      const file = new File([blob], "dreamandscale-business-readiness-certificate.png", {
+        type: "image/png",
+      });
+
+      if (navigator.canShare?.({ files: [file] })) {
+        await navigator.share({
+          title: "DreamAndScale Business Readiness Certificate",
+          text: shareText,
+          files: [file],
+        });
+      } else if (navigator.share) {
+        await navigator.share({
+          title: "DreamAndScale Business Readiness Certificate",
+          text: shareText,
+          url: window.location.href,
+        });
+      } else {
+        await navigator.clipboard.writeText(`${shareText} ${window.location.href}`);
+        setNotice({ type: "success", message: "Share text copied to clipboard." });
+      }
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        setNotice({ type: "error", message: "Sharing is not available in this browser." });
+      }
+    }
   };
 
   useEffect(() => {
@@ -209,7 +388,8 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
   const assessmentFlow = (
     <>
       <div className="assessment-dialog-header">
-        <div>
+        <div className="assessment-modal-brand">
+          <BrandLogo tone="dark" compact />
           <h2 id="assessment-title">
             {result ? "Your Business Readiness Report" : "Business Readiness Assessment"}
           </h2>
@@ -323,6 +503,10 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
 
       {result ? (
         <div className="assessment-result">
+          <div className="assessment-certificate-brand">
+            <BrandLogo tone="dark" compact />
+            <span>Business Readiness Certificate</span>
+          </div>
           <div className="assessment-score-card">
             <span>Readiness level</span>
             <strong>{result.scoreLabel || result.level}</strong>
@@ -354,6 +538,14 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
                 <strong>{category.rating}</strong>
               </article>
             ))}
+          </div>
+          <div className="assessment-certificate-actions" aria-label="Certificate actions">
+            <button type="button" onClick={downloadCertificate}>
+              Download Certificate
+            </button>
+            <button type="button" onClick={shareCertificate}>
+              Share Result
+            </button>
           </div>
           <div className="assessment-recommendation">
             <p>
