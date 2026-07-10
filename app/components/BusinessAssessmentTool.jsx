@@ -80,10 +80,26 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
   };
 
   const createScoreCardBlob = () =>
-    new Promise((resolve, reject) => {
+    new Promise(async (resolve, reject) => {
       if (!result) {
         reject(new Error("No assessment result available."));
         return;
+      }
+
+      const loadImage = (src) =>
+        new Promise((imageResolve, imageReject) => {
+          const image = new Image();
+          image.onload = () => imageResolve(image);
+          image.onerror = imageReject;
+          image.src = src;
+        });
+
+      let logoImage = null;
+
+      try {
+        logoImage = await loadImage(`${window.location.origin}/brand/logo-light.png`);
+      } catch {
+        logoImage = null;
       }
 
       const canvas = document.createElement("canvas");
@@ -149,11 +165,15 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
         context.arc(178, 720, 210, 0, Math.PI * 2);
         context.fill();
 
-        context.fillStyle = "#fffdf8";
-        context.font = "800 34px Georgia, serif";
-        context.fillText("DreamAndScale", 116, 142);
+        if (logoImage) {
+          context.drawImage(logoImage, 116, 120, 255, 44);
+        } else {
+          context.fillStyle = "#fffdf8";
+          context.font = "800 34px Georgia, serif";
+          context.fillText("DreamAndScale", 116, 142);
+        }
         context.fillStyle = "#c99a2e";
-        context.fillRect(116, 164, 146, 5);
+        context.fillRect(116, 182, 146, 5);
 
         context.fillStyle = "rgba(255, 255, 255, 0.7)";
         context.font = "700 20px Arial, sans-serif";
@@ -619,14 +639,6 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
               </article>
             ))}
           </div>
-          <div className="assessment-certificate-actions" aria-label="Certificate actions">
-            <button type="button" onClick={downloadScoreCard}>
-              Download Score Card
-            </button>
-            <button type="button" onClick={shareScoreCard}>
-              Share Result
-            </button>
-          </div>
           <div className="assessment-recommendation">
             <p>
               Recommended next step: book the ₹199 Business Clarity Session to review your
@@ -644,6 +656,17 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
             >
               Book ₹199 Session
             </a>
+          </div>
+          <div className="assessment-certificate-actions" aria-label="Score card actions">
+            <span>Save or share your branded readiness score card</span>
+            <div>
+              <button type="button" onClick={downloadScoreCard}>
+                Download Score Card
+              </button>
+              <button type="button" onClick={shareScoreCard}>
+                Share Result
+              </button>
+            </div>
           </div>
         </div>
       ) : null}
