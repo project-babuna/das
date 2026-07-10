@@ -79,7 +79,7 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
     return nextY + lineHeight;
   };
 
-  const createCertificateBlob = () =>
+  const createScoreCardBlob = () =>
     new Promise((resolve, reject) => {
       if (!result) {
         reject(new Error("No assessment result available."));
@@ -88,7 +88,7 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
 
       const canvas = document.createElement("canvas");
       const scale = 2;
-      const width = 1400;
+      const width = 1600;
       const height = 900;
       canvas.width = width * scale;
       canvas.height = height * scale;
@@ -96,125 +96,196 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
       const context = canvas.getContext("2d");
       context.scale(scale, scale);
 
-      context.fillStyle = "#fffaf0";
-      context.fillRect(0, 0, width, height);
-      context.strokeStyle = "#d7c39c";
-      context.lineWidth = 4;
-      context.strokeRect(34, 34, width - 68, height - 68);
-      context.strokeStyle = "#0b302d";
-      context.lineWidth = 1.5;
-      context.strokeRect(58, 58, width - 116, height - 116);
+      const roundedRect = (x, y, rectWidth, rectHeight, radius) => {
+        context.beginPath();
+        context.moveTo(x + radius, y);
+        context.lineTo(x + rectWidth - radius, y);
+        context.quadraticCurveTo(x + rectWidth, y, x + rectWidth, y + radius);
+        context.lineTo(x + rectWidth, y + rectHeight - radius);
+        context.quadraticCurveTo(
+          x + rectWidth,
+          y + rectHeight,
+          x + rectWidth - radius,
+          y + rectHeight
+        );
+        context.lineTo(x + radius, y + rectHeight);
+        context.quadraticCurveTo(x, y + rectHeight, x, y + rectHeight - radius);
+        context.lineTo(x, y + radius);
+        context.quadraticCurveTo(x, y, x + radius, y);
+        context.closePath();
+      };
 
-      context.fillStyle = "#0b302d";
-      context.font = "700 34px Georgia, serif";
-      context.fillText("DreamAndScale", 86, 120);
-      context.fillStyle = "#c99a2e";
-      context.fillRect(87, 138, 160, 5);
+      const fillRoundedRect = (x, y, rectWidth, rectHeight, radius, color) => {
+        roundedRect(x, y, rectWidth, rectHeight, radius);
+        context.fillStyle = color;
+        context.fill();
+      };
 
-      context.fillStyle = "#5f6a67";
-      context.font = "700 22px Arial, sans-serif";
-      context.letterSpacing = "4px";
-      context.fillText("BUSINESS READINESS CERTIFICATE", 86, 205);
+      const strokeRoundedRect = (x, y, rectWidth, rectHeight, radius, color, lineWidth = 1) => {
+        roundedRect(x, y, rectWidth, rectHeight, radius);
+        context.strokeStyle = color;
+        context.lineWidth = lineWidth;
+        context.stroke();
+      };
 
-      context.fillStyle = "#10191b";
-      context.font = "700 58px Arial, sans-serif";
-      wrapCanvasText(context, resultOwnerName, 86, 285, 760, 68);
+      const drawScoreCard = () => {
+        const gradient = context.createLinearGradient(0, 0, width, height);
+        gradient.addColorStop(0, "#fbf6ec");
+        gradient.addColorStop(0.58, "#fffdf8");
+        gradient.addColorStop(1, "#eef4f1");
+        context.fillStyle = gradient;
+        context.fillRect(0, 0, width, height);
 
-      context.fillStyle = "#5f6a67";
-      context.font = "400 28px Arial, sans-serif";
-      wrapCanvasText(
-        context,
-        "has completed the DreamAndScale Business Readiness Assessment.",
-        86,
-        370,
-        760,
-        42
-      );
+        fillRoundedRect(44, 44, width - 88, height - 88, 28, "rgba(255, 255, 255, 0.78)");
+        strokeRoundedRect(44, 44, width - 88, height - 88, 28, "rgba(201, 154, 46, 0.36)", 3);
 
-      context.fillStyle = "#0b302d";
-      context.font = "700 26px Arial, sans-serif";
-      context.fillText("Readiness Level", 86, 495);
-      context.fillStyle = "#c99a2e";
-      context.font = "800 58px Arial, sans-serif";
-      context.fillText(result.level, 86, 565);
+        fillRoundedRect(74, 74, 420, height - 148, 22, "#082c29");
+        context.fillStyle = "rgba(201, 154, 46, 0.18)";
+        context.beginPath();
+        context.arc(372, 192, 180, 0, Math.PI * 2);
+        context.fill();
+        context.fillStyle = "rgba(255, 255, 255, 0.06)";
+        context.beginPath();
+        context.arc(178, 720, 210, 0, Math.PI * 2);
+        context.fill();
 
-      context.fillStyle = "#0b302d";
-      context.font = "700 24px Arial, sans-serif";
-      context.fillText("Diagnostic Result", 870, 260);
-      context.fillStyle = "#c99a2e";
-      context.font = "800 54px Arial, sans-serif";
-      context.fillText(result.scoreLabel || result.level, 870, 330);
+        context.fillStyle = "#fffdf8";
+        context.font = "800 34px Georgia, serif";
+        context.fillText("DreamAndScale", 116, 142);
+        context.fillStyle = "#c99a2e";
+        context.fillRect(116, 164, 146, 5);
 
-      context.fillStyle = "#5f6a67";
-      context.font = "400 22px Arial, sans-serif";
-      wrapCanvasText(
-        context,
-        `Focus areas: ${resultFocusText}.`,
-        870,
-        405,
-        390,
-        34
-      );
+        context.fillStyle = "rgba(255, 255, 255, 0.7)";
+        context.font = "700 20px Arial, sans-serif";
+        context.fillText("BUSINESS READINESS", 116, 265);
+        context.fillText("SCORE CARD", 116, 296);
 
-      context.fillStyle = "#10191b";
-      context.font = "700 24px Arial, sans-serif";
-      context.fillText("Category Snapshot", 86, 675);
-      context.font = "600 20px Arial, sans-serif";
-      result.categoryScores?.forEach((category, index) => {
-        const x = index % 2 === 0 ? 86 : 560;
-        const y = 725 + Math.floor(index / 2) * 42;
+        context.fillStyle = "#c99a2e";
+        context.font = "800 54px Arial, sans-serif";
+        wrapCanvasText(context, result.scoreLabel || result.level, 116, 405, 310, 58);
+
+        context.fillStyle = "#fffdf8";
+        context.font = "800 28px Arial, sans-serif";
+        context.fillText(result.level, 116, 548);
+        context.fillStyle = "rgba(255, 255, 255, 0.64)";
+        context.font = "600 20px Arial, sans-serif";
+        context.fillText(`${result.earned} readiness points`, 116, 590);
+
+        strokeRoundedRect(116, 650, 300, 82, 16, "rgba(255, 255, 255, 0.22)", 1.5);
+        context.fillStyle = "rgba(255, 255, 255, 0.72)";
+        context.font = "700 17px Arial, sans-serif";
+        context.fillText("Recommended next step", 142, 684);
+        context.fillStyle = "#fffdf8";
+        context.font = "800 22px Arial, sans-serif";
+        context.fillText("₹199 Clarity Session", 142, 718);
+
+        context.fillStyle = "#0e191a";
+        context.font = "800 24px Arial, sans-serif";
+        context.fillText("BUSINESS READINESS SCORE CARD", 550, 132);
+        context.fillStyle = "#c99a2e";
+        context.fillRect(550, 152, 160, 5);
+
+        context.fillStyle = "#65706d";
+        context.font = "500 24px Arial, sans-serif";
+        context.fillText("Prepared for", 550, 220);
         context.fillStyle = "#10191b";
-        context.fillText(category.title, x, y);
-        context.fillStyle = "#0b302d";
-        context.fillText(category.rating, x + 300, y);
-      });
+        context.font = "800 62px Arial, sans-serif";
+        wrapCanvasText(context, resultOwnerName, 550, 292, 780, 72);
 
-      context.fillStyle = "#5f6a67";
-      context.font = "400 18px Arial, sans-serif";
-      context.fillText("dreamandscale.com/business-readiness-assessment", 86, 838);
+        context.fillStyle = "#65706d";
+        context.font = "400 25px Arial, sans-serif";
+        wrapCanvasText(
+          context,
+          "Completed the DreamAndScale Business Readiness Assessment.",
+          550,
+          394,
+          760,
+          38
+        );
+
+        fillRoundedRect(550, 480, 880, 128, 18, "#f7f1e4");
+        strokeRoundedRect(550, 480, 880, 128, 18, "rgba(201, 154, 46, 0.22)", 1);
+        context.fillStyle = "#0b302d";
+        context.font = "800 22px Arial, sans-serif";
+        context.fillText("Focus Areas", 584, 524);
+        context.fillStyle = "#65706d";
+        context.font = "400 22px Arial, sans-serif";
+        wrapCanvasText(context, resultFocusText, 584, 566, 800, 32);
+
+        context.fillStyle = "#10191b";
+        context.font = "800 24px Arial, sans-serif";
+        context.fillText("Category Snapshot", 550, 674);
+
+        result.categoryScores?.forEach((category, index) => {
+          const column = index % 2;
+          const row = Math.floor(index / 2);
+          const cardX = column === 0 ? 550 : 1000;
+          const cardY = 706 + row * 58;
+          const cardWidth = 410;
+          const cardHeight = 42;
+
+          fillRoundedRect(cardX, cardY, cardWidth, cardHeight, 12, "rgba(255, 255, 255, 0.82)");
+          strokeRoundedRect(cardX, cardY, cardWidth, cardHeight, 12, "rgba(17, 25, 27, 0.08)", 1);
+          context.fillStyle = "#10191b";
+          context.font = "700 18px Arial, sans-serif";
+          context.fillText(category.title, cardX + 18, cardY + 27);
+
+          const pillWidth = context.measureText(category.rating).width + 34;
+          fillRoundedRect(cardX + cardWidth - pillWidth - 14, cardY + 8, pillWidth, 26, 13, "#eaf0ec");
+          context.fillStyle = "#0b302d";
+          context.font = "800 15px Arial, sans-serif";
+          context.fillText(category.rating, cardX + cardWidth - pillWidth + 3, cardY + 27);
+        });
+
+        context.fillStyle = "#65706d";
+        context.font = "500 18px Arial, sans-serif";
+        context.fillText("dreamandscale.com/business-readiness-assessment", 550, 824);
+      };
+
+      drawScoreCard();
 
       canvas.toBlob((blob) => {
         if (blob) {
           resolve(blob);
         } else {
-          reject(new Error("Could not create certificate."));
+          reject(new Error("Could not create score card."));
         }
       }, "image/png");
     });
 
-  const downloadCertificate = async () => {
+  const downloadScoreCard = async () => {
     try {
-      const blob = await createCertificateBlob();
+      const blob = await createScoreCardBlob();
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = "dreamandscale-business-readiness-certificate.png";
+      link.download = "dreamandscale-business-readiness-score-card.png";
       link.click();
       URL.revokeObjectURL(url);
-      setNotice({ type: "success", message: "Certificate downloaded." });
+      setNotice({ type: "success", message: "Score card downloaded." });
     } catch (error) {
-      setNotice({ type: "error", message: error.message || "Could not download certificate." });
+      setNotice({ type: "error", message: error.message || "Could not download score card." });
     }
   };
 
-  const shareCertificate = async () => {
+  const shareScoreCard = async () => {
     const shareText = `${resultOwnerName} completed the DreamAndScale Business Readiness Assessment with readiness level: ${result?.level}.`;
 
     try {
-      const blob = await createCertificateBlob();
-      const file = new File([blob], "dreamandscale-business-readiness-certificate.png", {
+      const blob = await createScoreCardBlob();
+      const file = new File([blob], "dreamandscale-business-readiness-score-card.png", {
         type: "image/png",
       });
 
       if (navigator.canShare?.({ files: [file] })) {
         await navigator.share({
-          title: "DreamAndScale Business Readiness Certificate",
+          title: "DreamAndScale Business Readiness Score Card",
           text: shareText,
           files: [file],
         });
       } else if (navigator.share) {
         await navigator.share({
-          title: "DreamAndScale Business Readiness Certificate",
+          title: "DreamAndScale Business Readiness Score Card",
           text: shareText,
           url: window.location.href,
         });
@@ -505,7 +576,7 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
         <div className="assessment-result">
           <div className="assessment-certificate-brand">
             <BrandLogo tone="dark" compact />
-            <span>Business Readiness Certificate</span>
+            <span>Business Readiness Score Card</span>
           </div>
           <div className="assessment-score-card">
             <span>Readiness level</span>
@@ -540,10 +611,10 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
             ))}
           </div>
           <div className="assessment-certificate-actions" aria-label="Certificate actions">
-            <button type="button" onClick={downloadCertificate}>
-              Download Certificate
+            <button type="button" onClick={downloadScoreCard}>
+              Download Score Card
             </button>
-            <button type="button" onClick={shareCertificate}>
+            <button type="button" onClick={shareScoreCard}>
               Share Result
             </button>
           </div>
