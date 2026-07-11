@@ -72,6 +72,28 @@ export const assessmentQuestionBank = [
           { label: "Ask friends to vote on their favorite.", score: 1 },
         ]),
       },
+      {
+        id: "singapore_meal_kit",
+        question:
+          "Leena saw a successful meal-kit startup in Singapore and wants to bring the same model to India, unchanged. What should she check first?",
+        options: options([
+          { label: "Whether the same problem and buying behavior actually exist in her target Indian city.", score: 3 },
+          { label: "Whether the Singapore founders would approve of the idea.", score: 0 },
+          { label: "Whether the brand name is available to register in India.", score: 1 },
+          { label: "Whether a similar app already exists on the Play Store.", score: 1 },
+        ]),
+      },
+      {
+        id: "untested_b2b_tool",
+        question:
+          "Yusuf has had one idea for six months — a niche B2B invoicing tool — but hasn't mentioned it to anyone or tested any interest. What's the biggest risk in his current approach?",
+        options: options([
+          { label: "Someone else will definitely copy the idea first.", score: 1 },
+          { label: "Six months of untested assumptions have accumulated with zero real-world feedback.", score: 3 },
+          { label: "He hasn't spent enough time refining the idea privately.", score: 1 },
+          { label: "He should keep it secret for even longer to protect it.", score: 0 },
+        ]),
+      },
     ],
   },
   {
@@ -98,6 +120,28 @@ export const assessmentQuestionBank = [
           { label: "There's real willingness to pay already, which is a strong signal.", score: 3 },
           { label: "She should undercut the workaround's price immediately.", score: 1 },
           { label: "People only say this to be polite.", score: 0 },
+        ]),
+      },
+      {
+        id: "hypothetical_survey",
+        question:
+          'Nikhil runs a survey asking "Would you use an app that helps you save money?" and gets 200 "yes" responses. What\'s the issue with this validation method?',
+        options: options([
+          { label: "200 responses is too small a sample to matter.", score: 1 },
+          { label: "Hypothetical questions about hypothetical products rarely predict real behavior.", score: 3 },
+          { label: "The question should have offered a discount to get better answers.", score: 1 },
+          { label: "Nothing — 200 yeses is strong enough proof.", score: 0 },
+        ]),
+      },
+      {
+        id: "reddit_complaints",
+        question:
+          "Aisha finds a Reddit thread with 40 comments from people complaining about a problem her product would solve. Is this validation?",
+        options: options([
+          { label: "Yes, complete validation — the problem is clearly confirmed.", score: 0 },
+          { label: "It's a good signal the problem is real, but she still needs to see if these people would act, not just vent.", score: 3 },
+          { label: "No, online complaints are never a reliable signal.", score: 1 },
+          { label: "Only if the thread has more than 100 comments.", score: 1 },
         ]),
       },
     ],
@@ -128,6 +172,28 @@ export const assessmentQuestionBank = [
           { label: "Get feedback only from other founders.", score: 1 },
         ]),
       },
+      {
+        id: "landing_page_signups",
+        question:
+          "Before writing any code, Om builds a simple landing page describing his product and collects email signups from a small ad campaign. Is this a reasonable move before building?",
+        options: options([
+          { label: "No, a landing page without a real product is misleading.", score: 1 },
+          { label: "Yes, it tests real interest cheaply before committing to development.", score: 3 },
+          { label: "Yes, but only if it also has a working checkout.", score: 1 },
+          { label: "No, signups don't mean anything until people pay.", score: 0 },
+        ]),
+      },
+      {
+        id: "agency_before_customers",
+        question:
+          "Reema is considering hiring a development agency for ₹8 lakh to build a full version of her app before speaking to any customers. What should she reconsider first?",
+        options: options([
+          { label: "Whether ₹8 lakh is a fair market price from the agency.", score: 1 },
+          { label: "Whether to negotiate a lower price with a different agency.", score: 1 },
+          { label: "Whether to validate the problem and rough solution with customers before spending that much.", score: 3 },
+          { label: "Nothing — a professional build is always the safer first step.", score: 0 },
+        ]),
+      },
     ],
   },
   {
@@ -154,6 +220,28 @@ export const assessmentQuestionBank = [
           { label: "Kirana store owners managing 500+ SKUs by notebook or Excel.", score: 3 },
           { label: "Small business owners aged 30-50.", score: 1 },
           { label: "Anyone who runs a retail shop.", score: 0 },
+        ]),
+      },
+      {
+        id: "new_parent_segment",
+        question:
+          'Two founders both target "new parents." One defines it that broadly. The other defines it as "first-time parents in the first six weeks after birth, overwhelmed by conflicting advice." Whose definition will make marketing and product decisions easier?',
+        options: options([
+          { label: "The broad one — it doesn't exclude potential buyers.", score: 1 },
+          { label: "The narrow one — a specific moment and pain point is easier to design and speak to.", score: 3 },
+          { label: "Neither — customer definitions matter less than product quality.", score: 0 },
+          { label: "They're equally useful at this early stage.", score: 1 },
+        ]),
+      },
+      {
+        id: "hr_transition",
+        question:
+          'Two founders define their customer differently. One says "HR managers." The other says "HR managers at companies going through a leadership transition, where hiring urgency has just spiked." Which definition better predicts who will actually buy soon?',
+        options: options([
+          { label: '"HR managers" — job title is the clearest starting filter.', score: 1 },
+          { label: "Neither — buying urgency can't be predicted this early.", score: 1 },
+          { label: "The situational one — it captures a moment of urgency, not just a role.", score: 3 },
+          { label: "Both are equally weak without a company size range.", score: 0 },
         ]),
       },
     ],
@@ -184,6 +272,28 @@ export const assessmentQuestionBank = [
           { label: "The price should be lowered before anything else.", score: 1 },
         ]),
       },
+      {
+        id: "detailed_demo_questions",
+        question:
+          "During a product demo, a prospect asks eight detailed questions about integrations, pricing tiers, and onboarding timelines. How should this be read compared to a prospect who says nothing and just nods along?",
+        options: options([
+          { label: "The quiet prospect is more polite and likely more interested.", score: 0 },
+          { label: "Both are equally engaged — question count doesn't matter.", score: 1 },
+          { label: "Detailed, specific questions usually signal someone seriously evaluating a real use case.", score: 3 },
+          { label: "Too many questions usually signal skepticism, not interest.", score: 1 },
+        ]),
+      },
+      {
+        id: "unprompted_referral",
+        question:
+          'Without being asked, a customer forwards the product to a colleague and says "you should try this too." How should this unprompted referral be weighed against a five-star written review?',
+        options: options([
+          { label: "The review is stronger — it's public and permanent.", score: 1 },
+          { label: "They're roughly equal signals of satisfaction.", score: 1 },
+          { label: "The referral is stronger — people rarely risk their own credibility recommending something they don't actually value.", score: 3 },
+          { label: "Neither means much without a repeat purchase.", score: 0 },
+        ]),
+      },
     ],
   },
   {
@@ -210,6 +320,28 @@ export const assessmentQuestionBank = [
           { label: "Professionals, because a smaller high-conviction group is easier to learn from.", score: 3 },
           { label: "Both, split evenly, to see which converts better.", score: 1 },
           { label: "Whichever group is easier to advertise to.", score: 0 },
+        ]),
+      },
+      {
+        id: "existing_platform",
+        question:
+          "Farah can either spend three months building her own audience from scratch, or partner with an existing platform that already has 20,000 of her exact target users. Which is usually the faster path to first customers?",
+        options: options([
+          { label: "Building her own audience — it gives more long-term control.", score: 1 },
+          { label: "Partnering with the existing platform — reaching an already-assembled audience first.", score: 3 },
+          { label: "Both at once, splitting effort evenly.", score: 1 },
+          { label: "Neither — paid ads are always faster than either.", score: 0 },
+        ]),
+      },
+      {
+        id: "paid_pilot",
+        question:
+          "Deepak is deciding between offering his product free to 100 people, or charging a small but real fee to just five people for a pilot. Which gives him more useful early signal?",
+        options: options([
+          { label: "Free to 100 — more data points are always better.", score: 1 },
+          { label: "Paid pilot with five — payment, even small, filters for real intent that free access doesn't.", score: 3 },
+          { label: "Neither works without a much larger sample.", score: 0 },
+          { label: "Free to 100, since it builds word-of-mouth faster.", score: 1 },
         ]),
       },
     ],
@@ -240,6 +372,28 @@ export const assessmentQuestionBank = [
           { label: "Neither; market size doesn't matter this early.", score: 1 },
         ]),
       },
+      {
+        id: "booming_industry",
+        question:
+          'News articles describe Aditi\'s target industry as "booming," with several large funding rounds announced recently. Does this tell her what she needs to know about her specific opportunity?',
+        options: options([
+          { label: "Yes — industry-wide momentum is a reliable proxy for her own demand.", score: 0 },
+          { label: "Not on its own — it says nothing about whether her specific customer segment is reachable and paying.", score: 3 },
+          { label: "Yes, especially if the funded companies are her direct competitors.", score: 1 },
+          { label: "No — funding news should be ignored entirely.", score: 1 },
+        ]),
+      },
+      {
+        id: "skip_market_research",
+        question:
+          'Sanjay believes market research is a waste of time and prefers to "just build and see what happens." What\'s the risk in skipping it entirely?',
+        options: options([
+          { label: "There's no real risk if the product is good enough.", score: 0 },
+          { label: "He may spend months building for a market that doesn't have the demand or willingness to pay he assumes.", score: 3 },
+          { label: "The only risk is losing a slight speed advantage.", score: 1 },
+          { label: "Market research only matters for companies raising funding.", score: 1 },
+        ]),
+      },
     ],
   },
   {
@@ -266,6 +420,28 @@ export const assessmentQuestionBank = [
           { label: "The second, because a specific underserved segment is harder to copy.", score: 3 },
           { label: "Neither; differentiation doesn't matter if the market is big.", score: 0 },
           { label: "They're equally strong.", score: 1 },
+        ]),
+      },
+      {
+        id: "zero_competitors",
+        question:
+          "Priyanka researches her space thoroughly and finds zero existing competitors, direct or indirect. What should this make her consider?",
+        options: options([
+          { label: "She's found a guaranteed opportunity nobody else has spotted.", score: 0 },
+          { label: "It's worth checking whether the absence means there's no real demand, not just an open field.", score: 3 },
+          { label: "She should launch immediately before anyone else notices the gap.", score: 1 },
+          { label: "She should lower her prices to win the space fast.", score: 1 },
+        ]),
+      },
+      {
+        id: "competitor_price_drop",
+        question:
+          "A direct competitor drops their price by 30% two weeks after Kabir launches. What's his best immediate response?",
+        options: options([
+          { label: "Match the price cut right away to stay competitive.", score: 1 },
+          { label: "Assess whether his differentiation still holds at his current price before reacting on price alone.", score: 3 },
+          { label: "Ignore it completely — competitor pricing is irrelevant.", score: 0 },
+          { label: "Raise his own price to signal higher quality.", score: 1 },
         ]),
       },
     ],
@@ -296,6 +472,28 @@ export const assessmentQuestionBank = [
           { label: "Impossible to say without knowing ad spend.", score: 1 },
         ]),
       },
+      {
+        id: "free_tier_conversion",
+        question:
+          "Tarun's app has a free tier used by 50,000 people and a paid tier used by only 40, with no clear plan for converting more. What's the core gap in his business model?",
+        options: options([
+          { label: "He hasn't done enough marketing to the free users.", score: 1 },
+          { label: "There's no defined reason or moment that would make a free user decide to pay.", score: 3 },
+          { label: "The free tier should be removed to force conversions.", score: 1 },
+          { label: "Nothing — a large free user base is valuable on its own.", score: 0 },
+        ]),
+      },
+      {
+        id: "marketplace_charging_side",
+        question:
+          "Wafa is building a marketplace connecting freelance designers with small businesses, and is unsure whether to charge the designers, the businesses, or both. What should determine this decision?",
+        options: options([
+          { label: "Whichever side is easier to bill administratively.", score: 1 },
+          { label: "Charging both sides evenly, to seem fair.", score: 0 },
+          { label: "Whichever side gets more value and has more willingness to pay for solving their side of the problem.", score: 3 },
+          { label: "Whichever competitors are already charging.", score: 1 },
+        ]),
+      },
     ],
   },
   {
@@ -322,6 +520,28 @@ export const assessmentQuestionBank = [
           { label: "The remaining customers are angry and will churn later.", score: 1 },
           { label: "Price increases always cause damage and should be reversed.", score: 0 },
           { label: "This is too small a sample to learn anything.", score: 1 },
+        ]),
+      },
+      {
+        id: "no_price_objections",
+        question:
+          "Nobody who sees Rakesh's pricing page has ever objected to the price, even once. What might this actually suggest?",
+        options: options([
+          { label: "The pricing is perfectly calibrated — no changes needed.", score: 1 },
+          { label: "It's worth testing a higher price — an absence of pushback can mean it's underpriced.", score: 3 },
+          { label: "It means demand is weak, since price isn't even a topic.", score: 0 },
+          { label: "Prices should never be changed once set.", score: 1 },
+        ]),
+      },
+      {
+        id: "discount_requests",
+        question:
+          "Many customers ask for a discount before signing up, but almost none walk away when told there isn't one. What does this pattern suggest?",
+        options: options([
+          { label: "The discount requests should always be granted to avoid losing customers.", score: 1 },
+          { label: "Asking for a discount is a negotiating habit here, not a real barrier to buying.", score: 3 },
+          { label: "The price is clearly too high and needs to be cut.", score: 0 },
+          { label: "The product should be offered free during the sales conversation.", score: 1 },
         ]),
       },
     ],
@@ -352,6 +572,28 @@ export const assessmentQuestionBank = [
           { label: "Cannot be determined without more information.", score: 1 },
         ]),
       },
+      {
+        id: "acquisition_profit_math",
+        question:
+          "A founder spends ₹3,000 to acquire a customer. That customer generates ₹1,000/month in profit and typically stays four months. Is this a sound economic model?",
+        options: options([
+          { label: "Yes — ₹4,000 in total profit against a ₹3,000 cost works.", score: 3 },
+          { label: "No — any acquisition cost above ₹1,000 is automatically unsustainable.", score: 1 },
+          { label: "Cannot say without knowing the founder's total revenue.", score: 1 },
+          { label: "No — customers should never be expected to churn at all.", score: 0 },
+        ]),
+      },
+      {
+        id: "margin_vs_volume",
+        question:
+          "Two competing product lines both sell for ₹500. One has a 60% gross margin; the other has a 15% gross margin but sells twice as many units. Which line is contributing more actual profit to the business?",
+        options: options([
+          { label: "The 15% line, since higher volume always wins.", score: 1 },
+          { label: "They contribute equally since revenue is the same order of magnitude.", score: 0 },
+          { label: "It depends on the actual math — volume alone doesn't determine which is more profitable.", score: 3 },
+          { label: "The 60% line, since margin percentage is what matters most.", score: 1 },
+        ]),
+      },
     ],
   },
   {
@@ -378,6 +620,28 @@ export const assessmentQuestionBank = [
           { label: "Learning replaces action, and the idea never meets reality.", score: 3 },
           { label: "The risk is only that competitors move faster.", score: 1 },
           { label: "The risk is that he'll spend too much on courses.", score: 1 },
+        ]),
+      },
+      {
+        id: "cofounder_delay",
+        question:
+          'Farah says she\'ll start her business "as soon as she finds the right co-founder," and has been saying this for eight months. What\'s the risk in this stance?',
+        options: options([
+          { label: "No risk — a strong co-founder is essential before starting anything.", score: 1 },
+          { label: "The search for a co-founder has become a reason to delay testing the idea at all.", score: 3 },
+          { label: "The risk is only that a co-founder search takes too long financially.", score: 1 },
+          { label: "There's no risk as long as she keeps networking actively.", score: 0 },
+        ]),
+      },
+      {
+        id: "rough_real_users",
+        question:
+          "Imran ships a version of his product to ten real users that is visibly rough — missing features, some bugs, no polish. Is this a reasonable move?",
+        options: options([
+          { label: "No, an unpolished product will permanently damage his reputation.", score: 1 },
+          { label: "Yes, as long as the core value is testable and he's upfront that it's early.", score: 3 },
+          { label: "Only acceptable if none of the ten users ever find out it's incomplete.", score: 0 },
+          { label: "No, products should never be shown until fully finished.", score: 1 },
         ]),
       },
     ],
@@ -408,6 +672,28 @@ export const assessmentQuestionBank = [
           { label: "Only if she plans to keep doing it manually forever.", score: 1 },
         ]),
       },
+      {
+        id: "no_code_mvp",
+        question:
+          "Zoya wants to test her idea using a no-code tool instead of custom-built software, to launch in days instead of months. Is this a legitimate approach?",
+        options: options([
+          { label: "No, an MVP must be custom-coded to be taken seriously.", score: 1 },
+          { label: "Yes, if it can test the core assumption, the underlying tool doesn't matter.", score: 3 },
+          { label: "Only if she plans to rebuild it in code within a week.", score: 1 },
+          { label: "No, no-code tools can't be trusted with real customer data.", score: 0 },
+        ]),
+      },
+      {
+        id: "weak_core_mvp",
+        question:
+          'Rehan builds a "minimum" version of his product by cutting corners on the one feature customers actually came for, while keeping everything else polished. What\'s the flaw in this approach?',
+        options: options([
+          { label: "There's no flaw — trimming somewhere is always necessary.", score: 0 },
+          { label: "MVP means testing the core value with minimum extras, not delivering a weak version of the core itself.", score: 3 },
+          { label: "The flaw is spending too much time on polish elsewhere.", score: 1 },
+          { label: "The flaw is only that it will take longer to build.", score: 1 },
+        ]),
+      },
     ],
   },
   {
@@ -434,6 +720,28 @@ export const assessmentQuestionBank = [
           { label: "Yes; the client requirements and contract value make it necessary.", score: 3 },
           { label: "Only if they plan to hire employees.", score: 1 },
           { label: "Only if they want to raise funding later.", score: 1 },
+        ]),
+      },
+      {
+        id: "family_investment_no_agreement",
+        question:
+          "Two friends in different cities agree by phone to build a company together and start accepting money from family and friends as early investment, with nothing in writing. What's the most pressing risk here?",
+        options: options([
+          { label: "There's no meaningful risk until the company grows large.", score: 0 },
+          { label: "Taking investment money without any documented agreement creates real legal and relationship exposure early.", score: 3 },
+          { label: "The risk is only that family members might ask for updates too often.", score: 1 },
+          { label: "The risk is limited to whichever city has stricter business laws.", score: 1 },
+        ]),
+      },
+      {
+        id: "pvt_ltd_too_early",
+        question:
+          'Before defining what the product even does, Kunal registers a Private Limited company because it "feels like the professional first step." What\'s the issue with this sequencing?',
+        options: options([
+          { label: "There's no issue — registering early always helps credibility.", score: 0 },
+          { label: "Registration brings ongoing compliance costs and obligations that start accruing before there's any validated business to justify them.", score: 3 },
+          { label: "The issue is only that he chose the wrong structure.", score: 1 },
+          { label: "The issue is that registration should happen after hiring, not before.", score: 1 },
         ]),
       },
     ],
@@ -464,6 +772,28 @@ export const assessmentQuestionBank = [
           { label: "LLP, since it avoids double taxation.", score: 1 },
         ]),
       },
+      {
+        id: "food_manufacturing_liability",
+        question:
+          "A founder is starting a small food manufacturing business involving physical equipment, staff, and product liability risk, entirely funded from personal savings. Which consideration should weigh most in the structure decision?",
+        options: options([
+          { label: "Which structure has the simplest annual paperwork.", score: 1 },
+          { label: "Personal liability protection, given the physical and product risks involved.", score: 3 },
+          { label: "Whichever structure a similar successful business used.", score: 1 },
+          { label: "Whichever structure requires the least starting capital.", score: 0 },
+        ]),
+      },
+      {
+        id: "unequal_capital_sweat",
+        question:
+          "Two co-founders are starting together, but one is contributing ₹8 lakh in capital and the other is contributing only sweat equity. Should this affect their choice of business structure?",
+        options: options([
+          { label: "No — structure should never be influenced by capital contribution.", score: 0 },
+          { label: "Yes — an LLP or Pvt Ltd with clearly defined ownership stakes can reflect the unequal contribution formally.", score: 3 },
+          { label: "No — only equal partnerships should ever be formalized.", score: 1 },
+          { label: "Only if they plan to dissolve the business later.", score: 1 },
+        ]),
+      },
     ],
   },
   {
@@ -490,6 +820,28 @@ export const assessmentQuestionBank = [
           { label: "Whether raising now gives up equity before proof he needs that money.", score: 3 },
           { label: "Whether the investor is famous enough for credibility.", score: 1 },
           { label: "Whether to ask for even more money while the offer is open.", score: 1 },
+        ]),
+      },
+      {
+        id: "growth_plateau_funding",
+        question:
+          "A bootstrapped founder has grown steadily for two years but has hit a plateau — the same channels and team size aren't producing more growth. Is this a good moment to consider raising funding?",
+        options: options([
+          { label: "No — funding should only be raised in the first six months.", score: 1 },
+          { label: "Possibly — if the plateau is a resource constraint rather than a demand or model problem, capital could help.", score: 3 },
+          { label: "Yes, automatically — any plateau means funding is needed.", score: 0 },
+          { label: "No — plateaus mean the business idea has failed.", score: 1 },
+        ]),
+      },
+      {
+        id: "angel_control_rights",
+        question:
+          "An angel investor offers funding but asks for a board seat and veto rights over most major decisions, despite investing a relatively small amount. What should the founder weigh most carefully?",
+        options: options([
+          { label: "Whether the investor's name will impress future investors.", score: 1 },
+          { label: "Whether the control being given up is proportionate to the capital and value being received.", score: 3 },
+          { label: 'Whether to simply ask for a larger check to make it "worth it".', score: 1 },
+          { label: "Whether to accept immediately since angel investors are hard to find.", score: 0 },
         ]),
       },
     ],
@@ -520,6 +872,28 @@ export const assessmentQuestionBank = [
           { label: "There's no risk as long as it's in writing.", score: 1 },
         ]),
       },
+      {
+        id: "technical_cofounder_split",
+        question:
+          "Aryan has strong business and sales instincts but no technical skill, and is considering bringing on a co-founder purely to fill that gap. What should guide the equity split with this new co-founder?",
+        options: options([
+          { label: "A flat 10% regardless of role, since Aryan had the original idea.", score: 1 },
+          { label: "Their respective ongoing contribution, risk, and commitment going forward — not just who thought of it first.", score: 3 },
+          { label: "Whatever percentage makes the co-founder immediately agree.", score: 0 },
+          { label: "An equal 50/50 split by default, to avoid negotiation.", score: 1 },
+        ]),
+      },
+      {
+        id: "disengaged_cofounder",
+        question:
+          "A co-founder who received 30% equity two years ago has become largely disengaged — inconsistent hours, minimal output — while the other co-founder does nearly all the work. What does this reveal about how the original equity was structured?",
+        options: options([
+          { label: "Nothing — equity splits are permanent once agreed.", score: 1 },
+          { label: "The absence of a vesting schedule tied to ongoing contribution is now costing the active co-founder.", score: 3 },
+          { label: "The disengaged co-founder should be forgiven since they helped early on.", score: 0 },
+          { label: "The issue is unrelated to equity and only about personal motivation.", score: 1 },
+        ]),
+      },
     ],
   },
   {
@@ -546,6 +920,28 @@ export const assessmentQuestionBank = [
           { label: "No; founder-time growth is expansion, not scale, until systemized.", score: 3 },
           { label: "Yes, as long as she hires more people like herself.", score: 1 },
           { label: "Only measurable after a full year of data.", score: 1 },
+        ]),
+      },
+      {
+        id: "sales_team_before_fit",
+        question:
+          "Before confirming product-market fit, a founder hires three salespeople to accelerate growth. What's the risk in this sequencing?",
+        options: options([
+          { label: "No risk — more salespeople always means more revenue.", score: 0 },
+          { label: "Scaling a sales team before the product reliably converts and retains customers can scale the wrong thing.", score: 3 },
+          { label: "The only risk is the extra salary cost.", score: 1 },
+          { label: "The risk is limited to how quickly the new hires can be trained.", score: 1 },
+        ]),
+      },
+      {
+        id: "second_city_churn",
+        question:
+          "A founder is considering expanding to a second city, even though her first city still has high customer churn she hasn't addressed. What should she prioritize first?",
+        options: options([
+          { label: "Expanding anyway — new cities bring fresh growth regardless.", score: 1 },
+          { label: "Understanding and fixing why customers are churning in the first city, before replicating the same problem elsewhere.", score: 3 },
+          { label: "Splitting focus evenly between fixing churn and launching the new city.", score: 1 },
+          { label: "Expansion should be delayed only if churn exceeds 50%.", score: 0 },
         ]),
       },
     ],
