@@ -250,7 +250,7 @@ export default function Home() {
                   <strong>₹199</strong>
                 </p>
                 <p className="journey-meta">3 Hours · Live Online · Hinglish</p>
-                <p className="journey-meta journey-date">Next Session: 26 July 2026 · 10:30 AM IST</p>
+                <p className="journey-meta journey-date">Next Session: Sunday, 26 July 2026 · 10:30 AM IST</p>
                 <p className="journey-purpose">
                   See how idea, market, customer, product, structure, finance, growth, and ownership
                   connect—so you know what to do first, what can wait, and what comes next.
