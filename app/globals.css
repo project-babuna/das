@@ -2105,11 +2105,35 @@ body.assessment-open {
   letter-spacing: 0.02em;
 }
 
+.journey-card .journey-date {
+  width: fit-content;
+  margin-top: 9px;
+  padding: 8px 10px;
+  border: 1px solid rgba(201, 154, 46, 0.2);
+  border-radius: 8px;
+  background: rgba(201, 154, 46, 0.08);
+  color: #7c5a17;
+  font-size: 0.82rem;
+  line-height: 1.3;
+}
+
 .journey-card .journey-purpose {
   margin-top: 24px;
   color: var(--muted);
   font-size: 1rem;
   line-height: 1.54;
+}
+
+.journey-card .journey-note {
+  margin: 14px 0 0;
+  color: rgba(37, 50, 54, 0.72);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.48;
+}
+
+.journey-card .journey-note + .journey-cta {
+  margin-top: 28px;
 }
 
 .journey-cta {
@@ -2738,6 +2762,2395 @@ body.assessment-open {
 .clarity-session-callout .btn {
   width: fit-content;
   margin-top: 22px;
+}
+
+.clarity-ad-page {
+  background: var(--surface-clean);
+}
+
+.clarity-ad-page .content-hero {
+  padding-bottom: clamp(72px, 8vw, 102px);
+}
+
+.clarity-ad-page .content-hero-grid {
+  align-items: center;
+  gap: clamp(38px, 5.5vw, 76px);
+}
+
+.clarity-ad-page .content-hero h1 {
+  max-width: 1040px;
+  font-size: clamp(2.8rem, 4.9vw, 4.95rem);
+}
+
+.clarity-ad-page .content-hero .offer-badge-eyebrow {
+  margin-top: 4px;
+  margin-bottom: clamp(34px, 3.4vw, 46px);
+}
+
+.clarity-ad-page .content-hero h1 {
+  margin-bottom: clamp(24px, 2.6vw, 34px);
+}
+
+.clarity-ad-page .content-hero p:not(.eyebrow, .offer-badge-eyebrow) {
+  max-width: 780px;
+}
+
+.clarity-ad-hero-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.clarity-ad-hero-notes span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 7px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.88rem;
+  font-weight: 720;
+}
+
+.clarity-hero-price-card {
+  align-self: center;
+}
+
+.clarity-hero-price-card .btn {
+  width: 100%;
+  margin-top: 22px;
+}
+
+.clarity-hero-session-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 18px 0 2px;
+}
+
+.clarity-hero-session-meta div {
+  padding: 13px 14px;
+  border: 1px solid rgba(243, 189, 80, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.clarity-hero-session-meta span {
+  display: block;
+  color: rgba(243, 189, 80, 0.9);
+  font-size: 0.66rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.clarity-hero-session-meta strong {
+  display: block;
+  margin-top: 6px;
+  color: var(--white);
+  font-size: 0.96rem;
+  line-height: 1.25;
+}
+
+.clarity-session-strip {
+  position: relative;
+  z-index: 2;
+  margin-top: -34px;
+  padding-bottom: clamp(28px, 4vw, 44px);
+}
+
+.clarity-session-strip-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  overflow: hidden;
+  border: 1px solid rgba(201, 154, 46, 0.24);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(250, 247, 239, 0.96)),
+    var(--white);
+  box-shadow: 0 24px 70px rgba(17, 25, 27, 0.14);
+}
+
+.clarity-session-strip-grid article {
+  min-height: 104px;
+  padding: clamp(18px, 2.6vw, 24px);
+  border-right: 1px solid rgba(17, 25, 27, 0.08);
+}
+
+.clarity-session-strip-grid article:last-child {
+  border-right: 0;
+}
+
+.clarity-session-strip-grid span {
+  display: inline-flex;
+  margin-bottom: 10px;
+  color: #a2741c;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.clarity-session-strip-grid strong {
+  display: block;
+  color: var(--ink);
+  font-size: clamp(1.02rem, 1.55vw, 1.22rem);
+  line-height: 1.28;
+}
+
+.clarity-ad-confusion,
+.clarity-ad-system,
+.clarity-ad-understand,
+.clarity-ad-leave,
+.clarity-ad-structure,
+.clarity-ad-audience,
+.clarity-ad-why,
+.clarity-ad-about,
+.clarity-ad-final {
+  padding: clamp(64px, 7vw, 96px) 0;
+}
+
+.clarity-ad-confusion,
+.clarity-ad-understand,
+.clarity-ad-structure,
+.clarity-ad-about {
+  background: var(--surface-clean);
+}
+
+.clarity-ad-system,
+.clarity-ad-leave,
+.clarity-ad-audience,
+.clarity-ad-why,
+.clarity-ad-final {
+  background: var(--surface-muted);
+}
+
+.clarity-ad-two-column {
+  display: grid;
+  grid-template-columns: minmax(0, 0.68fr) minmax(0, 1.32fr);
+  gap: clamp(36px, 5vw, 68px);
+  align-items: start;
+}
+
+.clarity-ad-two-column .section-kicker {
+  position: sticky;
+  top: 112px;
+  max-width: 560px;
+}
+
+.clarity-ad-two-column .section-kicker .clarity-section-label {
+  margin: 0 0 14px;
+  color: var(--gold);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.clarity-ad-two-column .section-kicker h2,
+.clarity-ad-system-card h2,
+.clarity-ad-centered-heading h2,
+.clarity-ad-leave-panel h2,
+.clarity-ad-split-panel h2,
+.clarity-ad-why-card h2,
+.clarity-ad-about-card h2,
+.clarity-ad-final-card h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(2rem, 3.25vw, 3rem);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+}
+
+.clarity-ad-two-column .section-kicker p,
+.clarity-ad-system-card p,
+.clarity-ad-centered-heading p,
+.clarity-ad-leave-panel p,
+.clarity-ad-why-card p,
+.clarity-ad-about-card p,
+.clarity-ad-final-card p {
+  max-width: 760px;
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.68;
+}
+
+.clarity-ad-leave-panel .btn {
+  margin-top: 24px;
+}
+
+.clarity-ad-question-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.clarity-ad-question-grid article,
+.clarity-ad-card-grid article,
+.clarity-ad-journey-grid article,
+.clarity-ad-session-grid article {
+  border: 1px solid rgba(17, 25, 27, 0.08);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: 0 18px 46px rgba(17, 25, 27, 0.055);
+}
+
+.clarity-ad-question-grid article {
+  display: flex;
+  min-height: 78px;
+  align-items: center;
+  padding: clamp(15px, 2vw, 19px);
+}
+
+.clarity-ad-question-grid p {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(0.95rem, 1.25vw, 1.05rem);
+  font-weight: 760;
+  line-height: 1.38;
+}
+
+.clarity-ad-insight-box {
+  margin-top: 20px;
+  padding: clamp(20px, 3vw, 28px);
+  border: 1px solid rgba(201, 154, 46, 0.24);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(243, 189, 80, 0.12), rgba(255, 255, 255, 0.94)),
+    var(--white);
+}
+
+.clarity-ad-insight-box p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.62;
+}
+
+.clarity-ad-insight-box p:first-child {
+  color: var(--teal);
+  font-size: 1.12rem;
+  font-weight: 900;
+}
+
+.clarity-ad-insight-box p + p {
+  margin-top: 10px;
+}
+
+.clarity-ad-problem-copy p:first-child {
+  color: var(--ink);
+  font-size: clamp(1.05rem, 1.45vw, 1.2rem);
+  font-weight: 780;
+}
+
+.clarity-ad-problem-points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 22px;
+  padding: 0;
+  list-style: none;
+}
+
+.clarity-ad-problem-points li {
+  position: relative;
+  min-height: 76px;
+  padding: 18px 18px 18px 48px;
+  border: 1px solid rgba(11, 48, 45, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+  font-size: clamp(0.96rem, 1.2vw, 1.05rem);
+  font-weight: 780;
+  line-height: 1.36;
+}
+
+.clarity-ad-problem-points li::before {
+  content: "?";
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  display: grid;
+  width: 20px;
+  height: 20px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(201, 154, 46, 0.16);
+  color: var(--gold);
+  font-size: 0.74rem;
+  font-weight: 900;
+}
+
+.clarity-ad-problem-copy p + p {
+  margin-top: 16px;
+}
+
+.clarity-ad-system-card,
+.clarity-ad-leave-panel,
+.clarity-ad-why-card,
+.clarity-ad-about-card,
+.clarity-ad-final-card {
+  border: 1px solid rgba(11, 48, 45, 0.1);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+}
+
+.clarity-ad-system-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(30px, 5vw, 62px);
+  align-items: center;
+  padding: clamp(28px, 4.6vw, 48px);
+  background:
+    linear-gradient(135deg, rgba(243, 189, 80, 0.11), transparent 42%),
+    var(--white);
+}
+
+.clarity-ad-system-card .clarity-section-label {
+  margin: 0 0 16px;
+  color: var(--gold);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.clarity-ad-journey-line {
+  max-width: 520px;
+  margin: 24px 0 0;
+  padding: 15px 16px;
+  border: 1px solid rgba(11, 48, 45, 0.11);
+  border-radius: 8px;
+  background: var(--surface-clean);
+  color: var(--teal);
+  font-size: 0.92rem;
+  font-weight: 860;
+  line-height: 1.5;
+}
+
+.clarity-ad-map-table {
+  overflow: hidden;
+  border: 1px solid rgba(11, 48, 45, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 20px 52px rgba(17, 25, 27, 0.055);
+}
+
+.clarity-ad-map-header,
+.clarity-ad-map-rows article {
+  display: grid;
+  grid-template-columns: minmax(128px, 0.36fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: center;
+}
+
+.clarity-ad-map-header {
+  padding: 14px 18px;
+  background: rgba(11, 48, 45, 0.055);
+  color: var(--teal);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.clarity-ad-map-rows article {
+  padding: 17px 18px;
+  border-top: 1px solid rgba(11, 48, 45, 0.08);
+}
+
+.clarity-ad-map-rows article > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.clarity-ad-map-rows article > div span {
+  display: inline-grid;
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(201, 154, 46, 0.13);
+  color: #c99a2e;
+  font-size: 0.72rem;
+  font-weight: 940;
+  letter-spacing: 0.03em;
+}
+
+.clarity-ad-map-rows h3,
+.clarity-ad-card-grid h3,
+.clarity-ad-session-grid h3 {
+  margin: 0;
+  color: var(--teal);
+  font-size: 1.08rem;
+  line-height: 1.18;
+}
+
+.clarity-ad-map-rows p,
+.clarity-ad-card-grid p,
+.clarity-ad-session-grid p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.96rem;
+  line-height: 1.56;
+}
+
+.clarity-ad-centered-heading {
+  max-width: 860px;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.clarity-ad-centered-heading p {
+  margin-inline: auto;
+}
+
+.clarity-ad-card-grid,
+.clarity-ad-session-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.clarity-ad-card-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.clarity-ad-card-grid article {
+  min-height: 190px;
+  padding: clamp(20px, 2.7vw, 26px);
+}
+
+.clarity-ad-session-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.clarity-ad-session-grid article {
+  min-height: 230px;
+  padding: clamp(22px, 3vw, 30px);
+  background:
+    linear-gradient(180deg, rgba(11, 48, 45, 0.035), rgba(255, 255, 255, 0)),
+    var(--white);
+}
+
+.clarity-ad-leave-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(30px, 5vw, 58px);
+  align-items: center;
+  padding: clamp(28px, 4.8vw, 48px);
+}
+
+.clarity-ad-check-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.clarity-ad-check-list li {
+  position: relative;
+  min-height: 54px;
+  padding: 14px 14px 14px 40px;
+  border: 1px solid rgba(17, 25, 27, 0.08);
+  border-radius: 8px;
+  background: var(--surface-clean);
+  color: var(--ink-2);
+  font-size: 0.96rem;
+  font-weight: 760;
+  line-height: 1.38;
+}
+
+.clarity-ad-check-list li::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 16px;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #c99a2e;
+  box-shadow: 0 0 0 5px rgba(201, 154, 46, 0.12);
+}
+
+.clarity-ad-split-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(24px, 4vw, 38px);
+  align-items: stretch;
+}
+
+.clarity-ad-split-panel > div {
+  height: 100%;
+  padding: clamp(24px, 3.6vw, 34px);
+  border: 1px solid rgba(17, 25, 27, 0.08);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+}
+
+.clarity-ad-split-panel > div:first-child {
+  background:
+    linear-gradient(135deg, rgba(13, 106, 102, 0.055), transparent 45%),
+    var(--white);
+}
+
+.clarity-ad-split-panel > div:last-child {
+  background:
+    linear-gradient(135deg, rgba(243, 189, 80, 0.11), transparent 46%),
+    var(--white);
+}
+
+.clarity-ad-fit-card h2 {
+  max-width: 620px;
+}
+
+.clarity-ad-fit-card p strong {
+  color: var(--teal);
+}
+
+.clarity-ad-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0 4px;
+}
+
+.clarity-ad-tag-list span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 10px 13px;
+  border: 1px solid rgba(11, 48, 45, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--ink-2);
+  font-size: 0.95rem;
+  font-weight: 760;
+  line-height: 1.25;
+}
+
+.clarity-ad-compact-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.clarity-ad-split-panel .clarity-ad-compact-list li {
+  padding: 10px 12px;
+  border: 1px solid rgba(201, 154, 46, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 760;
+}
+
+.clarity-ad-split-panel .clarity-ad-compact-list li::before {
+  display: none;
+}
+
+.clarity-ad-split-panel ul {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.clarity-ad-split-panel li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 720;
+  line-height: 1.46;
+}
+
+.clarity-ad-split-panel li::before {
+  content: "";
+  position: absolute;
+  top: 0.62em;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #c99a2e;
+}
+
+.clarity-ad-split-panel p {
+  margin: 18px 0 0;
+  color: var(--teal);
+  font-size: 1.01rem;
+  font-weight: 820;
+  line-height: 1.55;
+}
+
+.clarity-ad-why-card,
+.clarity-ad-about-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(28px, 5vw, 58px);
+  align-items: center;
+  padding: clamp(28px, 4.8vw, 48px);
+}
+
+.clarity-ad-why-card {
+  background:
+    linear-gradient(135deg, rgba(243, 189, 80, 0.1), transparent 42%),
+    var(--white);
+}
+
+.clarity-ad-why-card h2,
+.clarity-ad-about-card h2,
+.clarity-ad-final-card h2 {
+  text-transform: none;
+}
+
+.clarity-ad-contrast-list {
+  display: grid;
+  gap: 10px;
+}
+
+.clarity-ad-contrast-list p,
+.clarity-ad-contrast-list strong {
+  margin: 0;
+  padding: 15px 16px;
+  border: 1px solid rgba(17, 25, 27, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.74);
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.52;
+}
+
+.clarity-ad-contrast-list strong {
+  color: var(--teal);
+  font-weight: 900;
+}
+
+.clarity-ad-about-card {
+  background:
+    linear-gradient(135deg, rgba(11, 48, 45, 0.055), transparent 48%),
+    var(--white);
+}
+
+.clarity-ad-framework-list {
+  display: grid;
+  gap: 12px;
+}
+
+.clarity-ad-framework-list span {
+  display: flex;
+  align-items: center;
+  min-height: 58px;
+  padding: 14px 18px;
+  border: 1px solid rgba(11, 48, 45, 0.1);
+  border-radius: 8px;
+  background: var(--surface-clean);
+  color: var(--teal);
+  font-size: 1rem;
+  font-weight: 880;
+}
+
+.clarity-ad-final-card {
+  max-width: 1080px;
+  margin-inline: auto;
+  padding: clamp(28px, 4.8vw, 48px);
+}
+
+.clarity-ad-final-offer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.42fr);
+  gap: clamp(28px, 5vw, 58px);
+  align-items: center;
+  background:
+    linear-gradient(135deg, rgba(11, 48, 45, 0.94), rgba(11, 48, 45, 0.84)),
+    var(--white);
+}
+
+.clarity-ad-final-card .clarity-section-label {
+  margin: 0 0 14px;
+  color: var(--gold);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.clarity-ad-final-card h2,
+.clarity-ad-final-card p {
+  color: var(--white);
+}
+
+.clarity-ad-final-card p {
+  opacity: 0.86;
+}
+
+.clarity-ad-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.clarity-ad-summary-grid div {
+  min-height: 82px;
+  padding: 15px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.clarity-ad-summary-grid span,
+.clarity-ad-price-box span {
+  display: inline-flex;
+  color: #c99a2e;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.clarity-ad-summary-grid strong {
+  display: block;
+  margin-top: 7px;
+  color: var(--white);
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.clarity-ad-price-box {
+  padding: clamp(22px, 3.6vw, 34px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.clarity-ad-price-box strong {
+  display: block;
+  margin: 10px 0 20px;
+  color: var(--teal);
+  font-size: clamp(3rem, 6vw, 4.8rem);
+  line-height: 1;
+}
+
+.clarity-ad-price-box .btn {
+  width: 100%;
+}
+
+.clarity-ad-price-box p {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* Clarity Session premium section refinement */
+.clarity-ad-confusion,
+.clarity-ad-system,
+.clarity-ad-leave,
+.clarity-ad-structure,
+.clarity-ad-audience,
+.clarity-ad-why,
+.clarity-ad-about,
+.clarity-ad-final {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(76px, 8vw, 112px) 0;
+}
+
+.clarity-ad-confusion,
+.clarity-ad-structure,
+.clarity-ad-why {
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(248, 246, 240, 0.98)),
+    var(--surface-clean);
+}
+
+.clarity-ad-system,
+.clarity-ad-audience,
+.clarity-ad-about {
+  background:
+    linear-gradient(180deg, #ffffff, #f7f5f0),
+    var(--white);
+}
+
+.clarity-ad-leave {
+  background:
+    radial-gradient(circle at 12% 16%, rgba(201, 154, 46, 0.11), transparent 32%),
+    linear-gradient(180deg, #f5f2eb, #fffdf8);
+}
+
+.clarity-ad-confusion::before,
+.clarity-ad-system::before,
+.clarity-ad-leave::before,
+.clarity-ad-why::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(11, 48, 45, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 48, 45, 0.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(180deg, transparent, #000 18%, #000 78%, transparent);
+}
+
+.clarity-ad-two-column,
+.clarity-ad-system-card,
+.clarity-ad-leave-panel,
+.clarity-ad-split-panel,
+.clarity-ad-why-card,
+.clarity-ad-about-card,
+.clarity-ad-final-card {
+  position: relative;
+  z-index: 1;
+}
+
+.clarity-ad-two-column {
+  align-items: center;
+}
+
+.clarity-ad-two-column .section-kicker {
+  padding: clamp(22px, 3vw, 34px) 0;
+}
+
+.clarity-ad-two-column .section-kicker h2,
+.clarity-ad-system-card h2,
+.clarity-ad-centered-heading h2,
+.clarity-ad-leave-panel h2,
+.clarity-ad-split-panel h2,
+.clarity-ad-why-card h2,
+.clarity-ad-about-card h2,
+.clarity-ad-final-card h2 {
+  font-size: clamp(2rem, 3.8vw, 3.28rem);
+  letter-spacing: -0.035em;
+}
+
+.clarity-section-label,
+.clarity-ad-two-column .section-kicker .clarity-section-label,
+.clarity-ad-system-card .clarity-section-label,
+.clarity-ad-final-card .clarity-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.clarity-section-label::before,
+.clarity-ad-two-column .section-kicker .clarity-section-label::before,
+.clarity-ad-system-card .clarity-section-label::before,
+.clarity-ad-final-card .clarity-section-label::before {
+  content: "";
+  width: 28px;
+  height: 2px;
+  background: currentColor;
+}
+
+.clarity-ad-insight-box {
+  padding: clamp(24px, 3.6vw, 38px);
+  border: 1px solid rgba(11, 48, 45, 0.11);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(255, 253, 248, 0.9)),
+    var(--white);
+  box-shadow: 0 24px 64px rgba(17, 25, 27, 0.08);
+}
+
+.clarity-ad-problem-points {
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.clarity-ad-problem-points li {
+  min-height: 86px;
+  padding: 18px 18px 18px 54px;
+  border-color: rgba(11, 48, 45, 0.09);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 246, 240, 0.72));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.clarity-ad-problem-points li::before {
+  top: 18px;
+  width: 24px;
+  height: 24px;
+  background: rgba(11, 48, 45, 0.075);
+  color: var(--teal);
+}
+
+.clarity-ad-problem-copy p {
+  max-width: 920px;
+}
+
+.clarity-ad-system-card {
+  border-color: rgba(11, 48, 45, 0.09);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(201, 154, 46, 0.13), transparent 28%),
+    linear-gradient(135deg, #ffffff, #fbfaf6);
+  box-shadow: 0 30px 80px rgba(17, 25, 27, 0.095);
+}
+
+.clarity-ad-journey-line {
+  display: inline-block;
+  max-width: 620px;
+  border-color: rgba(201, 154, 46, 0.26);
+  background: rgba(255, 253, 248, 0.9);
+  color: var(--ink);
+}
+
+.clarity-ad-map-table {
+  border-color: rgba(11, 48, 45, 0.12);
+  background: #ffffff;
+  box-shadow: 0 18px 52px rgba(17, 25, 27, 0.065);
+}
+
+.clarity-ad-map-header {
+  background: var(--brand-deep);
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.clarity-ad-map-rows article {
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.clarity-ad-map-rows article:hover {
+  background: rgba(247, 245, 240, 0.72);
+}
+
+.clarity-ad-leave-panel {
+  border-color: rgba(11, 48, 45, 0.12);
+  background:
+    linear-gradient(135deg, rgba(11, 48, 45, 0.97), rgba(7, 24, 22, 0.94));
+  box-shadow: 0 30px 82px rgba(7, 24, 22, 0.2);
+}
+
+.clarity-ad-leave-panel h2,
+.clarity-ad-leave-panel p {
+  color: var(--white);
+}
+
+.clarity-ad-leave-panel p {
+  opacity: 0.8;
+}
+
+.clarity-ad-leave-panel .btn {
+  box-shadow: 0 18px 40px rgba(201, 154, 46, 0.24);
+}
+
+.clarity-ad-check-list {
+  gap: 12px;
+}
+
+.clarity-ad-check-list li {
+  min-height: 66px;
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.075);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.clarity-ad-centered-heading {
+  margin-bottom: clamp(28px, 4vw, 42px);
+}
+
+.clarity-ad-session-grid {
+  counter-reset: session-step;
+  gap: 18px;
+}
+
+.clarity-ad-session-grid article {
+  position: relative;
+  min-height: 220px;
+  padding: clamp(24px, 3vw, 32px);
+  overflow: hidden;
+  border-color: rgba(11, 48, 45, 0.09);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 246, 240, 0.84)),
+    var(--white);
+}
+
+.clarity-ad-session-grid article::before {
+  counter-increment: session-step;
+  content: "0" counter(session-step);
+  display: inline-grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  margin-bottom: 24px;
+  border-radius: 999px;
+  background: rgba(201, 154, 46, 0.13);
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 940;
+}
+
+.clarity-ad-session-grid article::after {
+  content: "";
+  position: absolute;
+  right: -48px;
+  bottom: -56px;
+  width: 150px;
+  height: 150px;
+  border-radius: 999px;
+  background: rgba(11, 48, 45, 0.045);
+}
+
+.clarity-ad-split-panel {
+  grid-template-columns: minmax(0, 1.18fr) minmax(320px, 0.82fr);
+}
+
+.clarity-ad-split-panel > div {
+  border-color: rgba(11, 48, 45, 0.1);
+}
+
+.clarity-ad-fit-yes {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(13, 106, 102, 0.1), transparent 38%),
+    var(--white) !important;
+}
+
+.clarity-ad-fit-no {
+  background:
+    linear-gradient(180deg, rgba(248, 246, 240, 0.96), rgba(255, 255, 255, 0.92)) !important;
+}
+
+.clarity-ad-tag-list span,
+.clarity-ad-split-panel .clarity-ad-compact-list li {
+  border-radius: 8px;
+}
+
+.clarity-ad-tag-list span {
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(17, 25, 27, 0.045);
+}
+
+.clarity-ad-audience-panel {
+  position: relative;
+  z-index: 1;
+  padding: clamp(26px, 4.6vw, 50px);
+  border: 1px solid rgba(11, 48, 45, 0.1);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(13, 106, 102, 0.08), transparent 34%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(250, 248, 242, 0.96));
+  box-shadow: 0 28px 78px rgba(17, 25, 27, 0.08);
+}
+
+.clarity-ad-audience-head {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.55fr);
+  gap: clamp(20px, 4vw, 46px);
+  align-items: end;
+  margin-bottom: clamp(24px, 4vw, 38px);
+}
+
+.clarity-ad-audience-head h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(2rem, 3.7vw, 3.25rem);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+.clarity-ad-audience-head p {
+  margin: 0;
+  padding: 16px 18px;
+  border-left: 3px solid var(--gold);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--teal);
+  font-size: 0.98rem;
+  font-weight: 820;
+  line-height: 1.5;
+}
+
+.clarity-ad-audience-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.clarity-ad-audience-panel .clarity-ad-fit-card {
+  padding: clamp(22px, 3vw, 30px);
+  border: 1px solid rgba(11, 48, 45, 0.09);
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.clarity-ad-audience-panel .clarity-ad-fit-yes {
+  background: #ffffff !important;
+}
+
+.clarity-ad-audience-panel .clarity-ad-fit-no {
+  background:
+    linear-gradient(180deg, rgba(248, 246, 240, 0.96), rgba(255, 255, 255, 0.86)) !important;
+}
+
+.clarity-ad-audience-panel .clarity-ad-fit-card p {
+  margin: 0;
+}
+
+.clarity-ad-audience-panel .clarity-ad-tag-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.clarity-ad-audience-panel .clarity-ad-tag-list span {
+  min-height: 58px;
+  align-items: center;
+  border-color: rgba(11, 48, 45, 0.08);
+  background:
+    linear-gradient(180deg, #ffffff, rgba(248, 246, 240, 0.72));
+}
+
+.clarity-ad-audience-panel .clarity-ad-compact-list {
+  display: grid;
+  gap: 9px;
+  margin-top: 16px;
+}
+
+.clarity-ad-audience-panel .clarity-ad-compact-list li {
+  border-radius: 8px;
+}
+
+.clarity-ad-structure {
+  background:
+    linear-gradient(180deg, #fffdf8, #f5f2eb);
+}
+
+.clarity-ad-structure .clarity-ad-centered-heading {
+  max-width: 740px;
+}
+
+.clarity-ad-structure .clarity-ad-centered-heading h2 {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+}
+
+.clarity-ad-leave {
+  background:
+    radial-gradient(circle at 88% 0%, rgba(201, 154, 46, 0.12), transparent 30%),
+    linear-gradient(180deg, #f7f5f0, #fffdf8);
+}
+
+.clarity-ad-audience {
+  background:
+    linear-gradient(180deg, #fffdf8, #f7f5f0);
+}
+
+.clarity-ad-system {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(201, 154, 46, 0.12), transparent 34%),
+    linear-gradient(180deg, #ffffff, #f7f5f0);
+}
+
+.clarity-ad-system-card {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.clarity-ad-system-card > div:first-child {
+  display: block;
+  max-width: 1080px;
+  min-height: 0;
+  margin: 0 auto clamp(30px, 5vw, 52px);
+  padding: 0;
+  overflow: visible;
+  background: transparent;
+  color: var(--ink);
+  text-align: center;
+}
+
+.clarity-ad-system-card > div:first-child::after {
+  display: none;
+}
+
+.clarity-ad-system-card .clarity-section-label {
+  justify-content: center;
+  color: var(--gold);
+}
+
+.clarity-ad-system-card h2 {
+  max-width: 820px;
+  margin: 18px auto 0;
+  color: var(--ink);
+}
+
+.clarity-ad-journey-flow {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: clamp(28px, 4vw, 42px);
+}
+
+.clarity-ad-flow-step {
+  position: relative;
+  display: grid;
+  min-height: 86px;
+  align-content: center;
+  justify-items: center;
+  gap: 8px;
+  padding: 13px 8px;
+  border: 1px solid rgba(11, 48, 45, 0.1);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 16px 42px rgba(17, 25, 27, 0.055);
+  text-align: center;
+}
+
+.clarity-ad-flow-step:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: -13px;
+  z-index: 2;
+  color: var(--gold);
+  font-size: 1rem;
+  font-weight: 900;
+  transform: translateY(-50%);
+}
+
+.clarity-ad-flow-step span {
+  color: var(--gold);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.clarity-ad-flow-step strong {
+  color: var(--teal);
+  font-size: clamp(0.78rem, 0.94vw, 0.94rem);
+  line-height: 1.12;
+}
+
+.clarity-ad-map-table {
+  max-width: 1080px;
+  margin-inline: auto;
+}
+
+.clarity-ad-map-header {
+  display: none;
+}
+
+.clarity-ad-map-rows {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.clarity-ad-map-rows article {
+  grid-template-columns: minmax(132px, 0.38fr) minmax(0, 1fr);
+  min-height: 112px;
+  padding: 20px;
+  border-color: rgba(11, 48, 45, 0.09);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 253, 248, 0.86));
+}
+
+.clarity-ad-map-rows article::before {
+  width: 4px;
+}
+
+.clarity-ad-why-card,
+.clarity-ad-about-card {
+  border-color: rgba(11, 48, 45, 0.1);
+  box-shadow: 0 24px 70px rgba(17, 25, 27, 0.075);
+}
+
+.clarity-ad-why-card {
+  background:
+    linear-gradient(135deg, #ffffff, #f8f6f0);
+}
+
+.clarity-ad-contrast-list {
+  gap: 14px;
+}
+
+.clarity-ad-contrast-list p,
+.clarity-ad-contrast-list strong {
+  padding: clamp(18px, 2.6vw, 26px);
+  border-color: rgba(11, 48, 45, 0.1);
+}
+
+.clarity-ad-contrast-list p {
+  background: #ffffff;
+  color: var(--ink-2);
+  font-size: 1.02rem;
+  line-height: 1.68;
+}
+
+.clarity-ad-contrast-list strong {
+  background: rgba(11, 48, 45, 0.07);
+}
+
+.clarity-ad-about-card {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(201, 154, 46, 0.12), transparent 34%),
+    linear-gradient(135deg, #ffffff, #fbfaf6);
+}
+
+.clarity-ad-framework-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.clarity-ad-framework-list span {
+  border-color: rgba(11, 48, 45, 0.09);
+  background: #ffffff;
+  box-shadow: 0 14px 34px rgba(17, 25, 27, 0.045);
+}
+
+.clarity-ad-framework-list span:last-child {
+  grid-column: 1 / -1;
+}
+
+.clarity-ad-final {
+  background:
+    linear-gradient(180deg, #fffdf8, #f2f6f3);
+}
+
+.clarity-ad-final-card {
+  border-color: rgba(11, 48, 45, 0.14);
+}
+
+.clarity-ad-final-offer {
+  box-shadow: 0 34px 90px rgba(7, 24, 22, 0.22);
+}
+
+.clarity-ad-price-box {
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.15);
+}
+
+.clarity-ad-problem-panel {
+  position: relative;
+  z-index: 1;
+  padding: clamp(26px, 4.8vw, 54px);
+  border: 1px solid rgba(11, 48, 45, 0.1);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(201, 154, 46, 0.12), transparent 30%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(251, 250, 246, 0.94));
+  box-shadow: 0 30px 84px rgba(17, 25, 27, 0.09);
+}
+
+.clarity-ad-problem-panel::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  z-index: -1;
+  border: 1px solid rgba(11, 48, 45, 0.055);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.clarity-ad-problem-head {
+  display: grid;
+  grid-template-columns: minmax(0, 0.52fr) minmax(0, 1fr);
+  gap: clamp(24px, 5vw, 58px);
+  align-items: end;
+  margin-bottom: clamp(28px, 4vw, 44px);
+}
+
+.clarity-ad-problem-head h2 {
+  max-width: 780px;
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(2.1rem, 4vw, 3.45rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.clarity-ad-problem-body {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(24px, 4.2vw, 48px);
+  align-items: stretch;
+}
+
+.clarity-ad-problem-question-card {
+  padding: clamp(22px, 3vw, 32px);
+  border: 1px solid rgba(11, 48, 45, 0.11);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(11, 48, 45, 0.96), rgba(7, 24, 22, 0.94)),
+    var(--brand-deep);
+  box-shadow: 0 24px 62px rgba(7, 24, 22, 0.18);
+}
+
+.clarity-ad-problem-question-card > span {
+  display: inline-flex;
+  margin-bottom: 18px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.clarity-ad-problem-question-card .clarity-ad-problem-points {
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin: 0;
+}
+
+.clarity-ad-problem-question-card .clarity-ad-problem-points li {
+  min-height: auto;
+  padding: 15px 16px 15px 48px;
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.065);
+  color: rgba(255, 255, 255, 0.9);
+  box-shadow: none;
+}
+
+.clarity-ad-problem-question-card .clarity-ad-problem-points li::before {
+  top: 14px;
+  left: 16px;
+  background: rgba(201, 154, 46, 0.16);
+  color: var(--gold);
+}
+
+.clarity-ad-problem-story {
+  display: grid;
+  gap: 14px;
+}
+
+.clarity-ad-problem-story article {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  padding: clamp(20px, 2.8vw, 28px);
+  border: 1px solid rgba(11, 48, 45, 0.09);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 16px 42px rgba(17, 25, 27, 0.045);
+}
+
+.clarity-ad-problem-story article span {
+  display: inline-grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(201, 154, 46, 0.13);
+  color: var(--gold);
+  font-size: 0.76rem;
+  font-weight: 940;
+}
+
+.clarity-ad-problem-story p {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(0.98rem, 1.3vw, 1.06rem);
+  line-height: 1.66;
+}
+
+.clarity-ad-problem-story article:last-child {
+  border-color: rgba(201, 154, 46, 0.22);
+  background:
+    linear-gradient(135deg, rgba(243, 189, 80, 0.12), rgba(255, 255, 255, 0.84)),
+    var(--white);
+}
+
+.clarity-ad-problem-story article:last-child p {
+  color: var(--teal);
+  font-weight: 820;
+}
+
+.clarity-ad-problem-panel {
+  padding: clamp(30px, 5vw, 58px);
+  background:
+    radial-gradient(circle at 10% -8%, rgba(201, 154, 46, 0.11), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(250, 248, 242, 0.96));
+}
+
+.clarity-ad-problem-head {
+  display: block;
+  max-width: 880px;
+  margin: 0 auto clamp(28px, 4vw, 42px);
+  text-align: center;
+}
+
+.clarity-ad-problem-head h2 {
+  margin-inline: auto;
+}
+
+.clarity-ad-problem-head p {
+  max-width: 820px;
+  margin: 18px auto 0;
+  color: var(--muted);
+  font-size: clamp(1.02rem, 1.45vw, 1.16rem);
+  line-height: 1.66;
+}
+
+.clarity-ad-problem-body {
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  align-items: stretch;
+}
+
+.clarity-ad-problem-question-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(20px, 3vw, 30px);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(201, 154, 46, 0.14), transparent 36%),
+    linear-gradient(180deg, #0b302d, #071816);
+}
+
+.clarity-ad-problem-question-card > span {
+  margin-bottom: 16px;
+}
+
+.clarity-ad-problem-question-card .clarity-ad-problem-points {
+  gap: 9px;
+}
+
+.clarity-ad-problem-question-card .clarity-ad-problem-points li {
+  padding-block: 13px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(0.93rem, 1.12vw, 1.01rem);
+  font-weight: 720;
+}
+
+.clarity-ad-problem-story {
+  gap: 12px;
+}
+
+.clarity-ad-problem-story article {
+  min-height: 0;
+  padding: clamp(18px, 2.5vw, 24px);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 253, 248, 0.9));
+}
+
+.clarity-ad-problem-story article span {
+  width: 32px;
+  height: 32px;
+}
+
+.clarity-ad-problem-story p {
+  font-size: clamp(0.96rem, 1.16vw, 1.02rem);
+  line-height: 1.58;
+}
+
+.clarity-ad-system-card {
+  grid-template-columns: minmax(300px, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(28px, 4.8vw, 58px);
+  align-items: stretch;
+  padding: clamp(22px, 3.8vw, 34px);
+  border-color: rgba(11, 48, 45, 0.12);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(250, 248, 242, 0.96)),
+    var(--white);
+}
+
+.clarity-ad-system-card > div:first-child {
+  position: relative;
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: clamp(24px, 3.6vw, 36px);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(201, 154, 46, 0.18), transparent 34%),
+    linear-gradient(180deg, #0b302d, #071816);
+  color: var(--white);
+}
+
+.clarity-ad-system-card > div:first-child::after {
+  content: "";
+  position: absolute;
+  right: -86px;
+  bottom: -102px;
+  width: 260px;
+  height: 260px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 999px;
+}
+
+.clarity-ad-system-card .clarity-section-label {
+  color: var(--gold);
+}
+
+.clarity-ad-system-card h2 {
+  position: relative;
+  z-index: 1;
+  color: var(--white);
+  font-size: clamp(2rem, 3.3vw, 3.05rem);
+}
+
+.clarity-ad-journey-line {
+  position: relative;
+  z-index: 1;
+  margin-top: clamp(28px, 5vw, 54px);
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.075);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.9rem;
+}
+
+.clarity-ad-map-table {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.clarity-ad-map-header {
+  margin-bottom: 12px;
+  padding: 0 4px 10px;
+  border-bottom: 1px solid rgba(11, 48, 45, 0.1);
+  background: transparent;
+  color: var(--muted);
+}
+
+.clarity-ad-map-rows {
+  display: grid;
+  gap: 10px;
+}
+
+.clarity-ad-map-rows article {
+  position: relative;
+  overflow: hidden;
+  padding: 16px 18px;
+  border: 1px solid rgba(11, 48, 45, 0.09);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 14px 36px rgba(17, 25, 27, 0.045);
+}
+
+.clarity-ad-map-rows article::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, rgba(201, 154, 46, 0.7), rgba(11, 103, 97, 0.35));
+}
+
+.clarity-ad-map-rows article:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+.clarity-ad-map-rows article > div span {
+  background: rgba(11, 48, 45, 0.075);
+  color: var(--teal);
+}
+
+.clarity-ad-map-rows h3 {
+  color: var(--ink);
+}
+
+.clarity-ad-map-rows p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.clarity-ad-system {
+  background:
+    radial-gradient(circle at 50% -8%, rgba(201, 154, 46, 0.1), transparent 34%),
+    linear-gradient(180deg, #fffdf8, #f4f1eb);
+}
+
+.clarity-ad-system-card {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.clarity-ad-system-card > div:first-child {
+  display: block;
+  max-width: 1060px;
+  min-height: 0;
+  margin: 0 auto clamp(30px, 5vw, 52px);
+  padding: 0;
+  overflow: visible;
+  background: transparent;
+  color: var(--ink);
+  text-align: center;
+}
+
+.clarity-ad-system-card > div:first-child::after {
+  display: none;
+}
+
+.clarity-ad-system-card h2 {
+  max-width: 760px;
+  margin: 0 auto;
+  color: var(--ink);
+  font-size: clamp(2rem, 3.4vw, 3.18rem);
+  text-align: center;
+}
+
+.clarity-ad-journey-flow {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 14px;
+  max-width: 1120px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: clamp(28px, 4vw, 42px);
+}
+
+.clarity-ad-flow-step {
+  position: relative;
+  display: grid;
+  min-height: 88px;
+  align-content: center;
+  justify-items: center;
+  gap: 8px;
+  padding: 14px 8px;
+  border: 1px solid rgba(11, 48, 45, 0.1);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, #ffffff, rgba(255, 253, 248, 0.92));
+  box-shadow: 0 16px 40px rgba(17, 25, 27, 0.055);
+  text-align: center;
+}
+
+.clarity-ad-flow-step:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: -13px;
+  z-index: 2;
+  color: var(--gold);
+  font-size: 1rem;
+  font-weight: 900;
+  transform: translateY(-50%);
+}
+
+.clarity-ad-flow-step span {
+  color: var(--gold);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.clarity-ad-flow-step strong {
+  color: var(--teal);
+  font-size: clamp(0.78rem, 0.94vw, 0.94rem);
+  line-height: 1.12;
+}
+
+.clarity-ad-map-table {
+  max-width: 1120px;
+  margin-inline: auto;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.clarity-ad-map-header {
+  display: none;
+}
+
+.clarity-ad-map-rows {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.clarity-ad-map-rows article {
+  grid-template-columns: minmax(132px, 0.38fr) minmax(0, 1fr);
+  min-height: 112px;
+  padding: 20px;
+  border-color: rgba(11, 48, 45, 0.1);
+  background:
+    linear-gradient(180deg, #ffffff, rgba(255, 253, 248, 0.9));
+  box-shadow: 0 14px 38px rgba(17, 25, 27, 0.045);
+}
+
+.clarity-ad-map-rows article::before {
+  width: 4px;
+  background: linear-gradient(180deg, rgba(201, 154, 46, 0.72), rgba(11, 103, 97, 0.38));
+}
+
+.clarity-ad-map-rows article > div span {
+  background: rgba(201, 154, 46, 0.13);
+  color: var(--gold);
+}
+
+.clarity-ad-map-rows h3 {
+  color: var(--teal);
+}
+
+/* Clarity Session final visual polish */
+.clarity-ad-page .content-hero {
+  padding-top: clamp(116px, 10vw, 146px);
+  padding-bottom: clamp(68px, 7vw, 96px);
+}
+
+.clarity-ad-confusion,
+.clarity-ad-system,
+.clarity-ad-leave,
+.clarity-ad-structure,
+.clarity-ad-audience,
+.clarity-ad-why,
+.clarity-ad-about,
+.clarity-ad-faq,
+.clarity-ad-final {
+  padding: clamp(68px, 7vw, 102px) 0;
+}
+
+.clarity-ad-problem-panel,
+.clarity-ad-audience-panel,
+.clarity-ad-leave-panel,
+.clarity-ad-why-card,
+.clarity-ad-about-card,
+.clarity-ad-final-card {
+  border-color: rgba(11, 48, 45, 0.11);
+}
+
+.clarity-ad-problem-panel {
+  max-width: 1180px;
+  padding: clamp(28px, 4.4vw, 50px);
+}
+
+.clarity-ad-problem-head {
+  margin-bottom: clamp(24px, 3.6vw, 38px);
+}
+
+.clarity-ad-problem-head h2,
+.clarity-ad-system-card h2,
+.clarity-ad-audience-head h2,
+.clarity-ad-centered-heading h2,
+.clarity-ad-leave-panel h2,
+.clarity-ad-why-card h2,
+.clarity-ad-about-card h2,
+.clarity-ad-final-card h2 {
+  text-wrap: balance;
+}
+
+.clarity-ad-problem-head p,
+.clarity-ad-why-card p,
+.clarity-ad-about-card p,
+.clarity-ad-centered-heading p {
+  text-wrap: pretty;
+}
+
+.clarity-ad-problem-body {
+  gap: clamp(22px, 3.8vw, 42px);
+}
+
+.clarity-ad-problem-question-card {
+  justify-content: flex-start;
+}
+
+.clarity-ad-problem-question-card .clarity-ad-problem-points {
+  gap: 8px;
+}
+
+.clarity-ad-problem-question-card .clarity-ad-problem-points li {
+  min-height: 58px;
+}
+
+.clarity-ad-problem-story article {
+  align-items: center;
+}
+
+.clarity-ad-problem-story article {
+  grid-template-columns: 1fr;
+  gap: 0;
+  padding: clamp(20px, 2.6vw, 28px);
+  border-color: rgba(11, 48, 45, 0.095);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(252, 249, 242, 0.92));
+}
+
+.clarity-ad-problem-story article::before {
+  content: "";
+  width: 38px;
+  height: 3px;
+  margin-bottom: 16px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--gold), rgba(11, 103, 97, 0.36));
+}
+
+.clarity-ad-problem-story article span {
+  display: none;
+}
+
+.clarity-ad-problem-story article:last-child::before {
+  background: var(--gold);
+}
+
+.clarity-ad-system-card > div:first-child {
+  margin-bottom: clamp(24px, 3.8vw, 40px);
+}
+
+.clarity-ad-journey-flow {
+  gap: 10px;
+  margin-top: clamp(24px, 3.4vw, 34px);
+}
+
+.clarity-ad-flow-step {
+  min-height: 68px;
+  padding: 12px 8px;
+  background:
+    linear-gradient(180deg, #ffffff, rgba(252, 249, 242, 0.96));
+}
+
+.clarity-ad-flow-step strong {
+  font-size: clamp(0.8rem, 0.9vw, 0.92rem);
+}
+
+.clarity-ad-flow-step:not(:last-child)::after {
+  right: -11px;
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(201, 154, 46, 0.2);
+  border-radius: 999px;
+  background: #fffdf8;
+  font-size: 0.8rem;
+}
+
+.clarity-ad-map-rows {
+  gap: 10px;
+}
+
+.clarity-ad-map-rows article {
+  min-height: 96px;
+  padding: 18px;
+  align-items: center;
+}
+
+.clarity-ad-map-rows p {
+  line-height: 1.52;
+}
+
+.clarity-ad-check-list {
+  gap: 12px;
+}
+
+.clarity-ad-check-list li {
+  min-height: 64px;
+  padding: 16px 16px 16px 44px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.055));
+}
+
+.clarity-ad-leave-panel {
+  align-items: stretch;
+  gap: clamp(30px, 5vw, 64px);
+}
+
+.clarity-ad-leave-copy {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.clarity-ad-leave-shift {
+  display: grid;
+  gap: 8px;
+  max-width: 470px;
+  margin-top: clamp(28px, 4vw, 42px);
+  padding: clamp(18px, 2.8vw, 26px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.045));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.clarity-ad-leave-shift span {
+  color: rgba(243, 189, 80, 0.88);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.clarity-ad-leave-shift strong {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(1.04rem, 1.45vw, 1.22rem);
+  line-height: 1.24;
+}
+
+.clarity-ad-leave-actions {
+  display: grid;
+  align-content: center;
+  gap: clamp(18px, 2.6vw, 24px);
+}
+
+.clarity-ad-leave-actions .btn {
+  width: fit-content;
+  box-shadow: 0 18px 40px rgba(201, 154, 46, 0.24);
+}
+
+.clarity-ad-leave-note {
+  max-width: 580px;
+  margin: -4px 0 0;
+  color: rgba(255, 255, 255, 0.68) !important;
+  font-size: 0.94rem !important;
+  line-height: 1.52 !important;
+  opacity: 1 !important;
+}
+
+.clarity-ad-session-grid article {
+  min-height: 208px;
+}
+
+.clarity-ad-audience-panel {
+  max-width: 1160px;
+}
+
+.clarity-ad-audience-grid {
+  gap: 14px;
+}
+
+.clarity-ad-audience-panel .clarity-ad-tag-list span {
+  min-height: 54px;
+}
+
+.clarity-ad-contrast-list p,
+.clarity-ad-contrast-list strong {
+  line-height: 1.6;
+}
+
+.clarity-ad-framework-list {
+  gap: 10px;
+}
+
+.clarity-ad-framework-list span {
+  min-height: 54px;
+}
+
+.clarity-ad-faq {
+  background:
+    radial-gradient(circle at 88% 10%, rgba(201, 154, 46, 0.1), transparent 30%),
+    linear-gradient(180deg, #f7f5f0, #fffdf8);
+}
+
+.clarity-ad-faq .section-kicker h2 {
+  color: var(--ink);
+  font-size: clamp(2rem, 3.6vw, 3.1rem);
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.clarity-ad-faq .section-kicker p {
+  max-width: 660px;
+  margin: 14px auto 0;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.62;
+}
+
+.clarity-ad-faq .faq-list {
+  width: min(980px, 100%);
+}
+
+.clarity-ad-faq .faq-item {
+  border-color: rgba(11, 48, 45, 0.1);
+  box-shadow: 0 14px 36px rgba(17, 25, 27, 0.045);
+}
+
+.clarity-ad-next-step-copy {
+  max-width: 700px;
+  margin-top: 12px;
+}
+
+.clarity-ad-final-card {
+  max-width: 1180px;
+}
+
+.clarity-ad-final-offer {
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.46fr);
+  gap: clamp(28px, 4vw, 50px);
+}
+
+.clarity-ad-price-box .btn {
+  min-width: 100%;
+  white-space: nowrap;
+}
+
+.clarity-ad-final-card .clarity-ad-price-box p {
+  color: var(--muted);
+  opacity: 1;
+}
+
+/* Clarity Session premium theme pass */
+.clarity-ad-page {
+  background: #fbfaf6;
+}
+
+.clarity-ad-page .content-hero {
+  background-image:
+    linear-gradient(90deg, rgba(5, 18, 16, 0.98), rgba(7, 24, 22, 0.82) 48%, rgba(7, 24, 22, 0.58)),
+    url("/assets/hero-clarity.svg");
+}
+
+.clarity-ad-page .content-hero h1 {
+  max-width: 980px;
+  letter-spacing: -0.045em;
+}
+
+.clarity-ad-page .content-hero p:not(.eyebrow, .offer-badge-eyebrow) {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.clarity-hero-price-card {
+  border-color: rgba(243, 189, 80, 0.24);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(243, 189, 80, 0.16), transparent 34%),
+    linear-gradient(145deg, rgba(10, 40, 36, 0.92), rgba(5, 18, 16, 0.86));
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.28);
+}
+
+.clarity-ad-bridge {
+  position: relative;
+  z-index: 3;
+  margin-top: clamp(-42px, -3vw, -28px);
+  padding-bottom: clamp(34px, 4.5vw, 56px);
+  background:
+    linear-gradient(180deg, rgba(7, 24, 22, 0) 0%, #fffdf8 46%, #fffdf8 100%);
+}
+
+.clarity-ad-bridge-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(20px, 4vw, 44px);
+  align-items: center;
+  padding: clamp(18px, 3vw, 28px);
+  border: 1px solid rgba(185, 154, 50, 0.18);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(250, 247, 239, 0.95));
+  box-shadow: 0 28px 76px rgba(17, 25, 27, 0.1);
+}
+
+.clarity-ad-bridge-card > p {
+  margin: 0;
+  color: var(--teal-dark);
+  font-size: clamp(1rem, 1.35vw, 1.14rem);
+  font-weight: 820;
+  line-height: 1.48;
+  text-wrap: balance;
+}
+
+.clarity-ad-bridge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.clarity-ad-bridge-grid div {
+  min-height: 86px;
+  padding: 14px 16px;
+  border: 1px solid rgba(9, 36, 31, 0.085);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.clarity-ad-bridge-grid span {
+  display: block;
+  margin-bottom: 7px;
+  color: #a2741c;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.clarity-ad-bridge-grid strong {
+  display: block;
+  color: var(--ink);
+  font-size: 0.95rem;
+  line-height: 1.32;
+}
+
+.clarity-ad-confusion,
+.clarity-ad-structure,
+.clarity-ad-faq {
+  background: linear-gradient(180deg, #fffdf8, #f6f2e9);
+}
+
+.clarity-ad-system,
+.clarity-ad-audience,
+.clarity-ad-about {
+  background: linear-gradient(180deg, #ffffff, #fbfaf6);
+}
+
+.clarity-ad-leave,
+.clarity-ad-why,
+.clarity-ad-final {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(185, 154, 50, 0.09), transparent 34%),
+    linear-gradient(180deg, #f8f5ee, #fffdf8);
+}
+
+.clarity-ad-confusion::before,
+.clarity-ad-system::before,
+.clarity-ad-leave::before,
+.clarity-ad-why::before {
+  opacity: 0.28;
+  background-size: 96px 96px;
+}
+
+.clarity-ad-problem-panel,
+.clarity-ad-audience-panel,
+.clarity-ad-why-card,
+.clarity-ad-about-card {
+  border-color: rgba(9, 36, 31, 0.09);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(250, 247, 239, 0.9));
+  box-shadow: 0 26px 72px rgba(17, 25, 27, 0.07);
+}
+
+.clarity-ad-problem-panel::after {
+  border-color: rgba(185, 154, 50, 0.08);
+}
+
+.clarity-ad-problem-question-card,
+.clarity-ad-leave-panel,
+.clarity-ad-final-offer {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(185, 154, 50, 0.16), transparent 34%),
+    linear-gradient(145deg, #0a302b, #061714);
+  box-shadow: 0 34px 90px rgba(7, 24, 22, 0.22);
+}
+
+.clarity-ad-problem-question-card .clarity-ad-problem-points li,
+.clarity-ad-check-list li {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.075);
+}
+
+.clarity-ad-problem-story article,
+.clarity-ad-map-rows article,
+.clarity-ad-session-grid article,
+.clarity-ad-audience-panel .clarity-ad-fit-card,
+.clarity-ad-framework-list span,
+.clarity-ad-faq .faq-item {
+  border-color: rgba(9, 36, 31, 0.085);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 16px 42px rgba(17, 25, 27, 0.045);
+}
+
+.clarity-ad-problem-story article:hover,
+.clarity-ad-map-rows article:hover,
+.clarity-ad-session-grid article:hover,
+.clarity-ad-faq .faq-item[open] {
+  border-color: rgba(185, 154, 50, 0.24);
+  box-shadow: 0 22px 54px rgba(17, 25, 27, 0.07);
+}
+
+.clarity-ad-system-card h2,
+.clarity-ad-centered-heading h2,
+.clarity-ad-audience-head h2,
+.clarity-ad-why-card h2,
+.clarity-ad-about-card h2,
+.clarity-ad-faq .section-kicker h2 {
+  color: #0f1819;
+  letter-spacing: -0.04em;
+}
+
+.clarity-ad-journey-flow {
+  max-width: 1080px;
+}
+
+.clarity-ad-flow-step {
+  border-color: rgba(9, 36, 31, 0.085);
+  background:
+    linear-gradient(180deg, #ffffff, #fbf8f0);
+  box-shadow: 0 14px 34px rgba(17, 25, 27, 0.05);
+}
+
+.clarity-ad-flow-step strong,
+.clarity-ad-map-rows h3 {
+  color: #0a4f49;
+}
+
+.clarity-ad-map-rows {
+  gap: 14px;
+}
+
+.clarity-ad-map-rows article {
+  min-height: 104px;
+  padding: 20px 22px;
+}
+
+.clarity-ad-map-rows article::before {
+  background: linear-gradient(180deg, rgba(185, 154, 50, 0.78), rgba(11, 103, 97, 0.42));
+}
+
+.clarity-ad-leave-shift {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.045));
+}
+
+.clarity-ad-leave-actions .btn,
+.clarity-ad-final-card .btn,
+.clarity-hero-price-card .btn {
+  box-shadow: 0 18px 42px rgba(201, 154, 46, 0.28);
+}
+
+.clarity-ad-session-grid article::before {
+  background: rgba(185, 154, 50, 0.13);
+  color: #a2741c;
+}
+
+.clarity-ad-audience-head p {
+  border-left-color: var(--brand-gold);
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.clarity-ad-audience-panel .clarity-ad-tag-list span,
+.clarity-ad-audience-panel .clarity-ad-compact-list li {
+  border-color: rgba(9, 36, 31, 0.085);
+  background:
+    linear-gradient(180deg, #ffffff, #fbf8f0);
+}
+
+.clarity-ad-contrast-list strong {
+  border-color: rgba(11, 103, 97, 0.12);
+  background:
+    linear-gradient(135deg, rgba(11, 103, 97, 0.095), rgba(185, 154, 50, 0.07));
+}
+
+.clarity-ad-faq .faq-item summary {
+  min-height: 68px;
+}
+
+.clarity-ad-final-card {
+  border-color: rgba(9, 36, 31, 0.14);
+}
+
+.clarity-ad-price-box {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(251, 248, 241, 0.96));
 }
 
 .registration-section {
@@ -4272,6 +6685,13 @@ body.assessment-open {
   .course-plan-grid,
   .content-hero-grid,
   .content-two-column,
+  .clarity-ad-two-column,
+  .clarity-ad-system-card,
+  .clarity-ad-leave-panel,
+  .clarity-ad-split-panel,
+  .clarity-ad-why-card,
+  .clarity-ad-about-card,
+  .clarity-ad-final-offer,
   .registration-layout,
   .contact-page-layout,
   .partner-layout,
@@ -4399,6 +6819,58 @@ body.assessment-open {
     max-width: 760px;
   }
 
+  .clarity-ad-two-column .section-kicker {
+    position: static;
+    max-width: 760px;
+  }
+
+  .clarity-ad-problem-head,
+  .clarity-ad-problem-body,
+  .clarity-ad-bridge-card,
+  .clarity-ad-audience-head,
+  .clarity-ad-audience-grid,
+  .clarity-ad-map-rows {
+    grid-template-columns: 1fr;
+  }
+
+  .clarity-ad-bridge-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .clarity-ad-journey-flow {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .clarity-ad-flow-step:nth-child(4n)::after {
+    display: none;
+  }
+
+  .clarity-ad-problem-head {
+    align-items: start;
+  }
+
+  .clarity-ad-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .clarity-session-strip-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .clarity-session-strip-grid article:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .clarity-ad-session-grid,
+  .clarity-ad-summary-grid,
+  .clarity-ad-check-list {
+    grid-template-columns: 1fr;
+  }
+
+  .clarity-ad-two-column .section-kicker {
+    position: static;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -4469,6 +6941,110 @@ body.assessment-open {
 
   .assessment-page-section .assessment-shell {
     padding: 0;
+  }
+
+  .clarity-session-strip {
+    margin-top: -22px;
+  }
+
+  .clarity-session-strip-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .clarity-session-strip-grid article {
+    min-height: auto;
+    border-right: 0;
+    border-bottom: 1px solid rgba(17, 25, 27, 0.08);
+  }
+
+  .clarity-session-strip-grid article:last-child {
+    border-bottom: 0;
+  }
+
+  .clarity-ad-card-grid,
+  .clarity-ad-question-grid,
+  .clarity-ad-problem-points,
+  .clarity-ad-journey-grid,
+  .clarity-ad-session-grid,
+  .clarity-ad-summary-grid,
+  .clarity-ad-check-list {
+    grid-template-columns: 1fr;
+  }
+
+  .clarity-ad-problem-panel {
+    padding: 22px;
+  }
+
+  .clarity-ad-problem-panel::after {
+    inset: 10px;
+  }
+
+  .clarity-ad-problem-story article {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .clarity-ad-audience-panel {
+    padding: 22px;
+  }
+
+  .clarity-ad-bridge {
+    margin-top: -24px;
+  }
+
+  .clarity-ad-bridge-card {
+    padding: 18px;
+  }
+
+  .clarity-ad-bridge-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .clarity-ad-bridge-grid div {
+    min-height: auto;
+  }
+
+  .clarity-ad-audience-panel .clarity-ad-tag-list {
+    grid-template-columns: 1fr;
+  }
+
+  .clarity-ad-journey-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .clarity-ad-flow-step::after {
+    display: none;
+  }
+
+  .clarity-ad-map-header {
+    display: none;
+  }
+
+  .clarity-ad-map-rows article {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    align-items: start;
+    padding: 16px;
+  }
+
+  .clarity-ad-system-card > div:first-child {
+    min-height: 0;
+  }
+
+  .clarity-ad-card-grid {
+    display: grid;
+  }
+
+  .clarity-ad-card-grid,
+  .clarity-ad-question-grid,
+  .clarity-ad-journey-grid,
+  .clarity-ad-session-grid {
+    gap: 10px;
+  }
+
+  .clarity-ad-price-box .btn,
+  .clarity-ad-final-card .btn {
+    width: 100%;
   }
 
   .assessment-dialog-header {
