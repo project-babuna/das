@@ -98,7 +98,7 @@ const frameworkItems = [
 
 const sessionDetails = [
   ["Format", "3 Hours · Live · Hinglish · Beginner Friendly"],
-  ["Next batch", "26 July 2026 · 10:30 AM IST"],
+  ["Next batch", "Sunday, 26 July 2026 · 10:30 AM IST"],
 ];
 
 const heroBridgeItems = [
@@ -184,7 +184,7 @@ export default function ClaritySessionAdPage() {
               <div className="clarity-hero-session-meta">
                 <div>
                   <span>Date</span>
-                  <strong>26 July 2026</strong>
+                  <strong>Sunday, 26 July 2026</strong>
                 </div>
                 <div>
                   <span>Time</span>
