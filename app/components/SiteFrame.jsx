@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import BrandLogo from "./BrandLogo";
 import SiteFooter from "./SiteFooter";
 
-const navItems = [
+const defaultNavItems = [
   { href: "/", label: "Home" },
   { href: "/clarity-session", label: "Clarity Session" },
   { href: "/full-program", label: "Full Program" },
@@ -19,6 +19,7 @@ export default function SiteFrame({
   ctaHref = "/register?program=clarity_session",
   ctaLabel = "Book ₹199 Session",
   hideCta = false,
+  navItems = defaultNavItems,
 }) {
   const [navOpen, setNavOpen] = useState(false);
   const headerMetaEvent = ctaHref.startsWith("mailto:") ? "Lead" : "ViewContent";

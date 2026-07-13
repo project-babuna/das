@@ -232,30 +232,31 @@ export default function Home() {
             </div>
 
             <div className="journey-track" aria-label="DreamAndScale customer journey">
-              <span>Explore</span>
+              <span>Start</span>
               <span>Learn</span>
               <span>Apply</span>
             </div>
 
             <div className="entry-grid journey-grid">
               <article className="entry-card journey-card journey-card-discovery">
-                <span className="journey-badge">Best for first-time visitors</span>
+                <span className="journey-badge">Best for first-time founders</span>
                 <div className="journey-card-head">
-                  <span className="step-label step-label-explore">Explore</span>
                   <div>
-                    <h3>Clarity Session</h3>
-                    <p>Explore DreamAndScale Before You Enrol</p>
+                    <h3>Business Clarity Session</h3>
+                    <p>Understand the Complete Business-Building Map</p>
                   </div>
                 </div>
                 <p className="journey-price">
-                  <s>₹2,999</s>
                   <strong>₹199</strong>
                 </p>
-                <p className="journey-meta">3 Hours • Live</p>
+                <p className="journey-meta">3 Hours · Live Online · Hinglish</p>
+                <p className="journey-meta journey-date">Next Session: 26 July 2026 · 10:30 AM IST</p>
                 <p className="journey-purpose">
-                  Understand what DreamAndScale is, how it works, who it&apos;s for, and whether
-                  it&apos;s the right next step for you. Meet the mentor, explore the curriculum, ask
-                  your questions, and make an informed decision before enrolling.
+                  See how idea, market, customer, product, structure, finance, growth, and ownership
+                  connect—so you know what to do first, what can wait, and what comes next.
+                </p>
+                <p className="journey-note">
+                  No business idea, registered company, or formal business education required.
                 </p>
                 <a
                   className="journey-cta"
@@ -266,17 +267,16 @@ export default function Home() {
                   data-meta-value="199"
                   data-meta-currency="INR"
                 >
-                  Book Your Seat
+                  Reserve Your Seat
                 </a>
               </article>
 
               <article className="entry-card journey-card journey-card-core" id="program">
                 <span className="journey-badge">Most Popular / Core Program</span>
                 <div className="journey-card-head">
-                  <span className="step-label step-label-learn">Learn</span>
                   <div>
                     <h3>DreamAndScale</h3>
-                    <p>Build Business Clarity</p>
+                    <p>Study the Complete Framework in Depth</p>
                   </div>
                 </div>
                 <p className="journey-price">
@@ -303,10 +303,9 @@ export default function Home() {
               <article className="entry-card journey-card journey-card-premium">
                 <span className="journey-badge">Premium</span>
                 <div className="journey-card-head">
-                  <span className="step-label step-label-apply">Apply</span>
                   <div>
                     <h3>DreamAndScale Plus</h3>
-                    <p>Learn With Mentorship</p>
+                    <p>Apply the Framework With Mentor Support</p>
                   </div>
                 </div>
                 <p className="journey-price">
