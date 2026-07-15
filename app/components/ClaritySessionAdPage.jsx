@@ -419,6 +419,32 @@ export default function ClaritySessionAdPage() {
           </div>
         </section>
 
+        <section className="section clarity-ad-mentor" aria-label="Clarity session mentor">
+          <div className="container clarity-ad-mentor-card">
+            <div className="clarity-ad-mentor-media">
+              <img
+                src="/assets/facilitators/clarity-session-facilitator.jpg"
+                alt="Agastya Pandey, Founder of DreamAndScale"
+              />
+            </div>
+            <div className="clarity-ad-mentor-copy">
+              <span>Meet Your Facilitator</span>
+              <h2>Agastya Pandey</h2>
+              <p className="clarity-ad-mentor-role">Business Clarity Facilitator</p>
+              <p>
+                With 12+ years across software engineering and education, and a Corporate Law
+                certification from the Indian Institute of Corporate Affairs, Manesar, Agastya helps
+                aspiring founders connect business decisions into a clear sequence of action.
+              </p>
+              <div className="clarity-ad-mentor-points">
+                <strong>Live explanation</strong>
+                <strong>Connected framework</strong>
+                <strong>Practical business scenarios</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="section faq-section clarity-ad-faq" id="faq">
           <div className="container faq-layout">
             <div className="section-kicker">
