@@ -40,7 +40,7 @@ const faviconSwitcherScript = `
 `;
 
 export const metadata = {
-  metadataBase: new URL("https://dreamandscale.com"),
+  metadataBase: new URL("https://www.dreamandscale.com"),
   title: "DreamAndScale | Business Clarity Program for Aspiring Founders, Students & Professionals",
   description:
     "DreamAndScale is a business clarity program for aspiring founders, students, freelancers, and professionals who want to understand how businesses actually work before starting a business, choosing an idea, or making major career and money decisions.",

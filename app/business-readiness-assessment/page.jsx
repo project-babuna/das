@@ -6,7 +6,7 @@ export const metadata = {
   description:
     "Take the free DreamAndScale Business Readiness Assessment to understand your clarity across idea, customers, market, business model, execution, structure, finance, and growth.",
   alternates: {
-    canonical: "https://dreamandscale.com/business-readiness-assessment",
+    canonical: "https://www.dreamandscale.com/business-readiness-assessment",
   },
 };
 

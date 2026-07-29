@@ -1,4 +1,4 @@
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://dreamandscale.com";
+const siteUrl = "https://www.dreamandscale.com";
 
 export default function robots() {
   return {

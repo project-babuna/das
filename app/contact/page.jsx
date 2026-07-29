@@ -5,13 +5,13 @@ export const metadata = {
   description:
     "Contact DreamAndScale for general enquiries, collaboration ideas, payment help, registration support, or guidance choosing the right program.",
   alternates: {
-    canonical: "https://dreamandscale.com/contact",
+    canonical: "https://www.dreamandscale.com/contact",
   },
   openGraph: {
     title: "Contact DreamAndScale | General Enquiries and Program Support",
     description:
       "Send DreamAndScale a message about general enquiries, program support, registration, payment help, or collaboration ideas.",
-    url: "https://dreamandscale.com/contact",
+    url: "https://www.dreamandscale.com/contact",
     siteName: "DreamAndScale",
     type: "website",
   },

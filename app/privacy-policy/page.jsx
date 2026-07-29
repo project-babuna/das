@@ -5,7 +5,7 @@ export const metadata = {
   title: "Privacy Policy | DreamAndScale",
   description: "Privacy Policy for DreamAndScale.",
   alternates: {
-    canonical: "https://dreamandscale.com/privacy-policy",
+    canonical: "https://www.dreamandscale.com/privacy-policy",
   },
 };
 

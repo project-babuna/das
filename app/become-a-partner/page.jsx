@@ -5,13 +5,13 @@ export const metadata = {
   description:
     "DreamAndScale invites experienced professionals, business leaders, consultants, entrepreneurs, and business school faculty to become Founding Knowledge Partners.",
   alternates: {
-    canonical: "https://dreamandscale.com/become-a-partner",
+    canonical: "https://www.dreamandscale.com/become-a-partner",
   },
   openGraph: {
     title: "Become a DreamAndScale Knowledge Partner",
     description:
       "Collaborate with DreamAndScale as a Knowledge Partner by delivering sessions, designing modules, mentoring learners, or contributing to curriculum development.",
-    url: "https://dreamandscale.com/become-a-partner",
+    url: "https://www.dreamandscale.com/become-a-partner",
     siteName: "DreamAndScale",
     type: "website",
   },

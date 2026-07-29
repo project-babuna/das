@@ -12,6 +12,11 @@ const nextConfig = {
         destination: "/full-program",
         permanent: true,
       },
+      {
+        source: "/business-assessment",
+        destination: "/business-readiness-assessment",
+        permanent: true,
+      },
     ];
   },
   async headers() {

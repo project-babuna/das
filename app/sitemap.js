@@ -1,4 +1,4 @@
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://dreamandscale.com";
+const siteUrl = "https://www.dreamandscale.com";
 
 const blogRoutes = [
   "/blog/how-to-validate-a-business-idea",
@@ -18,11 +18,6 @@ const routes = [
     path: "/clarity-session",
     changeFrequency: "monthly",
     priority: 0.9,
-  },
-  {
-    path: "/register",
-    changeFrequency: "monthly",
-    priority: 0.85,
   },
   {
     path: "/business-readiness-assessment",

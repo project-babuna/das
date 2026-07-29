@@ -5,7 +5,7 @@ export const metadata = {
   title: "Terms And Conditions | DreamAndScale",
   description: "Terms And Conditions for DreamAndScale.",
   alternates: {
-    canonical: "https://dreamandscale.com/terms-and-conditions",
+    canonical: "https://www.dreamandscale.com/terms-and-conditions",
   },
 };
 

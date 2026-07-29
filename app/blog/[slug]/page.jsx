@@ -19,12 +19,12 @@ export function generateMetadata({ params }) {
     title: `${post.title} | DreamAndScale`,
     description: post.description,
     alternates: {
-      canonical: `https://dreamandscale.com/blog/${post.slug}`,
+      canonical: `https://www.dreamandscale.com/blog/${post.slug}`,
     },
     openGraph: {
       title: `${post.title} | DreamAndScale`,
       description: post.description,
-      url: `https://dreamandscale.com/blog/${post.slug}`,
+      url: `https://www.dreamandscale.com/blog/${post.slug}`,
       siteName: "DreamAndScale",
       type: "article",
       images: [

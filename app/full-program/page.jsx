@@ -8,13 +8,13 @@ export const metadata = {
   description:
     "Explore the DreamAndScale Full Program, a self-paced business clarity program for aspiring founders, students, freelancers, and professionals.",
   alternates: {
-    canonical: "https://dreamandscale.com/full-program",
+    canonical: "https://www.dreamandscale.com/full-program",
   },
   openGraph: {
     title: "DreamAndScale Full Program | Self-Paced Business Clarity Program",
     description:
       "Learn the complete DreamAndScale system from opportunity and customers to finance, growth, and ownership.",
-    url: "https://dreamandscale.com/full-program",
+    url: "https://www.dreamandscale.com/full-program",
     siteName: "DreamAndScale",
     type: "website",
     images: [{ url: "/og/home.jpg", width: 1200, height: 630, alt: "DreamAndScale Full Program" }],

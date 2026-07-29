@@ -6,13 +6,13 @@ export const metadata = {
   description:
     "Read DreamAndScale insights on business ideas, market size, customer understanding, self-employment, and business decision-making.",
   alternates: {
-    canonical: "https://dreamandscale.com/blog",
+    canonical: "https://www.dreamandscale.com/blog",
   },
   openGraph: {
     title: "Business Clarity Insights | DreamAndScale Blog",
     description:
       "Read practical DreamAndScale insights on business ideas, customers, markets, and better business decisions.",
-    url: "https://dreamandscale.com/blog",
+    url: "https://www.dreamandscale.com/blog",
     siteName: "DreamAndScale",
     type: "website",
     images: [{ url: "/og/home.jpg", width: 1200, height: 630, alt: "DreamAndScale business clarity insights" }],
