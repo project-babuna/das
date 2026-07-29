@@ -5,7 +5,7 @@ export const metadata = {
   title: "Refund Policy | DreamAndScale",
   description: "Refund Policy for DreamAndScale.",
   alternates: {
-    canonical: "https://dreamandscale.com/refund-policy",
+    canonical: "https://www.dreamandscale.com/refund-policy",
   },
 };
 

@@ -5124,105 +5124,6 @@ body.assessment-open {
   line-height: 1.58;
 }
 
-.clarity-ad-mentor {
-  background:
-    radial-gradient(circle at 12% 12%, rgba(185, 154, 50, 0.1), transparent 26%),
-    linear-gradient(180deg, #fbfaf6, #ffffff);
-}
-
-.clarity-ad-mentor-card {
-  display: grid;
-  grid-template-columns: minmax(320px, 0.44fr) minmax(0, 0.56fr);
-  gap: clamp(28px, 4.8vw, 64px);
-  align-items: center;
-  padding: clamp(18px, 2.8vw, 30px);
-  border-radius: 10px;
-  background:
-    radial-gradient(circle at 100% 0%, rgba(201, 154, 43, 0.2), transparent 34%),
-    linear-gradient(145deg, #082b26, #041513);
-  box-shadow: 0 34px 90px rgba(7, 24, 22, 0.18);
-  overflow: hidden;
-}
-
-.clarity-ad-mentor-media {
-  min-height: 100%;
-}
-
-.clarity-ad-mentor-media img {
-  display: block;
-  width: 100%;
-  height: clamp(380px, 42vw, 560px);
-  border: 0;
-  border-radius: 8px;
-  object-fit: cover;
-  object-position: center 24%;
-  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.2);
-}
-
-.clarity-ad-mentor-copy {
-  max-width: 690px;
-  padding: clamp(10px, 2vw, 28px) clamp(4px, 1vw, 12px);
-}
-
-.clarity-ad-mentor-copy > span {
-  display: inline-flex;
-  margin-bottom: 18px;
-  color: #d8b24d;
-  font-size: 0.78rem;
-  font-weight: 850;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.clarity-ad-mentor-copy h2 {
-  margin: 0;
-  color: #fffdf8;
-  font-size: clamp(2.4rem, 5vw, 4.45rem);
-  line-height: 0.98;
-  letter-spacing: -0.055em;
-}
-
-.clarity-ad-mentor-role {
-  display: inline-flex;
-  width: fit-content;
-  margin: 18px 0 0;
-  padding: 9px 13px;
-  border-radius: 999px;
-  background: rgba(255, 253, 248, 0.1);
-  color: #f2d990;
-  font-size: 0.82rem;
-  font-weight: 850;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.clarity-ad-mentor-copy p:not(.clarity-ad-mentor-role) {
-  max-width: 610px;
-  margin: 20px 0 0;
-  color: rgba(255, 253, 248, 0.78);
-  font-size: clamp(1.02rem, 1.4vw, 1.2rem);
-  line-height: 1.68;
-}
-
-.clarity-ad-mentor-points {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 28px;
-}
-
-.clarity-ad-mentor-points strong {
-  display: inline-flex;
-  align-items: center;
-  min-height: 38px;
-  padding: 9px 12px;
-  border-radius: 999px;
-  background: rgba(255, 253, 248, 0.09);
-  color: #fffdf8;
-  font-size: 0.84rem;
-  font-weight: 760;
-}
-
 .clarity-ad-problem-panel::after {
   border-color: rgba(185, 154, 50, 0.08);
 }
@@ -6881,7 +6782,6 @@ body.assessment-open {
   .content-two-column,
   .clarity-ad-two-column,
   .clarity-ad-system-card,
-  .clarity-ad-mentor-card,
   .clarity-ad-leave-panel,
   .clarity-ad-split-panel,
   .clarity-ad-why-card,
@@ -6945,11 +6845,6 @@ body.assessment-open {
 
   .clarity-ad-about-main {
     grid-template-columns: 1fr;
-  }
-
-  .clarity-ad-mentor-media img {
-    height: min(72vw, 520px);
-    min-height: 360px;
   }
 
   .assessment-copy {
@@ -7199,21 +7094,6 @@ body.assessment-open {
 
   .clarity-ad-audience-panel {
     padding: 22px;
-  }
-
-  .clarity-ad-mentor-card {
-    padding: 16px;
-    gap: 22px;
-  }
-
-  .clarity-ad-mentor-media img {
-    height: 420px;
-    min-height: 0;
-    object-position: center 20%;
-  }
-
-  .clarity-ad-mentor-copy {
-    padding: 6px 4px 10px;
   }
 
   .clarity-ad-facilitator-card {

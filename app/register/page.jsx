@@ -5,13 +5,13 @@ export const metadata = {
   description:
     "Register and pay securely for DreamAndScale Clarity Session, Full Program, or Mentorship using Razorpay.",
   alternates: {
-    canonical: "https://dreamandscale.com/register",
+    canonical: "https://www.dreamandscale.com/register",
   },
   openGraph: {
     title: "Register for DreamAndScale Programs | Secure Payment",
     description:
       "Choose your DreamAndScale program and complete secure payment through Razorpay.",
-    url: "https://dreamandscale.com/register",
+    url: "https://www.dreamandscale.com/register",
     siteName: "DreamAndScale",
     type: "website",
     images: [
@@ -28,6 +28,10 @@ export const metadata = {
     title: "Register for DreamAndScale Programs | Secure Payment",
     description: "Register and pay securely for DreamAndScale programs using Razorpay.",
     images: ["/og/home.jpg"],
+  },
+  robots: {
+    index: false,
+    follow: true,
   },
 };
 

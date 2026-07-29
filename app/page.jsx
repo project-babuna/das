@@ -2,19 +2,19 @@ import HomePage from "./HomePage";
 import { faqItems } from "./faqContent";
 
 export const metadata = {
-  metadataBase: new URL("https://dreamandscale.com"),
+  metadataBase: new URL("https://www.dreamandscale.com"),
   title: "DreamAndScale | Business Clarity Program for Aspiring Founders, Students & Professionals",
   description:
     "DreamAndScale is a business clarity program for aspiring founders, students, freelancers, and professionals who want to understand how businesses actually work before starting a business, choosing an idea, or making major career and money decisions.",
   alternates: {
-    canonical: "https://dreamandscale.com",
+    canonical: "https://www.dreamandscale.com",
   },
   openGraph: {
     title:
       "DreamAndScale | Business Clarity Program for Aspiring Founders, Students & Professionals",
     description:
       "DreamAndScale helps aspiring founders, students, freelancers, and professionals understand how businesses actually work before starting a business, choosing an idea, or making major career and money decisions.",
-    url: "https://dreamandscale.com",
+    url: "https://www.dreamandscale.com",
     siteName: "DreamAndScale",
     type: "website",
     images: [
@@ -40,8 +40,8 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "DreamAndScale",
-  url: "https://dreamandscale.com",
-  logo: "https://dreamandscale.com/brand/logo-dark.png",
+  url: "https://www.dreamandscale.com",
+  logo: "https://www.dreamandscale.com/brand/logo-dark.png",
   sameAs: [],
   description:
     "DreamAndScale is a business clarity program that helps aspiring founders, students, freelancers, and professionals understand how businesses actually work before making major business, career, and money decisions.",
@@ -51,12 +51,12 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "DreamAndScale",
-  url: "https://dreamandscale.com",
+  url: "https://www.dreamandscale.com",
   description:
     "DreamAndScale is a business clarity program for aspiring founders, students, freelancers, and professionals.",
   potentialAction: {
     "@type": "ReadAction",
-    target: "https://dreamandscale.com",
+    target: "https://www.dreamandscale.com",
   },
 };
 
