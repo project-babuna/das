@@ -28,7 +28,10 @@ npm run start
 ## Routes
 
 - `/` - DreamAndScale homepage
-- `/course` - Detailed full-program course page
+- `/clarity-session` - Live Business Clarity Session landing page
+- `/full-program` - Self-paced core program
+- `/learn-with-mentorship` - Mentorship program
+- `/business-readiness-assessment` - Free assessment tool
 
 ## Vercel Deployment
 
