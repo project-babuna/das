@@ -67,11 +67,11 @@ export async function POST(request) {
     const utm_medium = cleanString(body?.utm_medium, 120);
     const utm_campaign = cleanString(body?.utm_campaign, 120);
 
-    if (!name || !PHONE_PATTERN.test(phone)) {
+    if (!name || !email || !PHONE_PATTERN.test(phone)) {
       return validationError();
     }
 
-    if (email && !EMAIL_PATTERN.test(email)) {
+    if (!EMAIL_PATTERN.test(email)) {
       return validationError();
     }
 

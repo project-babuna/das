@@ -88,7 +88,11 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
       return "Please enter a valid 10-digit Indian mobile number.";
     }
 
-    if (cleanEmail && !emailPattern.test(cleanEmail)) {
+    if (!cleanEmail) {
+      return "Please enter your email address for payment confirmation and receipt.";
+    }
+
+    if (!emailPattern.test(cleanEmail)) {
       return "Please enter a valid email address.";
     }
 
@@ -317,7 +321,7 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
             </label>
 
             <label>
-              <span>Email</span>
+              <span>Email *</span>
               <input
                 name="email"
                 type="email"
@@ -326,6 +330,7 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
                 autoComplete="email"
                 inputMode="email"
                 placeholder="you@example.com"
+                required
               />
             </label>
 
@@ -380,7 +385,8 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
             </button>
 
             <p className="registration-payment-note registration-form-full">
-              After payment, session details will be shared on WhatsApp/email.
+              Payment confirmation and receipt will be sent by email. Session details will be
+              shared on WhatsApp and email.
             </p>
           </form>
         </div>
