@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getAdminSession } from "@/lib/adminAuth";
-import { supabaseAdmin } from "@/lib/supabaseAdmin";
+import { isSupabaseConfigured, supabaseAdmin } from "@/lib/supabaseAdmin";
 
 export const dynamic = "force-dynamic";
 
@@ -167,13 +167,19 @@ function applyFilters(query, resource, params, paymentLeadIds) {
     query = query.or(expressions.join(","));
   }
 
-  if (status) query = query.eq("status", status);
-  if (program && resource === "leads") query = query.eq("interest", program);
-  if (program && resource === "payments") query = query.eq("program_id", program);
-  if (program && resource === "emails") query = query.eq("program_id", program);
-  if (paymentStatus && resource === "leads") query = query.eq("payment_status", paymentStatus);
-  if (category && resource === "queries") query = query.eq("help_category", category);
-  if (emailType && resource === "emails") query = query.eq("email_type", emailType);
+  if (status && status !== "all") query = query.eq("status", status);
+  if (program && program !== "all" && resource === "leads") query = query.eq("interest", program);
+  if (program && program !== "all" && resource === "payments") query = query.eq("program_id", program);
+  if (program && program !== "all" && resource === "emails") query = query.eq("program_id", program);
+  if (paymentStatus && paymentStatus !== "all" && resource === "leads") {
+    query = query.eq("payment_status", paymentStatus);
+  }
+  if (category && category !== "all" && resource === "queries") {
+    query = query.eq("help_category", category);
+  }
+  if (emailType && emailType !== "all" && resource === "emails") {
+    query = query.eq("email_type", emailType);
+  }
   if (/^\d{4}-\d{2}-\d{2}$/.test(dateFrom)) query = query.gte("created_at", `${dateFrom}T00:00:00.000Z`);
   if (/^\d{4}-\d{2}-\d{2}$/.test(dateTo)) query = query.lte("created_at", `${dateTo}T23:59:59.999Z`);
 
@@ -330,6 +336,16 @@ function createCsv(resource, rows) {
 
 export async function GET(request) {
   if (!getAdminSession(request)) return unauthorized();
+
+  if (!isSupabaseConfigured()) {
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Supabase is not configured for this environment. Update the local Supabase URL and service-role key.",
+      },
+      { status: 503, headers: { "Cache-Control": "no-store" } }
+    );
+  }
 
   try {
     const params = request.nextUrl.searchParams;
