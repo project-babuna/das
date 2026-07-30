@@ -8,6 +8,7 @@ export const maxDuration = 60;
 
 const TWELVE_HOURS_MS = 12 * 60 * 60 * 1000;
 const BATCH_SIZE = 25;
+const CANDIDATE_LIMIT = 250;
 
 function safeEqual(left, right) {
   if (!left || !right) return false;
@@ -33,16 +34,46 @@ export async function GET(request) {
 
   try {
     const cutoff = new Date(Date.now() - TWELVE_HOURS_MS).toISOString();
-    const { data: leads, error } = await supabaseAdmin
+    const { data: candidates, error } = await supabaseAdmin
       .from("leads")
       .select("id,name,email,phone,interest,status,payment_status,created_at")
       .lte("created_at", cutoff)
       .neq("payment_status", "success")
       .neq("status", "paid")
-      .order("created_at", { ascending: true })
-      .limit(BATCH_SIZE);
+      .order("created_at", { ascending: false })
+      .limit(CANDIDATE_LIMIT);
 
     if (error) throw error;
+
+    const candidateIds = (candidates || []).map((lead) => lead.id);
+    let successfulLeadIds = new Set();
+    let previouslyRemindedLeadIds = new Set();
+
+    if (candidateIds.length) {
+      const [paymentsResult, remindersResult] = await Promise.all([
+        supabaseAdmin
+          .from("payments")
+          .select("lead_id")
+          .in("lead_id", candidateIds)
+          .eq("status", "success"),
+        supabaseAdmin
+          .from("email_logs")
+          .select("lead_id")
+          .in("lead_id", candidateIds)
+          .eq("email_type", "payment_reminder_12h"),
+      ]);
+
+      if (paymentsResult.error) throw paymentsResult.error;
+      if (remindersResult.error) throw remindersResult.error;
+
+      successfulLeadIds = new Set((paymentsResult.data || []).map((row) => row.lead_id));
+      previouslyRemindedLeadIds = new Set((remindersResult.data || []).map((row) => row.lead_id));
+    }
+
+    const leads = (candidates || [])
+      .filter((lead) => !successfulLeadIds.has(lead.id))
+      .filter((lead) => !previouslyRemindedLeadIds.has(lead.id))
+      .slice(0, BATCH_SIZE);
 
     const results = [];
     for (const lead of leads || []) {
@@ -60,7 +91,10 @@ export async function GET(request) {
 
     return NextResponse.json({
       success: true,
-      checked: leads?.length || 0,
+      candidates: candidates?.length || 0,
+      checked: leads.length,
+      skippedPaid: successfulLeadIds.size,
+      skippedPreviouslyReminded: previouslyRemindedLeadIds.size,
       sent,
       skipped,
       failed,
