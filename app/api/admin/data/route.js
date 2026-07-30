@@ -66,6 +66,28 @@ const resources = {
       ["created_at", "Created At"],
     ],
   },
+  emails: {
+    table: "email_logs",
+    searchFields: ["recipient", "subject", "provider_message_id"],
+    sortFields: new Set(["created_at", "scheduled_for", "sent_at", "status", "email_type", "program_id"]),
+    exportFields: [
+      ["id", "Email Log ID"],
+      ["lead_id", "Lead ID"],
+      ["lead_name", "Customer Name"],
+      ["lead_phone", "Customer Phone"],
+      ["recipient", "Recipient"],
+      ["program_id", "Program"],
+      ["email_type", "Email Type"],
+      ["subject", "Subject"],
+      ["status", "Status"],
+      ["provider_message_id", "Resend Email ID"],
+      ["scheduled_for", "Scheduled For"],
+      ["sent_at", "Sent At"],
+      ["error_message", "Error"],
+      ["created_at", "Created At"],
+      ["updated_at", "Updated At"],
+    ],
+  },
 };
 
 function unauthorized() {
@@ -96,17 +118,27 @@ async function getOverview() {
     return result.count || 0;
   };
 
-  const [totalLeads, paidLeads, totalPayments, newQueries] = await Promise.all([
+  const optionalCount = async (table) => {
+    try {
+      return await count(table);
+    } catch (error) {
+      console.warn(`Optional admin count unavailable for ${table}:`, error?.message || error);
+      return 0;
+    }
+  };
+
+  const [totalLeads, paidLeads, totalPayments, newQueries, totalEmails] = await Promise.all([
     count("leads"),
     count("leads", "payment_status", "success"),
     count("payments"),
     count("queries", "status", "new"),
+    optionalCount("email_logs"),
   ]);
 
-  return { totalLeads, paidLeads, totalPayments, newQueries };
+  return { totalLeads, paidLeads, totalPayments, newQueries, totalEmails };
 }
 
-async function findPaymentLeadIds(search) {
+async function findRelatedLeadIds(search) {
   if (!search) return [];
   const expression = ["name", "email", "phone"]
     .map((field) => `${field}.ilike.%${search}%`)
@@ -123,12 +155,13 @@ function applyFilters(query, resource, params, paymentLeadIds) {
   const program = cleanFilter(params.get("program"));
   const paymentStatus = cleanFilter(params.get("paymentStatus"));
   const category = cleanFilter(params.get("category"));
+  const emailType = cleanFilter(params.get("emailType"));
   const dateFrom = cleanFilter(params.get("dateFrom"), 10);
   const dateTo = cleanFilter(params.get("dateTo"), 10);
 
   if (search) {
     const expressions = config.searchFields.map((field) => `${field}.ilike.%${search}%`);
-    if (resource === "payments" && paymentLeadIds.length) {
+    if (["payments", "emails"].includes(resource) && paymentLeadIds.length) {
       expressions.push(`lead_id.in.(${paymentLeadIds.join(",")})`);
     }
     query = query.or(expressions.join(","));
@@ -137,8 +170,10 @@ function applyFilters(query, resource, params, paymentLeadIds) {
   if (status) query = query.eq("status", status);
   if (program && resource === "leads") query = query.eq("interest", program);
   if (program && resource === "payments") query = query.eq("program_id", program);
+  if (program && resource === "emails") query = query.eq("program_id", program);
   if (paymentStatus && resource === "leads") query = query.eq("payment_status", paymentStatus);
   if (category && resource === "queries") query = query.eq("help_category", category);
+  if (emailType && resource === "emails") query = query.eq("email_type", emailType);
   if (/^\d{4}-\d{2}-\d{2}$/.test(dateFrom)) query = query.gte("created_at", `${dateFrom}T00:00:00.000Z`);
   if (/^\d{4}-\d{2}-\d{2}$/.test(dateTo)) query = query.lte("created_at", `${dateTo}T23:59:59.999Z`);
 
@@ -185,6 +220,27 @@ function sanitizeRow(resource, row) {
     };
   }
 
+  if (resource === "emails") {
+    return {
+      id: row.id,
+      lead_id: row.lead_id,
+      lead_name: row.lead_name,
+      lead_phone: row.lead_phone,
+      recipient: row.recipient,
+      program_id: row.program_id,
+      email_type: row.email_type,
+      subject: row.subject,
+      status: row.status,
+      provider_message_id: row.provider_message_id,
+      scheduled_for: row.scheduled_for,
+      sent_at: row.sent_at,
+      last_event_at: row.last_event_at,
+      error_message: row.error_message,
+      created_at: row.created_at,
+      updated_at: row.updated_at,
+    };
+  }
+
   return {
     id: row.id,
     name: row.name,
@@ -198,7 +254,7 @@ function sanitizeRow(resource, row) {
   };
 }
 
-async function attachPaymentLeads(rows) {
+async function attachLeadDetails(rows) {
   const leadIds = [...new Set(rows.map((row) => row.lead_id).filter(Boolean))];
   if (!leadIds.length) return rows;
 
@@ -220,7 +276,9 @@ async function attachPaymentLeads(rows) {
 async function getRows(resource, params, isExport) {
   const config = resources[resource];
   const search = cleanFilter(params.get("search"), 120);
-  const paymentLeadIds = resource === "payments" ? await findPaymentLeadIds(search) : [];
+  const paymentLeadIds = ["payments", "emails"].includes(resource)
+    ? await findRelatedLeadIds(search)
+    : [];
   const page = clampNumber(params.get("page"), 1, 100000, 1);
   const pageSize = clampNumber(params.get("pageSize"), 10, 100, 25);
   const sortByParam = cleanFilter(params.get("sortBy"));
@@ -243,7 +301,9 @@ async function getRows(resource, params, isExport) {
   const { data, error, count } = await query;
   if (error) throw error;
 
-  const hydrated = resource === "payments" ? await attachPaymentLeads(data || []) : data || [];
+  const hydrated = ["payments", "emails"].includes(resource)
+    ? await attachLeadDetails(data || [])
+    : data || [];
   return {
     rows: hydrated.map((row) => sanitizeRow(resource, row)),
     total: count || 0,

@@ -7,6 +7,7 @@ const resourceLabels = {
   leads: "Leads",
   payments: "Payments",
   queries: "Queries",
+  emails: "Email activity",
 };
 
 const programLabels = {
@@ -21,6 +22,7 @@ const initialFilters = {
   program: "",
   paymentStatus: "",
   category: "",
+  emailType: "",
   dateFrom: "",
   dateTo: "",
 };
@@ -29,7 +31,23 @@ const statusOptions = {
   leads: ["registered", "assessment_completed", "paid"],
   payments: ["created", "success", "failed", "signature_failed"],
   queries: ["new", "in_progress", "resolved", "closed"],
+  emails: [
+    "processing",
+    "scheduled",
+    "sent",
+    "delivered",
+    "opened",
+    "clicked",
+    "delivery_delayed",
+    "failed",
+    "bounced",
+    "suppressed",
+    "complained",
+    "canceled",
+  ],
 };
+
+const emailTypeOptions = ["payment_success", "payment_failed", "payment_reminder_12h"];
 
 const categoryOptions = [
   "General enquiries",
@@ -75,11 +93,11 @@ function truncate(value, length = 72) {
 
 function Status({ value }) {
   const normalized = String(value || "unknown").toLowerCase();
-  const tone = ["success", "paid", "resolved"].includes(normalized)
+  const tone = ["success", "paid", "resolved", "sent", "delivered", "opened", "clicked"].includes(normalized)
     ? styles.statusSuccess
-    : ["failed", "signature_failed", "closed"].includes(normalized)
+    : ["failed", "signature_failed", "closed", "bounced", "suppressed", "complained"].includes(normalized)
       ? styles.statusDanger
-      : ["created", "pending", "new", "registered"].includes(normalized)
+      : ["created", "pending", "new", "registered", "processing", "scheduled", "delivery_delayed"].includes(normalized)
         ? styles.statusPending
         : styles.statusNeutral;
 
@@ -130,7 +148,7 @@ function Login({ configured, onSuccess }) {
           <img src="/brand/logo-light.png" alt="DreamAndScale" />
           <p>Admin Operations</p>
           <h1>Business data, clearly organized.</h1>
-          <span>Secure access to registrations, payments, and customer queries.</span>
+          <span>Secure access to registrations, payments, customer queries, and email activity.</span>
         </div>
         <form className={styles.loginForm} onSubmit={handleSubmit}>
           <div>
@@ -206,6 +224,14 @@ function DetailDrawer({ resource, row, onClose }) {
     razorpay_payment_id: "Razorpay payment ID",
     error_code: "Error code",
     error_description: "Error description",
+    recipient: "Recipient",
+    email_type: "Email type",
+    subject: "Subject",
+    provider_message_id: "Resend email ID",
+    scheduled_for: "Scheduled for",
+    sent_at: "Sent",
+    last_event_at: "Last delivery event",
+    error_message: "Delivery error",
     help_category: "Category",
     message: "Lead notes",
     question: "Message",
@@ -219,7 +245,7 @@ function DetailDrawer({ resource, row, onClose }) {
 
   function displayValue(key, value) {
     if (key === "amount") return formatCurrency(value, row.currency);
-    if (key.endsWith("_at")) return formatDate(value);
+    if (key.endsWith("_at") || key === "scheduled_for") return formatDate(value);
     if (["interest", "program_id"].includes(key)) return programLabels[value] || titleCase(value);
     return value == null || value === "" ? "—" : String(value);
   }
@@ -452,6 +478,7 @@ export default function AdminDashboard() {
             <article><span>Paid registrations</span><strong>{overview?.paidLeads ?? "—"}</strong></article>
             <article><span>Payment records</span><strong>{overview?.totalPayments ?? "—"}</strong></article>
             <article><span>New queries</span><strong>{overview?.newQueries ?? "—"}</strong></article>
+            <article><span>Email records</span><strong>{overview?.totalEmails ?? "—"}</strong></article>
           </div>
 
           <section className={styles.dataPanel}>
@@ -461,7 +488,13 @@ export default function AdminDashboard() {
                 <input
                   type="search"
                   value={filters.search}
-                  placeholder={resource === "payments" ? "Customer, order or payment ID" : "Name, email, phone or message"}
+                  placeholder={
+                    resource === "payments"
+                      ? "Customer, order or payment ID"
+                      : resource === "emails"
+                        ? "Customer, recipient, subject or Resend ID"
+                        : "Name, email, phone or message"
+                  }
                   onChange={(event) => updateFilter("search", event.target.value)}
                 />
               </label>
@@ -472,7 +505,7 @@ export default function AdminDashboard() {
                   {statusOptions[resource].map((status) => <option key={status} value={status}>{titleCase(status)}</option>)}
                 </select>
               </label>
-              {(resource === "leads" || resource === "payments") && (
+              {["leads", "payments", "emails"].includes(resource) && (
                 <label>
                   <span>Program</span>
                   <select value={filters.program} onChange={(event) => updateFilter("program", event.target.value)}>
@@ -487,6 +520,7 @@ export default function AdminDashboard() {
                   <select value={filters.paymentStatus} onChange={(event) => updateFilter("paymentStatus", event.target.value)}>
                     <option value="">All payments</option>
                     <option value="pending">Pending</option>
+                    <option value="failed">Failed</option>
                     <option value="success">Successful</option>
                   </select>
                 </label>
@@ -497,6 +531,15 @@ export default function AdminDashboard() {
                   <select value={filters.category} onChange={(event) => updateFilter("category", event.target.value)}>
                     <option value="">All categories</option>
                     {categoryOptions.map((category) => <option key={category} value={category}>{category}</option>)}
+                  </select>
+                </label>
+              )}
+              {resource === "emails" && (
+                <label>
+                  <span>Email type</span>
+                  <select value={filters.emailType} onChange={(event) => updateFilter("emailType", event.target.value)}>
+                    <option value="">All email types</option>
+                    {emailTypeOptions.map((type) => <option key={type} value={type}>{titleCase(type)}</option>)}
                   </select>
                 </label>
               )}
@@ -557,6 +600,18 @@ export default function AdminDashboard() {
                       <th><span className="sr-only">Actions</span></th>
                     </tr>
                   )}
+                  {resource === "emails" && (
+                    <tr>
+                      <th>Customer</th>
+                      <th><SortHeader label="Type" field="email_type" sortBy={sortBy} sortDir={sortDir} onSort={handleSort} /></th>
+                      <th><SortHeader label="Program" field="program_id" sortBy={sortBy} sortDir={sortDir} onSort={handleSort} /></th>
+                      <th>Subject</th>
+                      <th><SortHeader label="Status" field="status" sortBy={sortBy} sortDir={sortDir} onSort={handleSort} /></th>
+                      <th><SortHeader label="Scheduled" field="scheduled_for" sortBy={sortBy} sortDir={sortDir} onSort={handleSort} /></th>
+                      <th><SortHeader label="Created" field="created_at" sortBy={sortBy} sortDir={sortDir} onSort={handleSort} /></th>
+                      <th><span className="sr-only">Actions</span></th>
+                    </tr>
+                  )}
                 </thead>
                 <tbody>
                   {!loading && rows.length === 0 && (
@@ -593,6 +648,17 @@ export default function AdminDashboard() {
                           <td title={row.question}>{truncate(row.question)}</td>
                           <td><Status value={row.status} /></td>
                           <td title={row.source_page}>{truncate(row.source_page, 28)}</td>
+                          <td>{formatDate(row.created_at)}</td>
+                        </>
+                      )}
+                      {resource === "emails" && (
+                        <>
+                          <td><strong>{row.lead_name || "Unknown"}</strong><small>{row.recipient || row.lead_phone || "—"}</small></td>
+                          <td>{titleCase(row.email_type)}</td>
+                          <td>{programLabels[row.program_id] || titleCase(row.program_id)}</td>
+                          <td title={row.subject}>{truncate(row.subject, 46)}</td>
+                          <td><Status value={row.status} /></td>
+                          <td>{formatDate(row.scheduled_for)}</td>
                           <td>{formatDate(row.created_at)}</td>
                         </>
                       )}

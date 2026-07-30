@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
 import crypto from "crypto";
+import {
+  safelyRunEmail,
+  sendPaymentFailedEmail,
+  sendPaymentSuccessEmail,
+} from "@/lib/email";
 import { safeCompareHex } from "@/lib/security";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
 
@@ -48,7 +53,7 @@ export async function POST(request) {
     if (eventType === "payment.captured" || eventType === "order.paid") {
       const { data: payment } = await supabaseAdmin
         .from("payments")
-        .select("id, lead_id, razorpay_order_id, expected_amount, expected_currency, status")
+        .select("id, lead_id, program_id, razorpay_order_id, expected_amount, expected_currency, status")
         .eq("razorpay_order_id", razorpayOrderId)
         .single();
 
@@ -84,11 +89,16 @@ export async function POST(request) {
             })
             .eq("id", updatedPayment.lead_id);
         }
+
+        await safelyRunEmail(
+          () => sendPaymentSuccessEmail(updatedPayment),
+          "Webhook payment confirmation"
+        );
       }
     }
 
     if (eventType === "payment.failed") {
-      await supabaseAdmin
+      const { data: failedPayment } = await supabaseAdmin
         .from("payments")
         .update({
           status: "failed",
@@ -97,7 +107,23 @@ export async function POST(request) {
           error_description: paymentEntity?.error_description || null,
           updated_at: new Date().toISOString(),
         })
-        .eq("razorpay_order_id", razorpayOrderId);
+        .eq("razorpay_order_id", razorpayOrderId)
+        .neq("status", "success")
+        .select()
+        .maybeSingle();
+
+      if (failedPayment?.lead_id) {
+        await supabaseAdmin
+          .from("leads")
+          .update({ payment_status: "failed" })
+          .eq("id", failedPayment.lead_id)
+          .neq("payment_status", "success");
+      }
+
+      await safelyRunEmail(
+        () => sendPaymentFailedEmail(failedPayment),
+        "Payment failure"
+      );
     }
 
     return NextResponse.json({

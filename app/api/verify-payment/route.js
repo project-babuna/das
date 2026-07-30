@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import crypto from "crypto";
 import Razorpay from "razorpay";
+import { safelyRunEmail, sendPaymentSuccessEmail } from "@/lib/email";
 import { safeCompareHex } from "@/lib/security";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
 
@@ -114,6 +115,11 @@ export async function POST(request) {
         })
         .eq("id", payment.lead_id);
     }
+
+    await safelyRunEmail(
+      () => sendPaymentSuccessEmail(payment),
+      "Payment confirmation"
+    );
 
     return NextResponse.json({
       success: true,
