@@ -5,6 +5,7 @@ import { isSupabaseConfigured, supabaseAdmin } from "@/lib/supabaseAdmin";
 export const dynamic = "force-dynamic";
 
 const EXPORT_LIMIT = 5000;
+const EMAIL_TYPES = new Set(["payment_success", "payment_reminder_12h"]);
 
 const resources = {
   leads: {
@@ -177,7 +178,7 @@ function applyFilters(query, resource, params, paymentLeadIds) {
   if (category && category !== "all" && resource === "queries") {
     query = query.eq("help_category", category);
   }
-  if (emailType && emailType !== "all" && resource === "emails") {
+  if (emailType && EMAIL_TYPES.has(emailType) && resource === "emails") {
     query = query.eq("email_type", emailType);
   }
   if (/^\d{4}-\d{2}-\d{2}$/.test(dateFrom)) query = query.gte("created_at", `${dateFrom}T00:00:00.000Z`);

@@ -307,7 +307,7 @@ export default function AdminDashboard() {
         sortDir,
       });
       Object.entries(filters).forEach(([key, value]) => {
-        if (value) params.set(key, value);
+        if (value && value !== "all") params.set(key, value);
       });
       Object.entries(extra).forEach(([key, value]) => params.set(key, value));
       return params;
@@ -350,6 +350,7 @@ export default function AdminDashboard() {
     const timer = window.setTimeout(async () => {
       setLoading(true);
       setError("");
+      setRows([]);
       try {
         const response = await fetch(`/api/admin/data?${buildParams()}`, {
           cache: "no-store",
@@ -364,7 +365,11 @@ export default function AdminDashboard() {
         setRows(result.rows || []);
         setTotal(result.total || 0);
       } catch (loadError) {
-        if (loadError.name !== "AbortError") setError(loadError.message || "Could not load data.");
+        if (loadError.name !== "AbortError") {
+          setRows([]);
+          setTotal(0);
+          setError(loadError.message || "Could not load data.");
+        }
       } finally {
         if (!controller.signal.aborted) setLoading(false);
       }
