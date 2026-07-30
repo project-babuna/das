@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import crypto from "crypto";
 import {
   safelyRunEmail,
-  sendPaymentFailedEmail,
   sendPaymentSuccessEmail,
 } from "@/lib/email";
 import { safeCompareHex } from "@/lib/security";
@@ -120,10 +119,6 @@ export async function POST(request) {
           .neq("payment_status", "success");
       }
 
-      await safelyRunEmail(
-        () => sendPaymentFailedEmail(failedPayment),
-        "Payment failure"
-      );
     }
 
     return NextResponse.json({

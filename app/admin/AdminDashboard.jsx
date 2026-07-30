@@ -18,11 +18,11 @@ const programLabels = {
 
 const initialFilters = {
   search: "",
-  status: "",
-  program: "",
-  paymentStatus: "",
-  category: "",
-  emailType: "",
+  status: "all",
+  program: "all",
+  paymentStatus: "all",
+  category: "all",
+  emailType: "all",
   dateFrom: "",
   dateTo: "",
 };
@@ -47,7 +47,7 @@ const statusOptions = {
   ],
 };
 
-const emailTypeOptions = ["payment_success", "payment_failed", "payment_reminder_12h"];
+const emailTypeOptions = ["payment_success", "payment_reminder_12h"];
 
 const categoryOptions = [
   "General enquiries",
@@ -499,9 +499,9 @@ export default function AdminDashboard() {
                 />
               </label>
               <label>
-                <span>Status</span>
+                <span>{resource === "emails" ? "Delivery status" : "Status"}</span>
                 <select value={filters.status} onChange={(event) => updateFilter("status", event.target.value)}>
-                  <option value="">All statuses</option>
+                  <option value="all">All {resource === "emails" ? "delivery statuses" : "statuses"}</option>
                   {statusOptions[resource].map((status) => <option key={status} value={status}>{titleCase(status)}</option>)}
                 </select>
               </label>
@@ -509,7 +509,7 @@ export default function AdminDashboard() {
                 <label>
                   <span>Program</span>
                   <select value={filters.program} onChange={(event) => updateFilter("program", event.target.value)}>
-                    <option value="">All programs</option>
+                    <option value="all">All programs</option>
                     {Object.entries(programLabels).map(([key, label]) => <option key={key} value={key}>{label}</option>)}
                   </select>
                 </label>
@@ -518,7 +518,7 @@ export default function AdminDashboard() {
                 <label>
                   <span>Payment</span>
                   <select value={filters.paymentStatus} onChange={(event) => updateFilter("paymentStatus", event.target.value)}>
-                    <option value="">All payments</option>
+                    <option value="all">All payments</option>
                     <option value="pending">Pending</option>
                     <option value="failed">Failed</option>
                     <option value="success">Successful</option>
@@ -529,16 +529,16 @@ export default function AdminDashboard() {
                 <label>
                   <span>Category</span>
                   <select value={filters.category} onChange={(event) => updateFilter("category", event.target.value)}>
-                    <option value="">All categories</option>
+                    <option value="all">All categories</option>
                     {categoryOptions.map((category) => <option key={category} value={category}>{category}</option>)}
                   </select>
                 </label>
               )}
               {resource === "emails" && (
                 <label>
-                  <span>Email type</span>
+                  <span>Email message</span>
                   <select value={filters.emailType} onChange={(event) => updateFilter("emailType", event.target.value)}>
-                    <option value="">All email types</option>
+                    <option value="all">All email messages</option>
                     {emailTypeOptions.map((type) => <option key={type} value={type}>{titleCase(type)}</option>)}
                   </select>
                 </label>

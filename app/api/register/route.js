@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { getProgram, hasProgram } from "@/lib/programs";
 import { getClientIp, rateLimit } from "@/lib/rateLimit";
-import { safelyRunEmail, schedulePaymentReminder } from "@/lib/email";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -101,11 +100,6 @@ export async function POST(request) {
         { status: 500 }
       );
     }
-
-    await safelyRunEmail(
-      () => schedulePaymentReminder(data),
-      "Registration reminder"
-    );
 
     return NextResponse.json({
       success: true,
