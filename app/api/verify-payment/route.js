@@ -4,6 +4,7 @@ import Razorpay from "razorpay";
 import { safelyRunEmail, sendPaymentSuccessEmail } from "@/lib/email";
 import { safeCompareHex } from "@/lib/security";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
+import { safelyRunWhatsApp, sendPaymentSuccessWhatsApp } from "@/lib/whatsapp";
 
 const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID,
@@ -116,10 +117,16 @@ export async function POST(request) {
         .eq("id", payment.lead_id);
     }
 
-    await safelyRunEmail(
-      () => sendPaymentSuccessEmail(payment),
-      "Payment confirmation"
-    );
+    await Promise.all([
+      safelyRunEmail(
+        () => sendPaymentSuccessEmail(payment),
+        "Payment confirmation"
+      ),
+      safelyRunWhatsApp(
+        () => sendPaymentSuccessWhatsApp(payment),
+        "Payment confirmation"
+      ),
+    ]);
 
     return NextResponse.json({
       success: true,

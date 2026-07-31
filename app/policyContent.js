@@ -22,7 +22,7 @@ export const policyPages = {
       {
         heading: "Payments And Third-Party Tools",
         body: [
-          "If payments, forms, analytics, email, or scheduling tools are used, those services may process information according to their own privacy policies.",
+          "If payments, forms, analytics, email, messaging, or scheduling tools are used, those services may process information according to their own privacy policies.",
           "DreamAndScale uses reasonable care when choosing tools, but third-party platforms are governed by their own terms.",
         ],
       },
