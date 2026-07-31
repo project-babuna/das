@@ -6,6 +6,7 @@ import {
 } from "@/lib/email";
 import { safeCompareHex } from "@/lib/security";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
+import { safelyRunWhatsApp, sendPaymentSuccessWhatsApp } from "@/lib/whatsapp";
 
 export async function POST(request) {
   try {
@@ -89,10 +90,16 @@ export async function POST(request) {
             .eq("id", updatedPayment.lead_id);
         }
 
-        await safelyRunEmail(
-          () => sendPaymentSuccessEmail(updatedPayment),
-          "Webhook payment confirmation"
-        );
+        await Promise.all([
+          safelyRunEmail(
+            () => sendPaymentSuccessEmail(updatedPayment),
+            "Webhook payment confirmation"
+          ),
+          safelyRunWhatsApp(
+            () => sendPaymentSuccessWhatsApp(updatedPayment),
+            "Webhook payment confirmation"
+          ),
+        ]);
       }
     }
 
