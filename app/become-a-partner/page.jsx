@@ -33,7 +33,10 @@ const partnerContributions = [
 
 export default function BecomePartnerPage() {
   return (
-    <SiteFrame ctaHref="/contact?type=knowledge_partner" ctaLabel="Become a Partner">
+    <SiteFrame
+      ctaHref="/mentor-details"
+      ctaLabel="Become a Partner"
+    >
       <main>
         <section className="section partner-hero">
           <div className="container partner-hero-inner">
@@ -76,15 +79,18 @@ export default function BecomePartnerPage() {
         <section className="section partner-cta-section">
           <div className="container partner-cta">
             <div>
-              <h2>Interested in Collaborating?</h2>
+              <h2>Be a Part of Our Founder&apos;s Mentor Ecosystem</h2>
               <p>
-                If you are interested in becoming a DreamAndScale Knowledge Partner, please share
-                your profile, area of expertise, and how you would like to collaborate.
+                Interested in becoming a DreamAndScale Knowledge Partner or Founder Mentor? Please
+                share your profile, area of expertise, and how you would like to collaborate.
               </p>
               <p>We will review suitable profiles and connect for a discussion.</p>
             </div>
-            <a className="btn btn-primary" href="/contact?type=knowledge_partner">
-              Contact DreamAndScale
+            <a
+              className="btn btn-primary"
+              href="/mentor-details"
+            >
+              Join the Ecosystem
             </a>
           </div>
         </section>
