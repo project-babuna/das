@@ -49,6 +49,11 @@ const routes = [
     changeFrequency: "monthly",
     priority: 0.65,
   },
+  {
+    path: "/mentor-details",
+    changeFrequency: "monthly",
+    priority: 0.6,
+  },
   ...blogRoutes.map((path) => ({
     path,
     changeFrequency: "monthly",

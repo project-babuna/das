@@ -54,6 +54,7 @@ const categoryOptions = [
   "Program and mentorship support",
   "Payment and registration help",
   "Want to be a knowledge partner",
+  "Knowledge partner collaboration",
 ];
 
 function titleCase(value) {
@@ -235,6 +236,7 @@ function DetailDrawer({ resource, row, onClose }) {
     help_category: "Category",
     message: "Lead notes",
     question: "Message",
+    headshot_path: "Headshot storage path",
     source_page: "Source page",
     utm_source: "UTM source",
     utm_medium: "UTM medium",
@@ -267,6 +269,23 @@ function DetailDrawer({ resource, row, onClose }) {
           <button type="button" onClick={onClose} aria-label="Close record details">×</button>
         </header>
         <div className={styles.drawerBody}>
+          {row.headshot_preview_url ? (
+            <div className={styles.headshotPanel}>
+              <img src={row.headshot_preview_url} alt={`${row.name || "Mentor"} headshot`} />
+              <div>
+                <strong>Mentor headshot</strong>
+                <span>Private link · expires in 5 minutes</span>
+                <div className={styles.headshotActions}>
+                  <a href={row.headshot_preview_url} target="_blank" rel="noreferrer">
+                    Preview
+                  </a>
+                  <a href={row.headshot_download_url}>
+                    Download
+                  </a>
+                </div>
+              </div>
+            </div>
+          ) : null}
           {Object.entries(row).map(([key, value]) =>
             labels[key] ? (
               <div className={styles.detailField} key={key}>
@@ -599,6 +618,7 @@ export default function AdminDashboard() {
                       <th><SortHeader label="Contact" field="name" sortBy={sortBy} sortDir={sortDir} onSort={handleSort} /></th>
                       <th>Category</th>
                       <th>Message</th>
+                      <th>Headshot</th>
                       <th><SortHeader label="Status" field="status" sortBy={sortBy} sortDir={sortDir} onSort={handleSort} /></th>
                       <th>Source</th>
                       <th><SortHeader label="Created" field="created_at" sortBy={sortBy} sortDir={sortDir} onSort={handleSort} /></th>
@@ -651,6 +671,17 @@ export default function AdminDashboard() {
                           <td><strong>{row.name || "—"}</strong><small>{row.phone || row.email || "—"}</small></td>
                           <td>{row.help_category || "General enquiry"}</td>
                           <td title={row.question}>{truncate(row.question)}</td>
+                          <td>
+                            {row.headshot_preview_url ? (
+                              <div className={styles.headshotCell}>
+                                <img src={row.headshot_preview_url} alt="" />
+                                <div>
+                                  <a href={row.headshot_preview_url} target="_blank" rel="noreferrer">Preview</a>
+                                  <a href={row.headshot_download_url}>Download</a>
+                                </div>
+                              </div>
+                            ) : "—"}
+                          </td>
                           <td><Status value={row.status} /></td>
                           <td title={row.source_page}>{truncate(row.source_page, 28)}</td>
                           <td>{formatDate(row.created_at)}</td>

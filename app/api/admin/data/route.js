@@ -63,6 +63,7 @@ const resources = {
       ["help_category", "Category"],
       ["status", "Status"],
       ["question", "Message"],
+      ["headshot_path", "Headshot Storage Path"],
       ["source_page", "Source Page"],
       ["created_at", "Created At"],
     ],
@@ -255,10 +256,39 @@ function sanitizeRow(resource, row) {
     phone: row.phone,
     help_category: row.help_category,
     question: row.question,
+    headshot_path: row.headshot_path,
+    headshot_preview_url: row.headshot_preview_url,
+    headshot_download_url: row.headshot_download_url,
     source_page: row.source_page,
     status: row.status,
     created_at: row.created_at,
   };
+}
+
+async function attachQueryHeadshots(rows) {
+  return Promise.all(
+    rows.map(async (row) => {
+      if (!row.headshot_path) return row;
+
+      const [preview, download] = await Promise.all([
+        supabaseAdmin.storage.from("mentor-headshots").createSignedUrl(row.headshot_path, 300),
+        supabaseAdmin.storage
+          .from("mentor-headshots")
+          .createSignedUrl(row.headshot_path, 300, { download: true }),
+      ]);
+
+      if (preview.error || download.error) {
+        console.warn("Could not sign mentor headshot:", preview.error?.message || download.error?.message);
+        return row;
+      }
+
+      return {
+        ...row,
+        headshot_preview_url: preview.data.signedUrl,
+        headshot_download_url: download.data.signedUrl,
+      };
+    })
+  );
 }
 
 async function attachLeadDetails(rows) {
@@ -308,9 +338,12 @@ async function getRows(resource, params, isExport) {
   const { data, error, count } = await query;
   if (error) throw error;
 
-  const hydrated = ["payments", "emails"].includes(resource)
+  let hydrated = ["payments", "emails"].includes(resource)
     ? await attachLeadDetails(data || [])
     : data || [];
+  if (resource === "queries" && !isExport) {
+    hydrated = await attachQueryHeadshots(hydrated);
+  }
   return {
     rows: hydrated.map((row) => sanitizeRow(resource, row)),
     total: count || 0,
