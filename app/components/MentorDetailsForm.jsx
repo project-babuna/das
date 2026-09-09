@@ -75,18 +75,55 @@ export default function MentorDetailsForm() {
       return;
     }
 
+    if (!["image/jpeg", "image/png", "image/webp"].includes(headshot.type)) {
+      setNotice({ type: "error", message: "Please choose a JPG, PNG, or WebP image." });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
-      const payload = new FormData();
-      Object.entries(form).forEach(([key, value]) => {
-        payload.append(key, Array.isArray(value) ? JSON.stringify(value) : value);
+      const signatureResponse = await fetch("/api/mentor-upload-signature", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ file_type: headshot.type, file_size: headshot.size }),
       });
-      payload.append("headshot", headshot);
+      const signatureData = await signatureResponse.json();
+
+      if (!signatureResponse.ok || !signatureData.success) {
+        throw new Error(signatureData.message || "Could not prepare the headshot upload.");
+      }
+
+      const cloudinaryPayload = new FormData();
+      cloudinaryPayload.append("file", headshot);
+      cloudinaryPayload.append("api_key", signatureData.api_key);
+      cloudinaryPayload.append("signature", signatureData.signature);
+      Object.entries(signatureData.upload_parameters).forEach(([key, value]) => {
+        cloudinaryPayload.append(key, String(value));
+      });
+
+      const uploadResponse = await fetch(
+        `https://api.cloudinary.com/v1_1/${encodeURIComponent(signatureData.cloud_name)}/image/upload`,
+        { method: "POST", body: cloudinaryPayload }
+      );
+      const uploadData = await uploadResponse.json();
+
+      if (!uploadResponse.ok || !uploadData.asset_id) {
+        throw new Error(uploadData?.error?.message || "Could not upload your headshot.");
+      }
 
       const response = await fetch("/api/mentor-application", {
         method: "POST",
-        body: payload,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          application_id: signatureData.application_id,
+          cloudinary_asset_id: uploadData.asset_id,
+          cloudinary_public_id: uploadData.public_id,
+          cloudinary_version: uploadData.version,
+          cloudinary_signature: uploadData.signature,
+          headshot_original_name: headshot.name,
+        }),
       });
       const data = await response.json();
 

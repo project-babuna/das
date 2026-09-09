@@ -6,6 +6,7 @@ import styles from "./AdminDashboard.module.css";
 const resourceLabels = {
   leads: "Leads",
   payments: "Payments",
+  mentors: "Mentor applications",
   queries: "Queries",
   emails: "Email activity",
 };
@@ -30,6 +31,7 @@ const initialFilters = {
 const statusOptions = {
   leads: ["registered", "assessment_completed", "paid"],
   payments: ["created", "success", "failed", "signature_failed"],
+  mentors: ["new", "in_progress", "approved", "declined", "closed"],
   queries: ["new", "in_progress", "resolved", "closed"],
   emails: [
     "processing",
@@ -236,7 +238,24 @@ function DetailDrawer({ resource, row, onClose }) {
     help_category: "Category",
     message: "Lead notes",
     question: "Message",
-    headshot_path: "Headshot storage path",
+    full_name_role: "Full name & current role",
+    linkedin_profile: "LinkedIn profile",
+    superpowers: "Primary superpowers",
+    other_superpower: "Other superpower",
+    founder_thoughts: "Thoughts on DreamAndScale",
+    mentorship_model: "Mentorship model",
+    session_fee: "Hourly / session fee",
+    time_commitment: "Time commitment",
+    consent: "Consent",
+    other_questions: "Other questions",
+    cloudinary_asset_id: "Cloudinary asset ID",
+    cloudinary_public_id: "Cloudinary public ID",
+    cloudinary_version: "Cloudinary version",
+    cloudinary_format: "Image format",
+    headshot_original_name: "Original headshot filename",
+    headshot_size_bytes: "Headshot size (bytes)",
+    headshot_width: "Headshot width",
+    headshot_height: "Headshot height",
     source_page: "Source page",
     utm_source: "UTM source",
     utm_medium: "UTM medium",
@@ -264,7 +283,7 @@ function DetailDrawer({ resource, row, onClose }) {
         <header className={styles.drawerHeader}>
           <div>
             <p className={styles.kicker}>{resourceLabels[resource]} record</p>
-            <h2 id="record-title">{row.name || row.lead_name || titleCase(row.status)}</h2>
+            <h2 id="record-title">{row.name || row.full_name_role || row.lead_name || titleCase(row.status)}</h2>
           </div>
           <button type="button" onClick={onClose} aria-label="Close record details">×</button>
         </header>
@@ -501,6 +520,7 @@ export default function AdminDashboard() {
             <article><span>Total leads</span><strong>{overview?.totalLeads ?? "—"}</strong></article>
             <article><span>Paid registrations</span><strong>{overview?.paidLeads ?? "—"}</strong></article>
             <article><span>Payment records</span><strong>{overview?.totalPayments ?? "—"}</strong></article>
+            <article><span>Mentor applications</span><strong>{overview?.totalMentors ?? "—"}</strong></article>
             <article><span>New queries</span><strong>{overview?.newQueries ?? "—"}</strong></article>
             <article><span>Email records</span><strong>{overview?.totalEmails ?? "—"}</strong></article>
           </div>
@@ -515,6 +535,8 @@ export default function AdminDashboard() {
                   placeholder={
                     resource === "payments"
                       ? "Customer, order or payment ID"
+                      : resource === "mentors"
+                        ? "Name, email, LinkedIn or statement"
                       : resource === "emails"
                         ? "Customer, recipient, subject or Resend ID"
                         : "Name, email, phone or message"
@@ -618,9 +640,19 @@ export default function AdminDashboard() {
                       <th><SortHeader label="Contact" field="name" sortBy={sortBy} sortDir={sortDir} onSort={handleSort} /></th>
                       <th>Category</th>
                       <th>Message</th>
-                      <th>Headshot</th>
                       <th><SortHeader label="Status" field="status" sortBy={sortBy} sortDir={sortDir} onSort={handleSort} /></th>
                       <th>Source</th>
+                      <th><SortHeader label="Created" field="created_at" sortBy={sortBy} sortDir={sortDir} onSort={handleSort} /></th>
+                      <th><span className="sr-only">Actions</span></th>
+                    </tr>
+                  )}
+                  {resource === "mentors" && (
+                    <tr>
+                      <th><SortHeader label="Mentor" field="full_name_role" sortBy={sortBy} sortDir={sortDir} onSort={handleSort} /></th>
+                      <th>Headshot</th>
+                      <th>Expertise</th>
+                      <th><SortHeader label="Model" field="mentorship_model" sortBy={sortBy} sortDir={sortDir} onSort={handleSort} /></th>
+                      <th><SortHeader label="Status" field="status" sortBy={sortBy} sortDir={sortDir} onSort={handleSort} /></th>
                       <th><SortHeader label="Created" field="created_at" sortBy={sortBy} sortDir={sortDir} onSort={handleSort} /></th>
                       <th><span className="sr-only">Actions</span></th>
                     </tr>
@@ -671,6 +703,14 @@ export default function AdminDashboard() {
                           <td><strong>{row.name || "—"}</strong><small>{row.phone || row.email || "—"}</small></td>
                           <td>{row.help_category || "General enquiry"}</td>
                           <td title={row.question}>{truncate(row.question)}</td>
+                          <td><Status value={row.status} /></td>
+                          <td title={row.source_page}>{truncate(row.source_page, 28)}</td>
+                          <td>{formatDate(row.created_at)}</td>
+                        </>
+                      )}
+                      {resource === "mentors" && (
+                        <>
+                          <td><strong>{row.full_name_role || "—"}</strong><small>{row.email || "—"}</small></td>
                           <td>
                             {row.headshot_preview_url ? (
                               <div className={styles.headshotCell}>
@@ -682,8 +722,9 @@ export default function AdminDashboard() {
                               </div>
                             ) : "—"}
                           </td>
+                          <td title={(row.superpowers || []).join(", ")}>{truncate((row.superpowers || []).join(", "), 46)}</td>
+                          <td>{row.mentorship_model || "—"}</td>
                           <td><Status value={row.status} /></td>
-                          <td title={row.source_page}>{truncate(row.source_page, 28)}</td>
                           <td>{formatDate(row.created_at)}</td>
                         </>
                       )}

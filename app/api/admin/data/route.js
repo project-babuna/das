@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getAdminSession } from "@/lib/adminAuth";
+import { cloudinary, isCloudinaryConfigured } from "@/lib/cloudinary";
 import { isSupabaseConfigured, supabaseAdmin } from "@/lib/supabaseAdmin";
 
 export const dynamic = "force-dynamic";
@@ -63,8 +64,32 @@ const resources = {
       ["help_category", "Category"],
       ["status", "Status"],
       ["question", "Message"],
-      ["headshot_path", "Headshot Storage Path"],
       ["source_page", "Source Page"],
+      ["created_at", "Created At"],
+    ],
+  },
+  mentors: {
+    table: "mentor_applications",
+    searchFields: ["full_name_role", "email", "linkedin_profile", "founder_thoughts"],
+    sortFields: new Set(["created_at", "full_name_role", "status", "mentorship_model"]),
+    exportFields: [
+      ["id", "Application ID"],
+      ["full_name_role", "Full Name & Current Role"],
+      ["email", "Email"],
+      ["linkedin_profile", "LinkedIn Profile"],
+      ["superpowers", "Primary Superpowers"],
+      ["other_superpower", "Other Superpower"],
+      ["founder_thoughts", "Thoughts on DreamAndScale"],
+      ["mentorship_model", "Mentorship Model"],
+      ["session_fee", "Hourly / Session Fee"],
+      ["time_commitment", "Time Commitment"],
+      ["consent", "Consent"],
+      ["other_questions", "Other Questions"],
+      ["cloudinary_asset_id", "Cloudinary Asset ID"],
+      ["cloudinary_public_id", "Cloudinary Public ID"],
+      ["headshot_original_name", "Headshot Filename"],
+      ["headshot_size_bytes", "Headshot Bytes"],
+      ["status", "Status"],
       ["created_at", "Created At"],
     ],
   },
@@ -129,15 +154,16 @@ async function getOverview() {
     }
   };
 
-  const [totalLeads, paidLeads, totalPayments, newQueries, totalEmails] = await Promise.all([
+  const [totalLeads, paidLeads, totalPayments, newQueries, totalMentors, totalEmails] = await Promise.all([
     count("leads"),
     count("leads", "payment_status", "success"),
     count("payments"),
     count("queries", "status", "new"),
+    optionalCount("mentor_applications"),
     optionalCount("email_logs"),
   ]);
 
-  return { totalLeads, paidLeads, totalPayments, newQueries, totalEmails };
+  return { totalLeads, paidLeads, totalPayments, newQueries, totalMentors, totalEmails };
 }
 
 async function findRelatedLeadIds(search) {
@@ -249,6 +275,36 @@ function sanitizeRow(resource, row) {
     };
   }
 
+  if (resource === "mentors") {
+    return {
+      id: row.id,
+      full_name_role: row.full_name_role,
+      email: row.email,
+      linkedin_profile: row.linkedin_profile,
+      superpowers: row.superpowers,
+      other_superpower: row.other_superpower,
+      founder_thoughts: row.founder_thoughts,
+      mentorship_model: row.mentorship_model,
+      session_fee: row.session_fee,
+      time_commitment: row.time_commitment,
+      consent: row.consent,
+      other_questions: row.other_questions,
+      cloudinary_asset_id: row.cloudinary_asset_id,
+      cloudinary_public_id: row.cloudinary_public_id,
+      cloudinary_version: row.cloudinary_version,
+      cloudinary_format: row.cloudinary_format,
+      headshot_original_name: row.headshot_original_name,
+      headshot_size_bytes: row.headshot_size_bytes,
+      headshot_width: row.headshot_width,
+      headshot_height: row.headshot_height,
+      headshot_preview_url: row.headshot_preview_url,
+      headshot_download_url: row.headshot_download_url,
+      status: row.status,
+      created_at: row.created_at,
+      updated_at: row.updated_at,
+    };
+  }
+
   return {
     id: row.id,
     name: row.name,
@@ -256,39 +312,29 @@ function sanitizeRow(resource, row) {
     phone: row.phone,
     help_category: row.help_category,
     question: row.question,
-    headshot_path: row.headshot_path,
-    headshot_preview_url: row.headshot_preview_url,
-    headshot_download_url: row.headshot_download_url,
     source_page: row.source_page,
     status: row.status,
     created_at: row.created_at,
   };
 }
 
-async function attachQueryHeadshots(rows) {
-  return Promise.all(
-    rows.map(async (row) => {
-      if (!row.headshot_path) return row;
+function attachMentorHeadshots(rows) {
+  if (!isCloudinaryConfigured()) return rows;
+  const expiresAt = Math.floor(Date.now() / 1000) + 300;
 
-      const [preview, download] = await Promise.all([
-        supabaseAdmin.storage.from("mentor-headshots").createSignedUrl(row.headshot_path, 300),
-        supabaseAdmin.storage
-          .from("mentor-headshots")
-          .createSignedUrl(row.headshot_path, 300, { download: true }),
-      ]);
-
-      if (preview.error || download.error) {
-        console.warn("Could not sign mentor headshot:", preview.error?.message || download.error?.message);
-        return row;
-      }
-
-      return {
-        ...row,
-        headshot_preview_url: preview.data.signedUrl,
-        headshot_download_url: download.data.signedUrl,
-      };
-    })
-  );
+  return rows.map((row) => ({
+    ...row,
+    headshot_preview_url: cloudinary.utils.private_download_url(
+      row.cloudinary_public_id,
+      row.cloudinary_format,
+      { resource_type: "image", type: "authenticated", expires_at: expiresAt, attachment: false }
+    ),
+    headshot_download_url: cloudinary.utils.private_download_url(
+      row.cloudinary_public_id,
+      row.cloudinary_format,
+      { resource_type: "image", type: "authenticated", expires_at: expiresAt, attachment: true }
+    ),
+  }));
 }
 
 async function attachLeadDetails(rows) {
@@ -341,8 +387,8 @@ async function getRows(resource, params, isExport) {
   let hydrated = ["payments", "emails"].includes(resource)
     ? await attachLeadDetails(data || [])
     : data || [];
-  if (resource === "queries" && !isExport) {
-    hydrated = await attachQueryHeadshots(hydrated);
+  if (resource === "mentors" && !isExport) {
+    hydrated = attachMentorHeadshots(hydrated);
   }
   return {
     rows: hydrated.map((row) => sanitizeRow(resource, row)),

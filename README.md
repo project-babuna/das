@@ -70,6 +70,25 @@ Your registration is confirmed. Receipt {{4}} is attached for your records.
 
 Suggested template name: `payment_success_with_receipt`. Keep the configured template language identical to the approved template language.
 
+## Mentor Headshots with Cloudinary
+
+The `/mentor-details` page uploads headshots directly from the browser to Cloudinary using a
+short-lived server-generated signature. The application data and Cloudinary asset references are
+then stored in the Supabase `mentor_applications` table.
+
+Add these server-side environment variables locally and in Vercel:
+
+```text
+CLOUDINARY_CLOUD_NAME
+CLOUDINARY_API_KEY
+CLOUDINARY_API_SECRET
+```
+
+Do not expose `CLOUDINARY_API_SECRET` to browser code. Run
+`database/mentor_applications.sql` once in the Supabase SQL editor before accepting submissions.
+Mentor headshots use Cloudinary's `authenticated` delivery type; the admin dashboard generates
+five-minute signed preview and download links.
+
 ## Project Structure
 
 ```text
