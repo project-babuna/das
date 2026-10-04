@@ -1,4 +1,4 @@
-import ClaritySessionAdPage from "../components/ClaritySessionAdPage";
+import ClaritySessionLandingPage from "../ClaritySessionLandingPage";
 
 export const metadata = {
   title: "DreamAndScale Business Clarity Session | Understand How Business Works",
@@ -26,5 +26,5 @@ export const metadata = {
 };
 
 export default function ClaritySessionPage() {
-  return <ClaritySessionAdPage />;
+  return <ClaritySessionLandingPage />;
 }

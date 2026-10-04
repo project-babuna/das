@@ -1,0 +1,32 @@
+.section { padding: 48px 0; background: #092f27; color: #fffdf8; border-block: 1px solid #e4bd6140; }
+.layout { display: grid; gap: 28px; }
+.intro { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; }
+.intro h2 { margin: 0; font: 500 clamp(32px, 3vw, 44px)/1.1 Georgia, "Times New Roman", serif; letter-spacing: -.04em; color: #fffdf8; }
+.intro h2 em { color: #e4bd61; font-style: normal; white-space: nowrap; }
+.lead { margin: 0; color: #dce7df; font: 400 17px/1.6 Georgia, "Times New Roman", serif; }
+.chapters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.chapter { padding: 24px 22px; border: 1px solid #e4bd6140; border-radius: 12px; background: #fffdf8; color: #102d27; box-shadow: 0 14px 36px #001c1826; scroll-margin-top: 20px; transition: border-color 220ms ease, transform 220ms ease; }
+.chapterProgress { width: 88px; height: 3px; border-radius: 4px; background: #102d2719; overflow: hidden; margin-bottom: 16px; }
+.chapterProgress span { display: block; height: 100%; background: #bd9235; border-radius: inherit; }
+.number { display: block; margin-bottom: 14px; color: #b88b31; font: 400 44px/1 Georgia, "Times New Roman", serif; letter-spacing: -.06em; }
+.chapter h3 { min-height: 3.45em; margin: 0 0 18px; font: 600 24px/1.15 Georgia, "Times New Roman", serif; letter-spacing: -.035em; text-wrap: initial; color: #102d27; }
+.chapter p { margin: 0; font: 400 16px/1.5 Georgia, "Times New Roman", serif; color: #35463e; }
+.chapter p + p { margin-top: 16px; }
+.chapter strong { font-weight: 700; color: #102d27; }
+.takeaway { margin: 0; padding-top: 22px; border-top: 1px solid #e4bd6140; text-align: center; color: #fffdf8; font: 400 clamp(19px, 1.7vw, 24px)/1.4 Georgia, "Times New Roman", serif; letter-spacing: -.02em; }
+.takeaway strong { color: #e4bd61; font-weight: 500; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) { .chapter:hover { border-color: #e4bd61; transform: translateY(-3px); } }
+@media (max-width: 1099px) {
+  .chapters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .chapter h3 { min-height: 0; }
+}
+@media (max-width: 600px) {
+  .section { padding-block: 44px; }
+  .intro { grid-template-columns: 1fr; gap: 18px; }
+  .intro h2 { font-size: 36px; }
+  .chapters { grid-template-columns: 1fr; }
+  .chapter { padding: 24px; }
+  .chapter h3 { font-size: 25px; }
+  .chapter p { font-size: 17px; }
+}
+@media (prefers-reduced-motion: reduce) { .chapter { transition: none; } }

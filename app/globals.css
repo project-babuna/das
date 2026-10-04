@@ -47,6 +47,8 @@ body.nav-open {
   overflow: hidden;
 }
 
+.site-nav .mobile-nav-cta { display: none; }
+
 a {
   color: inherit;
   text-decoration: none;
@@ -7095,6 +7097,16 @@ body.assessment-open {
 
   body.nav-open .site-nav {
     display: flex;
+  }
+
+  .site-nav .mobile-nav-cta {
+    display: block;
+    margin-top: 6px;
+    background: #e4bd61;
+    color: #09241f;
+    border-radius: 4px;
+    font-weight: 650;
+    text-align: center;
   }
 
   .header-cta {

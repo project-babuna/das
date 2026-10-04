@@ -1,0 +1,147 @@
+export const founderLifecycle = [
+  {
+    label: "CLARITY",
+    verb: "Understand",
+    question: "Should I pursue entrepreneurship, and how does business building actually work?",
+    description: "Start with the big picture before committing your time, money, or career.",
+    points: ["Question the myths that keep you stuck.", "Understand the journey from idea to scale."],
+    image: "clarity",
+    alt: "Professional reflecting on business ideas at a desk",
+    href: "/clarity-session",
+    action: "Start with clarity",
+  },
+  {
+    label: "FULL PROGRAM",
+    verb: "Learn",
+    question: "How do opportunities become businesses?",
+    description: "Connect the fundamentals into one business framework. Learn on your schedule, alongside your work.",
+    points: ["Connect customers, value, money, and growth.", "Learn what comes next—and what can wait."],
+    image: "learn",
+    alt: "Professional studying business concepts with a laptop and notebook",
+    href: "/full-program",
+    action: "Learn the framework",
+  },
+  {
+    label: "MENTORSHIP",
+    verb: "Guide",
+    question: "What should I do in my specific situation?",
+    description: "Bring your questions into focus with mentor guidance as you apply what you learn.",
+    points: ["Examine the assumptions behind your idea.", "Choose a focused next step for your situation."],
+    image: "guide",
+    alt: "Founder discussing a business plan with a mentor",
+    href: "/learn-with-mentorship",
+    action: "Apply with support",
+  },
+  {
+    label: "INCUBATION",
+    verb: "Build & prove",
+    question: "Can we turn this opportunity into a real business?",
+    description: "Turn assumptions into experiments. Build a small first version and learn from real customer behaviour.",
+    points: ["Test whether customers need and value the solution.", "Use evidence to improve the offer and business model."],
+    outcome: "A first version with evidence of demand.",
+    image: "build",
+    alt: "Founders testing an early product prototype together",
+  },
+  {
+    label: "ACCELERATOR",
+    verb: "Accelerate",
+    question: "Can we make what works repeatable?",
+    description: "Build on the evidence. Improve how you find customers, deliver value, and run the business.",
+    points: ["Turn early wins into repeatable processes.", "Track retention, costs, and margins as you grow."],
+    outcome: "A business model that can work repeatedly.",
+    image: "accelerate",
+    alt: "Startup team refining customer and operational processes",
+  },
+  {
+    label: "SCALE-UP",
+    verb: "Scale",
+    question: "Can we turn this repeatable model into a large organisation?",
+    description: "Grow beyond the founder. Develop the people, systems, and leadership a lasting company needs.",
+    points: ["Build teams and systems that can carry more responsibility.", "Expand while protecting quality and business fundamentals."],
+    outcome: "A stronger organisation, built for long-term growth.",
+    image: "scale",
+    alt: "Company leadership team planning the next stage of growth",
+  },
+];
+
+export const platformExamples = [
+  { name: "Notion", mark: "N", tone: "notion" },
+  { name: "Shopify", mark: "S", tone: "shopify" },
+  { name: "HubSpot", mark: "↗", tone: "hubspot" },
+  { name: "Squarespace", mark: "S", tone: "squarespace" },
+  { name: "EntreMento", mark: "E", tone: "entremento" },
+];
+
+export const startupInsights = [
+  {
+    eyebrow: "Business fundamentals",
+    tag: "Founder lessons",
+    title: "How to validate a business idea before you build",
+    description: "Test the problem, customer, urgency, and willingness to pay before committing to a product.",
+    image: "/assets/lifecycle/build.jpg",
+    href: "/blog/how-to-validate-a-business-idea",
+  },
+  {
+    eyebrow: "Business models",
+    tag: "Ownership",
+    title: "Business vs self-employment: what is the difference?",
+    description: "Understand systems, leverage, and the choices that separate selling your time from building a business.",
+    image: "/assets/lifecycle/accelerate.jpg",
+    href: "/blog/business-vs-self-employment",
+  },
+  {
+    eyebrow: "Opportunity",
+    tag: "Market insight",
+    title: "How to know if a market is big enough",
+    description: "Think clearly about customer segments, buying power, urgency, and the opportunity you want to pursue.",
+    image: "/assets/lifecycle/learn.jpg",
+    href: "/blog/how-to-know-if-a-market-is-big-enough",
+  },
+  {
+    eyebrow: "Customer insight",
+    tag: "Before building",
+    title: "How to understand customers before building a product",
+    description: "Study pain, behavior, alternatives, and buying decisions before you invest in a solution.",
+    image: "/assets/lifecycle/guide.jpg",
+    href: "/blog/how-to-understand-customers-before-building-a-product",
+  },
+  {
+    eyebrow: "Career decisions",
+    tag: "Founder readiness",
+    title: "Should you start a business or keep your job?",
+    description: "Use clarity, evidence, runway, and responsible next steps to make the decision deliberately.",
+    image: "/assets/lifecycle/clarity.jpg",
+    href: "/blog/should-you-start-a-business-or-keep-your-job",
+  },
+];
+
+export const learningPaths = [
+  {
+    label: "Start with clarity", title: "Clarity Session", price: "₹199",
+    format: "3-hour live introduction · Online · Hinglish",
+    description: "See how the pieces of a business fit together before deciding what to learn next.",
+    points: ["A starting point for beginners", "No business idea needed"],
+    href: "/clarity-session", action: "Explore the session",
+  },
+  {
+    label: "Learn the framework", title: "Full Program", price: "₹9,999",
+    format: "Self-paced full program",
+    description: "Study opportunity, customers, business design, finance, and growth on your schedule.",
+    points: ["The complete business framework", "Learn alongside your work"],
+    href: "/full-program", action: "Explore the Full Program",
+  },
+  {
+    label: "Apply with support", title: "DreamAndScale Plus", price: "₹49,990",
+    format: "Full Program + live mentor support",
+    description: "Work through your own ideas and decisions with guidance as you learn.",
+    points: ["Everything in the Full Program", "Support applying the concepts"],
+    href: "/learn-with-mentorship", action: "Explore mentorship", featured: true,
+  },
+];
+
+export const brandFaqItems = [
+  { question: "Do I need an idea before I start?", answer: "No. You can start by learning how to spot opportunities and understand a business. If you already have an idea, use the framework to examine it before committing more time or money." },
+  { question: "Can I learn while working full-time?", answer: "Yes. The Full Program is self-paced, so you can learn around your work. The Clarity Session is a scheduled 3-hour live introduction. DreamAndScale Plus adds live mentor support." },
+  { question: "Which program should I choose?", answer: "Choose the Clarity Session for an introduction, the Full Program for the complete self-paced framework, or DreamAndScale Plus if you also want live mentor support while applying the concepts. Visit each program page for its scope and details." },
+  { question: "Will this guarantee business success?", answer: "No. DreamAndScale provides business education to help you make more informed decisions. Results depend on your opportunity, execution, and market. Learning supports your judgment; it does not remove every risk." },
+];

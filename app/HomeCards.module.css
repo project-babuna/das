@@ -1,0 +1,13 @@
+.cards { align-items: stretch; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cards :global(.journey-card) { min-height: 400px; padding: 28px; }
+.cards :global(.journey-card::after) { display: none; }
+.cards :global(.journey-card-core) { transform: none; }
+.cards :global(.journey-badge) { position: static; transform: none; margin-bottom: 22px; padding: 0; background: none; color: var(--teal-dark); font-size: 11px; letter-spacing: .08em; }
+.cards :global(.journey-card-premium .journey-badge) { background: none; color: #f3bd50; }
+.cards :global(.journey-card-head), .cards :global(.journey-card-discovery .journey-card-head), .cards :global(.journey-card-core .journey-card-head), .cards :global(.journey-card-premium .journey-card-head) { margin: 0 0 24px; }
+.cards :global(.journey-card .journey-card-head p) { font-size: 15px; font-weight: 650; line-height: 1.45; }
+.cards :global(.journey-price s) { font-size: 16px; font-weight: 500; text-decoration-thickness: 1px; }
+.cards :global(.journey-card .journey-purpose) { margin-top: 20px; line-height: 1.65; }
+.cards :global(.journey-note) { font-weight: 550; }
+.cards :global(.journey-cta) { margin-top: auto; width: 100%; font-weight: 700; }
+@media (max-width: 760px) { .cards { grid-template-columns: 1fr; } .cards :global(.journey-card) { min-height: 0; padding: 24px; } }

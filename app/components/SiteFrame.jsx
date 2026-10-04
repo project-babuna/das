@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import BrandLogo from "./BrandLogo";
 import SiteFooter from "./SiteFooter";
 
@@ -22,6 +22,7 @@ export default function SiteFrame({
   navItems = defaultNavItems,
 }) {
   const [navOpen, setNavOpen] = useState(false);
+  const navToggleRef = useRef(null);
   const headerMetaEvent = ctaHref.startsWith("mailto:") ? "Lead" : "ViewContent";
 
   useEffect(() => {
@@ -30,6 +31,18 @@ export default function SiteFrame({
     return () => {
       document.body.classList.remove("nav-open");
     };
+  }, [navOpen]);
+
+  useEffect(() => {
+    if (!navOpen) return;
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setNavOpen(false);
+        navToggleRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
   }, [navOpen]);
 
   const closeNav = () => setNavOpen(false);
@@ -42,6 +55,7 @@ export default function SiteFrame({
         </a>
 
         <button
+          ref={navToggleRef}
           className="nav-toggle"
           type="button"
           aria-expanded={navOpen}
@@ -59,12 +73,14 @@ export default function SiteFrame({
               {item.label}
             </a>
           ))}
+          {!hideCta && <a className="mobile-nav-cta" href={ctaHref} onClick={closeNav} data-meta-event={headerMetaEvent} data-meta-content-name={ctaLabel} data-meta-content-category="Header CTA">{ctaLabel}</a>}
         </nav>
 
         {!hideCta ? (
           <a
             className="header-cta"
             href={ctaHref}
+            onClick={closeNav}
             data-meta-event={headerMetaEvent}
             data-meta-content-name={ctaLabel}
             data-meta-content-category="Header CTA"
