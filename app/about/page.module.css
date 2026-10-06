@@ -1,0 +1,14 @@
+.page { padding: 140px 0 76px; background: #fffdf8; color: #092f27; }
+.intro { max-width: 860px; margin-bottom: 56px; }
+.intro h1 { margin: 0 0 28px; font-size: clamp(36px, 4.5vw, 62px); line-height: 1.1; letter-spacing: -.04em; }
+.intro h1 em { color: #987326; font-style: normal; font-weight: 400; }
+.intro p, .vision p { margin: 0; max-width: 72ch; font-size: 18px; line-height: 1.8; color: #52625b; }
+.vision { border-top: 1px solid #092f2720; padding-top: 36px; margin-bottom: 42px; }
+.page h2 { margin: 0 0 18px; font-size: 29px; line-height: 1.25; letter-spacing: -.025em; }
+.paths { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.paths section { padding: 32px; border: 1px solid #092f2720; border-radius: 12px; background: #f7f5ef; }
+.paths section > span { display: block; font-size: 11px; line-height: 1.8; color: #86651e; margin-bottom: 18px; }
+.paths p { color: #52625b; line-height: 1.75; font-size: 16px; }
+.paths a { display: inline-block; margin-top: 18px; padding-block: 10px; color: #80601c; border-bottom: 1px solid #b18b32; font-weight: 600; font-size: 15px; }
+.destination { margin: 48px 0 0; text-align: center; font-size: 19px; line-height: 1.8; color: #86651e; }
+@media (max-width: 700px) { .page { padding-top: 116px; } .paths { grid-template-columns: 1fr; } .paths section { padding: 26px; } }

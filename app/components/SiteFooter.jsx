@@ -5,6 +5,7 @@ const footerColumns = [
   {
     title: "Programs",
     links: [
+      { href: "/programs", label: "All programs" },
       { href: "/clarity-session", label: "Clarity Session" },
       { href: "/full-program", label: "Full Program" },
       { href: "/learn-with-mentorship", label: "Mentorship" },
@@ -15,7 +16,7 @@ const footerColumns = [
     links: [
       { href: "/business-readiness-assessment", label: "Business Assessment" },
       { href: "/blog", label: "Insights" },
-      { href: "/#for-you", label: "About" },
+      { href: "/about", label: "About" },
       { href: "/#faq", label: "FAQ" },
       { href: "/become-a-partner", label: "Become a Partner" },
       { href: "/contact", label: "Contact", metaEvent: "Contact" },

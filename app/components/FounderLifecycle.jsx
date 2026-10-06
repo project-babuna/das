@@ -32,10 +32,15 @@ export default function FounderLifecycle() {
                 <div className={styles.copy}>
                   <p className={styles.eyebrow}>{String(index + 1).padStart(2, "0")} / 06 <span>·</span> {stage.label}</p>
                   <h3>{stage.verb}<span>.</span></h3>
+                  <div className={styles.entry}>
+                    <span className={index < 3 ? styles.openEntry : styles.selectiveEntry}>{index < 3 ? "OPEN ENROLLMENT" : "SELECTIVE ENTRY"}</span>
+                    <p>{index < 3 ? "Anyone can join." : "Apply → Assessment → Selection."}</p>
+                  </div>
                   <p className={styles.question}>{stage.question}</p>
                   <p className={styles.description}>{stage.description}</p>
                   <ul className={styles.focus}>{stage.points.map(point => <li key={point}><span aria-hidden="true">✓</span>{point}</li>)}</ul>
-                  {stage.href ? <a className={styles.action} href={stage.href}>{stage.action}<Arrow /></a> : <p className={styles.outcome}><span>The focus</span>{stage.outcome}</p>}
+                  {stage.outcome && <p className={styles.outcome}><span>The focus</span>{stage.outcome}</p>}
+                  {stage.href && <a className={styles.action} href={stage.href}>{stage.action}<Arrow /></a>}
                 </div>
               </div>
               {index < founderLifecycle.length - 1 && <svg className={styles.connector} viewBox="0 0 1000 140" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M250 0 C250 90 750 50 750 140" stroke="currentColor" strokeWidth="1.5" vectorEffect="non-scaling-stroke"/><circle cx="500" cy="70" r="5" fill="currentColor"/></svg>}
@@ -43,7 +48,7 @@ export default function FounderLifecycle() {
           ))}
         </ol>
         <footer className={styles.destination}>
-          <p>Dream → Understand → Learn → Build → Prove → Accelerate → Scale</p>
+          <p>Dream → Understand → Learn → Apply → Build &amp; Prove → Accelerate → Scale</p>
           <h3>Founder <span>→</span> Business <span>→</span> Company <span>→</span> Institution</h3>
           <a className={styles.action} href="/clarity-session">Start your journey with clarity<Arrow /></a>
         </footer>

@@ -6,18 +6,17 @@ import SiteFooter from "./SiteFooter";
 
 const defaultNavItems = [
   { href: "/", label: "Home" },
-  { href: "/clarity-session", label: "Clarity Session" },
-  { href: "/full-program", label: "Full Program" },
-  { href: "/learn-with-mentorship", label: "Mentorship" },
+  { href: "/programs", label: "Programs" },
   { href: "/business-readiness-assessment", label: "Assessment" },
   { href: "/blog", label: "Insights" },
+  { href: "/about", label: "About" },
   { href: "/#faq", label: "FAQ" },
 ];
 
 export default function SiteFrame({
   children,
-  ctaHref = "/register?program=clarity_session",
-  ctaLabel = "Book ₹199 Session",
+  ctaHref = "/clarity-session",
+  ctaLabel = "Start with Clarity",
   hideCta = false,
   navItems = defaultNavItems,
 }) {
@@ -36,6 +35,7 @@ export default function SiteFrame({
   useEffect(() => {
     if (!navOpen) return;
     const onKeyDown = (event) => {
+      if (event.defaultPrevented) return;
       if (event.key === "Escape") {
         setNavOpen(false);
         navToggleRef.current?.focus();

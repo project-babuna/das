@@ -6,22 +6,13 @@ import FounderLifecycle from "./components/FounderLifecycle";
 import ConnectedBusinessSystem from "./components/ConnectedBusinessSystem";
 import AudienceSection from "./components/AudienceSection";
 
-const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/full-program", label: "Full Program" },
-  { href: "/learn-with-mentorship", label: "Mentorship" },
-  { href: "/business-readiness-assessment", label: "Assessment" },
-  { href: "/blog", label: "Insights" },
-  { href: "#faq", label: "FAQ" },
-];
-
 function Arrow() {
   return <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" /></svg>;
 }
 
 export default function HomePage() {
   return (
-    <SiteFrame navItems={navItems} ctaHref="/register?program=clarity_session" ctaLabel="Book ₹199 Session">
+    <SiteFrame>
       <main id="top" className={styles.page}>
         <section className={styles.hero} aria-labelledby="home-heading">
           <div className={styles.heroMedia}>
@@ -32,7 +23,7 @@ export default function HomePage() {
               <h1 id="home-heading">Turn a business dream into a real company.<em>One stage at a time.</em></h1>
               <p>Thinking about starting a business? Learn how to test an opportunity, build with evidence, and grow what works—with a clear path for each stage.</p>
               <div className={styles.heroActions}>
-                <a className={styles.primary} href="#programs">Explore the programs <Arrow /></a>
+                <a className={styles.primary} href="/programs">Explore the programs <Arrow /></a>
                 <a className={styles.secondary} href="#approach">Explore the founder journey <Arrow /></a>
               </div>
               <p className={styles.heroNote}>Dream big. Understand first. Build what works.</p>
