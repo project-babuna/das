@@ -3,7 +3,7 @@
 .background { object-fit: cover; object-position: center; }
 .shade { z-index: -1; background: linear-gradient(90deg, #071816eb 0%, #071816b8 38%, #07181650 75%), linear-gradient(0deg, #071816e6 0%, transparent 45%); }
 .layout { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 46px; padding-bottom: 80px; }
-.copy h1 { margin: 0; max-width: 690px; font-family: inherit; font-size: clamp(42px, 4.5vw, 65px); font-weight: 600; line-height: 1.1; letter-spacing: -.05em; animation: reveal 800ms both; }
+.copy h1 { margin: 0; max-width: 690px; font-family: var(--clarity-display-font, Georgia, "Times New Roman", serif); font-size: clamp(42px, 4.5vw, 65px); font-weight: 500; line-height: 1.1; letter-spacing: -.045em; animation: reveal 800ms both; }
 .copy h1 em { display: block; margin-top: 14px; color: #e4c477; font-style: normal; font-weight: 400; }
 .description { color: #d2dcd5; font-size: 17px; line-height: 1.8; max-width: 550px; margin: 28px 0 0; animation: reveal 800ms 120ms both; }
 .actions { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; margin-top: 32px; animation: reveal 800ms 240ms both; }

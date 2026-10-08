@@ -11,24 +11,24 @@
 /* Refine the existing ivory, green, and gold system for the founder story. */
 .founderSection { scroll-margin-top: 76px; }
 .pitchHeading { max-width: 850px; margin-bottom: 24px; }
-.home .pitchHeading h2 { font-size: clamp(32px, 3.8vw, 49px); line-height: 1.16; letter-spacing: -.045em; text-wrap: balance; }
+.home .pitchHeading h2 { font-family: var(--clarity-display-font, Georgia, "Times New Roman", serif); font-size: clamp(38px, 4.3vw, 58px); font-weight: 500; line-height: 1.1; letter-spacing: -.045em; text-wrap: balance; }
 .pitchHeading h2 em { color: var(--teal-dark); font-style: normal; font-weight: 500; }
 .home .pitchHeading > p:last-child { max-width: 62ch; margin-top: 22px; color: #46534c; font-size: 18px; line-height: 1.55; }
-.trapPrompt { display: flex; align-items: center; gap: 16px; margin: 0; font-size: 15px; font-weight: 650; color: var(--teal-dark); }
-.trapPrompt::after { content: ""; height: 1px; background: var(--line); flex: 1; }
+.trapPrompt { display: flex; align-items: center; gap: 28px; margin: 0; padding-top: 8px; font-family: var(--clarity-display-font, Georgia, "Times New Roman", serif); font-size: clamp(28px, 2.7vw, 36px); font-weight: 500; line-height: 1.2; letter-spacing: -.035em; color: var(--teal-dark); }
+.trapPrompt em { color: #947025; font-weight: 500; white-space: nowrap; }
+.trapPrompt::after { content: ""; height: 1px; background: linear-gradient(90deg, #b8995180, #b8995110); flex: 1; min-width: 32px; }
 .trapGrid { position: relative; }
 .trapIntro { margin-bottom: 24px; }
-.trapStage { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-.trapCard { display: flex; flex-direction: column; min-height: 250px; padding: 24px; border: 1px solid #b8995138; border-radius: 18px; background: #fffdf8; box-shadow: 0 10px 28px #10362b0a; transition: translate 220ms ease, border-color 220ms ease, box-shadow 220ms ease; }
-.trapCardHead { display: flex; align-items: center; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid #153f3420; }
-.trapNumber { color: #a27927; font-size: 12px; font-weight: 800; letter-spacing: .08em; font-variant-numeric: tabular-nums; }
-.trapLabel { color: var(--teal-dark); font-size: 11px; font-weight: 750; text-transform: uppercase; letter-spacing: .1em; }
-.trapMark { margin-left: auto; color: #b89951; font-size: 18px; }
-.trapCardBody { padding-top: 28px; }
-.trapTitle { margin: 0 0 12px; font-size: clamp(21px, 2vw, 26px); font-weight: 650; line-height: 1.22; letter-spacing: -.035em; text-wrap: balance; color: var(--ink); }
-.trapCardBody p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
+.trapStage { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.trapCard { display: flex; flex-direction: column; padding: 26px; border: 1px solid #173e2f20; border-radius: 14px; background: linear-gradient(150deg, #ffffff, #faf9f3); box-shadow: 0 8px 28px #10362b06; transition: translate 220ms ease, border-color 220ms ease, box-shadow 220ms ease; }
+.trapCardHead { display: flex; align-items: center; gap: 12px; padding-bottom: 18px; border-bottom: 1px solid #153f3415; }
+.trapNumber { display: grid; place-items: center; flex: 0 0 32px; height: 32px; border: 1px solid #b8995138; border-radius: 8px; background: #f4efdf; color: #896621; font-size: 12px; font-weight: 700; letter-spacing: .04em; font-variant-numeric: tabular-nums; }
+.trapLabel { color: var(--teal-dark); font-size: 11px; font-weight: 700; line-height: 1.5; text-transform: uppercase; letter-spacing: .08em; }
+.trapCardBody { padding-top: 20px; }
+.trapTitle { min-height: 2.4em; margin: 0 0 14px; font-family: var(--clarity-display-font, Georgia, "Times New Roman", serif); font-size: 26px; font-weight: 600; line-height: 1.2; letter-spacing: -.03em; text-wrap: balance; color: #102f28; }
+.trapCardBody p { margin: 0; color: #53645b; font-size: 15px; line-height: 1.65; }
 .solutionLayout { display: grid; grid-template-columns: 1fr 1.12fr; gap: clamp(36px, 7vw, 100px); margin-top: 68px; padding-top: 56px; border-top: 1px solid var(--line); align-items: start; }
-.solutionCopy h3 { margin: 12px 0 24px; font-size: clamp(32px, 3.5vw, 46px); line-height: 1.14; letter-spacing: -.045em; color: var(--teal-dark); }
+.solutionCopy h3 { margin: 12px 0 24px; font-family: var(--clarity-display-font, Georgia, "Times New Roman", serif); font-size: clamp(36px, 3.7vw, 50px); font-weight: 500; line-height: 1.12; letter-spacing: -.045em; color: var(--teal-dark); }
 .solutionCopy > p:not(:first-child) { max-width: 39ch; margin: 16px 0 0; font-size: 16px; line-height: 1.75; color: var(--muted); }
 .solutionCopy > p.solutionClose { max-width: 46ch; margin-top: 24px; padding: 15px 18px; border-radius: 10px; background: #eaf0e9; color: var(--teal-dark); font-weight: 650; line-height: 1.6; }
 .stepsPanel { padding: 30px 34px; border: 1px solid #153f341c; border-radius: 18px; background: #f1f3ed; }
@@ -43,7 +43,7 @@
 .pitchSteps span { display: block; margin-top: 5px; color: var(--muted); font-size: 14px; line-height: 1.65; }
 .pitchInvite { display: grid; grid-template-columns: 1fr minmax(260px, .65fr); gap: 60px; align-items: center; padding: 48px; margin-top: 60px; border: 1px solid #c99a2e35; border-radius: 22px; background: #102d27; color: #fffdf8; box-shadow: 0 16px 36px #10362b10; scroll-margin-top: 100px; }
 .inviteLabel { display: block; color: #e6c37b; margin-bottom: 18px; font-size: 11px; line-height: 1.6; text-transform: uppercase; letter-spacing: .12em; font-weight: 650; }
-.pitchInvite h3 { margin: 0 0 18px; font-size: clamp(27px, 2.9vw, 36px); line-height: 1.2; letter-spacing: -.03em; font-weight: 650; }
+.pitchInvite h3 { margin: 0 0 18px; font-family: var(--clarity-display-font, Georgia, "Times New Roman", serif); font-size: clamp(32px, 3.2vw, 44px); line-height: 1.12; letter-spacing: -.035em; font-weight: 500; }
 .pitchInvite p { max-width: 50ch; margin: 0; font-size: 15px; line-height: 1.75; color: #cbd8d2; }
 .inviteBenefits { display: grid; gap: 10px; margin: 22px 0 0; padding-left: 18px; color: #e4ece7; font-size: 14px; line-height: 1.6; }
 .inviteBenefits li::marker { color: #e6c37b; }
@@ -65,16 +65,18 @@
 @media (max-width: 760px) {
   .home :global(.section) { padding-block: 52px; }
   .home :global(.section h2) { font-size: 30px; }
-  .home .pitchHeading h2 { font-size: 33px; }
+  .home .pitchHeading h2 { font-size: 36px; }
   .pitchHeading { margin-bottom: 12px; }
   .home .pitchHeading > p:last-child { font-size: 16px; }
   .solutionLayout, .pitchInvite { grid-template-columns: 1fr; }
   .trapIntro { margin-bottom: 20px; }
-  .trapPrompt { font-size: 13px; }
+  .trapPrompt { font-size: 28px; gap: 16px; padding-top: 4px; }
+  .trapPrompt em { display: block; }
+  .trapPrompt::after { display: none; }
   .trapStage { grid-template-columns: 1fr; gap: 14px; }
-  .trapCard { min-height: 220px; padding: 20px 24px; }
+  .trapCard { padding: 24px; }
   .trapCardHead { padding-bottom: 14px; }
-  .trapTitle { font-size: 25px; text-wrap: auto; }
+  .trapTitle { min-height: 0; font-size: 25px; text-wrap: auto; }
   .trapCardBody p { font-size: 15px; }
   .solutionLayout { margin-top: 40px; padding-top: 36px; gap: 30px; }
   .stepsPanel { padding: 24px 20px; }

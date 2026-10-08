@@ -134,14 +134,14 @@ export const learningPaths = [
     format: "Self-paced full program",
     description: "Study opportunity, customers, business design, finance, and growth on your schedule.",
     points: ["The complete business framework", "Learn alongside your work"],
-    href: "/full-program", action: "Explore the Full Program",
+    href: "/full-program", action: "Explore Full Program",
   },
   {
     label: "Apply with support", title: "DreamAndScale Plus", price: "₹49,990",
     format: "Full Program + live mentor support",
     description: "Work through your own ideas and decisions with guidance as you learn.",
     points: ["Everything in the Full Program", "Support applying the concepts"],
-    href: "/learn-with-mentorship", action: "Explore mentorship", featured: true,
+    href: "/learn-with-mentorship", action: "Explore Mentorship", featured: true,
   },
 ];
 

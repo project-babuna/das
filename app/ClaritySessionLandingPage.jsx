@@ -80,7 +80,7 @@ export default function ClaritySessionLandingPage() {
                 <h2 id="founder-heading">Big businesses don’t start big.<br /><em>They are built step by step.</em></h2>
                 <p>A big vision needs a small first move. Find a real problem, talk to the people who face it, and test what you learn before you commit serious time or money.</p>
               </div>
-              <h3 className={readingStyles.trapPrompt}>Does any of this sound familiar?</h3>
+              <h3 className={readingStyles.trapPrompt}><span>Does any of this <em>sound familiar?</em></span></h3>
             </FounderTrapStory>
 
             <div className={readingStyles.solutionLayout}>

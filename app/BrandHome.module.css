@@ -99,6 +99,13 @@
 .stages p { color: #66716f; font-size: 15px; line-height: 1.7; margin: 0; }
 .programs { border-block: 1px solid #09241f14; background: #f7f5f0; }
 .programGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.programGroupHeading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; margin-bottom: 20px; }
+.programGroupHeading p { margin: 0; font-size: 21px; font-weight: 650; letter-spacing: -.03em; }
+.programGroupHeading span { color: #66716f; font-size: 12px; line-height: 1.7; }
+.programGroupHeading strong { color: #75530f; font-weight: 600; }
+.buildGroupHeading { margin-top: 40px; padding-top: 32px; border-top: 1px solid #09241f21; }
+.buildCard .programLabel { background: #f1e8d4; color: #75530f; }
+.buildCard .programLink { margin-top: auto; }
 .programCard { display: flex; flex-direction: column; min-width: 0; padding: 28px; border: 1px solid #09241f21; border-radius: 16px; background: #fffdf8; }
 .programLabel { align-self: flex-start; font-size: 10px; text-transform: uppercase; font-weight: 650; letter-spacing: .12em; padding: 6px 12px; border-radius: 30px; background: #eaf0e9; margin-bottom: 24px; }
 .programCard h3 { margin: 0 0 12px; font-size: clamp(22px, 2.1vw, 28px); font-weight: 650; line-height: 1.25; letter-spacing: -.04em; text-wrap: initial; min-height: 35px; }

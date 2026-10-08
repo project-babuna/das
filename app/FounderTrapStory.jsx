@@ -1,12 +1,12 @@
 import styles from "./HomeReading.module.css";
 
 const traps = [
-  { label: "The perfect idea trap", title: "“Someone must have done this already.”", body: "You dismiss everyday problems and wait for a revolutionary idea. Years pass without testing anything." },
-  { label: "The day-one company trap", title: "“I need funding, an app, and a team.”", body: "You picture the finished company. The cost and complexity make even starting feel impossible." },
-  { label: "The build-first trap", title: "“Let me finish it. Customers will come.”", body: "You invest in features and hiring before finding out whether people need your solution enough to pay." },
-  { label: "The first-step trap", title: "“What should I do first?”", body: "Register the company? Build a product? Find customers? When every task feels urgent, you struggle to choose a starting point." },
-  { label: "The quit-your-job trap", title: "“Do I have to resign to start?”", body: "You assume starting requires leaving your job, so you put the idea aside before exploring whether it has potential." },
-  { label: "The co-founder trap", title: "“I can’t start alone.”", body: "You wait for the right co-founder before finding out what the business needs—or whether the idea is worth pursuing." },
+  { label: "The perfect idea trap", title: "“Someone must have done this already.”", body: "You keep waiting for something completely unique instead of testing real problems." },
+  { label: "The day-one company trap", title: "“I need funding, an app, and a team.”", body: "You imagine the finished company before taking the first small step." },
+  { label: "The build-first trap", title: "“Let me build it. Customers will come.”", body: "You invest before finding out whether customers actually care." },
+  { label: "The first-step trap", title: "“What should I do first?”", body: "Product? Customers? Company registration? Funding? Everything feels urgent." },
+  { label: "The quit-your-job trap", title: "“Do I have to resign to start?”", body: "You treat entrepreneurship as an all-or-nothing career decision." },
+  { label: "The co-founder trap", title: "“I can’t start alone.”", body: "You wait for a co-founder before discovering what the business actually needs." },
 ];
 
 export default function FounderTrapStory({ children }) {
@@ -21,7 +21,6 @@ export default function FounderTrapStory({ children }) {
               <div className={styles.trapCardHead}>
                 <span className={styles.trapNumber}>{number}</span>
                 <span className={styles.trapLabel}>{trap.label}</span>
-                <span className={styles.trapMark} aria-hidden="true">✦</span>
               </div>
               <div className={styles.trapCardBody}>
                 <h4 className={styles.trapTitle}>{trap.title}</h4>

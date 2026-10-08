@@ -5,9 +5,14 @@ import StartupInsights from "./components/StartupInsights";
 import FounderLifecycle from "./components/FounderLifecycle";
 import ConnectedBusinessSystem from "./components/ConnectedBusinessSystem";
 import AudienceSection from "./components/AudienceSection";
+import { buildPrograms } from "./programs/catalog";
 
 function Arrow() {
   return <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" /></svg>;
+}
+
+function Checkpoints({ points }) {
+  return <ul>{points.map((point) => <li key={point}><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="currentColor" opacity=".15"/><path d="m5.5 10 3 3 6-6" stroke="currentColor" strokeWidth="1.5" /></svg>{point}</li>)}</ul>;
 }
 
 export default function HomePage() {
@@ -71,18 +76,37 @@ export default function HomePage() {
           <div className="container">
             <div className={styles.sectionHeading}>
               <h2 id="programs-heading">Choose the support you need.</h2>
-              <p>Get the big picture, learn the complete framework, or apply it with mentor support. Start where you are.</p>
+              <p>Learn the foundations, apply them with guidance, or get support to build and grow. Start where you are.</p>
+            </div>
+            <div className={styles.programGroupHeading}>
+              <p>Learn &amp; Prepare</p>
+              <span><strong>Open enrollment</strong> · Anyone can join</span>
             </div>
             <div className={styles.programGrid}>
               {learningPaths.map((program) => (
                 <article className={`${styles.programCard} ${program.featured ? styles.featured : ""}`} key={program.title}>
                   <span className={styles.programLabel}>{program.label}</span>
                   <h3>{program.title}</h3>
-                  <strong className={styles.price}>{program.price}</strong>
                   <p className={styles.format}>{program.format}</p>
                   <p className={styles.programDescription}>{program.description}</p>
-                  <ul>{program.points.map((point) => <li key={point}><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="currentColor" opacity=".15"/><path d="m5.5 10 3 3 6-6" stroke="currentColor" strokeWidth="1.5" /></svg>{point}</li>)}</ul>
+                  <Checkpoints points={program.points} />
                   <a href={program.href} className={styles.programLink} data-meta-event="ViewContent" data-meta-content-name={program.title} data-meta-content-category="Program Offer">{program.action} <Arrow /></a>
+                </article>
+              ))}
+            </div>
+            <div className={`${styles.programGroupHeading} ${styles.buildGroupHeading}`}>
+              <p>Build &amp; Grow</p>
+              <span><strong>Selective entry</strong> · Apply → Assessment → Selection</span>
+            </div>
+            <div className={styles.programGrid}>
+              {buildPrograms.map((program) => (
+                <article className={`${styles.programCard} ${styles.buildCard}`} key={program.slug}>
+                  <span className={styles.programLabel}>{program.number} · {program.verb}</span>
+                  <h3>{program.title}</h3>
+                  <p className={styles.format}>Selective entry · Application required</p>
+                  <p className={styles.programDescription}>{program.description}</p>
+                  <Checkpoints points={program.focus.map((item) => item.title)} />
+                  <a href={`/programs/${program.slug}`} className={styles.programLink}>Explore {program.slug === "scale-up" ? "Scale-Up" : program.title} <Arrow /></a>
                 </article>
               ))}
             </div>
