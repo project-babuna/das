@@ -40,9 +40,8 @@ export default function SiteFooter() {
         <div className="footer-brand-line">
           <BrandLogo tone="light" compact />
           <p className="footer-brand-copy">
-            Build Business Clarity Before You Build a Business.
-            <br />
-            Helping aspiring founders understand how businesses actually work.
+            <strong>From business dream to scalable company.</strong>
+            <span>Helping founders understand, build, prove, and grow businesses—one stage at a time.</span>
           </p>
         </div>
         <div className="footer-columns">

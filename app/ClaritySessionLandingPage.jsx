@@ -87,12 +87,9 @@ export default function ClaritySessionLandingPage() {
               <div className={readingStyles.solutionCopy} data-clarity-reveal>
                 <p className="eyebrow dark">Why preparation matters</p>
                 <h3>Learn before<br />you build.</h3>
-                <p>Without knowing what to check, you may keep waiting because the risk feels too high—or build too much before you know if customers care. Learning gives you a way to test the important questions first.</p>
-                <div className={readingStyles.learningExamples} aria-label="Why preparation matters">
-                  <div><strong>Building a career</strong><p>We study, practise, and gain experience before taking on bigger responsibilities.</p></div>
-                  <div><strong>Growing a crop</strong><p>A farmer studies the soil, plants, observes, and adjusts before expecting a harvest.</p></div>
-                </div>
-                <p className={readingStyles.solutionClose}>A business deserves the same care. Preparation won’t remove every risk, but it helps you make the next decision with evidence.</p>
+                <p>You wouldn’t enter most serious professions without first understanding how they work. Building a business deserves the same preparation.</p>
+                <p>You don’t need to know everything before starting. But understanding what to test, what to measure, and which decisions matter first can help you avoid expensive assumptions.</p>
+                <p className={readingStyles.solutionClose}>Learn enough to start intelligently. Then learn from the market as you build.</p>
               </div>
               <div className={readingStyles.stepsPanel} data-clarity-reveal>
                 <h4>A practical path forward</h4>

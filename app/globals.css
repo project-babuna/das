@@ -6931,11 +6931,12 @@ body.assessment-open {
 .footer-grid {
   display: grid;
   grid-template-columns: minmax(360px, 0.78fr) minmax(0, 1.22fr);
-  gap: clamp(28px, 5vw, 72px);
+  column-gap: clamp(28px, 5vw, 72px);
+  row-gap: clamp(36px, 3.4vw, 52px);
   align-items: start;
   min-height: 94px;
-  padding-top: 34px;
-  padding-bottom: 34px;
+  padding-top: 52px;
+  padding-bottom: 44px;
 }
 
 .footer-brand-line {
@@ -6953,12 +6954,26 @@ body.assessment-open {
 .footer-brand-copy {
   display: block;
   max-width: 420px;
-  margin: 10px 0 0;
-  color: rgba(255, 255, 255, 0.58);
+  margin: 18px 0 0;
   font-size: 0.8rem;
-  font-weight: 600;
   letter-spacing: 0;
   line-height: 1.48;
+}
+
+.footer-brand-copy strong,
+.footer-brand-copy span {
+  display: block;
+}
+
+.footer-brand-copy strong {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 700;
+}
+
+.footer-brand-copy span {
+  margin-top: 7px;
+  color: rgba(255, 255, 255, 0.62);
+  font-weight: 400;
 }
 
 .footer-columns {
@@ -6975,7 +6990,7 @@ body.assessment-open {
 .footer-column {
   display: grid;
   align-content: start;
-  gap: 12px;
+  gap: 17px;
   min-width: 0;
 }
 
@@ -6991,7 +7006,7 @@ body.assessment-open {
 
 .footer-column nav {
   display: grid;
-  gap: 10px;
+  gap: 12px;
   justify-content: start;
   color: rgba(255, 255, 255, 0.66);
   font-size: 0.875rem;
@@ -7006,8 +7021,8 @@ body.assessment-open {
 .footer-social-row {
   grid-column: 1 / -1;
   display: grid;
-  gap: 14px;
-  padding-top: 22px;
+  gap: 18px;
+  padding-top: 26px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
@@ -7385,13 +7400,16 @@ body.assessment-open {
 
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    row-gap: 32px;
+    padding-top: 46px;
+    padding-bottom: 40px;
   }
 
   .footer-columns {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     justify-self: start;
     max-width: none;
+    padding-left: 0;
   }
 
   .footer-column nav {
@@ -7829,7 +7847,7 @@ body.assessment-open {
 
   .footer-columns {
     grid-template-columns: 1fr;
-    gap: 22px;
+    row-gap: 30px;
   }
 
 }

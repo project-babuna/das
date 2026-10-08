@@ -20,8 +20,8 @@ export default function HomePage() {
           </div>
           <div className={`container ${styles.heroInner}`}>
             <div className={styles.heroCopy}>
-              <h1 id="home-heading">Turn a business dream into a real company.<em>One stage at a time.</em></h1>
-              <p>Thinking about starting a business? Learn how to test an opportunity, build with evidence, and grow what works—with a clear path for each stage.</p>
+              <h1 id="home-heading">Turn a business dream into a scalable company.<em>One stage at a time.</em></h1>
+              <p>DreamAndScale helps aspiring founders understand how businesses work, turn opportunities into real businesses, prove what works, and build toward scale—with the right learning, guidance, and support at each stage.</p>
               <div className={styles.heroActions}>
                 <a className={styles.primary} href="/programs">Explore the programs <Arrow /></a>
                 <a className={styles.secondary} href="#approach">Explore the founder journey <Arrow /></a>

@@ -9,7 +9,7 @@ export default function HomeHero() {
       <div className={`container ${styles.layout}`}>
         <div className={styles.copy}>
           <h1 id="hero-title">Thinking of starting a business?<em>Know what to do first.</em></h1>
-          <p className={styles.description}>Join the DreamAndScale Clarity Session to challenge common myths, understand the business journey, and find your next step.</p>
+          <p className={styles.description}>Join the DreamAndScale Clarity Session to challenge common business myths, understand how businesses are actually built, and find the right next step for you—before risking serious time, money, or your career.</p>
           <div className={styles.actions}>
             <a className={styles.primary} href="/register?program=clarity_session" data-meta-event="InitiateCheckout" data-meta-content-name="Clarity Session" data-meta-content-category="Program Offer" data-meta-value="199" data-meta-currency="INR">Book the ₹199 Clarity Session <span aria-hidden="true">↗</span></a>
             <a className={styles.secondary} href="#session-details" data-meta-event="ViewContent" data-meta-content-name="Clarity Session Agenda" data-meta-content-category="Program Offer">See what you’ll learn <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" /></svg></a>
