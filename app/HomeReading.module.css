@@ -42,6 +42,21 @@
 .pitchSteps strong { display: block; padding-top: 2px; color: var(--ink); font-size: 18px; font-weight: 700; line-height: 1.4; letter-spacing: -.015em; }
 .pitchSteps span { display: block; margin-top: 5px; color: var(--muted); font-size: 14px; line-height: 1.65; }
 .pitchInvite { display: grid; grid-template-columns: 1fr minmax(260px, .65fr); gap: 60px; align-items: center; padding: 48px; margin-top: 60px; border: 1px solid #c99a2e35; border-radius: 22px; background: #102d27; color: #fffdf8; box-shadow: 0 16px 36px #10362b10; scroll-margin-top: 100px; }
+.liveSessions { background: linear-gradient(140deg, #f4f2eb 0%, #fffdf8 58%, #edf2eb 100%); }
+.liveSessionsLayout { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: clamp(34px, 6vw, 82px); }
+.liveSessionsContent { max-width: 540px; }
+.liveSessionsLabel { margin: 0 0 18px; color: #947025; font-size: 11px; font-weight: 750; letter-spacing: .14em; line-height: 1.5; text-transform: uppercase; }
+.liveSessionsContent h2 { margin: 0 0 20px; color: #102f28; font-family: var(--clarity-display-font, Georgia, "Times New Roman", serif); font-size: clamp(38px, 4.2vw, 56px); font-weight: 500; line-height: 1.08; letter-spacing: -.045em; }
+.liveSessionsContent h2 em { color: #947025; font-style: italic; }
+.liveSessionsDescription { max-width: 54ch; margin: 0; color: #53645b; font-size: 16px; line-height: 1.75; }
+.liveSessionsHighlights { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 28px; padding: 0; list-style: none; }
+.liveSessionsHighlights li { padding: 9px 13px; border: 1px solid #173e3220; border-radius: 999px; background: #ffffffb8; color: #24473b; font-size: 12px; font-weight: 650; line-height: 1.4; }
+.liveSessionsHighlights li::before { content: "•"; margin-right: 7px; color: #a47b23; }
+.liveSessionsCta { display: inline-flex; align-items: center; gap: 20px; min-height: 50px; padding: 14px 20px; border-radius: 7px; text-decoration: none; }
+.liveSessionsCta svg { flex-shrink: 0; transition: transform 180ms ease; }
+.liveSessionsImage { min-width: 0; margin: 0; overflow: hidden; border: 1px solid #102f2824; border-radius: 18px; background: #111; box-shadow: 0 22px 54px #102f281c; }
+.liveSessionsImage img { display: block; width: 100%; height: auto; }
+@media (hover: hover) { .liveSessionsCta:hover svg { transform: translateX(3px); } }
 .inviteLabel { display: block; color: #e6c37b; margin-bottom: 18px; font-size: 11px; line-height: 1.6; text-transform: uppercase; letter-spacing: .12em; font-weight: 650; }
 .pitchInvite h3 { margin: 0 0 18px; font-family: var(--clarity-display-font, Georgia, "Times New Roman", serif); font-size: clamp(32px, 3.2vw, 44px); line-height: 1.12; letter-spacing: -.035em; font-weight: 500; }
 .pitchInvite p { max-width: 50ch; margin: 0; font-size: 15px; line-height: 1.75; color: #cbd8d2; }
@@ -69,6 +84,10 @@
   .pitchHeading { margin-bottom: 12px; }
   .home .pitchHeading > p:last-child { font-size: 16px; }
   .solutionLayout, .pitchInvite { grid-template-columns: 1fr; }
+  .liveSessionsLayout { grid-template-columns: 1fr; gap: 30px; }
+  .liveSessionsContent h2 { font-size: 38px; }
+  .liveSessionsDescription { font-size: 15px; }
+  .liveSessionsImage { border-radius: 14px; }
   .trapIntro { margin-bottom: 20px; }
   .trapPrompt { font-size: 28px; gap: 16px; padding-top: 4px; }
   .trapPrompt em { display: block; }
@@ -87,4 +106,4 @@
   .inviteAction { width: 100%; padding: 26px 0 0; border-left: 0; border-top: 1px solid #ffffff24; }
   .sessionPrice { justify-content: center; }
 }
-@media (prefers-reduced-motion: reduce) { .trapCard, .inviteAction svg { transition: none; } .trapCard:hover { translate: none; } }
+@media (prefers-reduced-motion: reduce) { .trapCard, .inviteAction svg, .liveSessionsCta svg { transition: none; } .trapCard:hover { translate: none; } }

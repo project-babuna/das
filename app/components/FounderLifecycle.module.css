@@ -39,6 +39,7 @@
 .stage:nth-child(even) .photo { order: 2; }
 .stage:nth-child(even) .copy { order: 1; }
 .connector { position: absolute; bottom: -70px; left: 0; width: 100%; height: 140px; color: #b18b3280; pointer-events: none; z-index: 1; }
+.connectorMarker { fill: #b18b32; filter: drop-shadow(0 0 4px #b18b3280); }
 .stage:nth-child(even) .connector { transform: scaleX(-1); }
 .destination { text-align: center; border-top: 1px solid #c99a2e50; padding-top: 54px; }
 .destination p { color: #86651e; font-size: 12px; line-height: 2; margin: 0 0 20px; }
@@ -52,7 +53,7 @@
   }
 }
 @media (max-width: 760px) {
-  .lifecycle { padding-block: 60px; }
+  .lifecycle { padding: 154px 0 60px; }
   .intro > p:last-of-type { font-size: 15px; }
   .stageNav { gap: 6px 18px; margin-top: 24px; }
   .dream { margin-top: 40px; }

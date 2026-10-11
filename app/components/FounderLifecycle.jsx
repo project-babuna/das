@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import { founderLifecycle } from "../homeContent";
 import styles from "./FounderLifecycle.module.css";
 
@@ -6,8 +9,66 @@ function Arrow() {
 }
 
 export default function FounderLifecycle() {
+  const lifecycleRef = useRef(null);
+
+  useEffect(() => {
+    const lifecycle = lifecycleRef.current;
+    if (!lifecycle) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const connectors = Array.from(lifecycle.querySelectorAll("[data-lifecycle-connector]")).map((svg) => ({
+      svg,
+      path: svg.querySelector("path"),
+      marker: svg.querySelector("[data-lifecycle-marker]"),
+      length: svg.querySelector("path")?.getTotalLength() ?? 0,
+    }));
+    let frame = 0;
+
+    const update = () => {
+      connectors.forEach(({ svg, path, marker, length }) => {
+        if (!path || !marker || !length) return;
+        if (reduceMotion.matches) {
+          path.style.removeProperty("stroke-dasharray");
+          path.style.removeProperty("stroke-dashoffset");
+          marker.setAttribute("cx", "500");
+          marker.setAttribute("cy", "70");
+          return;
+        }
+
+        const top = svg.getBoundingClientRect().top;
+        const start = window.innerHeight * 0.84;
+        const scrollSpan = Math.max(window.innerHeight * 0.58, 1);
+        const progress = Math.min(1, Math.max(0, (start - top) / scrollSpan));
+        path.style.strokeDasharray = `${length}`;
+        path.style.strokeDashoffset = `${length * (1 - progress)}`;
+        const point = path.getPointAtLength(length * progress);
+        marker.setAttribute("cx", `${point.x}`);
+        marker.setAttribute("cy", `${point.y}`);
+      });
+    };
+
+    const scheduleUpdate = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        update();
+      });
+    };
+
+    scheduleUpdate();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    reduceMotion.addEventListener("change", scheduleUpdate);
+    return () => {
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      reduceMotion.removeEventListener("change", scheduleUpdate);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
-    <section id="approach" className={styles.lifecycle} aria-labelledby="approach-heading">
+    <section ref={lifecycleRef} id="approach" className={styles.lifecycle} aria-labelledby="approach-heading">
       <div className="container">
         <header className={styles.intro}>
           <p className={styles.eyebrow}>The DreamAndScale Founder Lifecycle</p>
@@ -26,7 +87,7 @@ export default function FounderLifecycle() {
             <li className={styles.stage} key={stage.label} id={`founder-stage-${index + 1}`}>
               <div className={styles.stageInner}>
                 <div className={styles.photo}>
-                  <img src={`/assets/lifecycle/${stage.image}.jpg`} width="1448" height="1086" alt={stage.alt} loading="lazy" sizes="(max-width: 760px) 100vw, 45vw" />
+                  <img src={stage.imageUrl || `/assets/lifecycle/${stage.image}.jpg`} width="1448" height="1086" alt={stage.alt} loading="lazy" sizes="(max-width: 760px) 100vw, 45vw" />
                   <span className={styles.imageNumber} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
                 </div>
                 <div className={styles.copy}>
@@ -43,7 +104,7 @@ export default function FounderLifecycle() {
                   {stage.href && <a className={styles.action} href={stage.href}>{stage.action}<Arrow /></a>}
                 </div>
               </div>
-              {index < founderLifecycle.length - 1 && <svg className={styles.connector} viewBox="0 0 1000 140" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M250 0 C250 90 750 50 750 140" stroke="currentColor" strokeWidth="1.5" vectorEffect="non-scaling-stroke"/><circle cx="500" cy="70" r="5" fill="currentColor"/></svg>}
+              {index < founderLifecycle.length - 1 && <svg className={styles.connector} data-lifecycle-connector viewBox="0 0 1000 140" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M250 0 C250 90 750 50 750 140" stroke="currentColor" strokeWidth="1.5" vectorEffect="non-scaling-stroke"/><circle className={styles.connectorMarker} data-lifecycle-marker cx="500" cy="70" r="5" fill="currentColor"/></svg>}
             </li>
           ))}
         </ol>

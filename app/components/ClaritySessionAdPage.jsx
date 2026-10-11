@@ -420,10 +420,10 @@ export default function ClaritySessionAdPage() {
           </div>
         </section>
 
-        <section className="section faq-section clarity-ad-faq" id="faq">
-          <div className="container faq-layout">
-            <div className="section-kicker">
-              <h2>Frequently Asked Questions</h2>
+        <section className="section faq-section faq-showcase clarity-ad-faq" id="faq">
+          <div className="container faq-layout faq-showcase-card">
+            <div className="section-kicker faq-showcase-heading">
+              <h2>Frequently Asked <em>Questions</em></h2>
               <p>
                 Quick answers about fit, format, recording, refund, and next steps.
               </p>
