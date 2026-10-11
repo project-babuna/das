@@ -1,5 +1,6 @@
 import Script from "next/script";
 import MetaPixel from "./components/MetaPixel";
+import FreeAssessmentModal from "./components/FreeAssessmentModal";
 import "./globals.css";
 
 const faviconSwitcherScript = `
@@ -77,6 +78,7 @@ export default function RootLayout({ children }) {
         </Script>
         <MetaPixel />
         {children}
+        <FreeAssessmentModal />
       </body>
     </html>
   );
