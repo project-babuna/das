@@ -36,7 +36,7 @@ export default function PaymentFailedPage({ searchParams }) {
               <a className="btn btn-primary" href={retryHref}>
                 Try Payment Again
               </a>
-              <a className="btn btn-secondary" href="/#clarity">
+              <a className="btn btn-secondary" href="/#programs">
                 Review Programs
               </a>
             </div>

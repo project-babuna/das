@@ -5,6 +5,7 @@ const footerColumns = [
   {
     title: "Programs",
     links: [
+      { href: "/programs", label: "All programs" },
       { href: "/clarity-session", label: "Clarity Session" },
       { href: "/full-program", label: "Full Program" },
       { href: "/learn-with-mentorship", label: "Mentorship" },
@@ -15,7 +16,7 @@ const footerColumns = [
     links: [
       { href: "/business-readiness-assessment", label: "Business Assessment" },
       { href: "/blog", label: "Insights" },
-      { href: "/#for-you", label: "About" },
+      { href: "/about", label: "About" },
       { href: "/#faq", label: "FAQ" },
       { href: "/become-a-partner", label: "Become a Partner" },
       { href: "/contact", label: "Contact", metaEvent: "Contact" },
@@ -39,9 +40,8 @@ export default function SiteFooter() {
         <div className="footer-brand-line">
           <BrandLogo tone="light" compact />
           <p className="footer-brand-copy">
-            Build Business Clarity Before You Build a Business.
-            <br />
-            Helping aspiring founders understand how businesses actually work.
+            <strong>From business dream to scalable company.</strong>
+            <span>Helping founders understand, build, prove, and grow businesses—one stage at a time.</span>
           </p>
         </div>
         <div className="footer-columns">

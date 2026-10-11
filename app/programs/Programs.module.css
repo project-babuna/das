@@ -1,0 +1,72 @@
+.page { background: #fffdf8; color: #092f27; }
+.page a:focus-visible, .page button:focus-visible { outline: 2px solid #b48b32; outline-offset: 4px; }
+.hero { padding-top: 132px; padding-bottom: 40px; text-align: center; }
+.hero h1 { margin: 0 auto 20px; max-width: 26ch; font-size: clamp(34px, 3.5vw, 48px); line-height: 1.12; letter-spacing: -.045em; font-weight: 600; }
+.hero > p { margin: 0 auto; max-width: 78ch; font-size: 17px; line-height: 1.7; color: #65726c; }
+.pathNav { display: flex; justify-content: center; gap: 28px; margin-top: 32px; }
+.pathNav a { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 12px 0; border-bottom: 1px solid #b48b32; font-size: 14px; line-height: 1.5; }
+.pathNav span { color: #65726c; }
+.group { padding: 14px 0 44px; }
+.groupTitle { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+.groupTitle h2 { margin: 0; font-size: 32px; letter-spacing: -.035em; line-height: 1.2; }
+.badge { display: inline-flex; padding: 6px 11px; border-radius: 20px; background: #f4e9cf; color: #80601c; font-size: 10px; font-weight: 650; letter-spacing: .05em; text-transform: uppercase; }
+.groupIntro { margin: 12px 0 24px; color: #65726c; font-size: 16px; line-height: 1.7; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.card { display: flex; gap: 18px; padding: 26px 22px; border: 1px solid #092f2721; border-radius: 8px; }
+.number { color: #b18b32; font-size: 24px; font-weight: 600; line-height: 1.2; }
+.cardBody { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.card h3 { font-size: 25px; margin: 0 0 7px; line-height: 1.15; letter-spacing: -.035em; }
+.verb { margin: 0 0 10px; font-size: 15px; line-height: 1.4; }
+.description { margin: 0 0 24px; color: #65726c; font-size: 15px; line-height: 1.65; }
+.cardActions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: auto; }
+.outline, .primary { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 44px; padding: 11px 16px; border: 1px solid currentColor; border-radius: 5px; font-size: 14px; font-weight: 550; line-height: 1.4; }
+.primary { background: #c99a2e; color: #092f27; border-color: #c99a2e; }
+.textLink { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: #88651d; font-size: 14px; font-weight: 550; }
+.dark { background: #092f27; color: #fffdf8; padding-block: 42px; }
+.dark .groupIntro, .dark .description { color: #d0ddd5; }
+.dark h2, .dark h3 { color: #fffdf8; }
+.dark .badge { color: #e4bd61; background: #e4bd6117; border: 1px solid #e4bd6150; }
+.dark .card { border-color: #ffffff38; }
+.dark .number, .dark .textLink { color: #e4bd61; }
+.help { display: flex; align-items: center; justify-content: center; gap: 50px; padding-block: 40px; }
+.help h2 { margin: 0 0 10px; font-size: 26px; line-height: 1.25; letter-spacing: -.025em; }
+.help p { margin: 0; color: #65726c; font-size: 15px; line-height: 1.6; }
+.breadcrumb { display: flex; flex-wrap: wrap; gap: 10px; font-size: 13px; line-height: 1.7; margin-bottom: 30px; color: #65726c; }
+.breadcrumb a { color: #315344; }
+.detail { padding-top: 120px; }
+.detailHero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: center; padding-bottom: 54px; }
+.detailHero h1 { font-size: clamp(36px, 4vw, 54px); letter-spacing: -.045em; line-height: 1.08; margin: 22px 0; }
+.detailHero p { font-size: 18px; color: #65726c; line-height: 1.7; margin: 0 0 24px; }
+.detailHero img { display: block; width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px; }
+.detailColumns { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; padding: 44px 0 56px; border-top: 1px solid #092f2720; }
+.detailColumns h2 { font-size: 29px; letter-spacing: -.035em; line-height: 1.25; margin: 0 0 24px; }
+.fit { padding-left: 20px; margin: 0; display: grid; gap: 18px; }
+.fit li { color: #52625b; line-height: 1.7; font-size: 16px; padding-left: 5px; }
+.focus { list-style: none; padding: 0; margin: 0; display: grid; gap: 22px; }
+.focus li { display: flex; gap: 16px; }
+.focus h3 { margin: 0 0 8px; font-size: 19px; line-height: 1.3; }
+.focus p { margin: 0; color: #65726c; line-height: 1.7; font-size: 15px; }
+.process { padding-block: 44px; background: #092f27; color: #fffdf8; }
+.process h2 { margin: 0 0 30px; font-size: 30px; color: #fffdf8; }
+.steps { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; padding: 0; margin: 0; }
+.steps h3 { margin: 10px 0; font-size: 21px; color: inherit; }
+.steps p { font-size: 15px; line-height: 1.7; margin: 0; color: #d0ddd5; }
+.detailEnd { padding-block: 38px; display: flex; align-items: center; gap: 32px; justify-content: space-between; }
+.detailEnd p { max-width: 70ch; margin: 0; font-size: 14px; line-height: 1.7; color: #65726c; }
+@media (hover: hover) { .outline:hover { background: #b48b3212; } .textLink:hover { text-decoration: underline; text-underline-offset: 4px; } .primary:hover { background: #dfb64e; } }
+@media (max-width: 1000px) { .cards { gap: 14px; } .card { flex-direction: column; gap: 12px; padding: 22px; } .detailHero, .detailColumns { gap: 32px; } }
+@media (max-width: 700px) {
+  .hero { padding-top: 112px; padding-bottom: 30px; text-align: left; }
+  .hero h1 { margin-left: 0; }
+  .hero > p { font-size: 16px; }
+  .pathNav { flex-direction: column; gap: 8px; margin-top: 24px; }
+  .pathNav a { justify-content: flex-start; }
+  .cards, .detailHero, .detailColumns, .steps { grid-template-columns: 1fr; }
+  .card { flex-direction: row; }
+  .groupTitle h2 { font-size: 29px; }
+  .help, .detailEnd { flex-direction: column; gap: 24px; align-items: flex-start; padding-block: 30px; }
+  .detail { padding-top: 104px; }
+  .detailHero { gap: 26px; padding-bottom: 32px; }
+  .detailColumns { gap: 36px; padding-block: 32px; }
+  .steps { gap: 28px; }
+}

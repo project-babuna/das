@@ -766,7 +766,7 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
                   Start Free Business Readiness Assessment
                 </a>
               )}
-              <span>18 focused questions. Instant score and suggested next step.</span>
+              <span>18 questions. Name, email, and WhatsApp number required to view your score.</span>
             </div>
           </div>
 

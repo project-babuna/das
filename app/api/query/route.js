@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getClientIp, rateLimit } from "@/lib/rateLimit";
 import { isSupabaseConfigured, supabaseAdmin } from "@/lib/supabaseAdmin";
+import { applicationCategory, validateProgramApplication, formatProgramApplication } from "@/lib/programApplication.mjs";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^[6-9]\d{9}$/;
@@ -11,6 +12,7 @@ const ALLOWED_CATEGORIES = new Set([
   "Program and mentorship support",
   "Payment and registration help",
   KNOWLEDGE_PARTNER_CATEGORY,
+  applicationCategory,
 ]);
 const RATE_LIMIT = {
   limit: 20,
@@ -93,12 +95,19 @@ export async function POST(request) {
     const name = cleanString(body?.name, 80);
     const email = cleanString(body?.email, 120);
     const phone = cleanPhone(body?.phone);
-    const question = cleanString(body?.question || body?.message, 1500);
+    let question = cleanString(body?.question || body?.message, 1500);
     const linkedin_profile = cleanString(body?.linkedin_profile, 300);
     const rawCategory = cleanString(body?.category, 80);
     const category = ALLOWED_CATEGORIES.has(rawCategory) ? rawCategory : "General enquiries";
     const source_page = cleanString(body?.source_page, 300);
     const isKnowledgePartner = category === KNOWLEDGE_PARTNER_CATEGORY;
+    if (category === applicationCategory) {
+      const application = validateProgramApplication(body?.application);
+      if (application.error || !email) {
+        return NextResponse.json({ success: false, message: application.error || "Please enter your email address." }, { status: 400 });
+      }
+      question = formatProgramApplication(application.data);
+    }
 
     if (!name || !question) {
       return validationError();

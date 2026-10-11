@@ -9,6 +9,12 @@ const blogRoutes = [
 ];
 
 const routes = [
+  ...["/programs", "/programs/incubation", "/programs/accelerator", "/programs/scale-up"].map(path => ({ path, changeFrequency: "monthly", priority: 0.85 })),
+  {
+    path: "/about",
+    changeFrequency: "monthly",
+    priority: 0.65,
+  },
   {
     path: "/",
     changeFrequency: "weekly",

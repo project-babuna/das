@@ -1,19 +1,19 @@
 import HomePage from "./HomePage";
-import { faqItems } from "./faqContent";
+import { brandFaqItems } from "./homeContent";
 
 export const metadata = {
   metadataBase: new URL("https://www.dreamandscale.com"),
-  title: "DreamAndScale | Business Clarity Program for Aspiring Founders, Students & Professionals",
+  title: "DreamAndScale | Learn to Build a Business, Step by Step",
   description:
-    "DreamAndScale is a business clarity program for aspiring founders, students, freelancers, and professionals who want to understand how businesses actually work before starting a business, choosing an idea, or making major career and money decisions.",
+    "Move from dream to institution with a clear founder lifecycle—from understanding business fundamentals to learning, building, accelerating, and scaling.",
   alternates: {
     canonical: "https://www.dreamandscale.com",
   },
   openGraph: {
     title:
-      "DreamAndScale | Business Clarity Program for Aspiring Founders, Students & Professionals",
+      "DreamAndScale | Learn to Build a Business, Step by Step",
     description:
-      "DreamAndScale helps aspiring founders, students, freelancers, and professionals understand how businesses actually work before starting a business, choosing an idea, or making major career and money decisions.",
+      "DreamAndScale supports founders from first clarity to building, accelerating, and scaling a real company.",
     url: "https://www.dreamandscale.com",
     siteName: "DreamAndScale",
     type: "website",
@@ -29,9 +29,9 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "DreamAndScale | Business Clarity Program for Aspiring Founders, Students & Professionals",
+      "DreamAndScale | Learn to Build a Business, Step by Step",
     description:
-      "DreamAndScale helps aspiring founders, students, freelancers, and professionals understand how businesses actually work before starting a business, choosing an idea, or making major career and money decisions.",
+      "Business learning for professionals, aspiring founders, freelancers, and owners. Choose an introduction, the complete framework, or learning with mentor support.",
     images: ["/og/home.jpg"],
   },
 };
@@ -44,7 +44,7 @@ const organizationSchema = {
   logo: "https://www.dreamandscale.com/brand/logo-dark.png",
   sameAs: [],
   description:
-    "DreamAndScale is a business clarity program that helps aspiring founders, students, freelancers, and professionals understand how businesses actually work before making major business, career, and money decisions.",
+    "DreamAndScale provides business education through a live Clarity Session, a self-paced Full Program, and learning with mentor support.",
 };
 
 const websiteSchema = {
@@ -53,7 +53,7 @@ const websiteSchema = {
   name: "DreamAndScale",
   url: "https://www.dreamandscale.com",
   description:
-    "DreamAndScale is a business clarity program for aspiring founders, students, freelancers, and professionals.",
+    "A founder lifecycle for working professionals and aspiring founders—from dream to business, company, and institution.",
   potentialAction: {
     "@type": "ReadAction",
     target: "https://www.dreamandscale.com",
@@ -63,7 +63,7 @@ const websiteSchema = {
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
+  mainEntity: brandFaqItems.map((item) => ({
     "@type": "Question",
     name: item.question,
     acceptedAnswer: {
