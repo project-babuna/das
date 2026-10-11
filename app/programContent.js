@@ -86,15 +86,15 @@ export const programPages = {
   "learn-with-mentorship": {
     heroTheme: "mentorship",
     eyebrow: "Premium mentored path",
-    title: "DreamAndScale Plus",
+    title: "DreamAndScale Mentorship",
     badge: "Premium",
     subtitle: "Learn With Mentorship",
     description:
       "The complete DreamAndScale program with live mentor support to help you apply the concepts to your own ideas, decisions, and business journey.",
     originalPrice: "₹1,59,999",
-    price: "₹49,990",
+    price: "₹49,999",
     meta: "Self-paced + Live Mentor Support",
-    primaryCta: "Apply With Mentorship",
+    primaryCta: "Join Mentorship",
     primaryHref: "/register?program=mentorship",
     secondaryCta: "View Core Program",
     secondaryHref: "/full-program",
@@ -117,9 +117,9 @@ export const programPages = {
           "Mentorship helps you move from understanding the framework to applying it to your own idea, career decision, business model, or growth question.",
       },
       {
-        title: "Who should choose Plus",
+        title: "Who should choose Mentorship",
         body:
-          "Choose DreamAndScale Plus if you are actively evaluating an idea, planning a business move, or want direct support while connecting the lessons to your own decisions.",
+          "Choose DreamAndScale Mentorship if you are actively evaluating an idea, planning a business move, or want direct support while connecting the lessons to your own decisions.",
       },
       {
         title: "What you leave with",

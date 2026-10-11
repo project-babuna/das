@@ -1,40 +1,13 @@
+import { pageMetadata } from "../lib/seo";
 import HomePage from "./HomePage";
 import { brandFaqItems } from "./homeContent";
+import JsonLd from "./components/JsonLd";
 
-export const metadata = {
-  metadataBase: new URL("https://www.dreamandscale.com"),
-  title: "DreamAndScale | Learn to Build a Business, Step by Step",
-  description:
-    "Move from dream to institution with a clear founder lifecycle—from understanding business fundamentals to learning, building, accelerating, and scaling.",
-  alternates: {
-    canonical: "https://www.dreamandscale.com",
-  },
-  openGraph: {
-    title:
-      "DreamAndScale | Learn to Build a Business, Step by Step",
-    description:
-      "DreamAndScale supports founders from first clarity to building, accelerating, and scaling a real company.",
-    url: "https://www.dreamandscale.com",
-    siteName: "DreamAndScale",
-    type: "website",
-    images: [
-      {
-        url: "/og/home.jpg",
-        width: 1200,
-        height: 630,
-        alt: "DreamAndScale business clarity program",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title:
-      "DreamAndScale | Learn to Build a Business, Step by Step",
-    description:
-      "Business learning for professionals, aspiring founders, freelancers, and owners. Choose an introduction, the complete framework, or learning with mentor support.",
-    images: ["/og/home.jpg"],
-  },
-};
+export const metadata = pageMetadata({
+  "title": "DreamAndScale | From Business Dream to Scalable Company",
+  "description": "Learn, build, prove, and grow your business with DreamAndScale. Explore founder education, mentorship, incubation, acceleration, and scale-up support.",
+  "path": "/"
+});
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -42,9 +15,9 @@ const organizationSchema = {
   name: "DreamAndScale",
   url: "https://www.dreamandscale.com",
   logo: "https://www.dreamandscale.com/brand/logo-dark.png",
-  sameAs: [],
+  sameAs: ["https://www.instagram.com/dreamandscale/", "https://www.linkedin.com/company/dreamandscale/", "https://www.facebook.com/dreamandscale"],
   description:
-    "DreamAndScale provides business education through a live Clarity Session, a self-paced Full Program, and learning with mentor support.",
+    "DreamAndScale supports the founder journey through Clarity, Full Program, Mentorship, Incubation, Accelerator, and Scale-Up. Learn & Prepare offers open enrollment; Build & Grow has selective entry.",
 };
 
 const websiteSchema = {
@@ -79,11 +52,7 @@ export default function Page() {
   return (
     <>
       {jsonLdSchemas.map((schema) => (
-        <script
-          key={schema["@type"]}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
+        <JsonLd key={schema["@type"]} data={schema} />
       ))}
       <HomePage />
     </>

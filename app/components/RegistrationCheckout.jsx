@@ -2,6 +2,8 @@
 
 import Script from "next/script";
 import { useEffect, useState } from "react";
+import { PROGRAMS } from "../../lib/programs";
+import ClaritySessionDate from "./ClaritySessionDate";
 
 const programOptions = [
   {
@@ -21,18 +23,23 @@ const programOptions = [
     originalPrice: "₹39,990",
     price: "₹9,999",
     amount: 9999,
-    meta: "Self-paced",
+    meta: "120 hours · Self-paced",
   },
   {
     key: "mentorship",
-    title: "DreamAndScale Plus",
+    title: "DreamAndScale Mentorship",
     subtitle: "Learn With Mentorship",
     originalPrice: "₹1,59,999",
-    price: "₹49,990",
-    amount: 49990,
-    meta: "Self-paced + Live Mentor Support",
+    price: "₹49,999",
+    amount: 49999,
+    meta: "12 weeks · Live mentorship and events",
   },
-];
+].map((program) => ({
+  ...program,
+  title: PROGRAMS[program.key].title,
+  amount: PROGRAMS[program.key].amount / 100,
+  price: `₹${(PROGRAMS[program.key].amount / 100).toLocaleString("en-IN")}`,
+}));
 
 const initialForm = {
   name: "",
@@ -247,7 +254,7 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
         <div className="container registration-layout">
           <div className="section-kicker">
             <p className="eyebrow dark">Razorpay secure checkout</p>
-            <h2>Complete Your Registration</h2>
+            <h1>Complete Your Registration</h1>
             <p>
               You are registering for the {selectedProgram.registrationName || selectedProgram.title}.
             </p>
@@ -290,6 +297,8 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
                 {selectedProgram.price}
               </em>
             </div>
+
+            {selectedProgram.key === "clarity_session" && <p className="registration-form-full">Next session: <ClaritySessionDate /></p>}
 
             <label>
               <span>Name *</span>
@@ -347,9 +356,9 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
                 </option>
                 <option value="has_business_idea">I have a business idea</option>
                 <option value="no_idea_yet">I want to start but no idea yet</option>
-                <option value="working_professional">I am working professional</option>
-                <option value="student">I am student</option>
-                <option value="freelancer_self_employed">I am freelancer/self-employed</option>
+                <option value="working_professional">I am a working professional</option>
+                <option value="student">I am a student</option>
+                <option value="freelancer_self_employed">I am a freelancer or self-employed</option>
                 <option value="understand_business_first">
                   I want to understand business first
                 </option>

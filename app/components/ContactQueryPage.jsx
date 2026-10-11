@@ -157,7 +157,7 @@ export default function ContactQueryPage() {
           <div className="container contact-page-layout">
             <div className="contact-page-intro">
               <p className="contact-label">Contact DreamAndScale</p>
-              <h2>Get in touch with DreamAndScale</h2>
+              <h1>Get in touch with DreamAndScale</h1>
               <p>
                 Have a question, request, collaboration idea, payment issue, or need help choosing
                 the right DreamAndScale program?

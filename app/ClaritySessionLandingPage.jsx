@@ -5,6 +5,7 @@ import BrandLogo from "./components/BrandLogo";
 import BusinessAssessmentTool from "./components/BusinessAssessmentTool";
 import SiteFooter from "./components/SiteFooter";
 import HomeHero from "./components/HomeHero";
+import ClaritySessionDate from "./components/ClaritySessionDate";
 import FounderTrapStory from "./FounderTrapStory";
 import ClarityAgenda from "./components/ClarityAgenda";
 import AudienceSection from "./components/AudienceSection";
@@ -15,8 +16,8 @@ import motionStyles from "./HomeMotion.module.css";
 
 const homeFaqItems = [
   { question: "Do I need a business idea or experience?", answer: "No. The session is for beginners, including people exploring entrepreneurship alongside a job. You can join with an idea, a question, or simply an interest in business." },
-  { question: "When and how does the session take place?", answer: "The next session is on 4 October 2026 at 10:30 AM IST. It is a 3-hour live online session conducted in Hinglish." },
-  { question: "Is this the complete DreamAndScale program?", answer: "No. This session introduces the business framework. The self-paced Full Program covers it in more depth, and DreamAndScale Plus adds live mentor support." },
+  { question: "When and how does the session take place?", answer: <>The session takes place on the second Sunday of every month at 10:30 AM IST. It is a 3-hour live online session in Hinglish. Next available session: <ClaritySessionDate />.</> },
+  { question: "Is this the complete DreamAndScale program?", answer: "No. This session introduces the business framework. The self-paced Full Program covers it in more depth, and DreamAndScale Mentorship adds live mentor support." },
   { question: "Will I get a recording?", answer: "Yes. You get the session recording after the live session." },
   { question: "What does the ₹199 fee cover?", answer: "₹199 is the full price for the 3-hour live Clarity Session. The Full Program and mentorship are separate options." },
   { question: "What is the refund policy?", answer: "Refunds may not be available for missed sessions or late cancellations. If DreamAndScale cancels or reschedules a session, a refund or alternate session may be offered. Please review the Refund Policy before booking." },
@@ -116,7 +117,7 @@ export default function ClaritySessionLandingPage() {
               </div>
               <div className={readingStyles.inviteAction}>
                 <div className={readingStyles.sessionPrice}><strong>₹199</strong><span>3-hour live introduction<br />Online · Hinglish</span></div>
-                <span className={readingStyles.nextSession}>Next session: 4 October 2026 · 10:30 AM IST</span>
+                <span className={readingStyles.nextSession}>Next session: <ClaritySessionDate /></span>
                 <a className="btn btn-primary" href="/register?program=clarity_session"
                   data-meta-event="InitiateCheckout" data-meta-content-name="Clarity Session"
                   data-meta-content-category="Program Offer" data-meta-value="199" data-meta-currency="INR">
@@ -172,13 +173,13 @@ export default function ClaritySessionLandingPage() {
                 <span className="journey-badge">Apply · Mentor support</span>
                 <div className="journey-card-head">
                   <div>
-                    <h3>DreamAndScale Plus</h3>
+                    <h3>DreamAndScale Mentorship</h3>
                     <p>Work through your own decisions with support.</p>
                   </div>
                 </div>
                 <p className="journey-price">
                   <s>₹1,59,999</s>
-                  <strong>₹49,990</strong>
+                  <strong>₹49,999</strong>
                 </p>
                 <p className="journey-meta">Self-paced + Live Mentor Support</p>
                 <p className="journey-purpose">
@@ -188,7 +189,7 @@ export default function ClaritySessionLandingPage() {
                   className="journey-cta"
                   href="/learn-with-mentorship"
                   data-meta-event="ViewContent"
-                  data-meta-content-name="DreamAndScale Plus"
+                  data-meta-content-name="DreamAndScale Mentorship"
                   data-meta-content-category="Mentorship Offer"
                 >
                   Explore Mentorship

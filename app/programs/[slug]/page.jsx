@@ -2,19 +2,22 @@ import { notFound } from "next/navigation";
 import SiteFrame from "../../components/SiteFrame";
 import { buildPrograms, entrySteps } from "../catalog";
 import styles from "../Programs.module.css";
+import { pageMetadata, breadcrumbs } from "../../../lib/seo";
+import JsonLd from "../../components/JsonLd";
 
 export const dynamicParams = false;
 export function generateStaticParams() { return buildPrograms.map(program => ({ slug: program.slug })); }
 export function generateMetadata({ params }) {
   const program = buildPrograms.find(item => item.slug === params.slug);
   if (!program) return {};
-  return { title: `${program.title} | DreamAndScale Build & Grow`, description: program.intro, alternates: { canonical: `https://www.dreamandscale.com/programs/${program.slug}` } };
+  return pageMetadata({ title: `${program.title} | DreamAndScale Build & Grow`, description: `${program.intro} Explore program fit and focus areas. Selective entry through application, assessment, and selection.`, path: `/programs/${program.slug}`, image: `/assets/lifecycle/${program.image}.jpg` });
 }
 export default function BuildProgramPage({ params }) {
   const program = buildPrograms.find(item => item.slug === params.slug);
   if (!program) notFound();
   const applyHref = `/programs/apply?program=${program.slug}`;
   return <SiteFrame><main className={`${styles.page} ${styles.detail}`}>
+    <JsonLd data={breadcrumbs([["Home", "/"], ["Programs", "/programs"], [program.title, `/programs/${program.slug}`]])} />
     <div className="container">
       <nav className={styles.breadcrumb} aria-label="Breadcrumb"><a href="/programs">Programs</a><span>/</span><a href="/programs#build-grow">Build &amp; Grow</a><span>/</span><span aria-current="page">{program.title}</span></nav>
       <section className={styles.detailHero} aria-labelledby="program-heading">

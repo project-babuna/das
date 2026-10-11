@@ -1,8 +1,13 @@
+import { PROGRAMS } from "../../lib/programs";
+
 export const learnPrograms = [
   { number: "01", title: "Clarity", price: "₹199", format: "3 hours · Live session", verb: "Understand", description: "See the business-building journey before you start.", href: "/clarity-session", join: "/register?program=clarity_session" },
   { number: "02", title: "Full Program", price: "₹9,999", format: "120 hours of learning · Self-paced", verb: "Learn", description: "Learn the complete business framework at your own pace.", href: "/full-program", join: "/register?program=full_program" },
   { number: "03", title: "Mentorship", price: "₹49,999", format: "12-week program · Live mentorship and events", verb: "Apply", description: "Apply your learning with mentor guidance.", href: "/learn-with-mentorship", join: "/register?program=mentorship" },
-];
+].map((program, index) => {
+  const id = ["clarity_session", "full_program", "mentorship"][index];
+  return { ...program, price: `₹${(PROGRAMS[id].amount / 100).toLocaleString("en-IN")}` };
+});
 
 export const buildPrograms = [
   {
@@ -30,7 +35,7 @@ export const buildPrograms = [
     ],
   },
   {
-    slug: "scale-up", number: "06", title: "Scale-up", verb: "Scale", image: "scale",
+    slug: "scale-up", number: "06", title: "Scale-Up", verb: "Scale", image: "scale",
     description: "Develop the people and systems for a larger organisation.",
     headline: "Build a company that can grow beyond you.",
     intro: "Develop the leadership, people, and systems that can support a larger organisation.",

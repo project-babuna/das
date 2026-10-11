@@ -1,13 +1,16 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   assessmentCategories,
   assessmentRoles,
   createAssessmentSession,
+  simplifyAssessmentText,
   scoreAssessment,
 } from "../assessmentContent";
 import BrandLogo from "./BrandLogo";
+import AssessmentIntro from "./AssessmentIntro";
+import styles from "./Assessment.module.css";
 
 const initialLead = {
   name: "",
@@ -21,6 +24,8 @@ const phonePattern = /^[6-9]\d{9}$/;
 
 export default function BusinessAssessmentTool({ mode = "section" }) {
   const isPageMode = mode === "page";
+  const dialogRef = useRef(null);
+  const currentQuestionRef = useRef(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [sessionQuestions, setSessionQuestions] = useState(() => createAssessmentSession());
   const [step, setStep] = useState(0);
@@ -31,7 +36,12 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const totalQuestions = sessionQuestions.length;
-  const currentQuestion = sessionQuestions[step];
+  const rawQuestion = sessionQuestions[step];
+  const currentQuestion = rawQuestion && {
+    ...rawQuestion,
+    question: simplifyAssessmentText(rawQuestion.question),
+    options: rawQuestion.options.map((option) => ({ ...option, label: simplifyAssessmentText(option.label) })),
+  };
   const isQuestionStep = step < totalQuestions;
   const isLeadStep = step === totalQuestions && !result;
   const answeredCount = useMemo(
@@ -388,6 +398,25 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isPageMode, isPopupOpen]);
 
+  useEffect(() => {
+    if (!isPopupOpen) return;
+    const trigger = document.activeElement;
+    dialogRef.current?.focus();
+    const trapFocus = (event) => {
+      if (event.key !== "Tab") return;
+      const nodes = Array.from(dialogRef.current?.querySelectorAll('a[href], button:not([disabled]), input, select, [tabindex="0"]') || []);
+      const first = nodes[0], last = nodes[nodes.length - 1];
+      if (event.shiftKey && (document.activeElement === first || document.activeElement === dialogRef.current)) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    };
+    document.addEventListener("keydown", trapFocus);
+    return () => { document.removeEventListener("keydown", trapFocus); trigger?.focus(); };
+  }, [isPopupOpen]);
+
+  useEffect(() => {
+    if (isPopupOpen) currentQuestionRef.current?.focus();
+  }, [step, isPopupOpen]);
+
   const startAssessment = () => {
     if (result) {
       setStep(0);
@@ -547,15 +576,24 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
       ) : null}
 
       {isQuestionStep ? (
-        <div className="assessment-question-panel">
-          <h3>{currentQuestion.question}</h3>
+        <div className="assessment-question-panel" lang="en">
+          <h3 ref={currentQuestionRef} tabIndex={-1}>{currentQuestion.question}</h3>
           <div className="assessment-options" role="radiogroup" aria-label={currentQuestion.question}>
-            {currentQuestion.options.map((option) => (
+            {currentQuestion.options.map((option, optionIndex) => (
               <button
                 className={answers[currentQuestion.id] === option.value ? "selected" : ""}
                 type="button"
-                key={option.label}
+                key={option.value}
                 role="radio"
+                tabIndex={answers[currentQuestion.id] === option.value || (answers[currentQuestion.id] === undefined && optionIndex === 0) ? 0 : -1}
+                onKeyDown={(event) => {
+                  const direction = ["ArrowRight", "ArrowDown"].includes(event.key) ? 1 : ["ArrowLeft", "ArrowUp"].includes(event.key) ? -1 : 0;
+                  if (!direction) return;
+                  event.preventDefault();
+                  const nextIndex = (optionIndex + direction + currentQuestion.options.length) % currentQuestion.options.length;
+                  selectAnswer(currentQuestion.id, currentQuestion.options[nextIndex].value);
+                  event.currentTarget.parentElement.querySelectorAll('[role="radio"]')[nextIndex]?.focus();
+                }}
                 aria-checked={answers[currentQuestion.id] === option.value}
                 onClick={() => selectAnswer(currentQuestion.id, option.value)}
               >
@@ -570,10 +608,9 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
       {isLeadStep ? (
         <form className="assessment-lead-form" onSubmit={submitLead}>
           <div>
-            <h3>Where should we send your assessment record?</h3>
+            <h3>{"Where should we send your assessment record?"}</h3>
             <p>
-              Enter your details to see your score and short report. Your responses help us
-              recommend the right next step.
+              {"Enter your details to see your score and short report. Your responses help us recommend the right next step."}
             </p>
           </div>
 
@@ -717,7 +754,7 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
             </button>
           ) : (
             <button className="btn btn-primary" type="button" onClick={goNext}>
-              {step + 1 === totalQuestions ? "Continue To Report" : "Next"}
+              {step + 1 === totalQuestions ? "See my report" : "Next"}
             </button>
           )}
         </div>
@@ -727,6 +764,7 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
 
   return (
     <>
+      {isPageMode ? <AssessmentIntro onStart={startAssessment} /> : (
       <section
         className={`section assessment-section ${isPageMode ? "assessment-page-section" : "assessment-home-section"}`}
         id="business-assessment"
@@ -789,77 +827,15 @@ export default function BusinessAssessmentTool({ mode = "section" }) {
           ) : null}
         </div>
       </section>
-
-      {isPageMode ? (
-        <section className="section assessment-detail-section">
-          <div className="container">
-            <div className="assessment-detail-heading">
-              <p className="assessment-label">What the Assessment Checks</p>
-              <h2>It measures business clarity, not just confidence.</h2>
-              <p>
-                The assessment is designed to reveal where your thinking is clear, where you may be
-                assuming too much, and what you should understand before taking bigger business
-                risks.
-              </p>
-              <div className="assessment-how-it-works">
-                <h3>How it works</h3>
-                <ol>
-                  <li>Answer 18 focused questions</li>
-                  <li>Enter your name and WhatsApp number</li>
-                  <li>Get your Business Readiness Score</li>
-                  <li>See your recommended next step</li>
-                </ol>
-              </div>
-            </div>
-
-            <div className="assessment-detail-grid">
-              {assessmentCategories.map((category, index) => (
-                <article key={category.id}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <div>
-                    <h3>{category.title}</h3>
-                    <p>{category.description}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-
-          </div>
-        </section>
-      ) : null}
-
-      {isPageMode ? (
-        <section className="section assessment-cta-section">
-          <div className="container">
-            <div className="assessment-final-cta">
-              <div>
-                <h2>Check Your Business Readiness</h2>
-                <p>
-                  Answer 18 focused questions and get a clear score across the major decisions every
-                  aspiring founder should understand.
-                </p>
-              </div>
-              <button
-                className="btn btn-primary"
-                type="button"
-                onClick={startAssessment}
-                data-meta-event="Lead"
-                data-meta-content-name="Business Readiness Assessment"
-              >
-                Start Free Business Readiness Assessment
-              </button>
-            </div>
-          </div>
-        </section>
-      ) : null}
+      )}
 
       {isPageMode && isPopupOpen ? (
-        <div className="assessment-modal" role="dialog" aria-modal="true" aria-labelledby="assessment-title">
+        <div className={`assessment-modal ${styles.modal}`} role="dialog" aria-modal="true" aria-labelledby="assessment-title">
           <button className="assessment-modal-backdrop" type="button" onClick={closeAssessment}>
             <span className="sr-only">Close assessment</span>
           </button>
 
-          <div className="assessment-dialog assessment-dialog-popup">{assessmentFlow}</div>
+          <div ref={dialogRef} tabIndex={-1} className="assessment-dialog assessment-dialog-popup">{assessmentFlow}</div>
         </div>
       ) : null}
     </>

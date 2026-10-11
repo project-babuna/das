@@ -1,4 +1,5 @@
 import SiteFrame from "./SiteFrame";
+import ClaritySessionDate from "./ClaritySessionDate";
 
 const registerHref = "/register";
 const minimalNavItems = [{ href: "/", label: "Home" }];
@@ -98,7 +99,7 @@ const frameworkItems = [
 
 const sessionDetails = [
   ["Format", "3 Hours · Live · Hinglish · Beginner Friendly"],
-  ["Next batch", "Sunday, 04 October 2026 · 10:30 AM IST"],
+  ["Next batch", <ClaritySessionDate key="session-date" />],
 ];
 
 const heroBridgeItems = [
@@ -184,11 +185,11 @@ export default function ClaritySessionAdPage() {
               <div className="clarity-hero-session-meta">
                 <div>
                   <span>Date</span>
-                  <strong>Sunday, 04 October 2026</strong>
+                  <strong><ClaritySessionDate /></strong>
                 </div>
                 <div>
                   <span>Time</span>
-                  <strong>10:30 AM IST</strong>
+                  <strong>Second Sunday of every month</strong>
                 </div>
               </div>
               <a

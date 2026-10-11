@@ -41,9 +41,12 @@ const faviconSwitcherScript = `
 
 export const metadata = {
   metadataBase: new URL("https://www.dreamandscale.com"),
-  title: "DreamAndScale | Business Clarity Program for Aspiring Founders, Students & Professionals",
+  applicationName: "DreamAndScale",
+  openGraph: { siteName: "DreamAndScale", locale: "en_IN", type: "website", images: [{ url: "/og/home.jpg", width: 1200, height: 630, alt: "DreamAndScale — from business dream to scalable company" }] },
+  twitter: { card: "summary_large_image", images: ["/og/home.jpg"] },
+  title: "DreamAndScale | From Business Dream to Scalable Company",
   description:
-    "DreamAndScale is a business clarity program for aspiring founders, students, freelancers, and professionals who want to understand how businesses actually work before starting a business, choosing an idea, or making major career and money decisions.",
+    "DreamAndScale helps aspiring founders, working professionals, and business owners understand, learn, build, prove, and grow businesses—with learning, mentorship, and support at each stage.",
   icons: {
     icon: [
       { url: "/ds-favicon-on-dark.png?v=11", sizes: "32x32", type: "image/png" },

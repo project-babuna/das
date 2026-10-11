@@ -1,33 +1,17 @@
+import JsonLd from "../components/JsonLd";
+import { PROGRAMS } from "../../lib/programs";
+import { pageMetadata, courseSchema, breadcrumbs } from "../../lib/seo";
 import ProgramOfferPage from "../components/ProgramOfferPage";
 import { programPages } from "../programContent";
 
 const page = programPages["learn-with-mentorship"];
 
-export const metadata = {
-  title: "DreamAndScale Plus | Learn With Mentorship",
-  description:
-    "DreamAndScale Plus includes the full self-paced business clarity program with live mentor support for applying the concepts to your own decisions.",
-  alternates: {
-    canonical: "https://www.dreamandscale.com/learn-with-mentorship",
-  },
-  openGraph: {
-    title: "DreamAndScale Plus | Learn With Mentorship",
-    description:
-      "Get the complete DreamAndScale program with live mentor support for applying business clarity to your own decisions.",
-    url: "https://www.dreamandscale.com/learn-with-mentorship",
-    siteName: "DreamAndScale",
-    type: "website",
-    images: [{ url: "/og/home.jpg", width: 1200, height: 630, alt: "DreamAndScale Plus mentorship" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "DreamAndScale Plus | Learn With Mentorship",
-    description:
-      "Learn the DreamAndScale system with live mentor support.",
-    images: ["/og/home.jpg"],
-  },
-};
+export const metadata = pageMetadata({
+  "title": "12-Week Business Mentorship Program | DreamAndScale",
+  "description": "Apply your business learning with live mentorship and events over 12 weeks. Includes the Full Program. Explore DreamAndScale Mentorship for ₹49,999.",
+  "path": "/learn-with-mentorship"
+});
 
 export default function LearnWithMentorshipPage() {
-  return <ProgramOfferPage page={page} />;
+  return <><JsonLd data={courseSchema({ name: PROGRAMS.mentorship.title, description: metadata.description, path: "/learn-with-mentorship", amount: PROGRAMS.mentorship.amount })} /><JsonLd data={breadcrumbs([["Home", "/"], ["Programs", "/programs"], [PROGRAMS.mentorship.title, "/learn-with-mentorship"]])} /><ProgramOfferPage page={page} /></>;
 }

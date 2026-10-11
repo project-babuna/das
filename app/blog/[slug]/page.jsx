@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import BlogArticle from "../../components/BlogArticle";
 import { blogPosts, getPost } from "../../blogContent";
+import { pageMetadata, breadcrumbs, absoluteUrl } from "../../../lib/seo";
+import JsonLd from "../../components/JsonLd";
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -11,38 +13,8 @@ export function generateStaticParams() {
 export function generateMetadata({ params }) {
   const post = getPost(params.slug);
 
-  if (!post) {
-    return {};
-  }
-
-  return {
-    title: `${post.title} | DreamAndScale`,
-    description: post.description,
-    alternates: {
-      canonical: `https://www.dreamandscale.com/blog/${post.slug}`,
-    },
-    openGraph: {
-      title: `${post.title} | DreamAndScale`,
-      description: post.description,
-      url: `https://www.dreamandscale.com/blog/${post.slug}`,
-      siteName: "DreamAndScale",
-      type: "article",
-      images: [
-        {
-          url: "/og/home.jpg",
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${post.title} | DreamAndScale`,
-      description: post.description,
-      images: ["/og/home.jpg"],
-    },
-  };
+  if (!post) return {};
+  return pageMetadata({ title: `${post.title} | DreamAndScale`, description: post.description, path: `/blog/${post.slug}`, type: "article" });
 }
 
 export default function BlogArticlePage({ params }) {
@@ -52,5 +24,7 @@ export default function BlogArticlePage({ params }) {
     notFound();
   }
 
-  return <BlogArticle post={post} />;
+  const path = `/blog/${post.slug}`;
+  const article = { "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title, description: post.description, mainEntityOfPage: absoluteUrl(path), url: absoluteUrl(path), image: absoluteUrl("/og/home.jpg"), inLanguage: "en", publisher: { "@type": "Organization", name: "DreamAndScale", url: absoluteUrl("/") }, articleSection: "Business & Entrepreneurship", articleBody: [post.intro, ...post.sections.map(section => `${section.heading}\n${section.body}`)].join("\n\n") };
+  return <><JsonLd data={article} /><JsonLd data={breadcrumbs([["Home", "/"], ["Insights", "/blog"], [post.title, path]])} /><BlogArticle post={post} /></>;
 }

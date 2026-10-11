@@ -14,7 +14,7 @@ const resourceLabels = {
 const programLabels = {
   clarity_session: "Clarity Session",
   full_program: "Full Program",
-  mentorship: "DreamAndScale Plus",
+  mentorship: "DreamAndScale Mentorship",
 };
 
 const initialFilters = {

@@ -1,27 +1,11 @@
+import { pageMetadata } from "../../lib/seo";
 import SiteFrame from "../components/SiteFrame";
 
-export const metadata = {
-  title: "Become a DreamAndScale Knowledge Partner",
-  description:
-    "DreamAndScale invites experienced professionals, business leaders, consultants, entrepreneurs, and business school faculty to become Founding Knowledge Partners.",
-  alternates: {
-    canonical: "https://www.dreamandscale.com/become-a-partner",
-  },
-  openGraph: {
-    title: "Become a DreamAndScale Knowledge Partner",
-    description:
-      "Collaborate with DreamAndScale as a Knowledge Partner by delivering sessions, designing modules, mentoring learners, or contributing to curriculum development.",
-    url: "https://www.dreamandscale.com/become-a-partner",
-    siteName: "DreamAndScale",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "Become a DreamAndScale Knowledge Partner",
-    description:
-      "Collaborate with DreamAndScale as a Knowledge Partner and help aspiring founders understand how businesses actually work.",
-  },
-};
+export const metadata = pageMetadata({
+  "title": "Become a Knowledge Partner | DreamAndScale",
+  "description": "Share your business experience with aspiring founders. Explore opportunities to teach, mentor, and develop learning resources as a DreamAndScale Knowledge Partner.",
+  "path": "/become-a-partner"
+});
 
 const partnerContributions = [
   "Delivering live sessions",

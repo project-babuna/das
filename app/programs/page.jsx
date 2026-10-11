@@ -1,14 +1,15 @@
+import { pageMetadata } from "../../lib/seo";
 import Image from "next/image";
 import SiteFrame from "../components/SiteFrame";
 import { learnPrograms, buildPrograms } from "./catalog";
 import { learningPaths } from "../homeContent";
 import styles from "./ProgramsHub.module.css";
 
-export const metadata = {
-  title: "Programs | Learn, Build & Grow with DreamAndScale",
-  description: "Explore six founder programs across Learn & Prepare and Build & Grow. Compare open enrollment with selective entry and find your next step.",
-  alternates: { canonical: "https://www.dreamandscale.com/programs" },
-};
+export const metadata = pageMetadata({
+  "title": "Founder Programs: Learn, Build & Grow | DreamAndScale",
+  "description": "Compare six founder programs, from Clarity and self-paced learning to mentorship, incubation, acceleration, and scale-up. Find the right stage for you.",
+  "path": "/programs"
+});
 
 function Arrow() {
   return <svg className={styles.arrow} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6" /></svg>;

@@ -1,6 +1,7 @@
 import MentorDetailsForm from "../components/MentorDetailsForm";
 
 export const metadata = {
+  robots: { index: false, follow: true },
   title: "Mentor & Knowledge Partner Onboarding | DreamAndScale",
   description:
     "Join the DreamAndScale mentor ecosystem and share your expertise, availability, and preferred mentorship format.",

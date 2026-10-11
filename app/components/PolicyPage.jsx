@@ -1,32 +1,8 @@
-import BrandLogo from "./BrandLogo";
-import SiteFooter from "./SiteFooter";
+import SiteFrame from "./SiteFrame";
 
 export default function PolicyPage({ page }) {
   return (
-    <>
-      <header className="site-header course-header">
-        <a className="brand" href="/" aria-label="DreamAndScale home">
-          <BrandLogo tone="light" />
-        </a>
-
-        <nav className="site-nav policy-nav" aria-label="Policy navigation">
-          <a href="/clarity-session">Clarity Session</a>
-          <a href="/full-program">Full Program</a>
-          <a href="/blog">Insights</a>
-          <a href="/#faq">FAQ</a>
-        </nav>
-
-        <a
-          className="header-cta"
-          href="/clarity-session"
-          data-meta-event="ViewContent"
-          data-meta-content-name="Clarity Session"
-          data-meta-content-category="Header CTA"
-        >
-          Book ₹199 Session
-        </a>
-      </header>
-
+    <SiteFrame>
       <main className="policy-page">
         <section className="policy-hero">
           <div className="container policy-hero-inner">
@@ -50,7 +26,6 @@ export default function PolicyPage({ page }) {
         </section>
       </main>
 
-      <SiteFooter />
-    </>
+    </SiteFrame>
   );
 }

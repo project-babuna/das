@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import BrandLogo from "./BrandLogo";
 import SiteFooter from "./SiteFooter";
 
@@ -21,6 +22,7 @@ export default function SiteFrame({
   navItems = defaultNavItems,
 }) {
   const [navOpen, setNavOpen] = useState(false);
+  const pathname = usePathname();
   const navToggleRef = useRef(null);
   const headerMetaEvent = ctaHref.startsWith("mailto:") ? "Lead" : "ViewContent";
 
@@ -69,7 +71,7 @@ export default function SiteFrame({
 
         <nav className="site-nav" id="site-nav" aria-label="Site navigation">
           {navItems.map((item) => (
-            <a href={item.href} key={item.href} onClick={closeNav}>
+            <a href={item.href} key={item.href} onClick={closeNav} aria-current={!item.href.includes("#") && (pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`)) || (item.href === "/programs" && ["/full-program", "/learn-with-mentorship", "/clarity-session"].includes(pathname))) ? "page" : undefined}>
               {item.label}
             </a>
           ))}

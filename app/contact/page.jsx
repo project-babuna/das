@@ -1,27 +1,11 @@
+import { pageMetadata } from "../../lib/seo";
 import ContactQueryPage from "../components/ContactQueryPage";
 
-export const metadata = {
-  title: "Contact DreamAndScale | General Enquiries and Program Support",
-  description:
-    "Contact DreamAndScale for general enquiries, collaboration ideas, payment help, registration support, or guidance choosing the right program.",
-  alternates: {
-    canonical: "https://www.dreamandscale.com/contact",
-  },
-  openGraph: {
-    title: "Contact DreamAndScale | General Enquiries and Program Support",
-    description:
-      "Send DreamAndScale a message about general enquiries, program support, registration, payment help, or collaboration ideas.",
-    url: "https://www.dreamandscale.com/contact",
-    siteName: "DreamAndScale",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "Contact DreamAndScale | General Enquiries and Program Support",
-    description:
-      "Send DreamAndScale a message about enquiries, program support, registration, payment help, or collaboration ideas.",
-  },
-};
+export const metadata = pageMetadata({
+  "title": "Contact DreamAndScale | Programs & Founder Support",
+  "description": "Contact DreamAndScale for questions about programs, mentorship, registration, payments, and knowledge partnerships. Find the right support for your next step.",
+  "path": "/contact"
+});
 
 export default function ContactPage() {
   return <ContactQueryPage />;

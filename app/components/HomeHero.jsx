@@ -1,4 +1,5 @@
 import styles from './HomeHero.module.css';
+import ClaritySessionDate from './ClaritySessionDate';
 
 export default function HomeHero() {
   return (
@@ -24,7 +25,7 @@ export default function HomeHero() {
       </div>
       <div className={`container ${styles.bottom}`}>
         <p>Explore alongside your career. No business idea needed.</p>
-        <time className={styles.sessionDate} dateTime="2026-10-04T10:30:00+05:30"><span aria-hidden="true" />4 October 2026 · 10:30 AM IST</time>
+        <p className={styles.sessionDate}><span aria-hidden="true" /><ClaritySessionDate /></p>
       </div>
     </section>
   );

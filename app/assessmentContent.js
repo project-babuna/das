@@ -1126,3 +1126,49 @@ export function scoreAssessment(answerMap) {
     categoryScores,
   };
 }
+
+// Keeps the scenarios thoughtful while making the visible copy easier to scan.
+// This only changes presentation text; scoring still uses the original options.
+const plainLanguageReplacements = [
+  [/What's the most useful next move\?/g, "What should they do next?"],
+  [/What's the most useful next step\?/g, "What should they do next?"],
+  [/What's the best use of week one\?/g, "What is the best first step?"],
+  [/What's missing from ([^?]+)\?/g, "What is missing from $1?"],
+  [/What should ([^?]+) conclude\?/g, "What should $1 think?"],
+  [/How should ([^?]+) be read\?/g, "What does $1 tell you?"],
+  [/How should ([^?]+) be weighed against ([^?]+)\?/g, "Which signal is stronger: $1 or $2?"],
+  [/What does this tell ([^?]+)\?/g, "What does this show $1?"],
+  [/What does this suggest\?/g, "What does this show?"],
+  [/What should happen before ([^?]+)\?/g, "What should happen before $1?"],
+  [/What should ([^?]+) consider before accepting\?/g, "What should $1 check first?"],
+  [/Is this a reasonable move before building\?/g, "Is this a good step before building?"],
+  [/Is this a legitimate approach\?/g, "Is this a sensible approach?"],
+  [/Is it time to register a company\?/g, "Is it time to register the company?"],
+  [/What went wrong with this approach\?/g, "What was wrong with this approach?"],
+  [/Which definition will make ([^?]+) easier\?/g, "Which definition is more useful for $1?"],
+  [/Which definition better predicts ([^?]+)\?/g, "Which definition better shows $1?"],
+  [/Which should she start with\?/g, "Where should she start?"],
+  [/What is the core gap in ([^?]+)\?/g, "What is missing from $1?"],
+  [/What is the biggest risk in ([^?]+)\?/g, "What is the main risk in $1?"],
+  [/What is the risk in ([^?]+)\?/g, "What is the risk in $1?"],
+  [/What should ([^?]+) prioritize first\?/g, "What should $1 do first?"],
+  [/What should determine this decision\?/g, "What should guide this decision?"],
+  [/What should weigh most carefully\?/g, "What should they check most carefully?"],
+  [/A potential co-founder challenges this\. What's the sharper version\?/g, "A co-founder says this is too broad. Which version is clearer?"],
+  [/How should this be read compared to praise\?/g, "How strong is this signal compared with praise?"],
+  [/What does this reveal about how the original equity was structured\?/g, "What does this show about the original equity split?"],
+  [/What is the more defensible equity split\?/g, "Which equity split is more fair?"],
+  [/What should guide the equity split with this new co-founder\?/g, "What should guide the equity split?"],
+  [/What should she reconsider first\?/g, "What should she check first?"],
+  [/What is happening\?/g, "What is going on?"],
+  [/What's the issue with this validation method\?/g, "What is wrong with this test?"],
+  [/Whether ([^.]*)\./g, "Check whether $1."],
+  [/There is no real risk if ([^.]+)\./g, "There is no real risk if $1."],
+  [/It depends whether ([^.]+)\./g, "It depends on whether $1."],
+  [/It depends on the actual math/g, "Do the actual math"],
+  [/Nothing; the ([^.]+)\./g, "Nothing—the $1."],
+];
+
+export function simplifyAssessmentText(text) {
+  return plainLanguageReplacements.reduce((value, [pattern, replacement]) => value.replace(pattern, replacement), text);
+}
