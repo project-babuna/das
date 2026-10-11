@@ -9,6 +9,9 @@ const footerColumns = [
       { href: "/clarity-session", label: "Clarity Session" },
       { href: "/full-program", label: "Full Program" },
       { href: "/learn-with-mentorship", label: "Mentorship" },
+      { href: "/programs/incubation", label: "Incubation" },
+      { href: "/programs/accelerator", label: "Accelerator" },
+      { href: "/programs/scale-up", label: "Scale-Up" },
     ],
   },
   {

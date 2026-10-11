@@ -1,15 +1,11 @@
-const siteUrl = "https://www.dreamandscale.com";
+import { SITE_URL as siteUrl } from "../lib/seo";
+import { blogPosts } from "./blogContent";
+import { buildPrograms } from "./programs/catalog";
 
-const blogRoutes = [
-  "/blog/how-to-validate-a-business-idea",
-  "/blog/business-vs-self-employment",
-  "/blog/how-to-know-if-a-market-is-big-enough",
-  "/blog/how-to-understand-customers-before-building-a-product",
-  "/blog/should-you-start-a-business-or-keep-your-job",
-];
+const blogRoutes = blogPosts.map(post => `/blog/${post.slug}`);
 
 const routes = [
-  ...["/programs", "/programs/incubation", "/programs/accelerator", "/programs/scale-up"].map(path => ({ path, changeFrequency: "monthly", priority: 0.85 })),
+  ...["/programs", ...buildPrograms.map(program => `/programs/${program.slug}`)].map(path => ({ path, changeFrequency: "monthly", priority: 0.85 })),
   {
     path: "/about",
     changeFrequency: "monthly",
@@ -55,11 +51,6 @@ const routes = [
     changeFrequency: "monthly",
     priority: 0.65,
   },
-  {
-    path: "/mentor-details",
-    changeFrequency: "monthly",
-    priority: 0.6,
-  },
   ...blogRoutes.map((path) => ({
     path,
     changeFrequency: "monthly",
@@ -83,11 +74,8 @@ const routes = [
 ];
 
 export default function sitemap() {
-  const lastModified = new Date();
-
   return routes.map((route) => ({
     url: new URL(route.path, siteUrl).toString(),
-    lastModified,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }));

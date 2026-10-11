@@ -17,7 +17,7 @@ export const faqItems = [
   {
     question: "What is the difference between the two full program options?",
     answer:
-      "The Full Program is the self-paced business clarity program. DreamAndScale Plus includes the Full Program along with live mentor support to help you apply the concepts to your own ideas and decisions.",
+      "The Full Program is the self-paced business clarity program. DreamAndScale Mentorship includes the Full Program along with live mentor support to help you apply the concepts to your own ideas and decisions.",
   },
   {
     question: "Is this only for people who want to launch immediately?",

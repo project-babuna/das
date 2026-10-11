@@ -1,13 +1,14 @@
+import { pageMetadata } from "../../lib/seo";
 import Image from "next/image";
 import SiteFrame from "../components/SiteFrame";
 import { learnPrograms, buildPrograms } from "../programs/catalog";
 import styles from "./page.module.css";
 
-export const metadata = {
-  title: "About DreamAndScale | From Dream to Business",
-  description: "Understand the DreamAndScale vision: help founders learn, build, prove, accelerate, and scale a business, one stage at a time.",
-  alternates: { canonical: "https://www.dreamandscale.com/about" },
-};
+export const metadata = pageMetadata({
+  "title": "About DreamAndScale | From Dream to Scalable Company",
+  "description": "Discover DreamAndScale’s vision: help founders understand, learn, build, prove, and grow a business through one connected system, one stage at a time.",
+  "path": "/about"
+});
 
 function Arrow() {
   return <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6" /></svg>;

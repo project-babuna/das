@@ -1,30 +1,14 @@
+import JsonLd from "../components/JsonLd";
+import { PROGRAMS } from "../../lib/programs";
+import { pageMetadata, courseSchema, breadcrumbs } from "../../lib/seo";
 import ClaritySessionLandingPage from "../ClaritySessionLandingPage";
 
-export const metadata = {
-  title: "DreamAndScale Business Clarity Session | Understand How Business Works",
-  description:
-    "Join the ₹199 DreamAndScale Business Clarity Session, a 3-hour live online Hinglish session that helps aspiring founders understand idea, market, customer, product, finance, growth, funding, and ownership as one connected business system.",
-  alternates: {
-    canonical: "https://www.dreamandscale.com/clarity-session",
-  },
-  openGraph: {
-    title: "DreamAndScale Business Clarity Session | Understand How Business Works",
-    description:
-      "A practical 3-hour live online session that connects idea, market, customer, product, structure, finance, growth, funding, and ownership into one business-building map.",
-    url: "https://www.dreamandscale.com/clarity-session",
-    siteName: "DreamAndScale",
-    type: "website",
-    images: [{ url: "/og/home.jpg", width: 1200, height: 630, alt: "DreamAndScale Clarity Session" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "DreamAndScale Business Clarity Session | Understand How Business Works",
-    description:
-      "Understand how a business actually works before risking your time, money, or career on an idea.",
-    images: ["/og/home.jpg"],
-  },
-};
+export const metadata = pageMetadata({
+  "title": "₹199 Business Clarity Session | DreamAndScale",
+  "description": "Join a 3-hour live online session to challenge business myths, understand the founder journey, and find your next step. Second Sunday monthly, 10:30 AM IST.",
+  "path": "/clarity-session"
+});
 
 export default function ClaritySessionPage() {
-  return <ClaritySessionLandingPage />;
+  return <><JsonLd data={courseSchema({ name: PROGRAMS.clarity_session.title, description: metadata.description, path: "/clarity-session", amount: PROGRAMS.clarity_session.amount })} /><JsonLd data={breadcrumbs([["Home", "/"], ["Programs", "/programs"], [PROGRAMS.clarity_session.title, "/clarity-session"]])} /><ClaritySessionLandingPage /></>;
 }

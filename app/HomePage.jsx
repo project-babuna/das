@@ -83,11 +83,13 @@ export default function HomePage() {
               <span><strong>Open enrollment</strong> · Anyone can join</span>
             </div>
             <div className={styles.programGrid}>
-              {learningPaths.map((program) => (
-                <article className={`${styles.programCard} ${program.featured ? styles.featured : ""}`} key={program.title}>
+              {learningPaths.map((program, index) => (
+                <article className={`${styles.programCard} ${index === 0 ? styles.featured : ""}`} data-tone={index} key={program.title}>
+                  <header className={styles.programHeader}>
                   <span className={styles.programLabel}>{program.label}</span>
                   <h3>{program.title}</h3>
                   <p className={styles.format}>{program.format}</p>
+                  </header>
                   <p className={styles.programDescription}>{program.description}</p>
                   <Checkpoints points={program.points} />
                   <a href={program.href} className={styles.programLink} data-meta-event="ViewContent" data-meta-content-name={program.title} data-meta-content-category="Program Offer">{program.action} <Arrow /></a>
@@ -99,11 +101,13 @@ export default function HomePage() {
               <span><strong>Selective entry</strong> · Apply → Assessment → Selection</span>
             </div>
             <div className={styles.programGrid}>
-              {buildPrograms.map((program) => (
-                <article className={`${styles.programCard} ${styles.buildCard}`} key={program.slug}>
+              {buildPrograms.map((program, index) => (
+                <article className={`${styles.programCard} ${styles.buildCard}`} data-tone={index + 3} key={program.slug}>
+                  <header className={styles.programHeader}>
                   <span className={styles.programLabel}>{program.number} · {program.verb}</span>
                   <h3>{program.title}</h3>
                   <p className={styles.format}>Selective entry · Application required</p>
+                  </header>
                   <p className={styles.programDescription}>{program.description}</p>
                   <Checkpoints points={program.focus.map((item) => item.title)} />
                   <a href={`/programs/${program.slug}`} className={styles.programLink}>Explore {program.slug === "scale-up" ? "Scale-Up" : program.title} <Arrow /></a>

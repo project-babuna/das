@@ -5273,7 +5273,7 @@ body.assessment-open {
   padding-top: 18px;
 }
 
-.registration-layout .section-kicker h2 {
+.registration-layout .section-kicker h1 {
   font-size: clamp(2rem, 3.2vw, 3.05rem);
   line-height: 1.03;
 }
@@ -5529,7 +5529,7 @@ body.assessment-open {
   text-transform: uppercase;
 }
 
-.contact-page-intro h2 {
+.contact-page-intro h1 {
   max-width: 500px;
   margin-bottom: 18px;
   font-size: clamp(2.25rem, 4vw, 4.1rem);
@@ -7631,7 +7631,7 @@ body.assessment-open {
     padding-top: 108px;
   }
 
-  .contact-page-intro h2 {
+  .contact-page-intro h1 {
     font-size: clamp(2.05rem, 10vw, 3.05rem);
   }
 

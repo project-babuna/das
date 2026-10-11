@@ -64,7 +64,7 @@ export const founderLifecycle = [
     points: ["Build teams and systems that can carry more responsibility.", "Expand while protecting quality and business fundamentals."],
     outcome: "A stronger organisation, built for long-term growth.",
     href: "/programs/scale-up",
-    action: "Explore Scale-up",
+    action: "Explore Scale-Up",
     image: "scale",
     alt: "Company leadership team planning the next stage of growth",
   },
@@ -131,14 +131,14 @@ export const learningPaths = [
   },
   {
     label: "Learn the framework", title: "Full Program", price: "₹9,999",
-    format: "Self-paced full program",
+    format: "120 hours of learning · Self-paced",
     description: "Study opportunity, customers, business design, finance, and growth on your schedule.",
     points: ["The complete business framework", "Learn alongside your work"],
     href: "/full-program", action: "Explore Full Program",
   },
   {
-    label: "Apply with support", title: "DreamAndScale Plus", price: "₹49,990",
-    format: "Full Program + live mentor support",
+    label: "Apply with support", title: "Mentorship", price: "₹49,999",
+    format: "12 weeks · Live mentorship and events",
     description: "Work through your own ideas and decisions with guidance as you learn.",
     points: ["Everything in the Full Program", "Support applying the concepts"],
     href: "/learn-with-mentorship", action: "Explore Mentorship", featured: true,
@@ -147,7 +147,7 @@ export const learningPaths = [
 
 export const brandFaqItems = [
   { question: "Do I need an idea before I start?", answer: "No. You can start by learning how to spot opportunities and understand a business. If you already have an idea, use the framework to examine it before committing more time or money." },
-  { question: "Can I learn while working full-time?", answer: "Yes. The Full Program is self-paced, so you can learn around your work. The Clarity Session is a scheduled 3-hour live introduction. DreamAndScale Plus adds live mentor support." },
-  { question: "Which program should I choose?", answer: "Choose the Clarity Session for an introduction, the Full Program for the complete self-paced framework, or DreamAndScale Plus if you also want live mentor support while applying the concepts. Visit each program page for its scope and details." },
+  { question: "Can I learn while working full-time?", answer: "Yes. The Full Program is self-paced, so you can learn around your work. The Clarity Session is a scheduled 3-hour live introduction. DreamAndScale Mentorship adds live mentor support." },
+  { question: "Which program should I choose?", answer: "Choose the Clarity Session for an introduction, the Full Program for the complete self-paced framework, or DreamAndScale Mentorship if you also want live mentor support while applying the concepts. Visit each program page for its scope and details." },
   { question: "Will this guarantee business success?", answer: "No. DreamAndScale provides business education to help you make more informed decisions. Results depend on your opportunity, execution, and market. Learning supports your judgment; it does not remove every risk." },
 ];
