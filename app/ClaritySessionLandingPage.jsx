@@ -146,14 +146,11 @@ export default function ClaritySessionLandingPage() {
                 <span className="journey-badge">Learn · Self-paced</span>
                 <div className="journey-card-head">
                   <div>
-                    <h3>DreamAndScale</h3>
+                    <h3>Full Program</h3>
                     <p>Learn the complete framework on your schedule.</p>
                   </div>
                 </div>
-                <p className="journey-price">
-                  <s>₹39,990</s>
-                  <strong>₹9,999</strong>
-                </p>
+                <p className="journey-price"><strong>₹9,999</strong></p>
                 <p className="journey-meta">Self-paced</p>
                 <p className="journey-purpose">
                   Study opportunities, customers, business design, finance, structure, and growth.
@@ -173,14 +170,11 @@ export default function ClaritySessionLandingPage() {
                 <span className="journey-badge">Apply · Mentor support</span>
                 <div className="journey-card-head">
                   <div>
-                    <h3>DreamAndScale Mentorship</h3>
+                    <h3>Mentorship</h3>
                     <p>Work through your own decisions with support.</p>
                   </div>
                 </div>
-                <p className="journey-price">
-                  <s>₹1,59,999</s>
-                  <strong>₹49,999</strong>
-                </p>
+                <p className="journey-price"><strong>₹49,999</strong></p>
                 <p className="journey-meta">Self-paced + Live Mentor Support</p>
                 <p className="journey-purpose">
                   Includes the Full Program, plus live mentor guidance as you apply what you learn.
