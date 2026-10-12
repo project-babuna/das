@@ -8,9 +8,8 @@ function Arrow() {
 export default function FounderLifecycle() {
   return (
     <section id="approach" className={styles.lifecycle} aria-labelledby="approach-heading">
-      <div className="container">
+      <div className={styles.container}>
         <header className={styles.intro}>
-          <p className={styles.eyebrow}>The DreamAndScale Founder Lifecycle</p>
           <h2 id="approach-heading">A big dream.<br /><em>A clear path forward.</em></h2>
           <p>From understanding business to building, proving, and scaling it. Find your stage, then focus on the next step.</p>
           <nav className={styles.stageNav} aria-label="Explore the six founder stages">
@@ -21,16 +20,15 @@ export default function FounderLifecycle() {
           <h3 id="dream-heading">DREAM</h3>
           <p>“I want to build something.”</p>
         </div>
-        <ol className={styles.path}>
+      </div>
+      <ol className={styles.path}>
           {founderLifecycle.map((stage, index) => (
             <li className={styles.stage} key={stage.label} id={`founder-stage-${index + 1}`}>
               <div className={styles.stageInner}>
                 <div className={styles.photo}>
-                  <img src={`/assets/lifecycle/${stage.image}.jpg`} width="1448" height="1086" alt={stage.alt} loading="lazy" sizes="(max-width: 760px) 100vw, 45vw" />
-                  <span className={styles.imageNumber} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                  <img src={`/assets/lifecycle/${stage.image}.jpg`} width="1448" height="1086" alt={stage.alt} loading="lazy" sizes="(max-width: 900px) 100vw, 50vw" />
                 </div>
                 <div className={styles.copy}>
-                  <p className={styles.eyebrow}>{String(index + 1).padStart(2, "0")} / 06 <span>·</span> {stage.label}</p>
                   <h3>{stage.verb}<span>.</span></h3>
                   <div className={styles.entry}>
                     <span className={index < 3 ? styles.openEntry : styles.selectiveEntry}>{index < 3 ? "OPEN ENROLLMENT" : "SELECTIVE ENTRY"}</span>
@@ -39,14 +37,14 @@ export default function FounderLifecycle() {
                   <p className={styles.question}>{stage.question}</p>
                   <p className={styles.description}>{stage.description}</p>
                   <ul className={styles.focus}>{stage.points.map(point => <li key={point}><span aria-hidden="true">✓</span>{point}</li>)}</ul>
-                  {stage.outcome && <p className={styles.outcome}><span>The focus</span>{stage.outcome}</p>}
+                  {stage.outcome && <p className={styles.outcome}>{stage.outcome}</p>}
                   {stage.href && <a className={styles.action} href={stage.href}>{stage.action}<Arrow /></a>}
                 </div>
               </div>
-              {index < founderLifecycle.length - 1 && <svg className={styles.connector} viewBox="0 0 1000 140" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M250 0 C250 90 750 50 750 140" stroke="currentColor" strokeWidth="1.5" vectorEffect="non-scaling-stroke"/><circle cx="500" cy="70" r="5" fill="currentColor"/></svg>}
             </li>
           ))}
-        </ol>
+      </ol>
+      <div className={styles.container}>
         <footer className={styles.destination}>
           <p>Dream → Understand → Learn → Apply → Build &amp; Prove → Accelerate → Scale</p>
           <h3>Founder <span>→</span> Business <span>→</span> Company <span>→</span> Institution</h3>

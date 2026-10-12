@@ -63,7 +63,6 @@ export default function StartupInsights() {
           <article className={styles.insightCard} key={insight.title}>
             <img src={insight.image} width="1448" height="1086" alt="" loading="lazy" />
             <div className={styles.insightBody}>
-              <div className={styles.insightMeta}><span>{insight.eyebrow}</span></div>
               <h3>{insight.title}</h3>
               <p>{insight.description}</p>
               <a href={insight.href} aria-label={`Read: ${insight.title}`}>Read the insight <CarouselArrow direction="next" /></a>

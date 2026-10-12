@@ -24,14 +24,12 @@ export default function ConnectedBusinessSystem() {
               {subjects.map(subject => <li key={subject}>{subject}</li>)}
             </ul>
             <div className={styles.example}>
-              <p className={styles.eyebrow}>For example</p>
               <h4>A lower price may bring more customers.</h4>
               <p>But will each sale still cover your costs? And can you deliver more orders?</p>
               <strong>One decision affects the whole business.</strong>
             </div>
           </div>
           <div className={styles.connected}>
-            <p className={styles.eyebrow}>The DreamAndScale approach</p>
             <h3>Connect your decisions.</h3>
             <p className={styles.support}>Learn what to ask, how the answers connect, and which step comes next.</p>
             <ol className={styles.decisions}>

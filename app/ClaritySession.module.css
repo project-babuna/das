@@ -1,3 +1,4 @@
+.page :global(.container) { width: min(var(--page-width), calc(100% - var(--page-gutter) * 2)); }
 .header { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; border-bottom-color: #e4c47724; }
 .header :global(.brand) { justify-self: start; min-width: 0; max-width: 100%; }
 .header :global(.site-nav) { position: static; display: flex; width: auto; padding: 0; margin: 0; justify-self: center; background: none; box-shadow: none; border: 0; }
@@ -10,17 +11,17 @@
 }
 @keyframes reading { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
-.page :global(.section) { padding-block: clamp(60px, 7vw, 96px); }
+.page :global(.section) { padding-block: var(--page-space); }
 .page :global(.section-heading) { margin-bottom: 34px; }
 .page :global(.section h2) { font-weight: 500; }
 .page :global(a:focus-visible), .page summary:focus-visible, .header a:focus-visible { outline: 2px solid #b58a28; outline-offset: 5px; border-radius: 5px; }
 .page :global(.section[id]), .page [id="clarity"] { scroll-margin-top: 0; }
 
 /* Carry the agenda's editorial scale through the rest of the Clarity page. */
-.page :global(#programs), .page :global(#for-you), .page :global(#business-assessment), .page :global(#faq) { padding-block: clamp(72px, 8vw, 116px); }
+.page :global(#programs), .page :global(#for-you), .page :global(#business-assessment), .page :global(#faq) { padding-block: var(--page-space); }
 .page :global(#programs h2), .page :global(#for-you h2), .page :global(#business-assessment h2), .page :global(#faq h2) {
   font-family: var(--clarity-display-font);
-  font-size: clamp(42px, 4.5vw, 60px);
+  font-size: var(--page-heading);
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: -.045em;
@@ -28,10 +29,10 @@
 }
 .page :global(#programs .section-heading) { margin-bottom: 44px; }
 .page :global(#programs .journey-card) { min-height: 430px; padding: 36px; }
-.page :global(#programs .journey-card h3) { font-family: var(--clarity-display-font); font-size: 28px; font-weight: 600; line-height: 1.2; letter-spacing: -.03em; }
+.page :global(#programs .journey-card h3) { font-family: var(--clarity-display-font); font-size: var(--page-card-title); font-weight: 600; line-height: 1.2; letter-spacing: -.03em; }
 .page :global(#for-you article) { padding: 34px; }
-.page :global(#for-you article h3) { font-family: var(--clarity-display-font); font-size: 26px; font-weight: 600; line-height: 1.2; letter-spacing: -.03em; }
-.page :global(#for-you article p) { font-size: 16px; }
+.page :global(#for-you article h3) { font-family: var(--clarity-display-font); font-size: var(--page-card-title); font-weight: 600; line-height: 1.2; letter-spacing: -.03em; }
+.page :global(#for-you article p) { font-size: var(--page-body); }
 .page :global(#business-assessment .assessment-copy) { gap: 22px; }
 .page :global(#faq .faq-item summary) { min-height: 88px; }
 
@@ -52,8 +53,8 @@
 .page :global(.audience-card-grid) { grid-template-columns: 1fr; gap: 0; }
 .page :global(.audience-card) { position: relative; min-height: 0; padding: 28px 28px 28px 34px; border: 0; border-bottom: 1px solid #ffffff21; border-radius: 0; background: transparent; }
 .page :global(.audience-card:first-child) { border-top: 1px solid #ffffff21; }
-.page :global(.audience-card h3) { color: #fffdf8; font-size: 21px; }
-.page :global(.audience-card p) { max-width: 60ch; margin-top: 9px; font-size: 15px; line-height: 1.7; color: #cbd8d2; }
+.page :global(.audience-card h3) { color: #fffdf8; font-size: clamp(23px, 2vw, 30px); }
+.page :global(.audience-card p) { max-width: 60ch; margin-top: 9px; font-size: var(--page-body); line-height: 1.7; color: #cbd8d2; }
 .page :global(.audience-card)::before { content: ''; position: absolute; left: 0; top: 35px; width: 7px; height: 7px; border-radius: 50%; background: #d2ac59; box-shadow: 0 0 0 5px #d2ac5912; }
 .page :global(.faq-layout) { grid-template-columns: .7fr 1.3fr; gap: clamp(30px, 6vw, 80px); }
 .page :global(.faq-layout .section-kicker) { text-align: left; margin-inline: 0; }
@@ -88,26 +89,26 @@
   .header :global(.header-cta)::after { display: none; }
   .headerFull { display: none; }
   .headerShort { display: inline; }
-  .page :global(.section) { padding-block: 56px; }
+  .page :global(.section) { padding-block: var(--page-space); }
   .page :global(#programs), .page :global(#for-you), .page :global(#business-assessment), .page :global(#faq) { padding-block: 64px; }
-  .page :global(#programs h2), .page :global(#for-you h2), .page :global(#business-assessment h2), .page :global(#faq h2) { font-size: clamp(36px, 9vw, 42px); }
+  .page :global(#programs h2), .page :global(#for-you h2), .page :global(#business-assessment h2), .page :global(#faq h2) { font-size: var(--page-heading); }
   .page :global(#programs .section-heading) { margin-bottom: 32px; }
   .page :global(#programs .journey-card) { min-height: 0; padding: 26px; }
-  .page :global(#programs .journey-card h3) { font-size: 25px; }
+  .page :global(#programs .journey-card h3) { font-size: var(--page-card-title); }
   .page :global(#for-you article) { padding: 26px 20px; }
-  .page :global(#for-you article h3) { font-size: 21px; }
-  .page :global(#for-you article p) { font-size: 15px; }
+  .page :global(#for-you article h3) { font-size: var(--page-card-title); }
+  .page :global(#for-you article p) { font-size: var(--page-body); }
   .page :global(#business-assessment .assessment-copy) { gap: 18px; }
   .page :global(#faq .faq-item summary) { min-height: 80px; }
   .page :global(.section-heading) { margin-bottom: 26px; }
   .topic { grid-template-columns: 1fr; gap: 12px; padding: 22px 20px; }
   .topicNumber { padding: 0; border: 0; font-size: 21px; }
-  .topicCopy h3 { font-size: 18px; }
-  .topicCopy p { font-size: 14px; line-height: 1.6; }
+  .topicCopy h3 { font-size: 22px; }
+  .topicCopy p { font-size: var(--page-body); line-height: 1.6; }
   .page :global(.audience-card-grid) { grid-template-columns: 1fr; gap: 0; }
   .page :global(.audience-card) { border-top: 0; }
-  .page :global(.audience-card h3) { font-size: 20px; }
-  .page :global(.faq-item summary) { font-size: 16px; padding-block: 22px; }
+  .page :global(.audience-card h3) { font-size: var(--page-card-title); }
+  .page :global(.faq-item summary) { font-size: 18px; padding-block: 22px; }
   .page :global(.faq-item p) { margin-right: 16px; }
 }
 @media (max-width: 360px) { .header { gap: 10px; } .header :global(.brand) { flex-basis: 122px; } }
