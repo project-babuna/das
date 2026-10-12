@@ -4,7 +4,7 @@ import ClaritySessionDate from './ClaritySessionDate';
 export default function HomeHero() {
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
-      <img className={styles.background} src="/assets/business-city-hero.jpg" alt="" width="1672" height="941" fetchPriority="high" />
+      <img className={styles.background} src="/assets/clarity/clarity-learning-hero.jpg" alt="" width="1672" height="941" fetchPriority="high" />
       <div className={styles.shade} aria-hidden="true" />
       <div className={styles.art} aria-hidden="true"><div className={styles.orbit} /><div className={styles.orbitInner} /><span className={styles.spark} /><span className={styles.square} /></div>
       <div className={`container ${styles.layout}`}>
