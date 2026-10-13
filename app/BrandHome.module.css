@@ -74,11 +74,11 @@
 .lifecycleSummary > span { color: #d0ddd5; font-size: 13px; letter-spacing: .04em; }
 .lifecycleSummary i { padding-inline: 7px; color: #e4bd61; font-style: normal; }
 .platforms { overflow: hidden; color: #fffdf8; background: linear-gradient(118deg, #061d19 0%, #092f27 58%, #0b4037 100%); }
-.platformHeading { max-width: 700px; margin: 0 auto 40px; text-align: center; }
-.platformHeading h2 { color: #fffdf8; }
+.platforms :global(.container) { width: min(1180px, calc(100% - 40px)); }
+.platformHeading { max-width: 900px; margin: 0 auto 34px; text-align: center; }
+.platformHeading h2 { max-width: 100%; margin: 0 auto 14px; color: #fffdf8; font-size: clamp(30px, 3vw, 44px); line-height: 1.12; letter-spacing: -.04em; }
 .platformHeading .eyebrow { margin-bottom: 16px; }
-.platformHeading h2 { margin-bottom: 14px; }
-.platformHeading p { max-width: 56ch; margin: 0 auto; color: #d0ddd5; font-size: 16px; line-height: 1.7; }
+.platformHeading p { max-width: 56ch; margin: 0 auto; color: #d0ddd5; font-size: clamp(14px, 1.15vw, 16px); line-height: 1.7; }
 .platformTicker { overflow: hidden; width: 100%; mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
 .platformGrid { display: flex; width: max-content; gap: 18px; list-style: none; padding: 0; margin: 0; animation: platformTicker 32s linear infinite; }
 .platformCard { display: flex; align-items: center; justify-content: flex-start; gap: 13px; width: clamp(210px, 20vw, 260px); min-height: 76px; padding: 16px 24px; border: 1px solid #ffffff28; border-radius: 14px; background: #ffffff0b; color: #fffdf8; font-size: clamp(15px, 1.4vw, 19px); font-weight: 650; letter-spacing: -.025em; }
@@ -237,7 +237,9 @@
   .lifecycleSummary strong span { padding-inline: 2px; }
   .lifecycleSummary > span { font-size: 12px; }
   .platformHeading { margin-bottom: 30px; }
+  .platformHeading h2 { max-width: 24ch; font-size: clamp(28px, 7vw, 36px); }
   .platformHeading p { font-size: 15px; }
+  .platforms :global(.container) { width: calc(100% - 32px); }
   .platformGrid { gap: 12px; }
   .platformCard { min-height: 72px; padding: 16px 18px; font-size: 15px; }
   .insightsGrid { gap: 30px; }

@@ -8069,6 +8069,8 @@ body.assessment-open {
     padding: 0 14px 16px;
     font-size: 13px;
   }
+}
+
 /* Supporting pages share the marketing scale; forms retain a readable measure. */
 .partner-hero .container, .partner-section .container, .partner-cta-section .container,
 .contact-page-layout {

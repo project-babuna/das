@@ -90,6 +90,6 @@ export default function ProgramsPage() {
       <ProgramList programs={buildPrograms} selective />
     </div></section>
     <aside className={`container ${styles.help}`}><div><h2>Your next step can start with clarity.</h2><p>Understand the journey before choosing a program.</p></div><a className={styles.primary} href="/clarity-session">Start with Clarity <Arrow /></a></aside>
-    <AssessmentCallout />
+    <div className={styles.assessmentWrap}><AssessmentCallout /></div>
   </main></SiteFrame>;
 }

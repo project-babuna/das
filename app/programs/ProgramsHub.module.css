@@ -39,6 +39,7 @@
 .entrySteps h3 { margin: 3px 0 7px; font-size: 16px; font-weight: 550; }
 .entrySteps p { margin: 0; font-size: 13px; line-height: 1.7; color: var(--muted); }
 .help { display: flex; align-items: center; justify-content: space-between; gap: 36px; padding-block: var(--page-space); }
+.assessmentWrap { padding-bottom: var(--page-space); }
 .help h2 { margin: 0 0 14px; font: 400 clamp(36px, 4vw, 60px)/1.14 Georgia, 'Times New Roman', serif; letter-spacing: -.035em; }
 .help p { margin: 0; font-size: 16px; line-height: 1.7; color: var(--muted); }
 .primary { background: #c99a2e; border-color: #c99a2e; color: #092f27; font-size: 14px; padding: 14px 24px; }

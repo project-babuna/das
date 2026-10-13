@@ -198,30 +198,6 @@ export default function ClaritySessionLandingPage() {
           </div>
         </section>
 
-        <section className={`section ${readingStyles.liveSessions}`} aria-labelledby="live-sessions-heading">
-          <div className={`container ${readingStyles.liveSessionsLayout}`}>
-            <div className={readingStyles.liveSessionsContent} data-clarity-reveal>
-              <p className={readingStyles.liveSessionsLabel}>Live interactive sessions</p>
-              <h2 id="live-sessions-heading">Learn Together.<br /><em>Build Together.</em></h2>
-              <p className={readingStyles.liveSessionsDescription}>
-                DreamAndScale Mentorship combines the self-paced Full Program with live mentor support and events. Bring your idea, business decisions, or growth questions into the conversation, and get guided feedback as you apply what you learn.
-              </p>
-              <ul className={readingStyles.liveSessionsHighlights}>
-                <li>Live mentor guidance</li>
-                <li>Ask questions</li>
-                <li>Discuss your idea</li>
-              </ul>
-              <a className={`btn btn-primary ${readingStyles.liveSessionsCta}`} href="/learn-with-mentorship" data-meta-event="ViewContent" data-meta-content-name="DreamAndScale Mentorship" data-meta-content-category="Program Offer">
-                Explore the Program
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </a>
-            </div>
-            <figure className={readingStyles.liveSessionsImage} data-clarity-reveal>
-              <img src="/assets/clarity/live-mentorship-session.png" width="1586" height="992" alt="Participants and a mentor together in a live online session" loading="lazy" />
-            </figure>
-          </div>
-        </section>
-
         <AudienceSection dark />
 
         <BusinessAssessmentTool />

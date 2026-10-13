@@ -50,7 +50,7 @@ function ProofBridge() {
           <div className={styles.ecosystemRow}>
             <div className={styles.ecosystemIntro}>
               <h2>India&apos;s upcoming ecosystem</h2>
-              <p>For working professionals to build the future.</p>
+              <p>For working professionals to build the businesses.</p>
             </div>
             <ul className={styles.ecosystemGroups} aria-label="People in the DreamAndScale ecosystem">
               {ecosystemGroups.map(([label, icon]) => (
