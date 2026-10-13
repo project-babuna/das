@@ -22,7 +22,7 @@ function ProgramList({ programs, selective = false }) {
   return <div className={styles.list}>{programs.map((program, index) => (
     <article className={styles.program} key={program.title}>
       <div className={styles.programImage}>
-        <Image src={`/assets/lifecycle/${images[program.number]}.jpg`} alt="" width={320} height={240} sizes="(max-width: 700px) 90px, (max-width: 1100px) 130px, 176px" />
+        <Image src={`/assets/lifecycle/${images[program.number]}.jpg`} alt="" width={640} height={800} sizes="(max-width: 700px) 90px, (max-width: 1100px) 130px, (max-width: 1800px) 25vw, 430px" />
         <span className={styles.number} aria-hidden="true">{program.number}</span>
       </div>
       <div className={styles.programCopy}>

@@ -23,6 +23,31 @@
   --shadow-soft: 0 12px 30px rgba(17, 25, 27, 0.055);
   --shadow-dark: 0 24px 64px rgba(0, 0, 0, 0.2);
   --max: 1180px;
+  /* Shared marketing scale: generous surfaces, with comfortable page gutters. */
+  --page-width: 1760px;
+  --page-gutter: clamp(24px, 4.5vw, 100px);
+  --page-title: clamp(48px, 5.5vw, 88px);
+  --page-heading: clamp(42px, 5.2vw, 82px);
+  --page-lead: clamp(18px, 1.35vw, 21px);
+  --page-body: clamp(17px, 1.15vw, 19px);
+  --page-card-title: clamp(28px, 2.5vw, 38px);
+  --page-space: clamp(88px, 8vw, 152px);
+  --page-gap: clamp(32px, 5vw, 88px);
+  --page-card-space: clamp(28px, 3vw, 48px);
+}
+
+@media (max-width: 760px) {
+  :root {
+    --page-gutter: 20px;
+    --page-title: clamp(40px, 10vw, 56px);
+    --page-heading: clamp(36px, 9vw, 46px);
+    --page-lead: 17px;
+    --page-body: 16px;
+    --page-card-title: clamp(26px, 7vw, 30px);
+    --page-space: 64px;
+    --page-gap: 32px;
+    --page-card-space: 24px;
+  }
 }
 
 * {
@@ -2480,6 +2505,9 @@ body.assessment-open {
 
 .policy-hero h1 {
   max-width: 820px;
+  font-size: var(--page-title);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
 }
 
 .policy-hero p:not(.policy-updated) {
@@ -2522,15 +2550,15 @@ body.assessment-open {
 .policy-block h2 {
   margin-bottom: 14px;
   color: var(--ink);
-  font-size: clamp(1.35rem, 2.3vw, 2rem);
-  line-height: 1.12;
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.2;
 }
 
 .policy-block p {
   max-width: 760px;
   margin: 0;
   color: var(--muted);
-  font-size: 1.04rem;
+  font-size: var(--page-body);
   line-height: 1.7;
 }
 
@@ -5274,16 +5302,17 @@ body.assessment-open {
 }
 
 .registration-layout .section-kicker h1 {
-  font-size: clamp(2rem, 3.2vw, 3.05rem);
-  line-height: 1.03;
+  font-size: clamp(40px, 3.5vw, 54px);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
 }
 
 .registration-layout .section-kicker p:not(.eyebrow) {
   max-width: 420px;
   margin-top: 12px;
   color: var(--muted);
-  font-size: 0.94rem;
-  line-height: 1.5;
+  font-size: var(--page-body);
+  line-height: 1.65;
 }
 
 .registration-layout .section-kicker p:not(.eyebrow) + p:not(.eyebrow) {
@@ -8040,4 +8069,25 @@ body.assessment-open {
     padding: 0 14px 16px;
     font-size: 13px;
   }
+/* Supporting pages share the marketing scale; forms retain a readable measure. */
+.partner-hero .container, .partner-section .container, .partner-cta-section .container,
+.contact-page-layout {
+  width: min(var(--page-width), calc(100% - var(--page-gutter) * 2));
+}
+.partner-hero { min-height: 80svh; display: flex; align-items: center; padding-block: 150px 88px; }
+.partner-hero-inner { max-width: var(--page-width); }
+.partner-hero h1 { max-width: 18ch; font-size: var(--page-title); line-height: 1.08; }
+.partner-section, .partner-cta-section { padding-block: var(--page-space); }
+.partner-copy h2, .partner-cta h2 { font-size: var(--page-heading); line-height: 1.12; }
+.partner-card { padding: var(--page-card-space); border-radius: 14px; }
+.contact-page-layout { min-height: calc(100svh - 230px); grid-template-columns: minmax(0, 1fr) minmax(0, 720px); gap: var(--page-gap); }
+.contact-page-intro, .contact-page-intro h1 { max-width: 720px; }
+.contact-page-intro h1 { font-size: var(--page-title); line-height: 1.08; }
+.contact-page-intro p { font-size: 18px; line-height: 1.75; }
+@media (max-width: 1000px) {
+  .contact-page-layout { grid-template-columns: 1fr; min-height: 0; max-width: 800px; }
+}
+@media (max-width: 760px) {
+  .partner-hero { min-height: 0; padding-block: 120px 64px; }
+  .contact-page-intro p { font-size: 16px; }
 }

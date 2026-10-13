@@ -9,6 +9,7 @@ import FounderTopicTicker from "./components/FounderTopicTicker";
 import ClaritySessionDate from "./components/ClaritySessionDate";
 import FounderTrapStory from "./FounderTrapStory";
 import ClarityAgenda from "./components/ClarityAgenda";
+import ClarityLiveClass from "./components/ClarityLiveClass";
 import AudienceSection from "./components/AudienceSection";
 import pageStyles from "./ClaritySession.module.css";
 import cardStyles from "./HomeCards.module.css";
@@ -134,6 +135,8 @@ export default function ClaritySessionLandingPage() {
         </section>
 
         <ClarityAgenda />
+
+        <ClarityLiveClass />
 
         <section className="section start-section" id="programs">
           <div className="container">

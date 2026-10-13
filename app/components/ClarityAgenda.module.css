@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  padding: clamp(72px, 8vw, 116px) 0;
+  padding: var(--page-space) 0;
   overflow: hidden;
   border-block: 1px solid #e4bd6138;
   background: #092a23;
@@ -9,10 +9,10 @@
 .layout { position: relative; display: grid; gap: 44px; }
 .intro { text-align: left; }
 .intro h2 {
-  max-width: 880px;
+  max-width: 1200px;
   margin: 0;
   color: #fffdf8;
-  font: 500 clamp(42px, 4.5vw, 60px)/1.1 var(--clarity-display-font, Georgia, "Times New Roman", serif);
+  font: 500 var(--page-heading)/1.1 var(--clarity-display-font, Georgia, "Times New Roman", serif);
   letter-spacing: -.045em;
   text-wrap: balance;
 }
@@ -24,7 +24,7 @@
   grid-template-columns: 48px minmax(0, 1fr);
   align-items: start;
   gap: 22px;
-  padding: 34px;
+  padding: var(--page-card-space);
   border: 1px solid #e2c38426;
   border-radius: 14px;
   background: #153c32;
@@ -43,11 +43,11 @@
 .chapter h3 {
   margin: 0 0 12px;
   color: #fffdf8;
-  font: 600 26px/1.2 var(--clarity-display-font, Georgia, "Times New Roman", serif);
+  font: 600 clamp(26px, 2.5vw, 36px)/1.2 var(--clarity-display-font, Georgia, "Times New Roman", serif);
   letter-spacing: -.03em;
   text-wrap: balance;
 }
-.chapter p { margin: 0; color: #c5d4cc; font: 400 16px/1.7 var(--clarity-body-font, Inter, ui-sans-serif, system-ui, sans-serif); }
+.chapter p { margin: 0; color: #c5d4cc; font: 400 var(--page-body)/1.7 var(--clarity-body-font, Inter, ui-sans-serif, system-ui, sans-serif); }
 .chapter p + p { margin-top: 13px; }
 .chapter .prompt { color: #fffaf0; font-weight: 600; }
 .chapter .journey { display: flex; flex-wrap: wrap; gap: 1px 7px; color: #e4bd61; font-weight: 600; }
@@ -58,7 +58,7 @@
   max-width: 34ch;
   margin: 0 auto;
   color: #fffdf8;
-  font: 500 clamp(30px, 3.2vw, 44px)/1.2 var(--clarity-display-font, Georgia, "Times New Roman", serif);
+  font: 500 clamp(36px, 4vw, 60px)/1.2 var(--clarity-display-font, Georgia, "Times New Roman", serif);
   letter-spacing: -.045em;
   text-wrap: balance;
 }
@@ -75,12 +75,12 @@
 @media (max-width: 760px) {
   .section { padding-block: 64px; }
   .layout { gap: 32px; }
-  .intro h2 { font-size: clamp(36px, 9vw, 42px); }
+  .intro h2 { font-size: var(--page-heading); }
   .chapters { grid-template-columns: 1fr; gap: 16px; }
   .chapter { grid-template-columns: 32px minmax(0, 1fr); gap: 14px; padding: 26px 20px; }
   .number { font-size: 28px; }
-  .chapter h3 { font-size: 21px; }
-  .chapter p { font-size: 15px; }
+  .chapter h3 { font-size: var(--page-card-title); }
+  .chapter p { font-size: var(--page-body); }
   .takeaway { padding-top: 28px; }
   .takeaway p { font-size: 30px; }
 }

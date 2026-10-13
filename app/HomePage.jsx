@@ -98,7 +98,6 @@ export default function HomePage() {
         <section id="platforms" className={`${styles.section} ${styles.platforms}`} aria-labelledby="platforms-heading">
           <div className="container">
             <div className={styles.platformHeading}>
-              <span className={styles.eyebrow}>Partners &amp; platforms</span>
               <h2 id="platforms-heading">Platforms in the founder ecosystem</h2>
               <p>Explore the tools and communities founders may use to turn learning into focused action.</p>
             </div>
@@ -121,7 +120,6 @@ export default function HomePage() {
           <div className="container">
             <div className={styles.insightsGrid}>
               <div className={styles.insightsIntro}>
-                <span className={styles.insightsEyebrow}>Founder insights</span>
                 <h2 id="insights-heading">Better questions.<br /><em>Better business decisions.</em></h2>
                 <p>Practical guides to testing ideas, understanding customers, and deciding your next move.</p>
                 <a className={styles.insightsLink} href="/blog">Explore all insights <Arrow /></a>
@@ -145,7 +143,6 @@ export default function HomePage() {
               {learningPaths.map((program, index) => (
                 <article className={`${styles.programCard} ${index === 0 ? styles.featured : ""}`} data-tone={index} key={program.title}>
                   <header className={styles.programHeader}>
-                  <span className={styles.programLabel}>{program.label}</span>
                   <h3>{program.title}</h3>
                   <p className={styles.format}>{program.format}</p>
                   </header>
@@ -163,7 +160,6 @@ export default function HomePage() {
               {buildPrograms.map((program, index) => (
                 <article className={`${styles.programCard} ${styles.buildCard}`} data-tone={index + 3} key={program.slug}>
                   <header className={styles.programHeader}>
-                  <span className={styles.programLabel}>{program.number} · {program.verb}</span>
                   <h3>{program.title}</h3>
                   <p className={styles.format}>Selective entry · Application required</p>
                   </header>
@@ -177,7 +173,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <AudienceSection />
+        <AudienceSection spacious />
 
         <AssessmentCallout />
 

@@ -6,9 +6,9 @@ const audiences = [
   { title: "Existing Business Owners", description: "Stuck with growth? Revisit your customers, pricing, and operations to understand what may be holding your business back." },
 ];
 
-export default function AudienceSection({ dark = false }) {
+export default function AudienceSection({ dark = false, spacious = false }) {
   return (
-    <section id="for-you" className={`${styles.section} ${dark ? styles.dark : ""}`} aria-labelledby="audience-heading">
+    <section id="for-you" className={`${styles.section} ${dark ? styles.dark : ""} ${spacious ? styles.spacious : ""}`} aria-labelledby="audience-heading">
       <div className={`container ${styles.layout}`}>
         <div className={styles.heading}>
           {dark && <p className={styles.eyebrow}>Who it&apos;s for</p>}
