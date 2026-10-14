@@ -26,7 +26,8 @@ export default function FounderLifecycle() {
             <li className={styles.stage} key={stage.label} id={`founder-stage-${index + 1}`}>
               <div className={styles.stageInner}>
                 <div className={styles.photo}>
-                  <img src={`/assets/lifecycle/${stage.image}.jpg`} width="1448" height="1086" alt={stage.alt} loading="lazy" sizes="(max-width: 900px) 100vw, 50vw" />
+                  <img src={stage.imageUrl || `/assets/lifecycle/${stage.image}.jpg`} width="1448" height="1086" alt={stage.alt} loading="lazy" sizes="(max-width: 900px) 100vw, 50vw" />
+                  <span className={styles.imageNumber} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
                 </div>
                 <div className={styles.copy}>
                   <h3>{stage.verb}<span>.</span></h3>

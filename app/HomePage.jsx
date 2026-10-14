@@ -5,6 +5,7 @@ import StartupInsights from "./components/StartupInsights";
 import FounderLifecycle from "./components/FounderLifecycle";
 import ConnectedBusinessSystem from "./components/ConnectedBusinessSystem";
 import AudienceSection from "./components/AudienceSection";
+import AssessmentCallout from "./components/AssessmentCallout";
 import { buildPrograms } from "./programs/catalog";
 
 function Arrow() {
@@ -44,14 +45,16 @@ export default function HomePage() {
               <h2 id="platforms-heading">Platforms in the founder ecosystem</h2>
               <p>Explore the tools and communities founders may use to turn learning into focused action.</p>
             </div>
-            <ul className={styles.platformGrid} aria-label="Platforms in the DreamAndScale founder ecosystem">
-              {platformExamples.map((platform) => (
-                <li className={styles.platformCard} key={platform.name}>
-                  <span className={`${styles.platformMark} ${styles[platform.tone]}`} aria-hidden="true">{platform.mark}</span>
-                  <span>{platform.name}</span>
-                </li>
-              ))}
-            </ul>
+            <div className={styles.platformTicker}>
+              <ul className={styles.platformGrid} aria-label="Platforms in the DreamAndScale founder ecosystem">
+                {[...platformExamples, ...platformExamples].map((platform, index) => (
+                  <li className={styles.platformCard} key={`${platform.name}-${index}`} aria-hidden={index >= platformExamples.length}>
+                    {platform.logo && <img className={styles.platformLogo} src={platform.logo} alt="" loading="lazy" />}
+                    <span>{platform.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 
@@ -116,29 +119,20 @@ export default function HomePage() {
 
         <AudienceSection spacious />
 
-        <section id="business-assessment" className={`${styles.section} ${styles.assessment}`} aria-labelledby="assessment-heading">
-          <div className={`container ${styles.assessmentInner}`}>
-            <div>
-              <h2 id="assessment-heading">Where do you stand today?</h2>
-              <p>Use the free Business Readiness Assessment to spot gaps in your understanding.</p>
-              <a className={styles.primary} href="/business-readiness-assessment" data-meta-event="ViewContent" data-meta-content-name="Business Readiness Assessment">Take the free assessment <Arrow /></a>
-            </div>
-            <div className={styles.assessmentNote}><strong>18</strong><span>practical questions</span><p className={styles.assessmentScope}>6 areas of business. One clear report.</p><p>Name, email, WhatsApp number, and role required to view your score.</p></div>
-          </div>
-        </section>
+        <AssessmentCallout />
 
-        <section id="faq" className={`${styles.section} ${styles.faq}`} aria-labelledby="faq-heading">
-          <div className={`container ${styles.split}`}>
-            <div className={styles.sectionHeading}>
+        <section id="faq" className={`${styles.section} faq-showcase`} aria-labelledby="faq-heading">
+          <div className={`container ${styles.split} faq-showcase-card faq-showcase-layout`}>
+            <div className={`${styles.sectionHeading} faq-showcase-heading`}>
               <h2 id="faq-heading">A few things<br />to know.</h2>
               <p>Understand your options before choosing your next step.</p>
               <a className={styles.textLink} href="/contact">Have another question? Get in touch <Arrow /></a>
             </div>
-            <div className={styles.faqList}>
+            <div className={`${styles.faqList} faq-list`}>
               {brandFaqItems.map((item) => (
                 // Native disclosure state can change before React hydrates.
-                <details key={item.question} suppressHydrationWarning>
-                  <summary>{item.question}<svg width="18" height="18" viewBox="0 0 18 18" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M2 9h14"/><path className={styles.plusVertical} d="M9 2v14"/></svg></summary>
+                <details className="faq-item" key={item.question} suppressHydrationWarning>
+                  <summary><span>{item.question}</span></summary>
                   <p>{item.answer}</p>
                 </details>
               ))}

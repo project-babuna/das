@@ -39,6 +39,7 @@
 .entrySteps h3 { margin: 3px 0 7px; font-size: 16px; font-weight: 550; }
 .entrySteps p { margin: 0; font-size: 13px; line-height: 1.7; color: var(--muted); }
 .help { display: flex; align-items: center; justify-content: space-between; gap: 36px; padding-block: var(--page-space); }
+.assessmentWrap { padding-bottom: var(--page-space); }
 .help h2 { margin: 0 0 14px; font: 400 clamp(36px, 4vw, 60px)/1.14 Georgia, 'Times New Roman', serif; letter-spacing: -.035em; }
 .help p { margin: 0; font-size: 16px; line-height: 1.7; color: var(--muted); }
 .primary { background: #c99a2e; border-color: #c99a2e; color: #092f27; font-size: 14px; padding: 14px 24px; }
@@ -61,14 +62,15 @@
   .program h3 { font-size: 29px; }
 }
 @media (max-width: 700px) {
-  .hero { display: flex; flex-direction: column; min-height: 0; padding: 112px 0 0; gap: 24px; }
-  .heroInner { order: 0; }
-  .heroIntro { max-width: none; }
-  .hero h1 { font-size: var(--page-title); margin-bottom: 22px; }
-  .heroIntro p { font-size: var(--page-lead); max-width: 44ch; }
-  .heroArtwork { position: relative; inset: auto; order: 1; z-index: 0; width: 100%; height: auto; aspect-ratio: 1.65; overflow: hidden; }
-  .heroArtwork img { object-fit: cover; object-position: right top; width: 165% !important; max-width: none; left: auto !important; }
-  .group { padding: 36px 0 42px; scroll-margin-top: 0; }
+  .hero { display: block; min-height: 0; padding: 112px 0 0; }
+  .heroInner { position: relative; z-index: 1; }
+  .heroIntro { max-width: none; padding-bottom: clamp(250px, 70vw, 330px); }
+  .hero h1 { font-size: clamp(39px, 9.4vw, 58px); margin-bottom: 22px; }
+  .heroIntro p { font-size: 16px; max-width: 44ch; }
+  .heroArtwork { position: absolute; inset: auto 0 0; z-index: 0; width: 100%; height: clamp(300px, 82vw, 390px); aspect-ratio: auto; overflow: hidden; }
+  .heroArtwork::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, #fffdf8 0%, #fffdf8e6 10%, #fffdf880 28%, #fffdf800 54%, #09241f1f 100%); pointer-events: none; }
+  .heroArtwork img { object-fit: cover; object-position: center center; width: 100% !important; max-width: 100%; left: 0 !important; }
+  .group { padding: 36px 0 42px; scroll-margin-top: 70px; }
   .groupLayout { grid-template-columns: 1fr; gap: 28px; }
   .groupIntro { padding: 0; border: 0; }
   .groupIntro h2 { font-size: 41px; margin: 16px 0; }

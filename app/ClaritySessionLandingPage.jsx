@@ -5,6 +5,7 @@ import BrandLogo from "./components/BrandLogo";
 import BusinessAssessmentTool from "./components/BusinessAssessmentTool";
 import SiteFooter from "./components/SiteFooter";
 import HomeHero from "./components/HomeHero";
+import FounderTopicTicker from "./components/FounderTopicTicker";
 import ClaritySessionDate from "./components/ClaritySessionDate";
 import FounderTrapStory from "./FounderTrapStory";
 import ClarityAgenda from "./components/ClarityAgenda";
@@ -73,6 +74,7 @@ export default function ClaritySessionLandingPage() {
 
       <main id="top" ref={mainRef} className={`${readingStyles.home} ${motionStyles.motion} ${pageStyles.page}`}>
         <HomeHero />
+        <FounderTopicTicker />
 
         <section className={`section problem-section ${readingStyles.founderSection}`} id="problem" aria-labelledby="founder-heading">
           <div className="container">
@@ -200,18 +202,18 @@ export default function ClaritySessionLandingPage() {
 
         <BusinessAssessmentTool />
 
-        <section className="section faq-section" id="faq">
-          <div className="container faq-layout">
-            <div className="section-kicker">
-              <p className="eyebrow dark">FAQ</p>
-              <h2>Frequently Asked Questions</h2>
+        <section className="section faq-section faq-showcase" id="faq">
+          <div className="container faq-layout faq-showcase-card">
+            <div className="section-kicker faq-showcase-heading">
+              <h2>A few things<br />to know.</h2>
+              <p>Understand the Clarity Session before choosing your next step.</p>
+              <a href="/contact">Have another question? Get in touch <span aria-hidden="true">→</span></a>
             </div>
             <div className="faq-list">
               {homeFaqItems.map((item) => (
                 <details className="faq-item" key={item.question}>
                   <summary>
                     <span>{item.question}</span>
-                    <svg className={pageStyles.faqIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
                   </summary>
                   <p>{item.answer}</p>
                 </details>

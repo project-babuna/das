@@ -28,6 +28,7 @@ export const founderLifecycle = [
     description: "Bring your questions into focus with mentor guidance as you apply what you learn.",
     points: ["Examine the assumptions behind your idea.", "Choose a focused next step for your situation."],
     image: "guide",
+    imageUrl: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1400&q=82",
     alt: "Founder discussing a business plan with a mentor",
     href: "/learn-with-mentorship",
     action: "Apply with support",
@@ -71,11 +72,11 @@ export const founderLifecycle = [
 ];
 
 export const platformExamples = [
-  { name: "Notion", mark: "N", tone: "notion" },
-  { name: "Shopify", mark: "S", tone: "shopify" },
-  { name: "HubSpot", mark: "↗", tone: "hubspot" },
-  { name: "Squarespace", mark: "S", tone: "squarespace" },
-  { name: "EntreMento", mark: "E", tone: "entremento" },
+  { name: "Notion", logo: "https://cdn.simpleicons.org/notion/FFFFFF" },
+  { name: "Shopify", logo: "https://cdn.simpleicons.org/shopify/95BF47" },
+  { name: "HubSpot", logo: "https://cdn.simpleicons.org/hubspot/FF7A59" },
+  { name: "Squarespace", logo: "https://cdn.simpleicons.org/squarespace/FFFFFF" },
+  { name: "EntreMento" },
 ];
 
 export const startupInsights = [
@@ -84,7 +85,7 @@ export const startupInsights = [
     tag: "Founder lessons",
     title: "How to validate a business idea before you build",
     description: "Test the problem, customer, urgency, and willingness to pay before committing to a product.",
-    image: "/assets/lifecycle/build.jpg",
+    image: "https://images.unsplash.com/photo-1551836022-4c4c79ecde51?auto=format&fit=crop&w=900&q=80",
     href: "/blog/how-to-validate-a-business-idea",
   },
   {
@@ -92,7 +93,7 @@ export const startupInsights = [
     tag: "Ownership",
     title: "Business vs self-employment: what is the difference?",
     description: "Understand systems, leverage, and the choices that separate selling your time from building a business.",
-    image: "/assets/lifecycle/accelerate.jpg",
+    image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80",
     href: "/blog/business-vs-self-employment",
   },
   {
@@ -100,7 +101,7 @@ export const startupInsights = [
     tag: "Market insight",
     title: "How to know if a market is big enough",
     description: "Think clearly about customer segments, buying power, urgency, and the opportunity you want to pursue.",
-    image: "/assets/lifecycle/learn.jpg",
+    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=900&q=80",
     href: "/blog/how-to-know-if-a-market-is-big-enough",
   },
   {
@@ -108,7 +109,7 @@ export const startupInsights = [
     tag: "Before building",
     title: "How to understand customers before building a product",
     description: "Study pain, behavior, alternatives, and buying decisions before you invest in a solution.",
-    image: "/assets/lifecycle/guide.jpg",
+    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80",
     href: "/blog/how-to-understand-customers-before-building-a-product",
   },
   {
@@ -116,7 +117,7 @@ export const startupInsights = [
     tag: "Founder readiness",
     title: "Should you start a business or keep your job?",
     description: "Use clarity, evidence, runway, and responsible next steps to make the decision deliberately.",
-    image: "/assets/lifecycle/clarity.jpg",
+    image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=900&q=80",
     href: "/blog/should-you-start-a-business-or-keep-your-job",
   },
 ];

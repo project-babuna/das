@@ -3,6 +3,8 @@ import Image from "next/image";
 import SiteFrame from "../components/SiteFrame";
 import { learnPrograms, buildPrograms } from "./catalog";
 import { learningPaths } from "../homeContent";
+import FounderTopicTicker from "../components/FounderTopicTicker";
+import AssessmentCallout from "../components/AssessmentCallout";
 import styles from "./ProgramsHub.module.css";
 
 export const metadata = pageMetadata({
@@ -46,6 +48,7 @@ export default function ProgramsPage() {
         <p>From understanding business to building a company. Choose the support that fits where you are today.</p></div>
       </div>
     </header>
+    <FounderTopicTicker />
     <section id="learn-prepare" className={styles.group} aria-labelledby="learn-heading"><div className={`container ${styles.groupLayout}`}>
       <div className={styles.groupIntro}><span className={styles.badge}>Open enrollment</span><h2 id="learn-heading">Learn &amp; <br />Prepare</h2><p>Build your understanding before committing serious time, money, or your career.</p><p className={styles.entryNote}>Anyone can join.</p></div>
       <ProgramList programs={learnPrograms} />
@@ -87,5 +90,6 @@ export default function ProgramsPage() {
       <ProgramList programs={buildPrograms} selective />
     </div></section>
     <aside className={`container ${styles.help}`}><div><h2>Your next step can start with clarity.</h2><p>Understand the journey before choosing a program.</p></div><a className={styles.primary} href="/clarity-session">Start with Clarity <Arrow /></a></aside>
+    <div className={styles.assessmentWrap}><AssessmentCallout /></div>
   </main></SiteFrame>;
 }
