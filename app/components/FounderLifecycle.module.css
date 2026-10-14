@@ -50,7 +50,7 @@
   .copy { padding-block: 24px; }
 }
 @media (max-width: 900px) {
-  .lifecycle { padding: 154px 0 60px; }
+  .lifecycle { padding: 72px 0 60px; }
   .container { width: calc(100% - 40px); }
   .intro > p:last-of-type { font-size: var(--page-lead); }
   .stageNav { gap: 6px 18px; margin-top: 24px; }

@@ -423,7 +423,7 @@ export default function ClaritySessionAdPage() {
         <section className="section faq-section faq-showcase clarity-ad-faq" id="faq">
           <div className="container faq-layout faq-showcase-card">
             <div className="section-kicker faq-showcase-heading">
-              <h2>Frequently Asked <em>Questions</em></h2>
+              <h2>A few things<br />to know.</h2>
               <p>
                 Quick answers about fit, format, recording, refund, and next steps.
               </p>

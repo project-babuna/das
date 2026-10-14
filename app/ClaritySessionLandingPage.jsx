@@ -205,7 +205,9 @@ export default function ClaritySessionLandingPage() {
         <section className="section faq-section faq-showcase" id="faq">
           <div className="container faq-layout faq-showcase-card">
             <div className="section-kicker faq-showcase-heading">
-              <h2>Frequently Asked <em>Questions</em></h2>
+              <h2>A few things<br />to know.</h2>
+              <p>Understand the Clarity Session before choosing your next step.</p>
+              <a href="/contact">Have another question? Get in touch <span aria-hidden="true">→</span></a>
             </div>
             <div className="faq-list">
               {homeFaqItems.map((item) => (

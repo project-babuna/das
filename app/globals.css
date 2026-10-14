@@ -7894,113 +7894,104 @@ body.assessment-open {
   }
 }
 
-/* Shared FAQ presentation across the site */
+/* Shared FAQ layout follows the light, split presentation on the main branch. */
 .section.faq-showcase,
 #faq.faq-showcase,
 .clarity-ad-page .faq-section.faq-showcase {
-  padding-block: clamp(64px, 8vw, 104px);
+  padding-block: clamp(72px, 9vw, 128px);
   border: 0;
-  background:
-    radial-gradient(circle at 92% 100%, rgba(12, 84, 73, 0.52), transparent 42%),
-    linear-gradient(145deg, #071b18 0%, #082720 56%, #07342d 100%);
-  color: #fffdf8;
+  background: #fffdf8;
+  color: #09241f;
 }
 
 .faq-showcase .faq-showcase-card.faq-layout,
 .faq-showcase .faq-showcase-card.faq-showcase-layout {
-  display: block;
-  width: min(1124px, calc(100% - 40px));
-  padding: clamp(24px, 3.5vw, 38px);
-  border: 1px solid rgba(205, 226, 216, 0.18);
-  border-radius: 22px;
-  background: rgba(5, 25, 21, 0.24);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(48px, 7vw, 112px);
+  width: min(1320px, calc(100% - 80px));
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .faq-showcase .faq-showcase-heading {
-  max-width: none;
-  margin: 0 0 20px;
+  max-width: 520px;
+  margin: 0;
   text-align: left;
 }
 
 .faq-showcase .faq-showcase-heading h2,
 #faq.faq-showcase .faq-showcase-heading h2,
 .clarity-ad-page .faq-showcase .faq-showcase-heading h2 {
-  margin: 0;
-  color: #fffdf8;
+  margin: 0 0 24px;
+  color: #09241f;
   font-family: inherit;
-  font-size: clamp(28px, 3vw, 34px);
-  font-weight: 550;
-  line-height: 1.2;
-  letter-spacing: -0.04em;
+  font-size: clamp(42px, 4.8vw, 64px);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -.045em;
   text-wrap: balance;
 }
 
-.faq-showcase .faq-showcase-heading h2 em {
-  color: #e4bd61;
-  font-style: normal;
-  font-weight: inherit;
-}
-
 .faq-showcase .faq-showcase-heading > p {
-  max-width: 66ch;
-  margin: 12px 0 0;
-  color: #cbd8d2;
-  font-size: 14px;
-  line-height: 1.65;
+  max-width: 48ch;
+  margin: 0;
+  color: #66716f;
+  font-size: 17px;
+  line-height: 1.7;
   text-align: left;
 }
 
 .faq-showcase .faq-showcase-heading > a {
-  margin-top: 10px;
-  color: #e4bd61;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  color: #75530f;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .faq-showcase .faq-showcase-card .faq-list {
   display: grid;
   width: 100%;
   max-width: none;
-  gap: 10px;
-  margin: 20px 0 0;
-  border: 0;
+  gap: 0;
+  margin: 0;
+  border-top: 1px solid #09241f26;
 }
 
 .faq-showcase .faq-showcase-card .faq-item,
-.faq-showcase .faq-showcase-card .faqList details {
-  margin: 0;
-  overflow: hidden;
-  border: 1px solid rgba(205, 226, 216, 0.18);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.045);
-  box-shadow: none;
-  color: #fffdf8;
-  transition: border-color 180ms ease, background 180ms ease;
-}
-
+.faq-showcase .faq-showcase-card .faqList details,
 .faq-showcase .faq-showcase-card .faq-item[open],
 .faq-showcase .faq-showcase-card .faqList details[open] {
-  border-color: rgba(228, 189, 97, 0.45);
-  background: rgba(255, 255, 255, 0.075);
+  margin: 0;
+  overflow: visible;
+  border: 0;
+  border-bottom: 1px solid #09241f26;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #09241f;
 }
 
 .faq-showcase .faq-showcase-card .faq-item summary,
 .faq-showcase .faq-showcase-card .faqList summary {
   display: flex;
-  min-height: 58px;
+  min-height: 82px;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  padding: 16px 19px;
-  color: #fffdf8;
+  padding: 24px 0;
+  color: #09241f;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.5;
+  font-size: clamp(17px, 1.25vw, 20px);
+  font-weight: 550;
+  line-height: 1.45;
   list-style: none;
-}
-
-.faq-showcase .faq-showcase-card .faq-item summary span,
-.faq-showcase .faq-showcase-card .faqList summary span {
-  max-width: none;
 }
 
 .faq-showcase .faq-showcase-card .faq-item summary::-webkit-details-marker,
@@ -8011,63 +8002,67 @@ body.assessment-open {
 .faq-showcase .faq-showcase-card .faq-item summary::after,
 .faq-showcase .faq-showcase-card .faqList summary::after {
   display: block;
-  width: 8px;
-  height: 8px;
-  flex: 0 0 8px;
-  border: solid #e4bd61;
-  border-width: 0 1.5px 1.5px 0;
-  border-radius: 1px;
-  color: transparent;
-  content: "";
-  transform: rotate(45deg) translateY(-2px);
-  transition: transform 180ms ease;
+  width: 20px;
+  height: auto;
+  flex: 0 0 20px;
+  border: 0;
+  border-radius: 0;
+  color: #a47b23;
+  content: "+";
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  transform: none;
+  transition: none;
 }
 
 .faq-showcase .faq-showcase-card .faq-item[open] summary::after,
 .faq-showcase .faq-showcase-card .faqList details[open] summary::after {
-  transform: rotate(225deg) translate(-2px, -1px);
+  content: "−";
+  transform: none;
 }
 
 .faq-showcase .faq-showcase-card .faq-item > p,
 .faq-showcase .faq-showcase-card .faqList details > p {
   margin: 0;
-  padding: 0 19px 18px;
-  color: #cbd8d2;
-  font-size: 14px;
+  padding: 0 28px 24px 0;
+  color: #66716f;
+  font-size: 16px;
   line-height: 1.7;
 }
 
 .faq-showcase .faq-showcase-card summary:focus-visible {
-  outline: 2px solid #e4bd61;
-  outline-offset: -4px;
-  border-radius: 12px;
+  outline: 2px solid #a47b23;
+  outline-offset: 4px;
+  border-radius: 2px;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 760px) {
   .faq-showcase .faq-showcase-card.faq-layout,
   .faq-showcase .faq-showcase-card.faq-showcase-layout {
-    width: min(100% - 28px, 1124px);
-    padding: 20px 16px;
-    border-radius: 18px;
+    grid-template-columns: 1fr;
+    gap: 36px;
+    width: calc(100% - 40px);
   }
 
   .faq-showcase .faq-showcase-heading h2,
   #faq.faq-showcase .faq-showcase-heading h2,
   .clarity-ad-page .faq-showcase .faq-showcase-heading h2 {
-    font-size: clamp(25px, 7vw, 31px);
+    font-size: clamp(38px, 9vw, 48px);
   }
 
   .faq-showcase .faq-showcase-card .faq-item summary,
   .faq-showcase .faq-showcase-card .faqList summary {
-    min-height: 56px;
-    padding: 15px 14px;
-    font-size: 13px;
+    min-height: 70px;
+    padding: 19px 0;
+    font-size: 17px;
   }
 
   .faq-showcase .faq-showcase-card .faq-item > p,
   .faq-showcase .faq-showcase-card .faqList details > p {
-    padding: 0 14px 16px;
-    font-size: 13px;
+    padding: 0 24px 20px 0;
+    font-size: 15px;
   }
 }
 
