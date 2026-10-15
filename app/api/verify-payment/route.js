@@ -5,6 +5,7 @@ import { safelyRunEmail, sendPaymentSuccessEmail } from "@/lib/email";
 import { safeCompareHex } from "@/lib/security";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
 import { safelyRunWhatsApp, sendPaymentSuccessWhatsApp } from "@/lib/whatsapp";
+import { recordClarityPurchase } from "@/lib/metaConversions";
 
 const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID,
@@ -40,7 +41,8 @@ export async function POST(request) {
           razorpay_signature,
           updated_at: new Date().toISOString(),
         })
-        .eq("razorpay_order_id", razorpay_order_id);
+        .eq("razorpay_order_id", razorpay_order_id)
+        .neq("status", "success");
 
       return NextResponse.json(
         { success: false, message: "Invalid payment signature." },
@@ -77,12 +79,22 @@ export async function POST(request) {
           razorpay_signature,
           updated_at: new Date().toISOString(),
         })
-        .eq("razorpay_order_id", razorpay_order_id);
+        .eq("razorpay_order_id", razorpay_order_id)
+        .neq("status", "success");
 
       return NextResponse.json(
         { success: false, message: "Payment verification failed." },
         { status: 400 }
       );
+    }
+
+    if (razorpayPayment.status === "authorized") {
+      return NextResponse.json({
+        success: true,
+        pending: true,
+        message: "Payment is authorized and awaiting capture.",
+        order_id: razorpay_order_id,
+      });
     }
 
     const { data: payment, error: paymentError } = await supabaseAdmin
@@ -115,6 +127,12 @@ export async function POST(request) {
           status: "paid",
         })
         .eq("id", payment.lead_id);
+    }
+
+    try {
+      await recordClarityPurchase(payment);
+    } catch (metaError) {
+      console.error("Meta Purchase delivery error:", metaError);
     }
 
     await Promise.all([

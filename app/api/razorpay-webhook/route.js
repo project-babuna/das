@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import crypto from "crypto";
+import Razorpay from "razorpay";
 import {
   safelyRunEmail,
   sendPaymentSuccessEmail,
@@ -7,6 +8,12 @@ import {
 import { safeCompareHex } from "@/lib/security";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
 import { safelyRunWhatsApp, sendPaymentSuccessWhatsApp } from "@/lib/whatsapp";
+import { recordClarityPurchase } from "@/lib/metaConversions";
+
+const razorpay = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET,
+});
 
 export async function POST(request) {
   try {
@@ -51,23 +58,32 @@ export async function POST(request) {
     }
 
     if (eventType === "payment.captured" || eventType === "order.paid") {
-      const { data: payment } = await supabaseAdmin
+      const { data: payment, error: paymentLookupError } = await supabaseAdmin
         .from("payments")
         .select("id, lead_id, program_id, razorpay_order_id, expected_amount, expected_currency, status")
         .eq("razorpay_order_id", razorpayOrderId)
         .single();
+      if (paymentLookupError) throw paymentLookupError;
 
-      const paidAmount = paymentEntity?.amount ?? orderEntity?.amount_paid ?? orderEntity?.amount;
-      const paidCurrency = paymentEntity?.currency ?? orderEntity?.currency;
-      const eventOrderId = paymentEntity?.order_id || orderEntity?.id;
+      // A signed webhook authenticates the sender; the fetch confirms the current captured state.
+      const capturedPayment = razorpayPaymentId
+        ? await razorpay.payments.fetch(razorpayPaymentId)
+        : null;
+      const paidOrder = !capturedPayment
+        ? await razorpay.orders.fetch(razorpayOrderId)
+        : null;
+      const paidAmount = capturedPayment?.amount ?? paidOrder?.amount_paid;
+      const paidCurrency = capturedPayment?.currency ?? paidOrder?.currency;
+      const eventOrderId = capturedPayment?.order_id ?? paidOrder?.id;
       const isVerifiedEvent =
         payment &&
+        (capturedPayment?.status === "captured" || paidOrder?.status === "paid") &&
         eventOrderId === payment.razorpay_order_id &&
         paidAmount === payment.expected_amount &&
         paidCurrency === payment.expected_currency;
 
       if (isVerifiedEvent) {
-        const { data: updatedPayment } = await supabaseAdmin
+        const { data: updatedPayment, error: paymentUpdateError } = await supabaseAdmin
           .from("payments")
           .update({
             status: "success",
@@ -79,6 +95,7 @@ export async function POST(request) {
           .eq("razorpay_order_id", razorpayOrderId)
           .select()
           .single();
+        if (paymentUpdateError) throw paymentUpdateError;
 
         if (updatedPayment?.lead_id) {
           await supabaseAdmin
@@ -88,6 +105,12 @@ export async function POST(request) {
               payment_status: "success",
             })
             .eq("id", updatedPayment.lead_id);
+        }
+
+        try {
+          await recordClarityPurchase(updatedPayment);
+        } catch (metaError) {
+          console.error("Meta Purchase delivery error:", metaError);
         }
 
         await Promise.all([

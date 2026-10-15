@@ -85,6 +85,8 @@ export async function POST(request) {
       program_id: selectedProgram.id,
       expected_amount: amount,
       expected_currency: currency,
+      meta_fbp: request.cookies.get("_fbp")?.value?.slice(0, 200) || null,
+      meta_fbc: request.cookies.get("_fbc")?.value?.slice(0, 200) || null,
       status: "created",
     });
 
