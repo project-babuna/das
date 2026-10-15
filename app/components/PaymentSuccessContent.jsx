@@ -15,8 +15,9 @@ export default function PaymentSuccessContent({ orderId }) {
     }
 
     let isMounted = true;
+    let timeoutId;
 
-    async function verifyStatus() {
+    async function verifyStatus(attempt = 0) {
       try {
         const response = await fetch(`/api/payment-status?order_id=${encodeURIComponent(orderId)}`);
         const data = await response.json();
@@ -25,7 +26,14 @@ export default function PaymentSuccessContent({ orderId }) {
           return;
         }
 
-        setStatus(response.ok && data.success && data.paid ? "paid" : "unverified");
+        if (response.ok && data.success && data.paid) {
+          setStatus("paid");
+        } else if (response.ok && data.success && attempt < 11) {
+          setStatus("loading");
+          timeoutId = window.setTimeout(() => verifyStatus(attempt + 1), 2500);
+        } else {
+          setStatus("unverified");
+        }
       } catch {
         if (isMounted) {
           setStatus("unverified");
@@ -37,6 +45,7 @@ export default function PaymentSuccessContent({ orderId }) {
 
     return () => {
       isMounted = false;
+      window.clearTimeout(timeoutId);
     };
   }, [orderId]);
 

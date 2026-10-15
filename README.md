@@ -46,6 +46,14 @@ Vercel will detect Next.js automatically and use:
 - Build command: `npm run build`
 - Output: Next.js default
 
+## Meta Clarity Session Purchase conversion
+
+Apply `database/meta_conversion_events.sql` in the production Supabase SQL editor before deploying this code. It adds a server-only event outbox, a unique Purchase record per Razorpay order, and optional browser attribution IDs on payments.
+
+Set these server-only Vercel environment variables: `META_DATASET_ID`, `META_CAPI_ACCESS_TOKEN`, and `CRON_SECRET`. `META_GRAPH_API_VERSION` is optional (defaults to `v26.0`). Set `META_TEST_EVENT_CODE` only for preview or local Meta Events Manager testing; production code ignores it. Never add the access token to a `NEXT_PUBLIC_` variable.
+
+Only captured Clarity Session payments create a Meta Conversions API `Purchase`. The value is the captured Razorpay amount in INR, not a displayed or client-submitted price. Existing browser Pixel events remain browser-only. Meta Purchase records and delivery results are stored in `meta_conversion_events`; a Vercel cron retries failed deliveries daily.
+
 ## WhatsApp Payment Confirmation
 
 Successful Razorpay payments can send a Meta WhatsApp Cloud API utility-template message with the branded PDF receipt attached. Add these server-side Vercel environment variables:
