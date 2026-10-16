@@ -152,7 +152,7 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
         });
 
       const checkout = new window.Razorpay({
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+        key: order.key_id,
         amount: order.amount,
         currency: order.currency,
         name: "DreamAndScale",
@@ -224,6 +224,8 @@ export function RegistrationCheckout({ initialProgramKey = "clarity_session" }) 
 
       const { order } = await postJson("/api/create-order", {
         lead_id: registration.lead.id,
+        event_source_url: window.location.href,
+        referrer_url: document.referrer || null,
       });
 
       paymentStarted = true;

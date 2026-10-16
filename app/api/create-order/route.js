@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { isIP } from "node:net";
 import Razorpay from "razorpay";
 import { getProgram } from "@/lib/programs";
 import { getClientIp, rateLimit } from "@/lib/rateLimit";
@@ -19,6 +20,22 @@ function rateLimitError() {
     { success: false, message: "Too many requests. Please try again later." },
     { status: 429 }
   );
+}
+
+function cleanTrackingUrl(value, allowedOrigin) {
+  if (typeof value !== "string" || value.length > 2048) return null;
+  try {
+    const url = new URL(value);
+    if (!["http:", "https:"].includes(url.protocol) ||
+        (allowedOrigin && url.origin !== allowedOrigin)) return null;
+    url.username = "";
+    url.password = "";
+    url.search = "";
+    url.hash = "";
+    return url.toString();
+  } catch {
+    return null;
+  }
 }
 
 export async function POST(request) {
@@ -66,6 +83,13 @@ export async function POST(request) {
     const selectedProgram = getProgram(lead.interest);
     const amount = selectedProgram.amount;
     const currency = selectedProgram.currency;
+    const clientUserAgent = request.headers.get("user-agent")?.slice(0, 1000) || null;
+    const requestOrigin = new URL(request.url).origin;
+    const eventSourceUrl = cleanTrackingUrl(
+      body.event_source_url || request.headers.get("referer"),
+      requestOrigin
+    );
+    const referrerUrl = cleanTrackingUrl(body.referrer_url);
 
     const order = await razorpay.orders.create({
       amount,
@@ -98,12 +122,25 @@ export async function POST(request) {
       );
     }
 
+    const { error: matchContextError } = await supabaseAdmin.from("payments")
+      .update({
+        meta_client_ip: isIP(clientIp) ? clientIp : null,
+        meta_client_user_agent: clientUserAgent,
+        meta_event_source_url: eventSourceUrl,
+        meta_referrer_url: referrerUrl,
+      })
+      .eq("razorpay_order_id", order.id);
+    if (matchContextError) {
+      console.warn("Purchase matching context was not saved:", matchContextError);
+    }
+
     return NextResponse.json({
       success: true,
       order: {
         id: order.id,
         amount: order.amount,
         currency: order.currency,
+        key_id: process.env.RAZORPAY_KEY_ID,
       },
     });
   } catch (error) {
