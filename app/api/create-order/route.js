@@ -122,6 +122,13 @@ export async function POST(request) {
       );
     }
 
+    const { error: metaEnvironmentError } = await supabaseAdmin.from("payments")
+      .update({ meta_deployment_environment: process.env.VERCEL_ENV || "development" })
+      .eq("razorpay_order_id", order.id);
+    if (metaEnvironmentError) {
+      console.error("Payment Meta environment was not saved:", metaEnvironmentError);
+    }
+
     const { error: matchContextError } = await supabaseAdmin.from("payments")
       .update({
         meta_client_ip: isIP(clientIp) ? clientIp : null,

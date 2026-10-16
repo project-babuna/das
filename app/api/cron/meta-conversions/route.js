@@ -15,6 +15,7 @@ export async function GET(request) {
 
   const { data, error } = await supabaseAdmin.from("meta_conversion_events")
     .select("event_id, status, locked_until")
+    .eq("meta_deployment_environment", "production")
     .in("status", ["pending", "failed", "sending"])
     .order("created_at", { ascending: true }).limit(50);
   if (error) {
