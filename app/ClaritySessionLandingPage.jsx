@@ -9,8 +9,10 @@ import FounderTopicTicker from "./components/FounderTopicTicker";
 import ClaritySessionDate from "./components/ClaritySessionDate";
 import FounderTrapStory from "./FounderTrapStory";
 import ClarityAgenda from "./components/ClarityAgenda";
+import ClarityPlatforms from "./components/ClarityPlatforms";
 import ClarityLiveClass from "./components/ClarityLiveClass";
 import AudienceSection from "./components/AudienceSection";
+import TestimonialsSection from "./components/TestimonialsSection";
 import pageStyles from "./ClaritySession.module.css";
 import cardStyles from "./HomeCards.module.css";
 import readingStyles from "./HomeReading.module.css";
@@ -134,6 +136,8 @@ export default function ClaritySessionLandingPage() {
           </div>
         </section>
 
+        <ClarityPlatforms />
+
         <ClarityAgenda />
 
         <ClarityLiveClass />
@@ -199,6 +203,8 @@ export default function ClaritySessionLandingPage() {
         </section>
 
         <AudienceSection dark />
+
+        <TestimonialsSection />
 
         <BusinessAssessmentTool />
 
