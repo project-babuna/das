@@ -1,7 +1,7 @@
 export const policyPages = {
   "privacy-policy": {
     title: "Privacy Policy",
-    updated: "Last updated: October 16, 2026",
+    updated: "Last updated: November 12, 2026",
     intro:
       "This Privacy Policy explains how DreamAndScale collects, uses, and protects information when you visit our website, book a session, or contact us about our programs.",
     sections: [
@@ -10,6 +10,7 @@ export const policyPages = {
         body: [
           "We may collect information you choose to share with us, such as your name, email address, phone number, questions, session booking details, and program interest.",
           "We may also collect basic technical information such as device type, browser, pages visited, and general usage patterns to improve the website experience.",
+          "On selected program pages, we use an anonymous browser cookie to estimate how many browsers are active on that page. Activity records older than one day are periodically deleted. The displayed estimated activity figure also includes a clearly labeled simulated baseline.",
           "When you register and pay, we may use your browser information, IP address, referring page, and advertising identifiers to measure purchases and improve our advertising. Contact details used for this purpose are hashed before being sent to Meta.",
         ],
       },

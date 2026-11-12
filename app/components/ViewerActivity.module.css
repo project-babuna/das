@@ -1,0 +1,5 @@
+.indicator { position: fixed; z-index: 40; right: clamp(16px, 3vw, 32px); bottom: clamp(16px, 3vw, 28px); display: flex; align-items: flex-start; gap: 10px; max-width: min(300px, calc(100vw - 32px)); padding: 12px 15px; border: 1px solid #d8ded4; border-radius: 14px; background: #fffefa; box-shadow: 0 10px 30px #08231d20; color: #12382f; }
+.dot { flex: 0 0 8px; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: #3d9368; }
+.indicator strong { display: block; font-size: 13px; line-height: 1.3; }
+.indicator small { display: block; margin-top: 3px; color: #53645b; font-size: 11px; line-height: 1.35; }
+@media (max-width: 600px) { .indicator { right: 12px; bottom: 12px; max-width: min(260px, calc(100vw - 24px)); padding: 10px 12px; } }

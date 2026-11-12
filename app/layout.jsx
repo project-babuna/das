@@ -1,47 +1,12 @@
 import Script from "next/script";
 import MetaPixel from "./components/MetaPixel";
 import FreeAssessmentModal from "./components/FreeAssessmentModal";
+import ViewerActivity from "./components/ViewerActivity";
 import "./globals.css";
 
 const GTM_ID = "GTM-P6S5DB7K";
 const enableLiveTracking = process.env.VERCEL_ENV === "production";
-
-const faviconSwitcherScript = `
-(() => {
-  const icons = {
-    darkChrome: "/ds-favicon-on-dark.png?v=11",
-    lightChrome: "/ds-favicon-on-light.png?v=11",
-  };
-
-  const media = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
-
-  function syncFavicon() {
-    const href = media && media.matches ? icons.darkChrome : icons.lightChrome;
-    document
-      .querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]')
-      .forEach((link) => link.remove());
-
-    const icon = document.createElement("link");
-    icon.rel = "icon";
-    icon.type = "image/png";
-    icon.sizes = "32x32";
-    icon.href = href;
-    document.head.appendChild(icon);
-  }
-
-  syncFavicon();
-
-  if (media) {
-    if (media.addEventListener) {
-      media.addEventListener("change", syncFavicon);
-    } else if (media.addListener) {
-      media.addListener(syncFavicon);
-    }
-  }
-
-  document.addEventListener("visibilitychange", syncFavicon);
-})();
-`;
+const enableViewerActivity = enableLiveTracking || process.env.NODE_ENV === "development";
 
 export const metadata = {
   metadataBase: new URL("https://www.dreamandscale.com"),
@@ -53,7 +18,8 @@ export const metadata = {
     "DreamAndScale helps aspiring founders, working professionals, and business owners understand, learn, build, prove, and grow businesses—with learning, mentorship, and support at each stage.",
   icons: {
     icon: [
-      { url: "/ds-favicon-on-dark.png?v=11", sizes: "32x32", type: "image/png" },
+      { url: "/ds-favicon-on-dark.png?v=11", sizes: "32x32", type: "image/png", media: "(prefers-color-scheme: dark)" },
+      { url: "/ds-favicon-on-light.png?v=11", sizes: "32x32", type: "image/png", media: "(prefers-color-scheme: light)" },
     ],
     apple: [{ url: "/ds-favicon-on-light-180.png", sizes: "180x180", type: "image/png" }],
   },
@@ -82,7 +48,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             title="Google Tag Manager"
           />
         </noscript>}
-        <script dangerouslySetInnerHTML={{ __html: faviconSwitcherScript }} />
         {enableLiveTracking && <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-2RDW6CEW10"
           strategy="afterInteractive"
@@ -97,6 +62,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </Script>}
         {enableLiveTracking && <MetaPixel />}
         {children}
+        <ViewerActivity enabled={enableViewerActivity} />
         <FreeAssessmentModal />
       </body>
     </html>

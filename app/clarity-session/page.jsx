@@ -5,7 +5,7 @@ import ClaritySessionLandingPage from "../ClaritySessionLandingPage";
 
 export const metadata = pageMetadata({
   "title": "₹199 Business Clarity Session | DreamAndScale",
-  "description": "Join a 3-hour live online session to challenge business myths, understand the founder journey, and find your next step. Second Sunday monthly, 10:30 AM IST.",
+  "description": "Join a 3-hour live online session to challenge business myths, understand the founder journey, and find your next step.",
   "path": "/clarity-session"
 });
 

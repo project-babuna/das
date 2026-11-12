@@ -20,7 +20,7 @@ import motionStyles from "./HomeMotion.module.css";
 
 const homeFaqItems = [
   { question: "Do I need a business idea or experience?", answer: "No. The session is for beginners, including people exploring entrepreneurship alongside a job. You can join with an idea, a question, or simply an interest in business." },
-  { question: "When and how does the session take place?", answer: <>The session takes place on the second Sunday of every month at 10:30 AM IST. It is a 3-hour live online session in Hinglish. Next available session: <ClaritySessionDate />.</> },
+  { question: "When and how does the session take place?", answer: <>The next session is a 3-hour live online session in Hinglish on <ClaritySessionDate />.</> },
   { question: "Is this the complete DreamAndScale program?", answer: "No. This session introduces the business framework. The self-paced Full Program covers it in more depth, and DreamAndScale Mentorship adds live mentor support." },
   { question: "Will I get a recording?", answer: "Yes. You get the session recording after the live session." },
   { question: "What does the ₹199 fee cover?", answer: "₹199 is the full price for the 3-hour live Clarity Session. The Full Program and mentorship are separate options." },
