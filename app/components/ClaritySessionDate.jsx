@@ -15,5 +15,5 @@ export default function ClaritySessionDate() {
     document.addEventListener("visibilitychange", refresh);
     return () => { clearInterval(timer); document.removeEventListener("visibilitychange", refresh); };
   }, []);
-  return session ? <time dateTime={session.dateTime}>{session.label}</time> : <span>Second Sunday of every month · 10:30 AM IST</span>;
+  return session ? <time dateTime={session.dateTime}>{session.label}</time> : <span>Checking the next session…</span>;
 }
