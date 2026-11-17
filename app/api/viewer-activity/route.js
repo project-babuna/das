@@ -12,7 +12,7 @@ const COOKIE_AGE_SECONDS = 60 * 60 * 6;
 function baselineForToday() {
   const day = new Date().toISOString().slice(0, 10);
   const seed = createHash("sha256").update(day).digest().readUInt32BE(0);
-  return 100 + (seed % 51);
+  return 50 + (seed % 101);
 }
 
 export async function POST(request) {
