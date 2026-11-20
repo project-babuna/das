@@ -50,8 +50,7 @@ export default function ViewerActivity({ enabled }) {
     <aside className={styles.indicator} aria-label="Estimated site activity">
       <span className={styles.dot} aria-hidden="true" />
       <span>
-        <strong>Estimated activity: {activity.estimatedActivity}</strong>
-        <small>Simulated baseline {activity.simulatedBaseline} + {activity.activeBrowsers} active {activity.activeBrowsers === 1 ? "browser" : "browsers"} on this page.</small>
+        <strong>{activity.estimatedActivity} active viewers on this page </strong>
       </span>
     </aside>
   );
